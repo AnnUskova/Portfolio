@@ -1,61 +1,14 @@
 import { useState } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
-
-const projects = [
-  {
-    id: 1,
-    year: "2024-26",
-    category: "DEFI",
-    role: "DESIGN LEAD",
-    title: "Glacis Labs",
-    description: "DeFi ecosystem for cross-chain operations. Created design system, brand identity, dApp design, ecosystem website, technical diagrams, and pitch deck.",
-    images: [
-      "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&q=80",
-      "https://images.unsplash.com/photo-1642790106117-e829e14a795f?w=600&q=80",
-      "https://images.unsplash.com/photo-1622630998477-20aa696ecb05?w=600&q=80",
-      "https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=600&q=80"
-    ]
-  },
-  {
-    id: 2,
-    year: "2023-24",
-    category: "FINTECH",
-    role: "SENIOR DESIGNER",
-    title: "PayFlow",
-    description: "Payment platform for enterprise clients. Led the complete redesign of the dashboard, mobile app, and merchant portal.",
-    images: [
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",
-      "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&q=80",
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80"
-    ]
-  },
-  {
-    id: 3,
-    year: "2022-23",
-    category: "SAAS",
-    role: "PRODUCT DESIGNER",
-    title: "Metric Studio",
-    description: "Analytics platform for startups. Designed data visualization components, onboarding flows, and the complete design system.",
-    images: [
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80",
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80"
-    ]
-  }
-];
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { translations, projectTranslations, type Language } from "@/lib/translations";
 
 export default function Projects() {
-  const [activeProject, setActiveProject] = useState(0);
-  const [language, setLanguage] = useState<"en" | "ru">("en");
+  const [language, setLanguage] = useState<Language>("en");
 
-  const nextProject = () => {
-    setActiveProject((prev) => (prev + 1) % projects.length);
-  };
-
-  const prevProject = () => {
-    setActiveProject((prev) => (prev - 1 + projects.length) % projects.length);
-  };
+  const t = translations[language];
+  const projects = projectTranslations[language];
 
   return (
     <div className="min-h-screen bg-white">
@@ -64,25 +17,16 @@ export default function Projects() {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-8">
               <Link href="/" className="text-sm font-medium link-underline" data-testid="nav-home">
-                Home
+                {t.nav.home}
               </Link>
               <Link href="/projects" className="text-sm font-medium link-underline" data-testid="nav-projects">
-                Projects
+                {t.nav.projects}
               </Link>
               <Link href="/#contact" className="text-sm font-medium link-underline" data-testid="nav-contact">
-                Contact
+                {t.nav.contact}
               </Link>
             </div>
-            <button 
-              onClick={() => setLanguage(language === "en" ? "ru" : "en")}
-              className="text-sm font-medium text-gray-500 hover:text-black transition-colors flex items-center gap-1"
-              data-testid="button-language"
-            >
-              {language.toUpperCase()}
-              <svg width="10" height="6" viewBox="0 0 10 6" fill="none" className="mt-0.5">
-                <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
+            <LanguageSwitcher language={language} onLanguageChange={setLanguage} />
           </div>
         </div>
       </nav>
@@ -95,7 +39,7 @@ export default function Projects() {
             className="text-4xl md:text-5xl font-medium"
             data-testid="text-page-title"
           >
-            Projects
+            {t.projectsPage.title}
           </motion.h1>
         </div>
       </section>
@@ -154,7 +98,7 @@ export default function Projects() {
       <footer className="py-8 border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-gray-400">© 2026 Anna Uskova. All rights reserved.</p>
+            <p className="text-sm text-gray-400">{t.footer.copyright}</p>
             <div className="flex items-center gap-6">
               <a href="https://linkedin.com/in/annauskova" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-400 hover:text-black transition-colors">LinkedIn</a>
               <a href="#" className="text-sm text-gray-400 hover:text-black transition-colors">Dribbble</a>
