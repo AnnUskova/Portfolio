@@ -333,16 +333,20 @@ export default function Home() {
               </div>
             </motion.div>
 
-            <div className="relative overflow-hidden">
+            <div className="relative">
               <div className="flex gap-6 items-start">
                 <AnimatePresence mode="popLayout">
-                  {[0, 1].map((offset) => {
+                  {[0, 1, 2, 3].map((offset) => {
                     const index = (activeProject + offset) % projects.length;
                     return (
                       <motion.div
                         key={`${index}-${offset}`}
                         initial={{ opacity: 0, x: 100 }}
-                        animate={{ opacity: offset === 0 ? 1 : 0.4, x: 0 }}
+                        animate={{ 
+                          opacity: offset === 0 ? 1 : offset === 1 ? 0.4 : 0.1, 
+                          x: 0,
+                          scale: offset === 0 ? 1 : 0.95
+                        }}
                         exit={{ opacity: 0, x: -100 }}
                         transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
                         className="relative flex-shrink-0 w-[320px] rounded-[32px] overflow-hidden bg-white border border-gray-100"
