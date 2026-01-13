@@ -256,7 +256,7 @@ export default function Home() {
               className="flex flex-col h-full"
             >
               <div className="flex-1 pt-4">
-                <div className="flex items-center gap-2 text-xs text-gray-400 uppercase tracking-wider mb-8">
+                <div className="flex items-center gap-2 text-xs text-gray-400 uppercase tracking-wider mb-14">
                   <span>{projects[activeProject].year}</span>
                   <span className="text-gray-200">/</span>
                   <span>{projects[activeProject].category}</span>
