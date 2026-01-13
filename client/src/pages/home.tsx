@@ -55,7 +55,7 @@ export default function Home() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-8">
+            <div className="flex items-center gap-12">
               <Link 
                 href="/" 
                 className="text-sm font-medium link-underline"
@@ -170,7 +170,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-balance" style={{ lineHeight: '115%' }} data-testid="text-hero-title">
+              <h1 className="text-4xl md:text-5xl lg:text-[52px] font-medium tracking-tight text-balance" style={{ lineHeight: '115%' }} data-testid="text-hero-title">
                 {t.hero.title}
               </h1>
             </motion.div>
@@ -315,7 +315,7 @@ export default function Home() {
                           scale: offset === 0 ? 1 : 0.95
                         }}
                         exit={{ opacity: 0, x: -100 }}
-                        transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                         className="relative flex-shrink-0 w-[320px] rounded-[32px] overflow-hidden bg-white border border-gray-100 shadow-sm"
                       >
                         <img 
