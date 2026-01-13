@@ -7,7 +7,7 @@ export const translations = {
     },
     hero: {
       title: "Hi! I'm Anna Uskova — a product designer with 8+ years in the industry.",
-      description: "I design DeFi protocols, high-load systems, and products for wide audiences.",
+      description: "I work with high-load systems, DeFi protocols and complex user flows — from research to polished UI.",
       viewWork: "View my work",
       getInTouch: "Get in touch"
     },
@@ -57,7 +57,7 @@ export const translations = {
     },
     hero: {
       title: "Привет! Я Аня Ускова — продуктовый дизайнер с опытом в индустрии более 8 лет.",
-      description: "Я делаю дизайн DeFi-протоколов, высоконагруженных систем и продуктов для широкой аудитории.",
+      description: "Я работаю с высоконагруженными системами, DeFi протоколами и сложными пользовательскими сценариями — от исследований до финального UI.",
       viewWork: "Смотреть работы",
       getInTouch: "Связаться"
     },

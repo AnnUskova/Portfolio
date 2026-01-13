@@ -228,70 +228,75 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="projects" className="py-24 lg:py-32">
+      <section id="projects" className="py-24 lg:py-32 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid lg:grid-cols-[400px_1fr] gap-12 lg:gap-24 items-center">
+          <div className="grid lg:grid-cols-[380px_1fr] gap-12 lg:gap-16 items-start">
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
+              className="pt-4"
             >
-              <div className="flex items-center gap-4 text-sm text-gray-400 mb-4">
+              <div className="flex items-center gap-2 text-[10px] font-medium text-gray-400 uppercase tracking-[0.2em] mb-8">
                 <span>{projects[activeProject].year}</span>
-                <span className="w-1 h-1 bg-gray-300 rounded-full"></span>
+                <span className="text-gray-200">/</span>
                 <span>{projects[activeProject].category}</span>
-                <span className="w-1 h-1 bg-gray-300 rounded-full"></span>
+                <span className="text-gray-200">/</span>
                 <span>{projects[activeProject].role}</span>
               </div>
               
-              <h3 className="text-4xl md:text-5xl font-medium mb-6" data-testid="text-project-title">
+              <h3 className="text-5xl font-medium mb-8 tracking-tight" data-testid="text-project-title">
                 {projects[activeProject].title}
               </h3>
               
-              <p className="text-gray-600 leading-relaxed mb-8 text-lg" data-testid="text-project-description">
+              <p className="text-gray-500 leading-[1.6] mb-12 text-lg max-w-[320px]" data-testid="text-project-description">
                 {projects[activeProject].description}
               </p>
 
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-3">
                 <button 
                   onClick={prevProject}
-                  className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors"
+                  className="w-11 h-11 rounded-full border border-gray-100 flex items-center justify-center hover:bg-gray-50 transition-colors group"
                   data-testid="button-prev-project"
                 >
-                  <ChevronLeft className="w-5 h-5" />
+                  <ChevronLeft className="w-5 h-5 text-gray-400 group-hover:text-black transition-colors" />
                 </button>
                 <button 
                   onClick={nextProject}
-                  className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors"
+                  className="w-11 h-11 rounded-full border border-gray-100 flex items-center justify-center hover:bg-gray-50 transition-colors group"
                   data-testid="button-next-project"
                 >
-                  <ChevronRight className="w-5 h-5" />
+                  <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-black transition-colors" />
                 </button>
               </div>
             </motion.div>
 
-            <motion.div 
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-gray-100"
-            >
-              <AnimatePresence mode="wait">
-                <motion.img 
-                  key={activeProject}
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -50 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                  src={projectImages[projects[activeProject].id]}
-                  alt={projects[activeProject].title}
-                  className="w-full h-full object-cover"
-                  data-testid="img-project-main"
-                />
-              </AnimatePresence>
-            </motion.div>
+            <div className="relative">
+              <div className="flex gap-6 overflow-visible">
+                <AnimatePresence mode="popLayout">
+                  {[0, 1, 2].map((offset) => {
+                    const index = (activeProject + offset) % projects.length;
+                    return (
+                      <motion.div
+                        key={`${index}-${offset}`}
+                        initial={{ opacity: 0, x: 100 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -100 }}
+                        transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+                        className={`relative flex-shrink-0 ${offset === 0 ? 'w-[400px] aspect-[4/5]' : 'w-[300px] aspect-[4/5] opacity-40'} rounded-[32px] overflow-hidden bg-gray-50 border border-gray-100`}
+                      >
+                        <img 
+                          src={projectImages[projects[index].id]}
+                          alt={projects[index].title}
+                          className="w-full h-full object-cover"
+                        />
+                      </motion.div>
+                    );
+                  })}
+                </AnimatePresence>
+              </div>
+            </div>
           </div>
         </div>
       </section>
