@@ -215,7 +215,7 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="hidden lg:block w-[420px] aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl relative z-10"
+            className="hidden lg:block w-[360px] aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl relative z-10"
           >
             <img 
               src={annaPhoto} 
