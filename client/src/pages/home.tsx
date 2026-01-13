@@ -308,17 +308,26 @@ export default function Home() {
                     return (
                       <motion.div
                         key={`${index}-${offset}`}
-                        initial={{ opacity: 0, x: 100 }}
+                        layout
+                        initial={{ opacity: 0, scale: 0.8, x: 100, rotateY: 45 }}
                         animate={{ 
                           opacity: 1, 
                           x: 0,
-                          scale: offset === 0 ? 1 : 0.95
+                          scale: offset === 0 ? 1 : 0.9,
+                          rotateY: offset === 0 ? 0 : -15,
+                          zIndex: projects.length - offset,
                         }}
-                        exit={{ opacity: 0, x: -100 }}
-                        transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-                        className="relative flex-shrink-0 w-[320px] rounded-[32px] overflow-hidden bg-white border border-gray-100 shadow-sm"
+                        exit={{ opacity: 0, scale: 0.8, x: -100, rotateY: -45 }}
+                        transition={{ 
+                          duration: 0.8, 
+                          ease: [0.16, 1, 0.3, 1],
+                          opacity: { duration: 0.4 }
+                        }}
+                        className="relative flex-shrink-0 w-[320px] rounded-[32px] overflow-hidden bg-white border border-gray-100 shadow-xl"
+                        style={{ perspective: "1000px" }}
                       >
-                        <img 
+                        <motion.img 
+                          layoutId={`img-${projects[index].id}`}
                           src={projectImages[projects[index].id]}
                           alt={projects[index].title}
                           className="w-full h-auto object-contain"
