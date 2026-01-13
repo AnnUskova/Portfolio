@@ -256,7 +256,7 @@ export default function Home() {
               className="flex flex-col h-full"
             >
               <div className="flex-1 pt-4">
-                <div className="flex items-center gap-2 text-xs text-gray-400 uppercase tracking-wider mb-8">
+                <div className="flex items-center gap-2 text-xs text-gray-400 uppercase tracking-wider mb-12">
                   <span>{projects[activeProject].year}</span>
                   <span className="text-gray-200">/</span>
                   <span>{projects[activeProject].category}</span>
@@ -272,7 +272,7 @@ export default function Home() {
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.4 }}
                   >
-                    <h3 className="text-5xl font-medium mb-8 tracking-tight" data-testid="text-project-title">
+                    <h3 className="text-5xl font-medium mb-4 tracking-tight" data-testid="text-project-title">
                       {projects[activeProject].title}
                     </h3>
                     
