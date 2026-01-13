@@ -5,6 +5,18 @@ import { ArrowUpRight, ChevronLeft, ChevronRight, X, Download } from "lucide-rea
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { translations, projectTranslations, type Language } from "@/lib/translations";
 
+import glacisImg from "@assets/Frame_22_1768330582626.png";
+import maatImg from "@assets/Frame_23_1768330582626.png";
+import skiziImg from "@assets/Frame_35_1768330582626.png";
+import chefImg from "@assets/Frame_36_1768330582626.png";
+
+const projectImages: Record<number, string> = {
+  1: glacisImg,
+  2: maatImg,
+  3: skiziImg,
+  4: chefImg
+};
+
 export default function Home() {
   const [activeProject, setActiveProject] = useState(0);
   const [language, setLanguage] = useState<Language>("en");
@@ -25,6 +37,15 @@ export default function Home() {
 
   const prevProject = () => {
     setActiveProject((prev) => (prev - 1 + projects.length) % projects.length);
+  };
+
+  const contactData = {
+    telegram: "@Ann_uskova",
+    linkedin: "Anna Uskova",
+    email: "anyauskowa@yandex.ru",
+    telegramUrl: "https://t.me/Ann_uskova",
+    linkedinUrl: "https://www.linkedin.com/in/anna-uskova-4b1169268/",
+    emailUrl: "mailto:anyauskowa@yandex.ru"
   };
 
   return (
@@ -85,19 +106,7 @@ export default function Home() {
               
               <div className="space-y-4 w-full max-w-md">
                 <a 
-                  href="mailto:hello@annauskova.com"
-                  className="flex items-center justify-between p-5 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors group"
-                  data-testid="link-email"
-                >
-                  <span className="text-lg">{t.contact.email}</span>
-                  <span className="text-gray-500 group-hover:text-black transition-colors flex items-center gap-2">
-                    hello@annauskova.com
-                    <ArrowUpRight className="w-4 h-4" />
-                  </span>
-                </a>
-                
-                <a 
-                  href="https://t.me/annauskova"
+                  href={contactData.telegramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-between p-5 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors group"
@@ -105,13 +114,13 @@ export default function Home() {
                 >
                   <span className="text-lg">{t.contact.telegram}</span>
                   <span className="text-gray-500 group-hover:text-black transition-colors flex items-center gap-2">
-                    @annauskova
+                    {contactData.telegram}
                     <ArrowUpRight className="w-4 h-4" />
                   </span>
                 </a>
-                
+
                 <a 
-                  href="https://linkedin.com/in/annauskova"
+                  href={contactData.linkedinUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-between p-5 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors group"
@@ -119,15 +128,27 @@ export default function Home() {
                 >
                   <span className="text-lg">{t.contact.linkedin}</span>
                   <span className="text-gray-500 group-hover:text-black transition-colors flex items-center gap-2">
-                    Anna Uskova
+                    {contactData.linkedin}
+                    <ArrowUpRight className="w-4 h-4" />
+                  </span>
+                </a>
+
+                <a 
+                  href={contactData.emailUrl}
+                  className="flex items-center justify-between p-5 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors group"
+                  data-testid="link-email"
+                >
+                  <span className="text-lg">{t.contact.email}</span>
+                  <span className="text-gray-500 group-hover:text-black transition-colors flex items-center gap-2">
+                    {contactData.email}
                     <ArrowUpRight className="w-4 h-4" />
                   </span>
                 </a>
                 
                 <a 
-                  href="/cv.pdf"
+                  href={language === "ru" ? "/cv_ru.pdf" : "/cv_en.pdf"}
                   download
-                  className="flex items-center justify-center gap-3 p-5 bg-black text-white rounded-xl hover:bg-gray-800 transition-colors mt-8"
+                  className="flex items-center justify-center gap-3 p-5 bg-black text-white rounded-xl hover:bg-gray-800 transition-colors mt-8 h-14"
                   data-testid="button-download-cv"
                 >
                   <Download className="w-5 h-5" />
@@ -147,7 +168,7 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="max-w-4xl"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-balance" style={{ lineHeight: '130%' }} data-testid="text-hero-title">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-balance" style={{ lineHeight: '100%' }} data-testid="text-hero-title">
               {t.hero.title}
             </h1>
           </motion.div>
@@ -171,7 +192,7 @@ export default function Home() {
           >
             <Link 
               href="/projects"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-black text-white text-sm font-medium rounded-full hover:bg-gray-800 transition-colors"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-black text-white text-sm font-medium rounded-full hover:bg-gray-800 transition-colors h-14 min-w-[200px]"
               data-testid="button-view-work"
             >
               {t.hero.viewWork}
@@ -209,7 +230,7 @@ export default function Home() {
 
       <section id="projects" className="py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid lg:grid-cols-[300px_1fr] gap-12 lg:gap-16 items-start">
+          <div className="grid lg:grid-cols-[400px_1fr] gap-12 lg:gap-24 items-center">
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -228,24 +249,24 @@ export default function Home() {
                 {projects[activeProject].title}
               </h3>
               
-              <p className="text-gray-600 leading-relaxed mb-8" data-testid="text-project-description">
+              <p className="text-gray-600 leading-relaxed mb-8 text-lg" data-testid="text-project-description">
                 {projects[activeProject].description}
               </p>
 
               <div className="flex items-center gap-4">
                 <button 
                   onClick={prevProject}
-                  className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors"
+                  className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors"
                   data-testid="button-prev-project"
                 >
-                  <ChevronLeft className="w-4 h-4" />
+                  <ChevronLeft className="w-5 h-5" />
                 </button>
                 <button 
                   onClick={nextProject}
-                  className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors"
+                  className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors"
                   data-testid="button-next-project"
                 >
-                  <ChevronRight className="w-4 h-4" />
+                  <ChevronRight className="w-5 h-5" />
                 </button>
               </div>
             </motion.div>
@@ -255,26 +276,21 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="relative"
+              className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-gray-100"
             >
-              <div className="flex gap-4 overflow-x-auto pb-4 -mr-6 lg:-mr-12 pr-6 lg:pr-12 scrollbar-hide">
-                {projects[activeProject].images.map((img, idx) => (
-                  <motion.div
-                    key={img}
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.4, delay: idx * 0.1 }}
-                    className={`flex-shrink-0 ${idx === 0 ? 'w-80 lg:w-96' : 'w-48 lg:w-56'} aspect-[4/5] rounded-xl overflow-hidden bg-gray-100`}
-                  >
-                    <img 
-                      src={img}
-                      alt={`${projects[activeProject].title} ${idx + 1}`}
-                      className="w-full h-full object-cover"
-                      data-testid={`img-project-${idx}`}
-                    />
-                  </motion.div>
-                ))}
-              </div>
+              <AnimatePresence mode="wait">
+                <motion.img 
+                  key={activeProject}
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -50 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                  src={projectImages[projects[activeProject].id]}
+                  alt={projects[activeProject].title}
+                  className="w-full h-full object-cover"
+                  data-testid="img-project-main"
+                />
+              </AnimatePresence>
             </motion.div>
           </div>
         </div>
@@ -334,21 +350,21 @@ export default function Home() {
             
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <a 
-                href="mailto:hello@annauskova.com"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-black text-white text-sm font-medium rounded-full hover:bg-gray-800 transition-colors"
-                data-testid="button-email"
+                href={contactData.emailUrl}
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-black text-white text-sm font-medium rounded-full hover:bg-gray-800 transition-colors h-14 min-w-[200px]"
+                data-testid="button-email-footer"
               >
-                hello@annauskova.com
+                {t.footer.socials.email}
                 <ArrowUpRight className="w-4 h-4" />
               </a>
               <a 
-                href="https://linkedin.com/in/annauskova"
+                href={contactData.linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-gray-200 text-sm font-medium rounded-full hover:bg-gray-50 transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-gray-200 text-sm font-medium rounded-full hover:bg-gray-50 transition-colors h-14 min-w-[200px]"
                 data-testid="button-linkedin-footer"
               >
-                LinkedIn
+                {t.contact.linkedin}
                 <ArrowUpRight className="w-4 h-4" />
               </a>
             </div>
@@ -361,9 +377,9 @@ export default function Home() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-gray-400">{t.footer.copyright}</p>
             <div className="flex items-center gap-6">
-              <a href="https://linkedin.com/in/annauskova" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-400 hover:text-black transition-colors">LinkedIn</a>
-              <a href="#" className="text-sm text-gray-400 hover:text-black transition-colors">Dribbble</a>
-              <a href="#" className="text-sm text-gray-400 hover:text-black transition-colors">Behance</a>
+              <a href={contactData.linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-gray-400 hover:text-black transition-colors">{t.footer.socials.linkedin}</a>
+              <a href={contactData.telegramUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-gray-400 hover:text-black transition-colors">{t.footer.socials.telegram}</a>
+              <a href={contactData.emailUrl} className="text-sm text-gray-400 hover:text-black transition-colors">{t.footer.socials.email}</a>
             </div>
           </div>
         </div>

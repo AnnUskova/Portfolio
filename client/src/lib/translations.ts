@@ -38,7 +38,12 @@ export const translations = {
       downloadCV: "Download CV"
     },
     footer: {
-      copyright: "© 2026 Anna Uskova. All rights reserved."
+      copyright: "© 2026 Anna Uskova. All rights reserved.",
+      socials: {
+        linkedin: "LinkedIn",
+        telegram: "Telegram",
+        email: "Email"
+      }
     },
     projectsPage: {
       title: "Projects"
@@ -83,7 +88,12 @@ export const translations = {
       downloadCV: "Скачать CV"
     },
     footer: {
-      copyright: "© 2026 Анна Ускова. Все права защищены."
+      copyright: "© 2026 Анна Ускова. Все права защищены.",
+      socials: {
+        linkedin: "LinkedIn",
+        telegram: "Телеграм",
+        email: "Почта"
+      }
     },
     projectsPage: {
       title: "Проекты"
@@ -99,38 +109,31 @@ export const projectTranslations = {
       category: "DEFI",
       role: "DESIGN LEAD",
       title: "Glacis Labs",
-      description: "DeFi ecosystem for cross-chain operations. Created design system, brand identity, dApp design, ecosystem website, technical diagrams, and pitch deck.",
-      images: [
-        "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&q=80",
-        "https://images.unsplash.com/photo-1642790106117-e829e14a795f?w=600&q=80",
-        "https://images.unsplash.com/photo-1622630998477-20aa696ecb05?w=600&q=80",
-        "https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=600&q=80"
-      ]
+      description: "DeFi ecosystem for cross-chain operations. Created design system, brand identity, dApp design, ecosystem website, technical diagrams, and pitch deck."
     },
     {
       id: 2,
-      year: "2023-24",
-      category: "FINTECH",
-      role: "SENIOR DESIGNER",
-      title: "PayFlow",
-      description: "Payment platform for enterprise clients. Led the complete redesign of the dashboard, mobile app, and merchant portal.",
-      images: [
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",
-        "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&q=80",
-        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80"
-      ]
+      year: "2024",
+      category: "DEFI",
+      role: "DESIGN LEAD",
+      title: "MAAT",
+      description: "An automated fund reinvestment system that optimizes asset allocation based on real-time market volatility. Developed the visual identity, comprehensive dApp interface, and a scalable design system while leading the design execution team."
     },
     {
       id: 3,
-      year: "2022-23",
-      category: "SAAS",
+      year: "2023",
+      category: "GREEN TOOLS",
       role: "PRODUCT DESIGNER",
-      title: "Metric Studio",
-      description: "Analytics platform for startups. Designed data visualization components, onboarding flows, and the complete design system.",
-      images: [
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80",
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80"
-      ]
+      title: "SKIZI",
+      description: "A high-performance infrastructure for automating green energy certificate accounting. Designed to handle high-load data processing for environmental impact tracking."
+    },
+    {
+      id: 4,
+      year: "2025",
+      category: "FOOD APP",
+      role: "SENIOR PRODUCT DESIGNER",
+      title: "AI Chef",
+      description: "An innovative mobile experience for AI-powered recipe generation. Built the entire product experience from initial concept to detailed interface design for modern cooking enthusiasts."
     }
   ],
   ru: [
@@ -140,38 +143,31 @@ export const projectTranslations = {
       category: "DEFI",
       role: "ДИЗАЙН ЛИД",
       title: "Glacis Labs",
-      description: "Экосистема DeFi продуктов для работы с cross-chain операциями. Для них я собрала дизайн-систему и разработала фирменный стиль, сделала дизайн dApp, сайта экосистемы, визуализации технических схем и питч деки.",
-      images: [
-        "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&q=80",
-        "https://images.unsplash.com/photo-1642790106117-e829e14a795f?w=600&q=80",
-        "https://images.unsplash.com/photo-1622630998477-20aa696ecb05?w=600&q=80",
-        "https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=600&q=80"
-      ]
+      description: "Экосистема DeFi продуктов для работы с cross-chain операциями. Для них я собрала дизайн-систему и разработала фирменный стиль, сделала дизайн dApp, сайта экосистемы, визуализации технических схем и питч деки."
     },
     {
       id: 2,
-      year: "2023-24",
-      category: "ФИНТЕХ",
-      role: "СТАРШИЙ ДИЗАЙНЕР",
-      title: "PayFlow",
-      description: "Платёжная платформа для корпоративных клиентов. Руководила полным редизайном дашборда, мобильного приложения и портала для продавцов.",
-      images: [
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",
-        "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&q=80",
-        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80"
-      ]
+      year: "2024",
+      category: "DEFI",
+      role: "ДИЗАЙН ЛИД",
+      title: "MAAT",
+      description: "Автоматизированная система реинвестирования средств, принимающая решения на основе текущих рыночных условий. Разработала фирменный стиль, интерфейс dApp и масштабируемую дизайн-систему, а также руководила командой дизайнеров для реализации продукта."
     },
     {
       id: 3,
-      year: "2022-23",
-      category: "SAAS",
-      role: "ПРОДУКТОВЫЙ ДИЗАЙНЕР",
-      title: "Metric Studio",
-      description: "Аналитическая платформа для стартапов. Разработала компоненты визуализации данных, онбординг и полную дизайн-систему.",
-      images: [
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80",
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80"
-      ]
+      year: "2023",
+      category: "GREEN TOOLS",
+      role: "PRODUCT DESIGNER",
+      title: "СКИЗИ",
+      description: "Высоконагруженная система для автоматизации учета зеленой энергии. Обеспечивает прозрачность и точность в отслеживании экологических сертификатов в реальном времени."
+    },
+    {
+      id: 4,
+      year: "2025",
+      category: "FOOD APP",
+      role: "SENIOR PRODUCT DESIGNER",
+      title: "AI Chef",
+      description: "Инновационное мобильное приложение для AI-генерации рецептов. Заказная разработка полного цикла: от концепции до финального интерфейса."
     }
   ]
 };

@@ -4,11 +4,29 @@ import { motion } from "framer-motion";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { translations, projectTranslations, type Language } from "@/lib/translations";
 
+import glacisImg from "@assets/Frame_22_1768330582626.png";
+import maatImg from "@assets/Frame_23_1768330582626.png";
+import skiziImg from "@assets/Frame_35_1768330582626.png";
+import chefImg from "@assets/Frame_36_1768330582626.png";
+
+const projectImages: Record<number, string> = {
+  1: glacisImg,
+  2: maatImg,
+  3: skiziImg,
+  4: chefImg
+};
+
 export default function Projects() {
   const [language, setLanguage] = useState<Language>("en");
 
   const t = translations[language];
   const projects = projectTranslations[language];
+
+  const contactData = {
+    telegramUrl: "https://t.me/Ann_uskova",
+    linkedinUrl: "https://www.linkedin.com/in/anna-uskova-4b1169268/",
+    emailUrl: "mailto:anyauskowa@yandex.ru"
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -55,7 +73,7 @@ export default function Projects() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="py-16 border-b border-gray-100 last:border-0"
             >
-              <div className="grid lg:grid-cols-[300px_1fr] gap-12 lg:gap-16 items-start">
+              <div className="grid lg:grid-cols-[400px_1fr] gap-12 lg:gap-24 items-center">
                 <div>
                   <div className="flex items-center gap-4 text-sm text-gray-400 mb-4">
                     <span>{project.year}</span>
@@ -69,25 +87,18 @@ export default function Projects() {
                     {project.title}
                   </h3>
                   
-                  <p className="text-gray-600 leading-relaxed" data-testid={`text-project-desc-${project.id}`}>
+                  <p className="text-gray-600 leading-relaxed text-lg" data-testid={`text-project-desc-${project.id}`}>
                     {project.description}
                   </p>
                 </div>
 
-                <div className="flex gap-4 overflow-x-auto pb-4 -mr-6 lg:-mr-12 pr-6 lg:pr-12">
-                  {project.images.map((img, idx) => (
-                    <div
-                      key={img}
-                      className={`flex-shrink-0 ${idx === 0 ? 'w-80 lg:w-96' : 'w-48 lg:w-56'} aspect-[4/5] rounded-xl overflow-hidden bg-gray-100`}
-                    >
-                      <img 
-                        src={img}
-                        alt={`${project.title} ${idx + 1}`}
-                        className="w-full h-full object-cover"
-                        data-testid={`img-project-${project.id}-${idx}`}
-                      />
-                    </div>
-                  ))}
+                <div className="aspect-[4/5] rounded-3xl overflow-hidden bg-gray-100">
+                  <img 
+                    src={projectImages[project.id]}
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                    data-testid={`img-project-page-${project.id}`}
+                  />
                 </div>
               </div>
             </motion.div>
@@ -100,9 +111,9 @@ export default function Projects() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-gray-400">{t.footer.copyright}</p>
             <div className="flex items-center gap-6">
-              <a href="https://linkedin.com/in/annauskova" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-400 hover:text-black transition-colors">LinkedIn</a>
-              <a href="#" className="text-sm text-gray-400 hover:text-black transition-colors">Dribbble</a>
-              <a href="#" className="text-sm text-gray-400 hover:text-black transition-colors">Behance</a>
+              <a href={contactData.linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-gray-400 hover:text-black transition-colors">{t.footer.socials.linkedin}</a>
+              <a href={contactData.telegramUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-gray-400 hover:text-black transition-colors">{t.footer.socials.telegram}</a>
+              <a href={contactData.emailUrl} className="text-sm text-gray-400 hover:text-black transition-colors">{t.footer.socials.email}</a>
             </div>
           </div>
         </div>
