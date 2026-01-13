@@ -7,13 +7,13 @@ export const translations = {
     },
     hero: {
       title: "Hi! I'm Anna Uskova — a product designer with 8+ years in the industry.",
-      description: "I work with high-load systems, DeFi protocols and complex user flows — from research to polished UI.",
+      description: "I work with high-load systems, DeFi protocols and B2C products — from research to polished UI.",
       viewWork: "View my work",
       getInTouch: "Get in touch"
     },
     stats: {
       experience: "Years Experience",
-      projects: "Projects Delivered",
+      projects: "Complex Solutions",
       location: "Location",
       locationValue: "Remote / Hybrid"
     },
@@ -56,13 +56,13 @@ export const translations = {
     },
     hero: {
       title: "Привет! Я Аня Ускова — продуктовый дизайнер с опытом в индустрии более 8 лет.",
-      description: "Я работаю с высоконагруженными системами, DeFi протоколами и сложными пользовательскими сценариями — от исследований до финального UI.",
+      description: "Я работаю с высоконагруженными системами, DeFi протоколами и массовыми B2C продуктами — от исследований до финального UI.",
       viewWork: "Смотреть работы",
       getInTouch: "Связаться"
     },
     stats: {
       experience: "Лет опыта",
-      projects: "Проектов",
+      projects: "Сложных решений",
       location: "Локация",
       locationValue: "Удалённо / Гибрид"
     },

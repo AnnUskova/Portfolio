@@ -10,6 +10,8 @@ import maatImg from "@assets/Frame_23_1768330582626.png";
 import skiziImg from "@assets/Frame_35_1768330582626.png";
 import chefImg from "@assets/Frame_36_1768330582626.png";
 
+import annaPhoto from "@assets/1046_1_1768336698195.png";
+
 const projectImages: Record<number, string> = {
   1: glacisImg,
   2: maatImg,
@@ -160,51 +162,65 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      <section className="pt-40 pb-24 lg:pt-48 lg:pb-32">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-4xl"
-          >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-balance" style={{ lineHeight: '115%' }} data-testid="text-hero-title">
-              {t.hero.title}
-            </h1>
-          </motion.div>
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="mt-8 max-w-2xl"
-          >
-            <p className="text-xl md:text-2xl text-gray-600 leading-relaxed" data-testid="text-hero-description">
-              {t.hero.description}
-            </p>
-          </motion.div>
+      <section className="pt-40 pb-24 lg:pt-48 lg:pb-32 relative">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-start justify-between">
+          <div className="max-w-4xl">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-balance" style={{ lineHeight: '115%' }} data-testid="text-hero-title">
+                {t.hero.title}
+              </h1>
+            </motion.div>
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="mt-8 max-w-2xl"
+            >
+              <p className="text-xl md:text-2xl text-gray-600 leading-relaxed" data-testid="text-hero-description">
+                {t.hero.description}
+              </p>
+            </motion.div>
 
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-12 flex items-center gap-6"
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="mt-12 flex items-center gap-6"
+            >
+              <Link 
+                href="/projects"
+                className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-black text-white text-base font-medium rounded-full hover:bg-gray-800 transition-colors h-14 min-w-[200px]"
+                data-testid="button-view-work"
+              >
+                {t.hero.viewWork}
+                <ArrowUpRight className="w-4 h-4" />
+              </Link>
+              <button 
+                onClick={() => setContactOpen(true)}
+                className="text-base font-medium link-underline"
+                data-testid="link-contact"
+              >
+                {t.hero.getInTouch}
+              </button>
+            </motion.div>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="hidden lg:block w-[340px] aspect-[3/4] rounded-3xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl relative z-10"
           >
-            <Link 
-              href="/projects"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-black text-white text-sm font-medium rounded-full hover:bg-gray-800 transition-colors h-14 min-w-[200px]"
-              data-testid="button-view-work"
-            >
-              {t.hero.viewWork}
-              <ArrowUpRight className="w-4 h-4" />
-            </Link>
-            <button 
-              onClick={() => setContactOpen(true)}
-              className="text-sm font-medium link-underline"
-              data-testid="link-contact"
-            >
-              {t.hero.getInTouch}
-            </button>
+            <img 
+              src={annaPhoto} 
+              alt="Anna Uskova" 
+              className="w-full h-full object-cover"
+            />
           </motion.div>
         </div>
       </section>
@@ -239,7 +255,7 @@ export default function Home() {
               className="flex flex-col h-full"
             >
               <div className="flex-1 pt-4">
-                <div className="flex items-center gap-2 text-[10px] font-medium text-gray-400 uppercase tracking-[0.2em] mb-8">
+                <div className="flex items-center gap-2 text-xs text-gray-400 uppercase tracking-wider mb-8">
                   <span>{projects[activeProject].year}</span>
                   <span className="text-gray-200">/</span>
                   <span>{projects[activeProject].category}</span>
@@ -247,13 +263,23 @@ export default function Home() {
                   <span>{projects[activeProject].role}</span>
                 </div>
                 
-                <h3 className="text-5xl font-medium mb-8 tracking-tight" data-testid="text-project-title">
-                  {projects[activeProject].title}
-                </h3>
-                
-                <p className="text-gray-500 leading-[1.6] mb-12 text-lg max-w-[320px]" data-testid="text-project-description">
-                  {projects[activeProject].description}
-                </p>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeProject}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    <h3 className="text-5xl font-medium mb-8 tracking-tight" data-testid="text-project-title">
+                      {projects[activeProject].title}
+                    </h3>
+                    
+                    <p className="text-gray-500 leading-[1.6] mb-12 text-lg max-w-[320px]" data-testid="text-project-description">
+                      {projects[activeProject].description}
+                    </p>
+                  </motion.div>
+                </AnimatePresence>
               </div>
 
               <div className="flex items-center gap-3 mt-auto pb-4">
@@ -286,7 +312,7 @@ export default function Home() {
                         animate={{ opacity: offset === 0 ? 1 : 0.4, x: 0 }}
                         exit={{ opacity: 0, x: -100 }}
                         transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-                        className="relative flex-shrink-0 w-[380px] rounded-[32px] overflow-hidden bg-gray-50 border border-gray-100"
+                        className="relative flex-shrink-0 w-[320px] rounded-[32px] overflow-hidden bg-white border border-gray-100"
                       >
                         <img 
                           src={projectImages[projects[index].id]}
