@@ -272,7 +272,7 @@ export default function Home() {
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.4 }}
                   >
-                    <h3 className="text-5xl font-medium mb-8 tracking-tight" data-testid="text-project-title">
+                    <h3 className="text-5xl font-medium mb-6 tracking-tight" data-testid="text-project-title">
                       {projects[activeProject].title}
                     </h3>
                     
