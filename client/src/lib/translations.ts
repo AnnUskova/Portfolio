@@ -13,7 +13,7 @@ export const translations = {
     },
     stats: {
       experience: "Years Experience",
-      projects: "Complex Solutions",
+      projects: "Projects Delivered",
       location: "Location",
       locationValue: "Remote / Hybrid"
     },
@@ -62,7 +62,7 @@ export const translations = {
     },
     stats: {
       experience: "Лет опыта",
-      projects: "Сложных решений",
+      projects: "Проектов",
       location: "Локация",
       locationValue: "Удалённо / Гибрид"
     },

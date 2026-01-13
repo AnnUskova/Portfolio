@@ -29,7 +29,7 @@ export default function Home() {
 
   const stats = [
     { label: t.stats.experience, value: "8+" },
-    { label: t.stats.projects, value: "50+" },
+    { label: t.stats.projects, value: "30+" },
     { label: t.stats.location, value: t.stats.locationValue }
   ];
 
@@ -285,34 +285,38 @@ export default function Home() {
               <div className="flex items-center gap-3 mt-auto pb-4">
                 <button 
                   onClick={prevProject}
-                  className="w-11 h-11 rounded-full border border-gray-100 flex items-center justify-center hover:bg-gray-50 transition-colors group"
+                  className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:border-black hover:bg-black hover:text-white transition-all duration-300 group"
                   data-testid="button-prev-project"
                 >
-                  <ChevronLeft className="w-5 h-5 text-gray-400 group-hover:text-black transition-colors" />
+                  <ChevronLeft className="w-6 h-6" />
                 </button>
                 <button 
                   onClick={nextProject}
-                  className="w-11 h-11 rounded-full border border-gray-100 flex items-center justify-center hover:bg-gray-50 transition-colors group"
+                  className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:border-black hover:bg-black hover:text-white transition-all duration-300 group"
                   data-testid="button-next-project"
                 >
-                  <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-black transition-colors" />
+                  <ChevronRight className="w-6 h-6" />
                 </button>
               </div>
             </motion.div>
 
-            <div className="relative overflow-hidden">
+            <div className="relative">
               <div className="flex gap-6 items-start">
                 <AnimatePresence mode="popLayout">
-                  {[0, 1].map((offset) => {
+                  {[0, 1, 2, 3].map((offset) => {
                     const index = (activeProject + offset) % projects.length;
                     return (
                       <motion.div
                         key={`${index}-${offset}`}
                         initial={{ opacity: 0, x: 100 }}
-                        animate={{ opacity: offset === 0 ? 1 : 0.4, x: 0 }}
+                        animate={{ 
+                          opacity: offset === 0 ? 1 : 0.4, 
+                          x: 0,
+                          scale: offset === 0 ? 1 : 0.95
+                        }}
                         exit={{ opacity: 0, x: -100 }}
                         transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-                        className="relative flex-shrink-0 w-[320px] rounded-[32px] overflow-hidden bg-white border border-gray-100"
+                        className="relative flex-shrink-0 w-[320px] rounded-[32px] overflow-hidden bg-white border border-gray-100 shadow-sm"
                       >
                         <img 
                           src={projectImages[projects[index].id]}
