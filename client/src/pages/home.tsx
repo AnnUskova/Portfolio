@@ -310,7 +310,7 @@ export default function Home() {
                         key={`${index}-${offset}`}
                         initial={{ opacity: 0, x: 100 }}
                         animate={{ 
-                          opacity: offset === 0 ? 1 : 0.4, 
+                          opacity: 1, 
                           x: 0,
                           scale: offset === 0 ? 1 : 0.95
                         }}
