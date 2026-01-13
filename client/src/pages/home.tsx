@@ -236,25 +236,27 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="pt-4"
+              className="flex flex-col h-full"
             >
-              <div className="flex items-center gap-2 text-[10px] font-medium text-gray-400 uppercase tracking-[0.2em] mb-8">
-                <span>{projects[activeProject].year}</span>
-                <span className="text-gray-200">/</span>
-                <span>{projects[activeProject].category}</span>
-                <span className="text-gray-200">/</span>
-                <span>{projects[activeProject].role}</span>
+              <div className="flex-1 pt-4">
+                <div className="flex items-center gap-2 text-[10px] font-medium text-gray-400 uppercase tracking-[0.2em] mb-8">
+                  <span>{projects[activeProject].year}</span>
+                  <span className="text-gray-200">/</span>
+                  <span>{projects[activeProject].category}</span>
+                  <span className="text-gray-200">/</span>
+                  <span>{projects[activeProject].role}</span>
+                </div>
+                
+                <h3 className="text-5xl font-medium mb-8 tracking-tight" data-testid="text-project-title">
+                  {projects[activeProject].title}
+                </h3>
+                
+                <p className="text-gray-500 leading-[1.6] mb-12 text-lg max-w-[320px]" data-testid="text-project-description">
+                  {projects[activeProject].description}
+                </p>
               </div>
-              
-              <h3 className="text-5xl font-medium mb-8 tracking-tight" data-testid="text-project-title">
-                {projects[activeProject].title}
-              </h3>
-              
-              <p className="text-gray-500 leading-[1.6] mb-12 text-lg max-w-[320px]" data-testid="text-project-description">
-                {projects[activeProject].description}
-              </p>
 
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 mt-auto pb-4">
                 <button 
                   onClick={prevProject}
                   className="w-11 h-11 rounded-full border border-gray-100 flex items-center justify-center hover:bg-gray-50 transition-colors group"
@@ -272,24 +274,25 @@ export default function Home() {
               </div>
             </motion.div>
 
-            <div className="relative">
-              <div className="flex gap-6 overflow-visible">
+            <div className="relative overflow-hidden">
+              <div className="flex gap-6 items-start">
                 <AnimatePresence mode="popLayout">
-                  {[0, 1, 2].map((offset) => {
+                  {[0, 1].map((offset) => {
                     const index = (activeProject + offset) % projects.length;
                     return (
                       <motion.div
                         key={`${index}-${offset}`}
                         initial={{ opacity: 0, x: 100 }}
-                        animate={{ opacity: 1, x: 0 }}
+                        animate={{ opacity: offset === 0 ? 1 : 0.4, x: 0 }}
                         exit={{ opacity: 0, x: -100 }}
                         transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-                        className={`relative flex-shrink-0 ${offset === 0 ? 'w-[400px] aspect-[4/5]' : 'w-[300px] aspect-[4/5] opacity-40'} rounded-[32px] overflow-hidden bg-gray-50 border border-gray-100`}
+                        className="relative flex-shrink-0 w-[380px] rounded-[32px] overflow-hidden bg-gray-50 border border-gray-100"
                       >
                         <img 
                           src={projectImages[projects[index].id]}
                           alt={projects[index].title}
-                          className="w-full h-full object-cover"
+                          className="w-full h-auto object-contain"
+                          style={{ maxHeight: '480px' }}
                         />
                       </motion.div>
                     );
