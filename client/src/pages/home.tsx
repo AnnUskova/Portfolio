@@ -169,6 +169,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
+              className="max-w-[700px]"
             >
               <h1 className="text-4xl md:text-5xl lg:text-[52px] font-medium tracking-tight text-balance" style={{ lineHeight: '115%' }} data-testid="text-hero-title">
                 {t.hero.title}
