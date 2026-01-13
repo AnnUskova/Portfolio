@@ -211,10 +211,10 @@ export default function Home() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="hidden lg:block w-[340px] aspect-[3/4] rounded-3xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl relative z-10"
+            className="hidden lg:block w-[420px] aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl relative z-10"
           >
             <img 
               src={annaPhoto} 
