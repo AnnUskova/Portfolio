@@ -160,7 +160,7 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      <section className="pt-32 pb-24 lg:pt-40 lg:pb-32">
+      <section className="pt-40 pb-24 lg:pt-48 lg:pb-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -168,7 +168,7 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="max-w-4xl"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-balance" style={{ lineHeight: '100%' }} data-testid="text-hero-title">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-balance" style={{ lineHeight: '115%' }} data-testid="text-hero-title">
               {t.hero.title}
             </h1>
           </motion.div>
