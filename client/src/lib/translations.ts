@@ -21,11 +21,10 @@ export const translations = {
       title: "What I do",
       description: "I help companies create exceptional digital products — from early research to final delivery.",
       items: [
-        { num: "01", title: "UX Research", desc: "Deep user research, interviews, testing and data analysis" },
+        { num: "01", title: "Product from Scratch", desc: "End-to-end design from concept to launch" },
         { num: "02", title: "Design Systems", desc: "Scalable component libraries and brand guidelines" },
-        { num: "03", title: "Product from Scratch", desc: "End-to-end design from concept to launch" },
-        { num: "04", title: "Redesign", desc: "Revamping existing products for better UX and conversion" },
-        { num: "05", title: "Team Leadership", desc: "Managing design teams for end-to-end delivery" }
+        { num: "03", title: "UX Research", desc: "Deep user research, interviews, testing and data analysis" },
+        { num: "04", title: "Redesign", desc: "Revamping existing products for better UX and conversion" }
       ]
     },
     contact: {
@@ -71,11 +70,10 @@ export const translations = {
       title: "Что я делаю",
       description: "Помогаю компаниям создавать исключительные цифровые продукты — от исследований до финальной реализации.",
       items: [
-        { num: "01", title: "UX-исследования", desc: "Глубокие исследования пользователей, интервью, тестирование и анализ данных" },
+        { num: "01", title: "Продукт с нуля", desc: "End-to-end дизайн от концепции до запуска" },
         { num: "02", title: "Дизайн-системы", desc: "Масштабируемые библиотеки компонентов и гайдлайны бренда" },
-        { num: "03", title: "Продукт с нуля", desc: "End-to-end дизайн от концепции до запуска" },
-        { num: "04", title: "Редизайн", desc: "Переработка существующих продуктов для улучшения UX и конверсии" },
-        { num: "05", title: "Лидерство", desc: "Управление дизайн-командой для end-to-end реализации" }
+        { num: "03", title: "UX-исследования", desc: "Глубокие исследования пользователей, интервью, тестирование и анализ данных" },
+        { num: "04", title: "Редизайн", desc: "Переработка существующих продуктов для улучшения UX и конверсии" }
       ]
     },
     contact: {

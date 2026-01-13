@@ -322,7 +322,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="space-y-4"
+              className="grid gap-4"
             >
               {t.competencies.items.map((item) => (
                 <div key={item.num} className="flex gap-6 p-5 rounded-xl border border-white/10 hover:border-white/20 transition-colors">
