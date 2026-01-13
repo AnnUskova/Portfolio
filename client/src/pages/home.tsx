@@ -322,8 +322,7 @@ export default function Home() {
                         <img 
                           src={projectImages[projects[index].id]}
                           alt={projects[index].title}
-                          className="w-full h-auto object-contain"
-                          style={{ maxHeight: '480px' }}
+                          className="w-full h-full object-cover"
                         />
                       </motion.div>
                     );
