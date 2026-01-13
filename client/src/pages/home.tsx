@@ -163,7 +163,7 @@ export default function Home() {
       </AnimatePresence>
 
       <section className="pt-40 pb-24 lg:pt-48 lg:pb-32 relative">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-start justify-between">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="max-w-4xl">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -209,23 +209,56 @@ export default function Home() {
               </button>
             </motion.div>
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="hidden lg:block w-[340px] aspect-[3/4] rounded-3xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl relative z-10"
-          >
-            <img 
-              src={annaPhoto} 
-              alt="Anna Uskova" 
-              className="w-full h-full object-cover"
-            />
-          </motion.div>
         </div>
       </section>
 
-      <section className="py-8 border-y border-gray-100">
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="aspect-[4/5] rounded-[32px] overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 shadow-xl"
+            >
+              <img 
+                src={annaPhoto} 
+                alt="Anna Uskova" 
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-8"
+            >
+              <div className="space-y-4">
+                <h2 className="text-3xl md:text-4xl font-medium tracking-tight">
+                  {language === "ru" ? "Продуктовый подход и внимание к деталям" : "Product approach & attention to detail"}
+                </h2>
+                <p className="text-lg text-gray-600 leading-relaxed">
+                  {language === "ru" 
+                    ? "За 8 лет я прошла путь от создания небольших интерфейсов до проектирования сложных DeFi экосистем и B2C продуктов. Мой фокус — баланс между бизнес-целями и потребностями реальных людей."
+                    : "Over the past 8 years, I've evolved from designing simple interfaces to architecting complex DeFi ecosystems and B2C products. My focus is on the balance between business goals and the needs of real people."}
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 gap-8 pt-8 border-t border-gray-200">
+                {stats.map((stat, index) => (
+                  <div key={stat.label}>
+                    <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">{stat.label}</p>
+                    <p className="text-2xl font-medium">{stat.value}</p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-8 border-y border-gray-100 hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-3 gap-8">
             {stats.map((stat, index) => (
