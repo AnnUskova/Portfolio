@@ -5,10 +5,10 @@ import { ArrowUpRight, ChevronLeft, ChevronRight, X, Download } from "lucide-rea
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { translations, projectTranslations, type Language } from "@/lib/translations";
 
-import glacisImg from "@assets/Frame_22_1768330582626.png";
-import maatImg from "@assets/Frame_23_1768330582626.png";
-import skiziImg from "@assets/Frame_35_1768330582626.png";
-import chefImg from "@assets/Frame_36_1768330582626.png";
+import glacisImg from "@assets/GLACIS_1768337984889.png";
+import maatImg from "@assets/MAAT_1768337984889.png";
+import skiziImg from "@assets/SKIZI_1768337984890.png";
+import chefImg from "@assets/AI_Chef_1768337984889.png";
 
 import annaPhoto from "@assets/1046_1_1768336698195.png";
 
@@ -302,7 +302,7 @@ export default function Home() {
             </motion.div>
 
             <div className="relative">
-              <div className="flex gap-6 items-start">
+              <div className="flex gap-4 items-start">
                 <AnimatePresence mode="popLayout">
                   {[0, 1, 2, 3].map((offset) => {
                     const index = (activeProject + offset) % projects.length;
