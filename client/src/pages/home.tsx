@@ -58,21 +58,21 @@ export default function Home() {
             <div className="flex items-center gap-12">
               <Link 
                 href="/" 
-                className="text-sm font-medium link-underline"
+                className="text-[15px] font-medium link-underline"
                 data-testid="nav-home"
               >
                 {t.nav.home}
               </Link>
               <Link 
                 href="/projects" 
-                className="text-sm font-medium link-underline"
+                className="text-[15px] font-medium link-underline"
                 data-testid="nav-projects"
               >
                 {t.nav.projects}
               </Link>
               <button 
                 onClick={() => setContactOpen(true)}
-                className="text-sm font-medium link-underline"
+                className="text-[15px] font-medium link-underline"
                 data-testid="nav-contact"
               >
                 {t.nav.contact}
@@ -195,7 +195,7 @@ export default function Home() {
             >
               <Link 
                 href="/projects"
-                className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-black text-white text-base font-medium rounded-full hover:bg-gray-800 transition-colors h-14 min-w-[200px]"
+                className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-black text-white text-[15px] font-medium rounded-full hover:bg-gray-800 transition-colors h-14 min-w-[200px]"
                 data-testid="button-view-work"
               >
                 {t.hero.viewWork}
@@ -203,7 +203,7 @@ export default function Home() {
               </Link>
               <button 
                 onClick={() => setContactOpen(true)}
-                className="text-base font-medium link-underline"
+                className="text-[15px] font-medium link-underline"
                 data-testid="link-contact"
               >
                 {t.hero.getInTouch}
@@ -389,7 +389,7 @@ export default function Home() {
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <a 
                 href={contactData.emailUrl}
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-black text-white text-sm font-medium rounded-full hover:bg-gray-800 transition-colors h-14 min-w-[200px]"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-black text-white text-[15px] font-medium rounded-full hover:bg-gray-800 transition-colors h-14 min-w-[200px]"
                 data-testid="button-email-footer"
               >
                 {t.footer.socials.email}
@@ -399,7 +399,7 @@ export default function Home() {
                 href={contactData.linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-gray-200 text-sm font-medium rounded-full hover:bg-gray-50 transition-colors h-14 min-w-[200px]"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-gray-200 text-[15px] font-medium rounded-full hover:bg-gray-50 transition-colors h-14 min-w-[200px]"
                 data-testid="button-linkedin-footer"
               >
                 {t.contact.linkedin}
@@ -413,11 +413,11 @@ export default function Home() {
       <footer className="py-8 border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-gray-400">{t.footer.copyright}</p>
+            <p className="text-[15px] text-gray-400">{t.footer.copyright}</p>
             <div className="flex items-center gap-6">
-              <a href={contactData.linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-gray-400 hover:text-black transition-colors">{t.footer.socials.linkedin}</a>
-              <a href={contactData.telegramUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-gray-400 hover:text-black transition-colors">{t.footer.socials.telegram}</a>
-              <a href={contactData.emailUrl} className="text-sm text-gray-400 hover:text-black transition-colors">{t.footer.socials.email}</a>
+              <a href={contactData.linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-[15px] text-gray-400 hover:text-black transition-colors">{t.footer.socials.linkedin}</a>
+              <a href={contactData.telegramUrl} target="_blank" rel="noopener noreferrer" className="text-[15px] text-gray-400 hover:text-black transition-colors">{t.footer.socials.telegram}</a>
+              <a href={contactData.emailUrl} className="text-[15px] text-gray-400 hover:text-black transition-colors">{t.footer.socials.email}</a>
             </div>
           </div>
         </div>
