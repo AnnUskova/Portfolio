@@ -298,33 +298,45 @@ export default function Home() {
                 >
                   <ChevronRight className="w-6 h-6" />
                 </button>
+                
+                <Link 
+                  href="/projects"
+                  className="ml-auto text-[15px] font-medium link-underline"
+                  data-testid="link-all-projects"
+                >
+                  {language === "ru" ? "Все проекты" : "All Projects"}
+                </Link>
               </div>
             </motion.div>
 
             <div className="relative">
               <div className="flex gap-4 items-start">
                 <AnimatePresence mode="popLayout">
-                  {[0, 1, 2, 3].map((offset) => {
+                    {[0, 1, 2, 3].map((offset) => {
                     const index = (activeProject + offset) % projects.length;
                     return (
-                      <motion.div
+                      <Link 
                         key={`${index}-${offset}`}
-                        initial={{ opacity: 0, x: 100 }}
-                        animate={{ 
-                          opacity: 1, 
-                          x: 0,
-                          scale: offset === 0 ? 1 : 0.95
-                        }}
-                        exit={{ opacity: 0, x: -100 }}
-                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                        className="relative flex-shrink-0 w-[320px] rounded-[32px] overflow-hidden bg-white border border-gray-100 shadow-sm"
+                        href={`/projects/${projects[index].id}`}
                       >
-                        <img 
-                          src={projectImages[projects[index].id]}
-                          alt={projects[index].title}
-                          className="w-full h-full object-cover"
-                        />
-                      </motion.div>
+                        <motion.div
+                          initial={{ opacity: 0, x: 100 }}
+                          animate={{ 
+                            opacity: 1, 
+                            x: 0,
+                            scale: offset === 0 ? 1 : 0.95
+                          }}
+                          exit={{ opacity: 0, x: -100 }}
+                          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                          className="relative flex-shrink-0 w-[320px] rounded-[32px] overflow-hidden bg-white border border-gray-100 shadow-sm cursor-pointer group"
+                        >
+                          <img 
+                            src={projectImages[projects[index].id]}
+                            alt={projects[index].title}
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                          />
+                        </motion.div>
+                      </Link>
                     );
                   })}
                 </AnimatePresence>
