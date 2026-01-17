@@ -120,42 +120,45 @@ export default function Projects() {
             </motion.p>
           </header>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-x-8 gap-y-16">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
             {projects.map((project, index) => (
               <motion.div
                 key={project.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index % 2 * 0.1 }}
+                transition={{ delay: (index % 3) * 0.1 }}
                 className="group cursor-pointer"
               >
-                <div className="relative aspect-[16/10] rounded-[32px] overflow-hidden bg-gray-100 mb-8 border border-gray-100 shadow-sm transition-transform duration-500 group-hover:scale-[1.02]">
+                <div className="relative aspect-[16/11] rounded-[24px] overflow-hidden bg-gray-100 mb-6 border border-gray-100 shadow-sm transition-transform duration-500 group-hover:shadow-md">
                   <img 
                     src={projectImages[project.id]} 
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-500" />
                 </div>
                 
                 <div className="flex flex-col">
-                  <div className="flex items-center gap-3 text-[13px] text-gray-400 uppercase tracking-wider mb-4">
-                    <span>{project.year}</span>
-                    <span className="w-1 h-1 rounded-full bg-gray-300" />
-                    <span>{project.category}</span>
-                    <span className="w-1 h-1 rounded-full bg-gray-300" />
-                    <span>{project.role}</span>
+                  <div className="flex items-start justify-between mb-3">
+                    <h3 className="text-2xl font-medium tracking-tight group-hover:text-gray-600 transition-colors">{project.title}</h3>
+                    <ArrowUpRight className="w-5 h-5 text-gray-300 group-hover:text-black transition-colors" />
                   </div>
                   
-                  <div className="flex items-start justify-between group-hover:translate-x-1 transition-transform duration-300">
-                    <div>
-                      <h3 className="text-3xl font-medium mb-3 tracking-tight">{project.title}</h3>
-                      <p className="text-gray-500 leading-relaxed max-w-md">{project.description}</p>
-                    </div>
-                    <div className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center group-hover:bg-black group-hover:text-white group-hover:border-black transition-all duration-300">
-                      <ArrowUpRight className="w-6 h-6" />
-                    </div>
+                  <p className="text-gray-500 text-[15px] leading-relaxed mb-5 line-clamp-2">
+                    {project.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 mt-auto">
+                    <span className="px-3 py-1 bg-gray-50 text-gray-500 text-[11px] font-medium uppercase tracking-wider rounded-full border border-gray-100">
+                      {project.year}
+                    </span>
+                    <span className="px-3 py-1 bg-gray-50 text-gray-500 text-[11px] font-medium uppercase tracking-wider rounded-full border border-gray-100">
+                      {project.role}
+                    </span>
+                    <span className="px-3 py-1 bg-gray-50 text-gray-500 text-[11px] font-medium uppercase tracking-wider rounded-full border border-gray-100">
+                      {project.category}
+                    </span>
                   </div>
                 </div>
               </motion.div>
