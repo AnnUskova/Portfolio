@@ -45,7 +45,8 @@ export const translations = {
       }
     },
     projectsPage: {
-      title: "Projects"
+      title: "Projects",
+      subtitle: "A collection of high-load systems, DeFi protocols, and digital products I've shaped over the years."
     }
   },
   ru: {
@@ -94,7 +95,8 @@ export const translations = {
       }
     },
     projectsPage: {
-      title: "Проекты"
+      title: "Проекты",
+      subtitle: "Коллекция высоконагруженных систем, DeFi-протоколов и цифровых продуктов, созданных за последние 8 лет."
     }
   }
 };
