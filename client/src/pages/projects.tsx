@@ -99,7 +99,7 @@ export default function Projects() {
         )}
       </AnimatePresence>
 
-      <main className="pt-24 pb-24 lg:pt-32 lg:pb-32">
+      <main className="pt-20 pb-24 lg:pt-24 lg:pb-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <header className="mb-8 lg:mb-10">
             <motion.h1 
