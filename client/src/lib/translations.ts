@@ -46,7 +46,10 @@ export const translations = {
     },
     projectsPage: {
       title: "Projects",
-      subtitle: "A collection of high-load systems, DeFi protocols, and digital products I've shaped over the years."
+      subtitle: "A collection of high-load systems, DeFi protocols, and digital products I've shaped over the years.",
+      backToProjects: "Back to projects",
+      viewLive: "View Live Project",
+      nextProject: "Next Project"
     }
   },
   ru: {
@@ -96,7 +99,10 @@ export const translations = {
     },
     projectsPage: {
       title: "Проекты",
-      subtitle: "Коллекция высоконагруженных систем, DeFi-протоколов и цифровых продуктов, созданных за последние 8 лет."
+      subtitle: "Коллекция высоконагруженных систем, DeFi-протоколов и цифровых продуктов, созданных за последние 8 лет.",
+      backToProjects: "Назад к проектам",
+      viewLive: "Смотреть вживую",
+      nextProject: "Следующий проект"
     }
   }
 };
