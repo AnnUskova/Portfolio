@@ -256,13 +256,23 @@ export default function Home() {
               className="flex flex-col h-full"
             >
               <div className="flex-1 pt-4">
-                <div className="flex items-center gap-2 text-xs text-gray-400 uppercase tracking-wider mb-14">
-                  <span>{projects[activeProject].year}</span>
-                  <span className="text-gray-200">/</span>
-                  <span>{projects[activeProject].category}</span>
-                  <span className="text-gray-200">/</span>
-                  <span>{projects[activeProject].role}</span>
-                </div>
+            <div className="flex items-center justify-between mb-14">
+              <div className="flex items-center gap-2 text-xs text-gray-400 uppercase tracking-wider">
+                <span>{projects[activeProject].year}</span>
+                <span className="text-gray-200">/</span>
+                <span>{projects[activeProject].category}</span>
+                <span className="text-gray-200">/</span>
+                <span>{projects[activeProject].role}</span>
+              </div>
+              <Link 
+                href="/projects"
+                className="inline-flex items-center gap-2 px-4 py-2 border border-gray-100 rounded-full text-[13px] font-medium text-gray-400 hover:text-black hover:border-black transition-all group"
+                data-testid="link-all-projects-top"
+              >
+                {language === "ru" ? "Все проекты" : "All Projects"}
+                <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
+            </div>
                 
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -298,14 +308,6 @@ export default function Home() {
                 >
                   <ChevronRight className="w-6 h-6" />
                 </button>
-                
-                <Link 
-                  href="/projects"
-                  className="ml-auto text-[15px] font-medium link-underline"
-                  data-testid="link-all-projects"
-                >
-                  {language === "ru" ? "Все проекты" : "All Projects"}
-                </Link>
               </div>
             </motion.div>
 
