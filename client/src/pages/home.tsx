@@ -283,7 +283,7 @@ export default function Home() {
                 </AnimatePresence>
               </div>
 
-              <div className="flex items-center gap-3 mt-auto pb-4">
+              <div className="flex items-center gap-6 mt-auto pb-4">
                 <div className="flex items-center gap-3">
                   <button 
                     onClick={prevProject}
@@ -303,7 +303,7 @@ export default function Home() {
 
                 <Link 
                   href="/projects"
-                  className="ml-auto inline-flex items-center gap-2 px-5 py-2.5 border border-gray-100 rounded-full text-[14px] font-medium text-gray-500 hover:text-black hover:border-black transition-all group"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 border border-gray-100 rounded-full text-[14px] font-medium text-gray-500 hover:text-black hover:border-black transition-all group"
                   data-testid="link-all-projects-bottom"
                 >
                   {language === "ru" ? "Все проекты" : "All Projects"}
