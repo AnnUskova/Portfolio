@@ -256,23 +256,13 @@ export default function Home() {
               className="flex flex-col h-full"
             >
               <div className="flex-1 pt-4">
-            <div className="flex items-center justify-between mb-14">
-              <div className="flex items-center gap-2 text-xs text-gray-400 uppercase tracking-wider">
+            <div className="flex items-center gap-2 text-xs text-gray-400 uppercase tracking-wider mb-14">
                 <span>{projects[activeProject].year}</span>
                 <span className="text-gray-200">/</span>
                 <span>{projects[activeProject].category}</span>
                 <span className="text-gray-200">/</span>
                 <span>{projects[activeProject].role}</span>
               </div>
-              <Link 
-                href="/projects"
-                className="inline-flex items-center gap-2 px-4 py-2 border border-gray-100 rounded-full text-[13px] font-medium text-gray-400 hover:text-black hover:border-black transition-all group"
-                data-testid="link-all-projects-top"
-              >
-                {language === "ru" ? "Все проекты" : "All Projects"}
-                <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </Link>
-            </div>
                 
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -294,20 +284,31 @@ export default function Home() {
               </div>
 
               <div className="flex items-center gap-3 mt-auto pb-4">
-                <button 
-                  onClick={prevProject}
-                  className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:border-black hover:bg-black hover:text-white transition-all duration-300 group"
-                  data-testid="button-prev-project"
+                <div className="flex items-center gap-3">
+                  <button 
+                    onClick={prevProject}
+                    className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:border-black hover:bg-black hover:text-white transition-all duration-300 group"
+                    data-testid="button-prev-project"
+                  >
+                    <ChevronLeft className="w-6 h-6" />
+                  </button>
+                  <button 
+                    onClick={nextProject}
+                    className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:border-black hover:bg-black hover:text-white transition-all duration-300 group"
+                    data-testid="button-next-project"
+                  >
+                    <ChevronRight className="w-6 h-6" />
+                  </button>
+                </div>
+
+                <Link 
+                  href="/projects"
+                  className="ml-auto inline-flex items-center gap-2 px-5 py-2.5 border border-gray-100 rounded-full text-[14px] font-medium text-gray-500 hover:text-black hover:border-black transition-all group"
+                  data-testid="link-all-projects-bottom"
                 >
-                  <ChevronLeft className="w-6 h-6" />
-                </button>
-                <button 
-                  onClick={nextProject}
-                  className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:border-black hover:bg-black hover:text-white transition-all duration-300 group"
-                  data-testid="button-next-project"
-                >
-                  <ChevronRight className="w-6 h-6" />
-                </button>
+                  {language === "ru" ? "Все проекты" : "All Projects"}
+                  <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </Link>
               </div>
             </motion.div>
 
