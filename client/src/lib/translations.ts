@@ -17,24 +17,15 @@ export const translations = {
       location: "Location",
       locationValue: "Remote / Hybrid"
     },
-    about: {
-      title: "About me",
-      mission: "I help companies create exceptional digital products — from early research to final delivery.",
-      education: {
-        title: "Education",
-        university: "Saint Petersburg State University (SPbU)",
-        faculty: "School of Journalism and Mass Communications",
-        department: "Media Design Department, Bachelor's degree"
-      },
-      languages: {
-        title: "Languages",
-        items: "English (B2), Spanish (A2)"
-      },
-      interests: {
-        title: "Interests & Growth",
-        work: "I genuinely love what I do. Currently exploring the future of design by learning how to build websites with AI.",
-        hobby: "Beyond design, I have a background in music and I am currently learning how to sew clothes."
-      }
+    competencies: {
+      title: "What I do",
+      description: "I help companies create exceptional digital products — from early research to final delivery.",
+      items: [
+        { num: "01", title: "Product from Scratch", desc: "End-to-end design from concept to launch" },
+        { num: "02", title: "Design Systems", desc: "Scalable component libraries and brand guidelines" },
+        { num: "03", title: "UX Research", desc: "Deep user research, interviews, testing and data analysis" },
+        { num: "04", title: "Redesign", desc: "Revamping existing products for better UX and conversion" }
+      ]
     },
     contact: {
       title: "Let's work together",
@@ -84,24 +75,15 @@ export const translations = {
       location: "Локация",
       locationValue: "Удалённо / Гибрид"
     },
-    about: {
-      title: "Обо мне",
-      mission: "Помогаю компаниям создавать исключительные цифровые продукты — от исследований до финальной реализации.",
-      education: {
-        title: "Образование",
-        university: "СПбГУ, бакалавриат",
-        faculty: "Высшая школа журналистики и массовых коммуникаций",
-        department: "Кафедра медиадизайна"
-      },
-      languages: {
-        title: "Языки",
-        items: "Английский — B2, Испанский — A2"
-      },
-      interests: {
-        title: "Интересы и развитие",
-        work: "Я искренне люблю свою работу. Сейчас осваиваю новые горизонты — учусь верстать сайты с помощью ИИ.",
-        hobby: "У меня есть музыкальное образование, а сейчас я учусь шить одежду."
-      }
+    competencies: {
+      title: "Что я делаю",
+      description: "Помогаю компаниям создавать исключительные цифровые продукты — от исследований до финальной реализации.",
+      items: [
+        { num: "01", title: "Продукт с нуля", desc: "End-to-end дизайн от концепции до запуска" },
+        { num: "02", title: "Дизайн-системы", desc: "Масштабируемые библиотеки компонентов и гайдлайны бренда" },
+        { num: "03", title: "UX-исследования", desc: "Глубокие исследования пользователей, интервью, тестирование и анализ данных" },
+        { num: "04", title: "Редизайн", desc: "Переработка существующих продуктов для улучшения UX и конверсии" }
+      ]
     },
     contact: {
       title: "Давайте работать вместе",
