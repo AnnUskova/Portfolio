@@ -18,13 +18,13 @@ export const translations = {
       locationValue: "Remote / Hybrid"
     },
     competencies: {
-      title: "What I do",
-      description: "I help companies create exceptional digital products — from early research to final delivery.",
+      title: "About me",
+      description: "I love my work, and now I'm also learning to build websites with AI. In my free time, I play music, learn to sew clothes, and try to travel.",
       items: [
-        { num: "01", title: "Product from Scratch", desc: "End-to-end design from concept to launch" },
-        { num: "02", title: "Design Systems", desc: "Scalable component libraries and brand guidelines" },
-        { num: "03", title: "UX Research", desc: "Deep user research, interviews, testing and data analysis" },
-        { num: "04", title: "Redesign", desc: "Revamping existing products for better UX and conversion" }
+        { num: "01", title: "Education", desc: "Saint Petersburg State University, School of Journalism and Mass Communications, Media Design department." },
+        { num: "02", title: "Languages", desc: "English – B2, Spanish – A2, Russian – Native." },
+        { num: "03", title: "Experience", desc: "8+ years of product design, focusing on complex systems and DeFi protocols." },
+        { num: "04", title: "Approach", desc: "Combining journalistic precision with modern design systems and user-centric strategy." }
       ]
     },
     contact: {
@@ -76,13 +76,13 @@ export const translations = {
       locationValue: "Удалённо / Гибрид"
     },
     competencies: {
-      title: "Что я делаю",
-      description: "Помогаю компаниям создавать исключительные цифровые продукты — от исследований до финальной реализации.",
+      title: "Обо мне",
+      description: "Люблю свою работу, и теперь еще учусь верстать сайты с помощью ИИшек. В свободное время я занимаюсь музыкой, учусь шить одежду и стараюсь путешествовать.",
       items: [
-        { num: "01", title: "Продукт с нуля", desc: "End-to-end дизайн от концепции до запуска" },
-        { num: "02", title: "Дизайн-системы", desc: "Масштабируемые библиотеки компонентов и гайдлайны бренда" },
-        { num: "03", title: "UX-исследования", desc: "Глубокие исследования пользователей, интервью, тестирование и анализ данных" },
-        { num: "04", title: "Редизайн", desc: "Переработка существующих продуктов для улучшения UX и конверсии" }
+        { num: "01", title: "Образование", desc: "СПбГУ бакалавриат, Высшая школа журналистики и массовых коммуникаций, кафедра Медиадизайна." },
+        { num: "02", title: "Языки", desc: "Английский – B2, испанский – A2, русский – родной." },
+        { num: "03", title: "Опыт", desc: "Более 8 лет в дизайне, специализируюсь на сложных системах и DeFi протоколах." },
+        { num: "04", title: "Подход", desc: "Сочетаю журналистскую точность с современными дизайн-системами и пользовательской стратегией." }
       ]
     },
     contact: {
