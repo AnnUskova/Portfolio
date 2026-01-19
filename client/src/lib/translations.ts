@@ -18,13 +18,13 @@ export const translations = {
       locationValue: "Remote / Hybrid"
     },
     competencies: {
-      title: "What I do",
+      title: "About me",
       description: "I help companies create exceptional digital products — from early research to final delivery.",
       items: [
-        { num: "01", title: "Product from Scratch", desc: "End-to-end design from concept to launch" },
-        { num: "02", title: "Design Systems", desc: "Scalable component libraries and brand guidelines" },
-        { num: "03", title: "UX Research", desc: "Deep user research, interviews, testing and data analysis" },
-        { num: "04", title: "Redesign", desc: "Revamping existing products for better UX and conversion" }
+        { num: "01", title: "Education", desc: "Bachelor's degree, SPbU (Saint Petersburg State University), Faculty of Journalism and Mass Communications, Department of Media Design" },
+        { num: "02", title: "Languages", desc: "English – B2, Spanish – A2, Russian - Native" },
+        { num: "03", title: "Additional Info", desc: "I love my job, and now I'm also learning to build websites with AI tools" },
+        { num: "04", title: "Free time", desc: "I make music, learn to sew clothes, and try to travel as much as possible" }
       ]
     },
     contact: {
@@ -76,13 +76,13 @@ export const translations = {
       locationValue: "Удалённо / Гибрид"
     },
     competencies: {
-      title: "Что я делаю",
+      title: "Обо мне",
       description: "Помогаю компаниям создавать исключительные цифровые продукты — от исследований до финальной реализации.",
       items: [
-        { num: "01", title: "Продукт с нуля", desc: "End-to-end дизайн от концепции до запуска" },
-        { num: "02", title: "Дизайн-системы", desc: "Масштабируемые библиотеки компонентов и гайдлайны бренда" },
-        { num: "03", title: "UX-исследования", desc: "Глубокие исследования пользователей, интервью, тестирование и анализ данных" },
-        { num: "04", title: "Редизайн", desc: "Переработка существующих продуктов для улучшения UX и конверсии" }
+        { num: "01", title: "Образование", desc: "Высшее, СПбГУ бакалавриат, факультет: Высшая школа журналистики и массовых коммуникаций, кафедра: Медиадизайн" },
+        { num: "02", title: "Языки", desc: "Английский – B2, испанский – A2, русский - родной" },
+        { num: "03", title: "Еще", desc: "Люблю свою работу, и теперь еще учусь верстать сайты с помощью ИИшек" },
+        { num: "04", title: "В свободное время", desc: "Я занимаюсь музыкой, учусь шить одежду и стараюсь путешествовать" }
       ]
     },
     contact: {
