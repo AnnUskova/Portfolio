@@ -41,6 +41,7 @@ export const translations = {
       socials: {
         linkedin: "LinkedIn",
         telegram: "Telegram",
+        instagram: "Instagram",
         email: "Email"
       }
     },
@@ -99,6 +100,7 @@ export const translations = {
       socials: {
         linkedin: "LinkedIn",
         telegram: "Телеграм",
+        instagram: "Инстаграм",
         email: "Почта"
       }
     },

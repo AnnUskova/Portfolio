@@ -40,6 +40,7 @@ export default function Projects() {
   const contactData = {
     telegramUrl: "https://t.me/Ann_uskova",
     linkedinUrl: "https://www.linkedin.com/in/anna-uskova-4b1169268/",
+    instagramUrl: "https://instagram.com/ann_uskova",
     emailUrl: "mailto:anyauskowa@yandex.ru"
   };
 
@@ -175,6 +176,7 @@ export default function Projects() {
           <div className="flex gap-8">
             <a href={contactData.linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-[15px] hover:text-black transition-colors">LinkedIn</a>
             <a href={contactData.telegramUrl} target="_blank" rel="noopener noreferrer" className="text-[15px] hover:text-black transition-colors">Telegram</a>
+            <a href={contactData.instagramUrl} target="_blank" rel="noopener noreferrer" className="text-[15px] hover:text-black transition-colors">Instagram</a>
           </div>
         </div>
       </footer>

@@ -47,6 +47,7 @@ export default function Home() {
     email: "anyauskowa@yandex.ru",
     telegramUrl: "https://t.me/Ann_uskova",
     linkedinUrl: "https://www.linkedin.com/in/anna-uskova-4b1169268/",
+    instagramUrl: "https://instagram.com/ann_uskova",
     emailUrl: "mailto:anyauskowa@yandex.ru"
   };
 
@@ -434,6 +435,7 @@ export default function Home() {
             <div className="flex items-center gap-6">
               <a href={contactData.linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-[15px] text-gray-400 hover:text-black transition-colors">{t.footer.socials.linkedin}</a>
               <a href={contactData.telegramUrl} target="_blank" rel="noopener noreferrer" className="text-[15px] text-gray-400 hover:text-black transition-colors">{t.footer.socials.telegram}</a>
+              <a href={contactData.instagramUrl} target="_blank" rel="noopener noreferrer" className="text-[15px] text-gray-400 hover:text-black transition-colors">{t.footer.socials.instagram}</a>
               <a href={contactData.emailUrl} className="text-[15px] text-gray-400 hover:text-black transition-colors">{t.footer.socials.email}</a>
             </div>
           </div>
