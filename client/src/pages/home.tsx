@@ -403,11 +403,13 @@ export default function Home() {
             
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <a 
-                href={contactData.emailUrl}
+                href={contactData.telegramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-black text-white text-[15px] font-medium rounded-full hover:bg-gray-800 transition-colors h-14 min-w-[200px]"
-                data-testid="button-email-footer"
+                data-testid="button-telegram-footer"
               >
-                {t.footer.socials.email}
+                {t.contact.telegram}
                 <ArrowUpRight className="w-4 h-4" />
               </a>
               <a 
