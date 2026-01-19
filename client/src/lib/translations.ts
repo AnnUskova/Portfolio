@@ -23,7 +23,7 @@ export const translations = {
       items: [
         { num: "01", title: "Education", desc: "Bachelor's degree, SPbU (Saint Petersburg State University), Faculty of Journalism and Mass Communications, Department of Media Design" },
         { num: "02", title: "Languages", desc: "English – B2, Spanish – A2, Russian - Native" },
-        { num: "03", title: "Additional Info", desc: "I love my job, and now I'm also learning to build websites with AI tools" },
+        { num: "03", title: "Additional Info", desc: "Passionate about my craft, I'm currently exploring the synergy between design and AI-driven development to build seamless web experiences." },
         { num: "04", title: "Free time", desc: "I make music, learn to sew clothes, and try to travel as much as possible" }
       ]
     },
@@ -81,7 +81,7 @@ export const translations = {
       items: [
         { num: "01", title: "Образование", desc: "Высшее, СПбГУ бакалавриат, факультет: Высшая школа журналистики и массовых коммуникаций, кафедра: Медиадизайн" },
         { num: "02", title: "Языки", desc: "Английский – B2, испанский – A2, русский - родной" },
-        { num: "03", title: "Еще", desc: "Люблю свою работу, и теперь еще учусь верстать сайты с помощью ИИшек" },
+        { num: "03", title: "Еще", desc: "Искренне люблю то, что делаю, и сейчас активно осваиваю синергию дизайна и фронтенд-разработки с помощью ИИ-инструментов." },
         { num: "04", title: "В свободное время", desc: "Я занимаюсь музыкой, учусь шить одежду и стараюсь путешествовать" }
       ]
     },
