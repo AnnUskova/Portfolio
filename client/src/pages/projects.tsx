@@ -19,15 +19,25 @@ const projectImages: Record<number, string> = {
 
 export default function Projects() {
   const [language, setLanguage] = useState<Language>("en");
+  const [activeTab, setActiveTab] = useState("uxui");
   const [contactOpen, setContactOpen] = useState(false);
 
   const t = translations[language];
-  const projects = projectTranslations[language];
+  const allProjects = projectTranslations[language];
+  
+  const projects = allProjects.filter(p => {
+    if (activeTab === "uxui") return p.category.includes("DEFI") || p.category.includes("APP");
+    if (activeTab === "research") return p.role.includes("RESEARCH") || p.category.includes("GREEN");
+    return true; 
+  });
+
+  const tabs = [
+    { id: "uxui", label: t.projectsPage.tabs.uxui },
+    { id: "strategy", label: t.projectsPage.tabs.strategy },
+    { id: "research", label: t.projectsPage.tabs.research },
+  ];
 
   const contactData = {
-    telegram: "@Ann_uskova",
-    linkedin: "Anna Uskova",
-    email: "anyauskowa@yandex.ru",
     telegramUrl: "https://t.me/Ann_uskova",
     linkedinUrl: "https://www.linkedin.com/in/anna-uskova-4b1169268/",
     emailUrl: "mailto:anyauskowa@yandex.ru"
@@ -39,13 +49,13 @@ export default function Projects() {
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-12">
-              <Link href="/" className="text-[15px] font-medium link-underline" data-testid="nav-home">
+              <Link href="/" className="text-[15px] font-medium link-underline">
                 {t.nav.home}
               </Link>
-              <Link href="/projects" className="text-[15px] font-medium link-underline" data-testid="nav-projects">
+              <Link href="/projects" className="text-[15px] font-medium link-underline">
                 {t.nav.projects}
               </Link>
-              <button onClick={() => setContactOpen(true)} className="text-[15px] font-medium link-underline" data-testid="nav-contact">
+              <button onClick={() => setContactOpen(true)} className="text-[15px] font-medium link-underline">
                 {t.nav.contact}
               </button>
             </div>
@@ -62,35 +72,19 @@ export default function Projects() {
             exit={{ y: "100%" }}
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
             className="fixed inset-x-0 bottom-0 top-12 z-[100] bg-white rounded-t-3xl shadow-2xl"
-            data-testid="modal-contact"
           >
             <div className="absolute top-6 right-6">
-              <button onClick={() => setContactOpen(false)} className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors" data-testid="button-close-contact">
+              <button onClick={() => setContactOpen(false)} className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors">
                 <X className="w-5 h-5" />
               </button>
             </div>
             <div className="h-full flex flex-col items-center justify-center px-6">
               <h2 className="text-4xl md:text-5xl font-medium mb-12 text-center">{t.contact.modalTitle}</h2>
               <div className="space-y-4 w-full max-w-md">
-                <a href={contactData.telegramUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-5 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors group" data-testid="link-telegram">
+                <a href={contactData.telegramUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-5 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors group">
                   <span className="text-lg">{t.contact.telegram}</span>
                   <span className="text-gray-500 group-hover:text-black transition-colors flex items-center gap-2">
-                    {contactData.telegram}
-                    <ArrowUpRight className="w-4 h-4" />
-                  </span>
-                </a>
-                <a href={contactData.linkedinUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-5 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors group" data-testid="link-linkedin">
-                  <span className="text-lg">{t.contact.linkedin}</span>
-                  <span className="text-gray-500 group-hover:text-black transition-colors flex items-center gap-2">
-                    {contactData.linkedin}
-                    <ArrowUpRight className="w-4 h-4" />
-                  </span>
-                </a>
-                <a href={contactData.emailUrl} className="flex items-center justify-between p-5 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors group" data-testid="link-email">
-                  <span className="text-lg">{t.contact.email}</span>
-                  <span className="text-gray-500 group-hover:text-black transition-colors flex items-center gap-2">
-                    {contactData.email}
-                    <ArrowUpRight className="w-4 h-4" />
+                    @Ann_uskova <ArrowUpRight className="w-4 h-4" />
                   </span>
                 </a>
               </div>
@@ -101,71 +95,86 @@ export default function Projects() {
 
       <main className="pt-28 pb-24 lg:pt-28 lg:pb-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <header className="mb-8 lg:mb-10">
+          <header className="mb-8 lg:mb-10 flex flex-col md:flex-row md:items-end justify-between gap-8">
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight"
-              style={{ lineHeight: '110%' }}
             >
               {t.projectsPage.title}
             </motion.h1>
+
+            <div className="flex items-center gap-1 border-b border-gray-100 pb-1">
+              {tabs.map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`px-4 py-2 text-[15px] font-medium transition-all relative ${
+                    activeTab === tab.id ? "text-black" : "text-gray-400 hover:text-gray-600"
+                  }`}
+                >
+                  {tab.label}
+                  {activeTab === tab.id && (
+                    <motion.div 
+                      layoutId="activeTab"
+                      className="absolute bottom-[-5px] left-0 right-0 h-[2px] bg-black"
+                    />
+                  )}
+                </button>
+              ))}
+            </div>
           </header>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
-            {projects.map((project, index) => (
-              <Link key={project.id} href={`/projects/${project.id}`}>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: (index % 3) * 0.1 }}
-                  className="group cursor-pointer"
-                >
-                  <div className="relative aspect-[16/11] rounded-[24px] overflow-hidden bg-gray-100 mb-6 border border-gray-100 shadow-sm transition-transform duration-500 group-hover:shadow-md">
-                    <img 
-                      src={projectImages[project.id]} 
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-500" />
-                  </div>
-                  
-                  <div className="flex flex-col">
-                    <div className="flex items-start justify-between mb-3">
-                      <h3 className="text-2xl font-medium tracking-tight group-hover:text-gray-600 transition-colors">{project.title}</h3>
-                      <ArrowUpRight className="w-5 h-5 text-gray-300 group-hover:text-black transition-colors" />
+          <AnimatePresence mode="wait">
+            <motion.div 
+              key={activeTab}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12"
+            >
+              {projects.map((project, index) => (
+                <Link key={project.id} href={`/projects/${project.id}`}>
+                  <motion.div
+                    className="group cursor-pointer"
+                    transition={{ delay: (index % 3) * 0.1 }}
+                  >
+                    <div className="relative aspect-[16/11] rounded-[24px] overflow-hidden bg-gray-100 mb-6 border border-gray-100 shadow-sm transition-transform duration-500 group-hover:shadow-md">
+                      <img 
+                        src={projectImages[project.id]} 
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-500" />
                     </div>
                     
-                    <p className="text-gray-500 text-[15px] leading-relaxed mb-5 line-clamp-2">
-                      {project.description}
-                    </p>
-
-                    <div className="flex flex-wrap gap-2 mt-auto">
-                      <span className="px-3 py-1 bg-gray-50 text-gray-500 text-[11px] font-medium uppercase tracking-wider rounded-full border border-gray-100">
-                        {project.year}
-                      </span>
-                      <span className="px-3 py-1 bg-gray-50 text-gray-500 text-[11px] font-medium uppercase tracking-wider rounded-full border border-gray-100">
-                        {project.role}
-                      </span>
-                      <span className="px-3 py-1 bg-gray-50 text-gray-500 text-[11px] font-medium uppercase tracking-wider rounded-full border border-gray-100">
-                        {project.category}
-                      </span>
+                    <div className="flex flex-col">
+                      <div className="flex items-start justify-between mb-3">
+                        <h3 className="text-2xl font-medium tracking-tight group-hover:text-gray-600 transition-colors">{project.title}</h3>
+                        <ArrowUpRight className="w-5 h-5 text-gray-300 group-hover:text-black transition-colors" />
+                      </div>
+                      <p className="text-gray-500 text-[15px] leading-relaxed mb-5 line-clamp-2">{project.description}</p>
+                      <div className="flex flex-wrap gap-2 mt-auto">
+                        <span className="px-3 py-1 bg-gray-50 text-gray-500 text-[11px] font-medium uppercase tracking-wider rounded-full border border-gray-100">{project.year}</span>
+                        <span className="px-3 py-1 bg-gray-50 text-gray-500 text-[11px] font-medium uppercase tracking-wider rounded-full border border-gray-100">{project.role}</span>
+                        <span className="px-3 py-1 bg-gray-50 text-gray-500 text-[11px] font-medium uppercase tracking-wider rounded-full border border-gray-100">{project.category}</span>
+                      </div>
                     </div>
-                  </div>
-                </motion.div>
-              </Link>
-            ))}
-          </div>
+                  </motion.div>
+                </Link>
+              ))}
+            </motion.div>
+          </AnimatePresence>
         </div>
       </main>
 
       <footer className="py-12 border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
-          <p className="text-[15px] text-gray-400">{t.footer.copyright}</p>
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center text-gray-400">
+          <p className="text-[15px]">{t.footer.copyright}</p>
           <div className="flex gap-8">
-            <a href={contactData.linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-[15px] text-gray-400 hover:text-black transition-colors">{t.footer.socials.linkedin}</a>
-            <a href={contactData.telegramUrl} target="_blank" rel="noopener noreferrer" className="text-[15px] text-gray-400 hover:text-black transition-colors">{t.footer.socials.telegram}</a>
+            <a href={contactData.linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-[15px] hover:text-black transition-colors">LinkedIn</a>
+            <a href={contactData.telegramUrl} target="_blank" rel="noopener noreferrer" className="text-[15px] hover:text-black transition-colors">Telegram</a>
           </div>
         </div>
       </footer>

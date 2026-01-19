@@ -49,7 +49,12 @@ export const translations = {
       subtitle: "A collection of high-load systems, DeFi protocols, and digital products I've shaped over the years.",
       backToProjects: "Back to projects",
       viewLive: "View Live Project",
-      nextProject: "Next Project"
+      nextProject: "Next Project",
+      tabs: {
+        uxui: "UX/UI",
+        strategy: "Strategy & Systems",
+        research: "Research"
+      }
     }
   },
   ru: {
@@ -102,7 +107,12 @@ export const translations = {
       subtitle: "Коллекция высоконагруженных систем, DeFi-протоколов и цифровых продуктов, созданных за последние 8 лет.",
       backToProjects: "Назад к проектам",
       viewLive: "Смотреть вживую",
-      nextProject: "Следующий проект"
+      nextProject: "Следующий проект",
+      tabs: {
+        uxui: "UX/UI",
+        strategy: "Стратегия и Системы",
+        research: "Исследования"
+      }
     }
   }
 };
