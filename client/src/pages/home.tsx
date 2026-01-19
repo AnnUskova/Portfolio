@@ -357,12 +357,28 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium leading-tight" data-testid="text-competencies-title">
-                {t.competencies.title}
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium leading-tight" data-testid="text-about-title">
+                {t.about.title}
               </h2>
-              <p className="mt-6 text-gray-400 text-lg leading-relaxed max-w-lg">
-                {t.competencies.description}
+              <p className="mt-8 text-white text-xl md:text-2xl leading-relaxed max-w-xl font-light">
+                {t.about.mission}
               </p>
+              
+              <div className="mt-12 space-y-8">
+                <div>
+                  <h3 className="text-gray-500 uppercase tracking-widest text-xs font-medium mb-3">{t.about.education.title}</h3>
+                  <div className="text-lg">
+                    <p className="font-medium">{t.about.education.university}</p>
+                    <p className="text-gray-400 text-sm mt-1">{t.about.education.faculty}</p>
+                    <p className="text-gray-400 text-sm">{t.about.education.department}</p>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-gray-500 uppercase tracking-widest text-xs font-medium mb-3">{t.about.languages.title}</h3>
+                  <p className="text-lg">{t.about.languages.items}</p>
+                </div>
+              </div>
             </motion.div>
             
             <motion.div
@@ -370,17 +386,24 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="grid gap-4"
+              className="space-y-12"
             >
-              {t.competencies.items.map((item) => (
-                <div key={item.num} className="flex gap-6 p-5 rounded-xl border border-white/10 hover:border-white/20 transition-colors">
-                  <span className="text-sm text-gray-500 font-mono">{item.num}</span>
-                  <div>
-                    <h3 className="font-medium text-lg">{item.title}</h3>
-                    <p className="text-gray-400 text-sm mt-1">{item.desc}</p>
-                  </div>
+              <div className="p-8 rounded-3xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] transition-colors">
+                <h3 className="text-xl font-medium mb-4">{t.about.interests.title}</h3>
+                <div className="space-y-6 text-gray-400 leading-relaxed">
+                  <p>{t.about.interests.work}</p>
+                  <p>{t.about.interests.hobby}</p>
                 </div>
-              ))}
+              </div>
+              
+              <div className="grid grid-cols-2 gap-4">
+                <div className="aspect-square rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center p-8 text-center">
+                  <span className="text-sm text-gray-500 font-mono italic">"Music shapes my sense of rhythm in design"</span>
+                </div>
+                <div className="aspect-square rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center p-8 text-center">
+                  <span className="text-sm text-gray-500 font-mono italic">"Sewing is architecture on a human scale"</span>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
