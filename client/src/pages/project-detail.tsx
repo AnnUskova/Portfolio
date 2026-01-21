@@ -63,14 +63,14 @@ export default function ProjectDetail() {
 
       <main className="pt-24 lg:pt-32">
         {/* Hero Section */}
-        <section className="px-6 lg:px-12 max-w-7xl mx-auto mb-20">
-          <Link href="/projects" className="inline-flex items-center gap-2 text-gray-400 hover:text-black transition-colors mb-12 group">
+        <section className="px-6 lg:px-12 max-w-7xl mx-auto mb-12">
+          <Link href="/projects" className="inline-flex items-center gap-2 text-gray-400 hover:text-black transition-colors mb-8 group">
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             <span className="text-sm font-medium">{t.projectsPage.backToProjects}</span>
           </Link>
 
           <div className="max-w-4xl">
-            <div className="flex items-center gap-3 text-[13px] text-gray-400 uppercase tracking-widest mb-6">
+            <div className="flex items-center gap-3 text-[12px] text-gray-400 uppercase tracking-widest mb-4">
               <span>{project.year}</span>
               <span className="w-1 h-1 rounded-full bg-gray-300" />
               <span>{project.category}</span>
@@ -78,55 +78,55 @@ export default function ProjectDetail() {
               <span>{project.role}</span>
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-medium tracking-tight mb-8" style={{ lineHeight: '110%' }}>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight mb-6" style={{ lineHeight: '110%' }}>
               {project.title}
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-500 leading-relaxed max-w-3xl">
+            <p className="text-lg md:text-xl text-gray-500 leading-relaxed max-w-2xl">
               {project.description}
             </p>
           </div>
         </section>
 
         {/* Project Content */}
-        <section className="px-6 lg:px-12 max-w-7xl mx-auto mb-24">
+        <section className="px-6 lg:px-12 max-w-7xl mx-auto mb-20">
           {project.id === 5 && project.content ? (
-            <div className="max-w-4xl space-y-20 mb-32">
-              <div className="p-8 bg-gray-50 rounded-3xl border border-gray-100 text-gray-500 italic">
+            <div className="max-w-4xl space-y-12 mb-24">
+              <div className="p-6 bg-gray-50 rounded-2xl border border-gray-100 text-gray-500 text-[15px] italic">
                 {project.content.nda}
               </div>
 
               <section>
-                <h2 className="text-3xl font-medium mb-8 uppercase tracking-wider text-gray-400 text-sm">{project.content.goal.title}</h2>
-                <div className="text-xl md:text-2xl leading-relaxed text-gray-800 font-normal">
+                <h2 className="text-sm font-medium mb-4 uppercase tracking-wider text-gray-400">{project.content.goal.title}</h2>
+                <div className="text-lg md:text-xl leading-relaxed text-gray-800 font-normal">
                   {project.content.goal.text}
                 </div>
               </section>
 
               <section>
-                <h2 className="text-3xl font-medium mb-12 uppercase tracking-wider text-gray-400 text-sm">{project.content.process.title}</h2>
-                <div className="space-y-16">
+                <h2 className="text-sm font-medium mb-8 uppercase tracking-wider text-gray-400">{project.content.process.title}</h2>
+                <div className="space-y-8">
                   {project.content.process.steps.map((step, idx) => (
-                    <div key={idx} className="grid lg:grid-cols-[1fr_2fr] gap-8 group">
-                      <span className="text-sm font-mono text-gray-300 mt-1">0{idx + 1}</span>
+                    <div key={idx} className="flex gap-4 group">
+                      <span className="text-xs font-mono text-gray-300 mt-1.5 flex-shrink-0">0{idx + 1}</span>
                       <div>
-                        <h3 className="text-2xl font-medium mb-4">{step.name}</h3>
-                        <p className="text-xl text-gray-600 leading-relaxed">{step.text}</p>
+                        <h3 className="text-xl font-medium mb-2">{step.name}</h3>
+                        <p className="text-lg text-gray-600 leading-relaxed">{step.text}</p>
                       </div>
                     </div>
                   ))}
                 </div>
               </section>
 
-              <section className="p-12 bg-black text-white rounded-[40px]">
-                <h2 className="text-sm font-medium mb-8 uppercase tracking-wider text-gray-400">{project.content.results.title}</h2>
-                <div className="text-xl md:text-2xl leading-relaxed font-normal">
+              <section className="p-10 bg-black text-white rounded-[32px]">
+                <h2 className="text-[11px] font-medium mb-6 uppercase tracking-widest text-gray-500">{project.content.results.title}</h2>
+                <div className="text-lg md:text-xl leading-relaxed font-normal">
                   {project.content.results.text}
                 </div>
               </section>
             </div>
           ) : (
-            <div className="aspect-[16/9] rounded-[40px] overflow-hidden bg-gray-100 shadow-xl">
+            <div className="aspect-[16/9] rounded-[32px] overflow-hidden bg-gray-100 shadow-xl">
               <img 
                 src={projectImages[project.id]} 
                 alt={project.title} 
