@@ -25,12 +25,14 @@ export default function ProjectDetail() {
 
   const t = translations[language];
   const projects = projectTranslations[language];
-  const project = projects.find(p => p.id === id) || projects[0];
-  const nextProject = projects[(projects.findIndex(p => p.id === id) + 1) % projects.length];
+  const projectIndex = projects.findIndex(p => p.id === id);
+  const project = projects[projectIndex] || projects[0];
+  const nextProject = projects[(projectIndex + 1) % projects.length];
 
   const contactData = {
     telegramUrl: "https://t.me/Ann_uskova",
     linkedinUrl: "https://www.linkedin.com/in/anna-uskova-4b1169268/",
+    instagramUrl: "https://instagram.com/ann_uskova",
     emailUrl: "mailto:anyauskowa@yandex.ru"
   };
 
@@ -86,57 +88,57 @@ export default function ProjectDetail() {
           </div>
         </section>
 
-        {/* Main Image */}
+        {/* Project Content */}
         <section className="px-6 lg:px-12 max-w-7xl mx-auto mb-24">
-          <div className="aspect-[16/9] rounded-[40px] overflow-hidden bg-gray-100 shadow-xl">
-            <img 
-              src={projectImages[project.id]} 
-              alt={project.title} 
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </section>
+          {project.id === 5 && project.content ? (
+            <div className="max-w-4xl space-y-20 mb-32">
+              <div className="p-8 bg-gray-50 rounded-3xl border border-gray-100 text-gray-500 italic">
+                {project.content.nda}
+              </div>
 
-        {/* Story Section - Mockup for Garri style */}
-        <section className="px-6 lg:px-12 max-w-7xl mx-auto mb-32">
-          <div className="grid lg:grid-cols-[1fr_2fr] gap-16 lg:gap-32">
-            <div>
-              <h2 className="text-2xl font-medium mb-6 uppercase tracking-wider text-gray-400">The Challenge</h2>
-            </div>
-            <div className="text-xl md:text-2xl leading-relaxed text-gray-800 font-normal">
-              For most users, the project required a seamless transition between complex data sets and intuitive interfaces. 
-              We solved critical infrastructure tasks on the spot, but needed to ensure the overall ecosystem felt cohesive 
-              and user-centric across all touchpoints.
-            </div>
-          </div>
-        </section>
+              <section>
+                <h2 className="text-3xl font-medium mb-8 uppercase tracking-wider text-gray-400 text-sm">{project.content.goal.title}</h2>
+                <div className="text-xl md:text-2xl leading-relaxed text-gray-800 font-normal">
+                  {project.content.goal.text}
+                </div>
+              </section>
 
-        <section className="px-6 lg:px-12 max-w-7xl mx-auto mb-32">
-          <div className="grid lg:grid-cols-[1fr_2fr] gap-16 lg:gap-32">
-            <div>
-              <h2 className="text-2xl font-medium mb-6 uppercase tracking-wider text-gray-400">The Solution</h2>
-            </div>
-            <div className="text-xl md:text-2xl leading-relaxed text-gray-800 font-normal">
-              Merging disparate functions into a unified workspace allowed us to provide answers without complex navigation. 
-              The new architecture and visual language provided a better UX for the users as well as brought additional 
-              value for stakeholders and the product ecosystem.
-            </div>
-          </div>
-        </section>
+              <section>
+                <h2 className="text-3xl font-medium mb-12 uppercase tracking-wider text-gray-400 text-sm">{project.content.process.title}</h2>
+                <div className="space-y-16">
+                  {project.content.process.steps.map((step, idx) => (
+                    <div key={idx} className="grid lg:grid-cols-[1fr_2fr] gap-8 group">
+                      <span className="text-sm font-mono text-gray-300 mt-1">0{idx + 1}</span>
+                      <div>
+                        <h3 className="text-2xl font-medium mb-4">{step.name}</h3>
+                        <p className="text-xl text-gray-600 leading-relaxed">{step.text}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
 
-        {/* Process Images Placeholder */}
-        <section className="px-6 lg:px-12 max-w-7xl mx-auto mb-32 grid md:grid-cols-2 gap-8">
-          <div className="aspect-square rounded-[32px] bg-gray-50 border border-gray-100 flex items-center justify-center p-12 overflow-hidden">
-             <div className="w-full h-full bg-gray-100 rounded-2xl animate-pulse" />
-          </div>
-          <div className="aspect-square rounded-[32px] bg-gray-50 border border-gray-100 flex items-center justify-center p-12 overflow-hidden">
-             <div className="w-full h-full bg-gray-100 rounded-2xl animate-pulse" />
-          </div>
+              <section className="p-12 bg-black text-white rounded-[40px]">
+                <h2 className="text-sm font-medium mb-8 uppercase tracking-wider text-gray-400">{project.content.results.title}</h2>
+                <div className="text-xl md:text-2xl leading-relaxed font-normal">
+                  {project.content.results.text}
+                </div>
+              </section>
+            </div>
+          ) : (
+            <div className="aspect-[16/9] rounded-[40px] overflow-hidden bg-gray-100 shadow-xl">
+              <img 
+                src={projectImages[project.id]} 
+                alt={project.title} 
+                className="w-full h-full object-cover"
+              />
+            </div>
+          )}
         </section>
 
         {/* Footer Navigation */}
         <section className="border-t border-gray-100 py-24">
-          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="max-w-7xl auto px-6 lg:px-12">
             <Link href={`/projects/${nextProject.id}`} className="group flex flex-col items-center text-center">
               <span className="text-gray-400 uppercase tracking-widest text-sm mb-8">{t.projectsPage.nextProject}</span>
               <h2 className="text-5xl md:text-7xl font-medium mb-12 tracking-tight group-hover:scale-105 transition-transform duration-500">
@@ -151,11 +153,13 @@ export default function ProjectDetail() {
       </main>
 
       <footer className="py-12 border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-8">
           <p className="text-[15px] text-gray-400">{t.footer.copyright}</p>
           <div className="flex gap-8">
             <a href={contactData.linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-[15px] text-gray-400 hover:text-black transition-colors">LinkedIn</a>
             <a href={contactData.telegramUrl} target="_blank" rel="noopener noreferrer" className="text-[15px] text-gray-400 hover:text-black transition-colors">Telegram</a>
+            <a href={contactData.instagramUrl} target="_blank" rel="noopener noreferrer" className="text-[15px] text-gray-400 hover:text-black transition-colors">Instagram</a>
+            <a href={contactData.emailUrl} className="text-[15px] text-gray-400 hover:text-black transition-colors">Email</a>
           </div>
         </div>
       </footer>
