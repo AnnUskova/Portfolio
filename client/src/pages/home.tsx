@@ -177,9 +177,9 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      <section className="pt-40 pb-24 lg:pt-48 lg:pb-32 relative">
+      <section className="pt-40 pb-24 lg:pt-52 lg:pb-32 relative">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-start justify-between">
-          <div className="max-w-4xl">
+          <div className="max-w-4xl pt-5">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
