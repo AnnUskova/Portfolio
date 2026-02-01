@@ -414,13 +414,11 @@ export default function Home() {
                 <ArrowUpRight className="w-4 h-4" />
               </a>
               <a 
-                href={contactData.linkedinUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={contactData.emailUrl}
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-gray-200 text-[15px] font-medium rounded-full hover:bg-gray-50 transition-colors h-14 min-w-[200px]"
-                data-testid="button-linkedin-footer"
+                data-testid="button-email-footer"
               >
-                {t.contact.linkedin}
+                {t.contact.email}
                 <ArrowUpRight className="w-4 h-4" />
               </a>
             </div>
