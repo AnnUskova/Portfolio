@@ -172,7 +172,7 @@ export default function Home() {
               transition={{ duration: 0.6 }}
               className="max-w-[700px]"
             >
-              <h1 className="text-4xl md:text-5xl lg:text-[52px] font-medium tracking-tight text-balance" style={{ lineHeight: '115%' }} data-testid="text-hero-title">
+              <h1 className={`font-medium tracking-tight text-balance ${language === "ru" ? "text-3xl md:text-4xl lg:text-[46px]" : "text-4xl md:text-5xl lg:text-[52px]"}`} style={{ lineHeight: '115%' }} data-testid="text-hero-title">
                 {t.hero.title}
               </h1>
             </motion.div>
