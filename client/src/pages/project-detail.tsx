@@ -48,29 +48,15 @@ export default function ProjectDetail() {
             <div className="flex items-center gap-12">
               <Link 
                 href="/" 
-                className={`text-[15px] font-medium link-underline relative ${window.location.pathname === "/" ? "text-black" : "text-gray-400 hover:text-black"}`}
+                className={`text-[15px] font-medium transition-colors ${window.location.pathname === "/" ? "text-black" : "text-gray-400 hover:text-black"}`}
               >
                 {t.nav.home}
-                {window.location.pathname === "/" && (
-                  <motion.div 
-                    layoutId="navUnderline"
-                    className="absolute bottom-[-4px] left-0 right-0 h-[1.5px] bg-black"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                  />
-                )}
               </Link>
               <Link 
                 href="/projects" 
-                className={`text-[15px] font-medium link-underline relative ${window.location.pathname.startsWith("/projects") ? "text-black" : "text-gray-400 hover:text-black"}`}
+                className={`text-[15px] font-medium transition-colors ${window.location.pathname.startsWith("/projects") ? "text-black" : "text-gray-400 hover:text-black"}`}
               >
                 {t.nav.projects}
-                {window.location.pathname.startsWith("/projects") && (
-                  <motion.div 
-                    layoutId="navUnderline"
-                    className="absolute bottom-[-4px] left-0 right-0 h-[1.5px] bg-black"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                  />
-                )}
               </Link>
               <button onClick={() => setContactOpen(true)} className="text-[15px] font-medium text-gray-400 hover:text-black transition-colors">
                 {t.nav.contact}
