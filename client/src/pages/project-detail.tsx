@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useRoute, useLocation } from "wouter";
+import { Link, useRoute } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, ArrowLeft, X, ChevronRight } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
@@ -18,7 +18,6 @@ const projectImages: Record<number, string> = {
 };
 
 export default function ProjectDetail() {
-  const [location] = useLocation();
   const [, params] = useRoute("/projects/:id");
   const id = params?.id ? parseInt(params.id) : 1;
   const [language, setLanguage] = useState<Language>("en");
@@ -47,13 +46,13 @@ export default function ProjectDetail() {
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-12">
-              <Link href="/" className={`text-[15px] font-medium link-underline ${location === "/" ? "text-black" : "text-gray-400 hover:text-black"}`}>
+              <Link href="/" className="text-[15px] font-medium link-underline">
                 {t.nav.home}
               </Link>
-              <Link href="/projects" className={`text-[15px] font-medium link-underline ${location.startsWith("/projects") ? "text-black" : "text-gray-400 hover:text-black"}`}>
+              <Link href="/projects" className="text-[15px] font-medium link-underline">
                 {t.nav.projects}
               </Link>
-              <button onClick={() => setContactOpen(true)} className="text-[15px] font-medium text-gray-400 hover:text-black link-underline">
+              <button onClick={() => setContactOpen(true)} className="text-[15px] font-medium link-underline">
                 {t.nav.contact}
               </button>
             </div>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useLocation } from "wouter";
+import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, X } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
@@ -44,21 +44,19 @@ export default function Projects() {
     emailUrl: "mailto:anyauskowa@yandex.ru"
   };
 
-  const [location] = useLocation();
-
   return (
     <div className="min-h-screen bg-white">
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-12">
-              <Link href="/" className={`text-[15px] font-medium link-underline ${location === "/" ? "text-black" : "text-gray-400 hover:text-black"}`}>
+              <Link href="/" className="text-[15px] font-medium link-underline">
                 {t.nav.home}
               </Link>
-              <Link href="/projects" className={`text-[15px] font-medium link-underline ${location === "/projects" ? "text-black" : "text-gray-400 hover:text-black"}`}>
+              <Link href="/projects" className="text-[15px] font-medium link-underline">
                 {t.nav.projects}
               </Link>
-              <button onClick={() => setContactOpen(true)} className="text-[15px] font-medium text-gray-400 hover:text-black link-underline">
+              <button onClick={() => setContactOpen(true)} className="text-[15px] font-medium link-underline">
                 {t.nav.contact}
               </button>
             </div>
