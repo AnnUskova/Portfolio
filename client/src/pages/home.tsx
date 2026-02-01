@@ -107,12 +107,12 @@ export default function Home() {
             <div className="h-full flex flex-col items-center justify-center px-6">
               <h2 className="text-4xl md:text-5xl font-medium mb-12 text-center">{t.contact.modalTitle}</h2>
               
-              <div className="space-y-4 w-full max-w-md">
+              <div className="space-y-[10px] w-full max-w-md">
                 <a 
                   href={contactData.telegramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between p-5 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors group"
+                  className="flex items-center justify-between p-6 border border-gray-200 rounded-[18px] hover:bg-gray-50 transition-colors group"
                   data-testid="link-telegram"
                 >
                   <span className="text-lg">{t.contact.telegram}</span>
@@ -126,7 +126,7 @@ export default function Home() {
                   href={contactData.linkedinUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between p-5 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors group"
+                  className="flex items-center justify-between p-6 border border-gray-200 rounded-[18px] hover:bg-gray-50 transition-colors group"
                   data-testid="link-linkedin"
                 >
                   <span className="text-lg">{t.contact.linkedin}</span>
@@ -138,7 +138,7 @@ export default function Home() {
 
                 <a 
                   href={contactData.emailUrl}
-                  className="flex items-center justify-between p-5 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors group"
+                  className="flex items-center justify-between p-6 border border-gray-200 rounded-[18px] hover:bg-gray-50 transition-colors group"
                   data-testid="link-email"
                 >
                   <span className="text-lg">{t.contact.email}</span>
@@ -151,7 +151,7 @@ export default function Home() {
                 <a 
                   href={language === "ru" ? "/cv_ru.pdf" : "/cv_en.pdf"}
                   download
-                  className="flex items-center justify-center gap-3 p-5 bg-black text-white rounded-xl hover:bg-gray-800 transition-colors mt-8 h-14"
+                  className="flex items-center justify-center gap-3 p-6 bg-black text-white rounded-[18px] hover:bg-gray-800 transition-colors mt-[10px] h-[60px]"
                   data-testid="button-download-cv"
                 >
                   <Download className="w-5 h-5" />
