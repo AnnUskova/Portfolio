@@ -181,7 +181,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.15 }}
-              className="mt-8 max-w-2xl"
+              className="mt-6 max-w-2xl"
             >
               <p className="text-xl md:text-2xl text-gray-600 leading-relaxed whitespace-pre-line" data-testid="text-hero-description">
                 {t.hero.description}
@@ -192,7 +192,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-12 flex items-center gap-6"
+              className="mt-14 flex items-center gap-6"
             >
               <Link 
                 href="/projects"
