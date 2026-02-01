@@ -21,10 +21,10 @@ export const translations = {
       title: "About me",
       description: "I help companies create exceptional digital products — from early research to final delivery.",
       items: [
-        { num: "01", title: "Education", desc: "Bachelor's degree, SPbU (Saint Petersburg State University), Faculty of Journalism and Mass Communications, Department of Media Design" },
-        { num: "02", title: "Languages", desc: "English – B2, Spanish – A2, Russian - Native" },
-        { num: "03", title: "Additional Info", desc: "I love my job, and now I'm also learning to build websites with AI tools" },
-        { num: "04", title: "Free time", desc: "I make music, learn to sew clothes, and try to travel as much as possible" }
+        { num: "01", title: "Education", desc: "Bachelor's degree, SPbU (Saint Petersburg State University), Faculty of Journalism and Mass Communications, Department of Media Design." },
+        { num: "02", title: "Languages", desc: "English – B2, Spanish – A2." },
+        { num: "03", title: "Additional Info", desc: "I love my job, and now I'm also learning to build websites with AI tools." },
+        { num: "04", title: "Free time", desc: "I make music, learn to sew clothes, and try to travel as much as possible." }
       ]
     },
     contact: {
@@ -81,9 +81,9 @@ export const translations = {
       description: "Работаю с азартом (и пикселями) и делаю хороший добрый дизайн. Подхожу к задачам вдумчиво, анализирую, предлагаю, не боюсь неопределенности. Люблю свою работу — поэтому готова даже в офис ходить.",
       items: [
         { num: "01", title: "Образование", desc: "Высшее, СПбГУ.\nФакультет: Высшая школа журналистики и массовых коммуникаций.\nКафедра: Медиадизайн." },
-        { num: "02", title: "Языки", desc: "Английский – B2, испанский – A2" },
-        { num: "03", title: "Еще", desc: "Теперь не только делаю дизайн и исследования, но и учусь верстать сайты ИИшками (вот например этот)" },
-        { num: "04", title: "В свободное время", desc: "Занимаюсь музыкой, путешествую и учусь шить одежду" }
+        { num: "02", title: "Языки", desc: "Английский – B2, испанский – A2." },
+        { num: "03", title: "Еще", desc: "Теперь не только делаю дизайн и исследования, но и учусь верстать сайты ИИшками (вот например этот)." },
+        { num: "04", title: "В свободное время", desc: "Занимаюсь музыкой, путешествую и учусь шить одежду." }
       ]
     },
     contact: {
