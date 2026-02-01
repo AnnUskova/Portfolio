@@ -107,7 +107,7 @@ export default function ProjectDetail() {
                 <a 
                   href={language === "ru" ? "/cv_ru.pdf" : "/cv_en.pdf"}
                   download
-                  className="flex items-center justify-center gap-3 p-6 bg-black text-white rounded-[18px] hover:bg-gray-800 transition-colors mt-[10px] h-[60px]"
+                  className="flex items-center justify-center gap-3 px-8 bg-black text-white rounded-full hover:bg-gray-800 transition-colors mt-10 h-14"
                   data-testid="button-download-cv"
                 >
                   <Download className="w-5 h-5" />
