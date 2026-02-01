@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, ChevronLeft, ChevronRight, X, Download } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
@@ -20,6 +20,7 @@ const projectImages: Record<number, string> = {
 };
 
 export default function Home() {
+  const [location] = useLocation();
   const [activeProject, setActiveProject] = useState(0);
   const [language, setLanguage] = useState<Language>("en");
   const [contactOpen, setContactOpen] = useState(false);
@@ -59,14 +60,14 @@ export default function Home() {
             <div className="flex items-center gap-12">
               <Link 
                 href="/" 
-                className="text-[15px] font-medium link-underline"
+                className={`text-[15px] font-medium link-underline ${location === "/" ? "text-black" : "text-gray-400 hover:text-black"}`}
                 data-testid="nav-home"
               >
                 {t.nav.home}
               </Link>
               <Link 
                 href="/projects" 
-                className="text-[15px] font-medium link-underline"
+                className={`text-[15px] font-medium link-underline ${location === "/projects" ? "text-black" : "text-gray-400 hover:text-black"}`}
                 data-testid="nav-projects"
               >
                 {t.nav.projects}
