@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, X } from "lucide-react";
+import { ArrowUpRight, X, Download } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { translations, projectTranslations, type Language } from "@/lib/translations";
 
@@ -88,11 +88,33 @@ export default function Projects() {
             <div className="h-full flex flex-col items-center justify-center px-6">
               <h2 className="text-4xl md:text-5xl font-medium mb-12 text-center">{t.contact.modalTitle}</h2>
               <div className="space-y-4 w-full max-w-md">
-                <a href={contactData.telegramUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-5 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors group">
+                <a href={contactData.telegramUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-5 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors group" data-testid="link-telegram">
                   <span className="text-lg">{t.contact.telegram}</span>
                   <span className="text-gray-500 group-hover:text-black transition-colors flex items-center gap-2">
                     @Ann_uskova <ArrowUpRight className="w-4 h-4" />
                   </span>
+                </a>
+                <a href={contactData.linkedinUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-5 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors group" data-testid="link-linkedin">
+                  <span className="text-lg">{t.contact.linkedin}</span>
+                  <span className="text-gray-500 group-hover:text-black transition-colors flex items-center gap-2">
+                    Anna Uskova <ArrowUpRight className="w-4 h-4" />
+                  </span>
+                </a>
+                <a href={contactData.emailUrl} className="flex items-center justify-between p-5 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors group" data-testid="link-email">
+                  <span className="text-lg">{t.contact.email}</span>
+                  <span className="text-gray-500 group-hover:text-black transition-colors flex items-center gap-2">
+                    anyauskowa@yandex.ru <ArrowUpRight className="w-4 h-4" />
+                  </span>
+                </a>
+                
+                <a 
+                  href={language === "ru" ? "/cv_ru.pdf" : "/cv_en.pdf"}
+                  download
+                  className="flex items-center justify-center gap-3 p-5 bg-black text-white rounded-xl hover:bg-gray-800 transition-colors mt-8 h-14"
+                  data-testid="button-download-cv"
+                >
+                  <Download className="w-5 h-5" />
+                  <span className="text-lg font-medium">{t.contact.downloadCV}</span>
                 </a>
               </div>
             </div>
