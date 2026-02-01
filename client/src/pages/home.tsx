@@ -378,7 +378,7 @@ export default function Home() {
                   <span className="text-sm text-gray-500 font-mono">{item.num}</span>
                   <div>
                     <h3 className="font-medium text-lg">{item.title}</h3>
-                    <p className="text-gray-400 text-sm mt-1">{item.desc}</p>
+                    <p className="text-gray-400 text-sm mt-1 whitespace-pre-line">{item.desc}</p>
                   </div>
                 </div>
               ))}
