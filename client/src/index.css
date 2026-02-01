@@ -33,25 +33,57 @@
 
 :root {
   --background: 0 0% 100%;
-  --foreground: 0 0% 8%;
+  --foreground: 0 0% 8.6%;
   --card: 0 0% 100%;
-  --card-foreground: 0 0% 8%;
+  --card-foreground: 0 0% 8.6%;
   --popover: 0 0% 100%;
-  --popover-foreground: 0 0% 8%;
-  --primary: 0 0% 8%;
+  --popover-foreground: 0 0% 8.6%;
+  --primary: 0 0% 8.6%;
   --primary-foreground: 0 0% 100%;
   --secondary: 0 0% 96%;
-  --secondary-foreground: 0 0% 8%;
+  --secondary-foreground: 0 0% 8.6%;
   --muted: 0 0% 96%;
   --muted-foreground: 0 0% 45%;
   --accent: 0 0% 96%;
-  --accent-foreground: 0 0% 8%;
+  --accent-foreground: 0 0% 8.6%;
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
   --border: 0 0% 90%;
   --input: 0 0% 90%;
-  --ring: 0 0% 8%;
+  --ring: 0 0% 8.6%;
   --radius: 0.5rem;
+}
+
+/* Global color overrides for #161616 */
+.bg-black, 
+button.bg-black,
+a.bg-black {
+  background-color: #161616 !important;
+}
+
+.text-black {
+  color: #161616 !important;
+}
+
+.border-black {
+  border-color: #161616 !important;
+}
+
+.hover\:bg-black:hover {
+  background-color: #161616 !important;
+}
+
+.hover\:text-black:hover {
+  color: #161616 !important;
+}
+
+.hover\:border-black:hover {
+  border-color: #161616 !important;
+}
+
+/* Specific button hover states */
+.hover\:bg-gray-800:hover {
+  background-color: #262626 !important;
 }
 
 * {
