@@ -183,7 +183,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.15 }}
               className="mt-8 max-w-2xl"
             >
-              <p className="text-xl md:text-2xl text-gray-600 leading-relaxed" data-testid="text-hero-description">
+              <p className="text-xl md:text-2xl text-gray-600 leading-relaxed whitespace-pre-line" data-testid="text-hero-description">
                 {t.hero.description}
               </p>
             </motion.div>
