@@ -319,7 +319,7 @@ export default function Home() {
               </div>
             </motion.div>
 
-            <div className="relative">
+            <div className="relative flex items-center h-[392px]">
               <div className="flex gap-2 items-start w-full">
                 <AnimatePresence mode="popLayout">
                     {[0, 1, 2].map((offset) => {
