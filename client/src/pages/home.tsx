@@ -5,7 +5,7 @@ import { ArrowUpRight, ChevronLeft, ChevronRight, X, Download } from "lucide-rea
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { translations, projectTranslations, type Language } from "@/lib/translations";
 
-import glacisImg from "@assets/GLACIS_NEW.png";
+import glacisImg from "@assets/GLACIS_1768337984889.png";
 import maatImg from "@assets/MAAT_1768337984889.png";
 import skiziImg from "@assets/SKIZI_1768337984890.png";
 import chefImg from "@assets/AI_Chef_1768337984889.png";
