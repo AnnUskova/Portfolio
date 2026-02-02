@@ -287,7 +287,7 @@ export default function Home() {
                 </AnimatePresence>
               </div>
 
-              <div className="flex items-center gap-6 pb-4">
+              <div className="flex items-center gap-6 mt-auto">
                 <div className="flex items-center gap-3">
                   <button 
                     onClick={prevProject}
