@@ -438,34 +438,42 @@ export default function Home() {
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               className="overflow-hidden bg-[#F9F9F9]"
             >
-              <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-10 pb-24 flex justify-center">
-                <div className="relative w-full max-w-2xl">
+              <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-10 pb-24">
+                <div className="relative w-full">
                   {/* Timeline Line */}
-                  <div className="absolute left-[7px] top-2 bottom-2 w-[1px] bg-gray-200" />
+                  <div className="absolute left-1/2 top-2 bottom-2 w-[1px] bg-gray-200 -translate-x-1/2 hidden md:block" />
+                  <div className="absolute left-[7px] top-2 bottom-2 w-[1px] bg-gray-200 md:hidden" />
                   
-                  <div className="space-y-16">
-                    {t.experience.items.map((item, index) => (
-                      <motion.div
-                        key={index}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.1 }}
-                        className="relative pl-12"
-                      >
-                        {/* Diamond Marker */}
-                        <div className="absolute left-[4.5px] top-[14px] w-[5px] h-[5px] bg-gray-400 rotate-45 z-10" />
-                        
-                        <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8">
-                          <span className="text-[13px] font-medium text-gray-400 uppercase tracking-wider whitespace-pre-line min-w-[140px] leading-relaxed">
-                            {item.year.replace(" – ", " –\n")}
-                          </span>
-                          <div>
-                            <h3 className="text-2xl font-medium mb-1">{item.company}</h3>
-                            <p className="text-gray-500">{item.role}</p>
+                  <div className="space-y-12 md:space-y-0">
+                    {t.experience.items.map((item, index) => {
+                      const isEven = index % 2 === 0;
+                      return (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: index * 0.1 }}
+                          className={`relative md:flex md:items-center mb-12 md:mb-24 last:mb-0 ${isEven ? 'md:flex-row-reverse' : 'md:flex-row'}`}
+                        >
+                          {/* Diamond Marker */}
+                          <div className="absolute left-[4.5px] md:left-1/2 top-[14px] md:top-1/2 w-[5px] h-[5px] bg-gray-400 rotate-45 z-10 md:-translate-x-1/2 md:-translate-y-1/2" />
+                          
+                          <div className={`md:w-1/2 pl-12 md:pl-0 ${isEven ? 'md:pl-16' : 'md:pr-16 md:text-right'}`}>
+                            <div className={`flex flex-col ${isEven ? 'items-start' : 'md:items-end'}`}>
+                              <span className="text-[13px] font-medium text-gray-400 uppercase tracking-wider whitespace-pre-line leading-relaxed mb-4">
+                                {item.year.replace(" – ", " –\n")}
+                              </span>
+                              <div>
+                                <h3 className="text-2xl font-medium mb-1">{item.company}</h3>
+                                <p className="text-gray-500">{item.role}</p>
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                      </motion.div>
-                    ))}
+                          <div className="hidden md:block md:w-1/2" />
+                        </motion.div>
+                      );
+                    })}
                   </div>
                 </div>
               </div>
