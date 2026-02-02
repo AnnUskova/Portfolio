@@ -457,7 +457,7 @@ export default function Home() {
                         
                         <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8">
                           <span className="text-[13px] font-medium text-gray-400 uppercase tracking-wider whitespace-pre-line min-w-[140px] leading-relaxed">
-                            {item.year.replace(" – ", "\n")}
+                            {item.year.replace(" – ", " –\n")}
                           </span>
                           <div>
                             <h3 className="text-2xl font-medium mb-1">{item.company}</h3>
