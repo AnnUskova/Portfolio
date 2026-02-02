@@ -24,8 +24,9 @@ export default function Projects() {
   const allProjects = projectTranslations[language];
   
   const projects = allProjects.filter(p => {
-    if (activeTab === "uxui") return p.category.includes("DEFI") || p.category.includes("APP") || p.category.includes("PRODUCT");
-    if (activeTab === "research") return p.role.includes("RESEARCH") || p.category.includes("GREEN");
+    if (activeTab === "uxui") return [1, 2, 3, 4].includes(p.id);
+    if (activeTab === "strategy") return false;
+    if (activeTab === "research") return false;
     return true; 
   });
 
