@@ -127,7 +127,7 @@ export const projectTranslations = {
       category: "DEFI",
       role: "DESIGN LEAD",
       title: "Glacis Labs",
-      description: "DeFi ecosystem for cross-chain operations. Here I developed the entire design from scratch: dApp, website, complex widgets, pitch decks and diagrams."
+      description: "DeFi ecosystem for cross-chain operations. Led the project’s design direction and shipped the full set: dApp, website, complex widgets, pitch decks, and diagrams."
     },
     {
       id: 2,
@@ -135,7 +135,7 @@ export const projectTranslations = {
       category: "DEFI",
       role: "Senior Product Designer",
       title: "xSwap",
-      description: "AMM for CrossFi network. Developed brand identity, dApp interface and worked on logic with solidity-colleagues."
+      description: "AMM on the CrossFi network. Not just a swap UI — it includes liquidity pools, a native token, and a rewards system. I created the brand style, landing page, and dApp UI, and worked through the product logic with Solidity devs."
     },
     {
       id: 3,
@@ -143,7 +143,7 @@ export const projectTranslations = {
       category: "GREEN TOOLS",
       role: "PRODUCT DESIGNER",
       title: "SKIZI",
-      description: "System for automation of green energy accounting - development for the Market Council. My longest and high-load project."
+      description: "Green energy accounting automation system. One of my longest and most complex projects, with a pretty deep role model (around 8 roles 😱)."
     },
     {
       id: 4,
@@ -151,7 +151,7 @@ export const projectTranslations = {
       category: "PRODUCT",
       role: "Senior Product Designer",
       title: "2Go",
-      description: "Freelance promotional service project. Includes mobile app for clients, B2B desktop and admin panel."
+      description: "Freelance promos/deals service. Includes a mobile app for customers, a desktop app for B2B partners, and an admin panel."
     }
   ],
   ru: [
