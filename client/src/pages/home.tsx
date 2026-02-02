@@ -407,7 +407,7 @@ export default function Home() {
       <section className="relative">
         <button
           onClick={() => setExperienceOpen(!experienceOpen)}
-          className="w-full relative h-[112px] flex items-center justify-center overflow-hidden group transition-all duration-500"
+          className="w-full relative h-[100px] flex items-center justify-center overflow-hidden group transition-all duration-500"
           style={{ 
             backgroundColor: experienceOpen ? '#F9F9F9' : 'transparent'
           }}
