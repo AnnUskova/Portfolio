@@ -8,7 +8,7 @@ export const translations = {
     hero: {
       title: "Hi! I'm Anna Uskova — a product designer with 8+ years in the industry.",
       description: "I work with high-load systems, DeFi protocols and B2C products — from research to polished UI.",
-      viewWork: "View my work",
+      viewWork: "Explore projects",
       getInTouch: "Get in touch"
     },
     stats: {
@@ -67,7 +67,7 @@ export const translations = {
     hero: {
       title: "Привет! Я Аня Ускова —\nпродуктовый дизайнер\nс опытом 8+ лет.",
       description: "Проектирую сложные системы, DeFi протоколы\nи B2C продукты.",
-      viewWork: "Смотреть работы",
+      viewWork: "Explore projects",
       getInTouch: "Связаться"
     },
     stats: {
