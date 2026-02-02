@@ -418,7 +418,7 @@ export default function Home() {
             </div>
           )}
           <div className="relative z-10 flex items-center gap-3 text-lg font-medium transition-transform group-hover:scale-105">
-            {t.experience.toggle}
+            {experienceOpen ? t.experience.hide : t.experience.toggle}
             <motion.div
               animate={{ rotate: experienceOpen ? 180 : 0 }}
               transition={{ duration: 0.3 }}
@@ -475,6 +475,16 @@ export default function Home() {
                       );
                     })}
                   </div>
+                </div>
+                
+                <div className="mt-20 flex justify-center">
+                  <button
+                    onClick={() => setExperienceOpen(false)}
+                    className="flex items-center gap-2 text-[15px] font-medium text-gray-400 hover:text-black transition-colors"
+                  >
+                    {t.experience.hide}
+                    <ChevronRight className="w-4 h-4 rotate-[270deg]" />
+                  </button>
                 </div>
               </div>
             </motion.div>

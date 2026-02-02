@@ -47,6 +47,7 @@ export const translations = {
     },
     experience: {
       toggle: "View work experience",
+      hide: "Hide",
       items: [
         { year: "May 2024 – Present", company: "Glacis Labs", role: "Design Lead" },
         { year: "Sep 2023 – Sep 2024", company: "Lumos Labs", role: "Design Lead" },
@@ -120,6 +121,7 @@ export const translations = {
     },
     experience: {
       toggle: "Посмотреть места работы",
+      hide: "Скрыть",
       items: [
         { year: "май 2024 – сейчас", company: "Glacis Labs", role: "Design Lead" },
         { year: "сентябрь 2023 – сентябрь 2024", company: "Lumos Labs", role: "Design Lead" },
