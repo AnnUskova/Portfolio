@@ -225,6 +225,8 @@ export default function Home() {
             <img 
               src={annaPhoto} 
               alt="Anna Uskova" 
+              loading="eager"
+              decoding="async"
               className="w-full h-full object-cover"
             />
           </motion.div>
@@ -344,6 +346,8 @@ export default function Home() {
                             <img 
                               src={projectImages[projects[index].id] as string}
                               alt={projects[index].title}
+                              loading={offset === 0 ? "eager" : "lazy"}
+                              decoding="async"
                               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                             />
                           ) : (
