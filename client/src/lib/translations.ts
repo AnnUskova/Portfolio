@@ -127,7 +127,7 @@ export const projectTranslations = {
       category: "DEFI",
       role: "DESIGN LEAD",
       title: "Glacis Labs",
-      description: "DeFi ecosystem for cross-chain operations. Created design system, brand identity, dApp design, ecosystem website, technical diagrams, and pitch deck."
+      description: "DeFi ecosystem for cross-chain operations. Here I developed the entire design from scratch: dApp, website, complex widgets, pitch decks and diagrams."
     },
     {
       id: 2,
