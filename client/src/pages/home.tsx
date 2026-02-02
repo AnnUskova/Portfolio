@@ -318,23 +318,23 @@ export default function Home() {
                 <AnimatePresence mode="popLayout">
                     {[0, 1, 2].map((offset) => {
                     const index = (activeProject + offset) % projects.length;
-                    const isEven = offset % 2 === 0;
+                    const isFirst = offset === 0;
                     return (
                       <Link 
                         key={`${index}-${offset}`}
                         href={`/projects/${projects[index].id}`}
-                        className={`${isEven ? "w-[65%]" : "w-[35%]"} flex-shrink-0`}
+                        className={`${isFirst ? "w-[65%]" : "w-[25%]"} flex-shrink-0`}
                       >
                         <motion.div
                           initial={{ opacity: 0, x: 100 }}
                           animate={{ 
                             opacity: 1, 
                             x: 0,
-                            scale: offset === 0 ? 1 : 0.95
+                            scale: isFirst ? 1 : 0.95
                           }}
                           exit={{ opacity: 0, x: -100 }}
                           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                          className="relative aspect-[4/3] rounded-[32px] overflow-hidden bg-white border border-gray-100 shadow-sm cursor-pointer group"
+                          className="relative h-[480px] rounded-[16px] overflow-hidden bg-white border border-gray-100 shadow-sm cursor-pointer group"
                         >
                           <img 
                             src={projectImages[projects[index].id]}
