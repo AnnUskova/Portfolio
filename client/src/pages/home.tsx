@@ -196,14 +196,15 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="mt-16 flex items-center gap-6"
             >
-              <Link 
-                href="/projects"
-                className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-black text-white text-[15px] font-medium rounded-full hover:bg-gray-800 transition-colors h-14 min-w-[200px]"
+              <button 
+                onClick={() => {
+                  document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="inline-flex items-center justify-center px-8 py-3 bg-black text-white text-[15px] font-medium rounded-full hover:bg-gray-800 transition-colors h-14 min-w-[200px]"
                 data-testid="button-view-work"
               >
                 {t.hero.viewWork}
-                <ArrowUpRight className="w-4 h-4" />
-              </Link>
+              </button>
               <button 
                 onClick={() => setContactOpen(true)}
                 className="text-[15px] font-medium link-underline"
