@@ -334,7 +334,7 @@ export default function Home() {
                           }}
                           exit={{ opacity: 0, x: -100 }}
                           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                          className="relative h-[392px] rounded-[16px] overflow-hidden bg-white border border-gray-100 shadow-sm cursor-pointer group"
+                          className="relative h-[392px] rounded-[24px] overflow-hidden bg-white border border-gray-100 shadow-sm cursor-pointer group"
                         >
                           <img 
                             src={projectImages[projects[index].id]}
