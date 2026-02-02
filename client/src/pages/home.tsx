@@ -367,10 +367,47 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="py-24 lg:py-32 bg-black text-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium leading-tight" data-testid="text-competencies-title">
+                {t.competencies.title}
+              </h2>
+              <p className="mt-6 text-gray-400 text-lg leading-relaxed max-w-lg">
+                {t.competencies.description}
+              </p>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="grid gap-3"
+            >
+              {t.competencies.items.map((item) => (
+                <div key={item.num} className="flex gap-6 p-5 rounded-[18px] border border-white/10 hover:border-white/20 transition-colors">
+                  <span className="text-sm text-gray-500 font-mono">{item.num}</span>
+                  <div>
+                    <h3 className="font-medium text-lg">{item.title}</h3>
+                    <p className="text-gray-400 text-sm mt-2.5 whitespace-pre-line">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       <section className="relative">
         <button
           onClick={() => setExperienceOpen(!experienceOpen)}
-          className="w-full relative h-32 flex items-center justify-center overflow-hidden group transition-all duration-500"
+          className="w-full relative h-[112px] flex items-center justify-center overflow-hidden group transition-all duration-500"
           style={{ 
             backgroundColor: experienceOpen ? '#F9F9F9' : 'transparent'
           }}
@@ -435,43 +472,6 @@ export default function Home() {
             </motion.div>
           )}
         </AnimatePresence>
-      </section>
-
-      <section className="py-24 lg:py-32 bg-black text-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium leading-tight" data-testid="text-competencies-title">
-                {t.competencies.title}
-              </h2>
-              <p className="mt-6 text-gray-400 text-lg leading-relaxed max-w-lg">
-                {t.competencies.description}
-              </p>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="grid gap-3"
-            >
-              {t.competencies.items.map((item) => (
-                <div key={item.num} className="flex gap-6 p-5 rounded-[18px] border border-white/10 hover:border-white/20 transition-colors">
-                  <span className="text-sm text-gray-500 font-mono">{item.num}</span>
-                  <div>
-                    <h3 className="font-medium text-lg">{item.title}</h3>
-                    <p className="text-gray-400 text-sm mt-2.5 whitespace-pre-line">{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </motion.div>
-          </div>
-        </div>
       </section>
 
       <section id="contact" className="py-24 lg:py-32">
