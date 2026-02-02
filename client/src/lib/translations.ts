@@ -169,7 +169,7 @@ export const projectTranslations = {
       category: "DEFI",
       role: "Senior Product Designer",
       title: "xSwap",
-      description: "AMM для сети CrossFi. Не просто свапалка, но и ликвидные пулы, свой токен и система поощрения. Для проекта я разработала фирменный стиль, интерфейс dApp и продумывала логику с solidity-коллегами."
+      description: "AMM для сети CrossFi. Не просто свапалка, но и ликвидные пулы, свой токен и система поощрения. Здесь я разработала фирстиль, лендинг, dApp и продумывала логику с solidity-коллегами."
     },
     {
       id: 3,
