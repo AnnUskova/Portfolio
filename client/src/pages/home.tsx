@@ -317,7 +317,7 @@ export default function Home() {
             </motion.div>
 
             <div className="relative">
-              <div className="flex gap-4 items-start w-full">
+              <div className="flex gap-2 items-start w-full">
                 <AnimatePresence mode="popLayout">
                     {[0, 1, 2].map((offset) => {
                     const index = (activeProject + offset) % projects.length;
