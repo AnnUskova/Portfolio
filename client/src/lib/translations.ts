@@ -67,7 +67,7 @@ export const translations = {
     hero: {
       title: "Привет! Я Аня Ускова —\nпродуктовый дизайнер\nс опытом 8+ лет.",
       description: "Проектирую сложные системы, DeFi протоколы\nи B2C продукты.",
-      viewWork: "Explore projects",
+      viewWork: "Смотреть работы",
       getInTouch: "Связаться"
     },
     stats: {
