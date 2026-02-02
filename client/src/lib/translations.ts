@@ -53,7 +53,7 @@ export const translations = {
       nextProject: "Next Project",
       tabs: {
         uxui: "UX/UI",
-        strategy: "Strategy & Systems",
+        strategy: "Decks & Diagrams",
         research: "Research"
       }
     }
@@ -112,7 +112,7 @@ export const translations = {
       nextProject: "Следующий проект",
       tabs: {
         uxui: "UX/UI",
-        strategy: "Стратегия и Системы",
+        strategy: "Презентации и схемы",
         research: "Исследования"
       }
     }
