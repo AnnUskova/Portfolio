@@ -5,16 +5,14 @@ import { ArrowUpRight, X, Download } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { translations, projectTranslations, type Language } from "@/lib/translations";
 
-import glacisImg from "@assets/GLACIS_1768337984889.png";
-import maatImg from "@assets/MAAT_1768337984889.png";
-import skiziImg from "@assets/SKIZI_1768337984890.png";
-import chefImg from "@assets/AI_Chef_1768337984889.png";
+import zeroDeltaImg from "@assets/зеро_дельта_1770041205735.png";
+import xSwapImg from "@assets/image_1770052489389.png";
 
-const projectImages: Record<number, string> = {
-  1: glacisImg,
-  2: maatImg,
-  3: skiziImg,
-  4: chefImg
+const projectImages: Record<number, string | null> = {
+  1: zeroDeltaImg,
+  2: xSwapImg,
+  3: null,
+  4: null
 };
 
 export default function Projects() {
@@ -26,7 +24,7 @@ export default function Projects() {
   const allProjects = projectTranslations[language];
   
   const projects = allProjects.filter(p => {
-    if (activeTab === "uxui") return p.category.includes("DEFI") || p.category.includes("APP");
+    if (activeTab === "uxui") return p.category.includes("DEFI") || p.category.includes("APP") || p.category.includes("PRODUCT");
     if (activeTab === "research") return p.role.includes("RESEARCH") || p.category.includes("GREEN");
     return true; 
   });
@@ -169,12 +167,16 @@ export default function Projects() {
                     className="group cursor-pointer"
                     transition={{ delay: (index % 3) * 0.1 }}
                   >
-                    <div className="relative aspect-[16/11] rounded-[24px] overflow-hidden bg-gray-100 mb-6 border border-gray-100 shadow-sm transition-transform duration-500 group-hover:shadow-md">
-                      <img 
-                        src={projectImages[project.id]} 
-                        alt={project.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      />
+                    <div className="relative aspect-[16/11] rounded-[24px] overflow-hidden bg-[#F1F1F1] mb-6 border border-gray-100 shadow-sm transition-transform duration-500 group-hover:shadow-md">
+                      {projectImages[project.id] ? (
+                        <img 
+                          src={projectImages[project.id] as string} 
+                          alt={project.title}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-[#F1F1F1]" />
+                      )}
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-500" />
                     </div>
                     
