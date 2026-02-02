@@ -323,7 +323,7 @@ export default function Home() {
                       <Link 
                         key={`${index}-${offset}`}
                         href={`/projects/${projects[index].id}`}
-                        className={`${isFirst ? "w-[65%]" : "w-[25%]"} flex-shrink-0`}
+                        className={`${isFirst ? "w-[calc(65%+80px)]" : "w-[25%]"} flex-shrink-0`}
                       >
                         <motion.div
                           initial={{ opacity: 0, x: 100 }}
@@ -334,7 +334,7 @@ export default function Home() {
                           }}
                           exit={{ opacity: 0, x: -100 }}
                           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                          className="relative h-[480px] rounded-[16px] overflow-hidden bg-white border border-gray-100 shadow-sm cursor-pointer group"
+                          className={`relative ${isFirst ? "h-[408px]" : "h-[480px]"} rounded-[16px] overflow-hidden bg-white border border-gray-100 shadow-sm cursor-pointer group`}
                         >
                           <img 
                             src={projectImages[projects[index].id]}
