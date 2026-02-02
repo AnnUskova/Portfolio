@@ -254,16 +254,16 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="flex flex-col h-full"
+              className="flex flex-col h-[392px]"
             >
               <div className="flex-1 pt-4">
-            <div className="flex items-center gap-2 text-xs text-gray-400 uppercase tracking-wider mb-14">
-                <span>{projects[activeProject].year}</span>
-                <span className="text-gray-200">/</span>
-                <span>{projects[activeProject].category}</span>
-                <span className="text-gray-200">/</span>
-                <span>{projects[activeProject].role}</span>
-              </div>
+                <div className="flex items-center gap-2 text-xs text-gray-400 uppercase tracking-wider mb-14">
+                  <span>{projects[activeProject].year}</span>
+                  <span className="text-gray-200">/</span>
+                  <span>{projects[activeProject].category}</span>
+                  <span className="text-gray-200">/</span>
+                  <span>{projects[activeProject].role}</span>
+                </div>
                 
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -284,7 +284,7 @@ export default function Home() {
                 </AnimatePresence>
               </div>
 
-              <div className="flex items-center gap-6 mt-auto pb-4">
+              <div className="flex items-center gap-6 pb-4">
                 <div className="flex items-center gap-3">
                   <button 
                     onClick={prevProject}
