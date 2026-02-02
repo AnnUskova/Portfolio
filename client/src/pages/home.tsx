@@ -461,8 +461,8 @@ export default function Home() {
                           
                           <div className={`md:w-1/2 pl-12 md:pl-0 ${isEven ? 'md:pl-16' : 'md:pr-16 md:text-right'}`}>
                             <div className={`flex flex-col ${isEven ? 'items-start' : 'md:items-end'}`}>
-                              <span className="text-[13px] font-medium text-gray-400 uppercase tracking-wider whitespace-pre-line leading-relaxed mb-4">
-                                {item.year.replace(" – ", " –\n")}
+                              <span className="text-[13px] font-medium text-gray-400 uppercase tracking-wider whitespace-nowrap leading-relaxed mb-4">
+                                {item.year}
                               </span>
                               <div>
                                 <h3 className="text-2xl font-medium mb-1">{item.company}</h3>
