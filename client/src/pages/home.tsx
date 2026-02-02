@@ -12,8 +12,10 @@ import chefImg from "@assets/AI_Chef_1768337984889.png";
 
 import annaPhoto from "@assets/1046_1_1768336698195.png";
 
+import zeroDeltaImg from "@assets/зеро_дельта_1770041205735.png";
+
 const projectImages: Record<number, string | null> = {
-  1: null,
+  1: zeroDeltaImg,
   2: null,
   3: null,
   4: null
