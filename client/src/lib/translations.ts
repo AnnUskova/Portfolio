@@ -147,7 +147,7 @@ export const projectTranslations = {
     },
     {
       id: 4,
-      year: "2021",
+      year: "2025",
       category: "PRODUCT",
       role: "Senior Product Designer",
       title: "2Go",
@@ -181,7 +181,7 @@ export const projectTranslations = {
     },
     {
       id: 4,
-      year: "2021",
+      year: "2025",
       category: "ПРОДУКТ",
       role: "Senior Product Designer",
       title: "2Go",
