@@ -248,7 +248,7 @@ export default function Home() {
 
       <section id="projects" className="py-24 lg:py-32 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid lg:grid-cols-[380px_1fr] gap-12 lg:gap-16 items-start">
+          <div className="grid lg:grid-cols-[380px_1fr] gap-12 lg:gap-16 items-center">
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
