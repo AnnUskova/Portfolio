@@ -326,7 +326,7 @@ export default function Home() {
                       <Link 
                         key={`${index}-${offset}`}
                         href={`/projects/${projects[index].id}`}
-                        className={`${isFirst ? "w-[calc(65%+104px)]" : "w-[calc(25%+64px)]"} flex-shrink-0`}
+                        className={`${isFirst ? "w-[calc(65%+104px)]" : "w-[calc(25%+152px)]"} flex-shrink-0`}
                       >
                         <motion.div
                           initial={{ opacity: 0, x: 100 }}
