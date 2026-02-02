@@ -12,8 +12,8 @@ import chefImg from "@assets/AI_Chef_1768337984889.png";
 
 import annaPhoto from "@assets/1046_1_1768336698195.png";
 
-const projectImages: Record<number, string> = {
-  1: glacisImg,
+const projectImages: Record<number, string | null> = {
+  1: null,
   2: maatImg,
   3: skiziImg,
   4: chefImg
@@ -334,13 +334,17 @@ export default function Home() {
                           }}
                           exit={{ opacity: 0, x: -100 }}
                           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                          className="relative h-[392px] rounded-[24px] overflow-hidden bg-white border border-gray-100 shadow-sm cursor-pointer group"
+                          className="relative h-[392px] rounded-[24px] overflow-hidden bg-[#F1F1F1] border border-gray-100 shadow-sm cursor-pointer group"
                         >
-                          <img 
-                            src={projectImages[projects[index].id]}
-                            alt={projects[index].title}
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                          />
+                          {projectImages[projects[index].id] ? (
+                            <img 
+                              src={projectImages[projects[index].id]}
+                              alt={projects[index].title}
+                              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            />
+                          ) : (
+                            <div className="w-full h-full bg-[#F1F1F1]" />
+                          )}
                         </motion.div>
                       </Link>
                     );
