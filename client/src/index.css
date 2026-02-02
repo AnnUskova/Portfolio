@@ -129,9 +129,25 @@ body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.hover-lift:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+.project-carousel-item {
+  flex: 0 0 65%;
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .project-carousel-item {
+    flex: 0 0 85%;
+  }
+}
+
+.project-carousel-item:nth-child(even) {
+  flex: 0 0 35%;
+}
+
+@media (max-width: 768px) {
+  .project-carousel-item:nth-child(even) {
+    flex: 0 0 85%;
+  }
 }
 
 .link-underline {

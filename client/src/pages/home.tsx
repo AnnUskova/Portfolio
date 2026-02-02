@@ -314,14 +314,16 @@ export default function Home() {
             </motion.div>
 
             <div className="relative">
-              <div className="flex gap-4 items-start">
+              <div className="flex gap-4 items-start w-full">
                 <AnimatePresence mode="popLayout">
-                    {[0, 1, 2, 3].map((offset) => {
+                    {[0, 1, 2].map((offset) => {
                     const index = (activeProject + offset) % projects.length;
+                    const isEven = offset % 2 === 0;
                     return (
                       <Link 
                         key={`${index}-${offset}`}
                         href={`/projects/${projects[index].id}`}
+                        className={`${isEven ? "w-[65%]" : "w-[35%]"} flex-shrink-0`}
                       >
                         <motion.div
                           initial={{ opacity: 0, x: 100 }}
@@ -332,7 +334,7 @@ export default function Home() {
                           }}
                           exit={{ opacity: 0, x: -100 }}
                           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                          className="relative flex-shrink-0 w-[320px] rounded-[32px] overflow-hidden bg-white border border-gray-100 shadow-sm cursor-pointer group"
+                          className="relative aspect-[4/3] rounded-[32px] overflow-hidden bg-white border border-gray-100 shadow-sm cursor-pointer group"
                         >
                           <img 
                             src={projectImages[projects[index].id]}
