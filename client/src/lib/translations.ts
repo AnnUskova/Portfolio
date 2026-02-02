@@ -133,7 +133,7 @@ export const projectTranslations = {
       id: 2,
       year: "2023",
       category: "DEFI",
-      role: "UX/UI Designer",
+      role: "Senior Product Designer",
       title: "xSwap",
       description: "AMM for CrossFi network. Developed brand identity, dApp interface and worked on logic with solidity-colleagues."
     },
@@ -149,7 +149,7 @@ export const projectTranslations = {
       id: 4,
       year: "2021",
       category: "PRODUCT",
-      role: "UX/UI Designer",
+      role: "Senior Product Designer",
       title: "2Go",
       description: "Freelance promotional service project. Includes mobile app for clients, B2B desktop and admin panel."
     }
@@ -167,7 +167,7 @@ export const projectTranslations = {
       id: 2,
       year: "2023",
       category: "DEFI",
-      role: "UX/UI Designer",
+      role: "Senior Product Designer",
       title: "xSwap",
       description: "AMM для сети CrossFi. Разработала фирменный стиль, интерфейс dApp и продумывала логику с solidity-коллегами."
     },
@@ -183,7 +183,7 @@ export const projectTranslations = {
       id: 4,
       year: "2021",
       category: "ПРОДУКТ",
-      role: "UX/UI Designer",
+      role: "Senior Product Designer",
       title: "2Go",
       description: "Фриланс-проект сервиса акций. Внутри - мобильное приложение для клиента, десктоп для B2B и админ-панель."
     }
