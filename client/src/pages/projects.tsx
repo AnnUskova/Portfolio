@@ -127,7 +127,7 @@ export default function Projects() {
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight mb-8"
+              className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight mb-16"
             >
               {t.projectsPage.title}
             </motion.h1>
