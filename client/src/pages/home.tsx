@@ -438,7 +438,7 @@ export default function Home() {
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               className="overflow-hidden bg-[#F9F9F9]"
             >
-              <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-10 pb-24">
+              <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-10 pb-[72px]">
                 <div className="relative w-full">
                   {/* Timeline Line */}
                   <div className="absolute left-1/2 top-2 bottom-2 w-[1px] bg-gray-200 -translate-x-1/2 hidden md:block" />
