@@ -14,9 +14,9 @@ import annaPhoto from "@assets/1046_1_1768336698195.png";
 
 const projectImages: Record<number, string | null> = {
   1: null,
-  2: maatImg,
-  3: skiziImg,
-  4: chefImg
+  2: null,
+  3: null,
+  4: null
 };
 
 export default function Home() {
@@ -338,7 +338,7 @@ export default function Home() {
                         >
                           {projectImages[projects[index].id] ? (
                             <img 
-                              src={projectImages[projects[index].id]}
+                              src={projectImages[projects[index].id] as string}
                               alt={projects[index].title}
                               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                             />
