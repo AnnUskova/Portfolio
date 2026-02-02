@@ -454,7 +454,7 @@ export default function Home() {
                           whileInView={{ opacity: 1, y: 0 }}
                           viewport={{ once: true }}
                           transition={{ delay: index * 0.1 }}
-                          className={`relative md:flex md:items-center mb-12 md:mb-24 last:mb-0 ${isEven ? 'md:flex-row-reverse' : 'md:flex-row'}`}
+                          className={`relative md:flex md:items-center mb-12 md:mb-20 last:mb-0 ${isEven ? 'md:flex-row-reverse' : 'md:flex-row'}`}
                         >
                           {/* Diamond Marker */}
                           <div className="absolute left-[4.5px] md:left-1/2 top-[14px] md:top-1/2 w-[5px] h-[5px] bg-gray-400 rotate-45 z-10 md:-translate-x-1/2 md:-translate-y-1/2" />
