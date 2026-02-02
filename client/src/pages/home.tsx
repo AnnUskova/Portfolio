@@ -453,7 +453,7 @@ export default function Home() {
                         className="relative pl-12"
                       >
                         {/* Diamond Marker */}
-                        <div className="absolute left-0 top-[10px] w-4 h-4 bg-white border border-gray-300 rotate-45 z-10" />
+                        <div className="absolute left-[5.5px] top-[14px] w-[3px] h-[3px] bg-gray-400 rotate-45 z-10" />
                         
                         <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8">
                           <span className="text-[13px] font-medium text-gray-400 uppercase tracking-wider whitespace-pre-line min-w-[140px] leading-relaxed">
