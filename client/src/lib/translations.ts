@@ -161,7 +161,7 @@ export const projectTranslations = {
       category: "DEFI",
       role: "DESIGN LEAD",
       title: "Glacis Labs",
-      description: "Экосистема DeFi продуктов для работы с cross-chain операциями. Здесь я разработала дизайн всего с нуля: dApp, сайт, сложные виджеты, питч деки и схемы."
+      description: "Экосистема DeFi продуктов для работы с cross-chain операциями. Сформировала дизайн-направление проекта и собрала dApp, сайт, сложные виджеты, питч деки и схемы."
     },
     {
       id: 2,
