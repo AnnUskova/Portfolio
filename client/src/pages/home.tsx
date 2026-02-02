@@ -278,13 +278,13 @@ export default function Home() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.4 }}
-                    className="flex-1 flex flex-col justify-center"
+                    className="h-[200px] flex flex-col justify-center"
                   >
                     <h3 className="text-5xl font-medium mb-6 tracking-tight" data-testid="text-project-title">
                       {projects[activeProject].title}
                     </h3>
                     
-                    <p className="text-gray-500 leading-[1.6] mb-12 text-lg max-w-[320px]" data-testid="text-project-description">
+                    <p className="text-gray-500 leading-[1.6] text-lg max-w-[320px]" data-testid="text-project-description">
                       {projects[activeProject].description}
                     </p>
                   </motion.div>
