@@ -14,6 +14,7 @@ import annaPhoto from "@assets/1046_1_1768336698195.png";
 
 import zeroDeltaImg from "@assets/зеро_дельта_1770041205735.png";
 import xSwapImg from "@assets/image_1770052489389.png";
+import gradientBar from "@assets/image_1770061190853.png";
 
 const projectImages: Record<number, string | null> = {
   1: zeroDeltaImg,
@@ -26,6 +27,7 @@ export default function Home() {
   const [activeProject, setActiveProject] = useState(0);
   const [language, setLanguage] = useState<Language>("en");
   const [contactOpen, setContactOpen] = useState(false);
+  const [experienceOpen, setExperienceOpen] = useState(false);
 
   const t = translations[language];
   const projects = projectTranslations[language];
@@ -363,6 +365,76 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </section>
+
+      <section className="relative">
+        <button
+          onClick={() => setExperienceOpen(!experienceOpen)}
+          className="w-full relative h-32 flex items-center justify-center overflow-hidden group transition-all duration-500"
+          style={{ 
+            backgroundColor: experienceOpen ? '#F9F9F9' : 'transparent'
+          }}
+        >
+          {!experienceOpen && (
+            <div className="absolute inset-0 z-0">
+              <img src={gradientBar} className="w-full h-full object-cover opacity-80" alt="" />
+            </div>
+          )}
+          <div className="relative z-10 flex items-center gap-3 text-lg font-medium transition-transform group-hover:scale-105">
+            {t.experience.toggle}
+            <motion.div
+              animate={{ rotate: experienceOpen ? 180 : 0 }}
+              transition={{ duration: 0.3 }}
+              className="flex items-center"
+            >
+              <ChevronRight className="w-5 h-5 rotate-90" />
+            </motion.div>
+          </div>
+        </button>
+
+        <AnimatePresence>
+          {experienceOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="overflow-hidden bg-[#F9F9F9]"
+            >
+              <div className="max-w-7xl mx-auto px-6 lg:px-12 py-24 flex justify-center">
+                <div className="relative w-full max-w-2xl">
+                  {/* Timeline Line */}
+                  <div className="absolute left-[7px] top-2 bottom-2 w-[1px] bg-gray-200" />
+                  
+                  <div className="space-y-16">
+                    {t.experience.items.map((item, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                        className="relative pl-12"
+                      >
+                        {/* Diamond Marker */}
+                        <div className="absolute left-0 top-[10px] w-4 h-4 bg-white border border-gray-300 rotate-45 z-10" />
+                        
+                        <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8">
+                          <span className="text-sm font-mono text-gray-400 uppercase tracking-widest whitespace-nowrap min-w-[140px]">
+                            {item.year}
+                          </span>
+                          <div>
+                            <h3 className="text-2xl font-medium mb-1">{item.company}</h3>
+                            <p className="text-gray-500">{item.role}</p>
+                          </div>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </section>
 
       <section className="py-24 lg:py-32 bg-black text-white">

@@ -45,6 +45,15 @@ export const translations = {
         email: "Email"
       }
     },
+    experience: {
+      toggle: "View work experience",
+      items: [
+        { year: "2024 — Present", company: "Glacis Labs", role: "Design Lead" },
+        { year: "2023 — 2024", company: "xSwap", role: "Senior Product Designer" },
+        { year: "2021 — 2023", company: "SKIZI (Market Council)", role: "Product Designer" },
+        { year: "2018 — 2021", company: "Freelance", role: "UX/UI Designer" }
+      ]
+    },
     projectsPage: {
       title: "Projects",
       subtitle: "A collection of high-load systems, DeFi protocols, and digital products I've shaped over the years.",
@@ -103,6 +112,15 @@ export const translations = {
         instagram: "Инстаграм",
         email: "Почта"
       }
+    },
+    experience: {
+      toggle: "Посмотреть места работы",
+      items: [
+        { year: "2024 — Наст. время", company: "Glacis Labs", role: "Design Lead" },
+        { year: "2023 — 2024", company: "xSwap", role: "Senior Product Designer" },
+        { year: "2021 — 2023", company: "СКИЗИ (Совет Рынка)", role: "Product Designer" },
+        { year: "2018 — 2021", company: "Фриланс", role: "UX/UI Designer" }
+      ]
     },
     projectsPage: {
       title: "Проекты",
