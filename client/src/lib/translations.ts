@@ -48,10 +48,15 @@ export const translations = {
     experience: {
       toggle: "View work experience",
       items: [
-        { year: "2024 — Present", company: "Glacis Labs", role: "Design Lead" },
-        { year: "2023 — 2024", company: "xSwap", role: "Senior Product Designer" },
-        { year: "2021 — 2023", company: "SKIZI (Market Council)", role: "Product Designer" },
-        { year: "2018 — 2021", company: "Freelance", role: "UX/UI Designer" }
+        { year: "May 2024 – Present", company: "Glacis Labs", role: "Design Lead" },
+        { year: "Sep 2023 – Sep 2024", company: "Lumos Labs", role: "Design Lead" },
+        { year: "Apr 2023 – Oct 2023", company: "Moonbeam Foundation", role: "UX/UI Designer (freelance)" },
+        { year: "Feb 2022 – Sep 2023", company: "Masterchain", role: "Senior Product Designer" },
+        { year: "Dec 2021 – Feb 2022", company: "EETP, JSC (VTB Group)", role: "Product Designer" },
+        { year: "Jul 2021 – Nov 2021", company: "ITERIUM.TECH", role: "UX/UI Designer (freelance)" },
+        { year: "May 2019 – Jul 2021", company: "Distributed Ledger Technologies Center, SPbU", role: "Product Designer" },
+        { year: "Sep 2018 – Sep 2019", company: "Premium Press", role: "Designer" },
+        { year: "Aug 2018", company: "Hyundai Motor Manufacturing Russia", role: "Designer (Internship)" }
       ]
     },
     projectsPage: {
@@ -116,10 +121,15 @@ export const translations = {
     experience: {
       toggle: "Посмотреть места работы",
       items: [
-        { year: "2024 — Наст. время", company: "Glacis Labs", role: "Design Lead" },
-        { year: "2023 — 2024", company: "xSwap", role: "Senior Product Designer" },
-        { year: "2021 — 2023", company: "СКИЗИ (Совет Рынка)", role: "Product Designer" },
-        { year: "2018 — 2021", company: "Фриланс", role: "UX/UI Designer" }
+        { year: "май 2024 – сейчас", company: "Glacis Labs", role: "Design Lead" },
+        { year: "сентябрь 2023 – сентябрь 2024", company: "Lumos Labs", role: "Design Lead" },
+        { year: "апрель 2023 – октябрь 2023", company: "Moonbeam Foundation", role: "UX/UI дизайнер (freelance)" },
+        { year: "февраль 2022 – сентябрь 2023", company: "Masterchain", role: "Senior Product Designer" },
+        { year: "декабрь 2021 – февраль 2022", company: "Единая электронная торговая площадка, ОАО (группа ВТБ)", role: "Product Designer" },
+        { year: "июль 2021 – ноябрь 2021", company: "ITERIUM.TECH", role: "UX/UI дизайнер (freelance)" },
+        { year: "май 2019 – июль 2021", company: "Центр технологий распределенных реестров СПбГУ", role: "Product Designer" },
+        { year: "сентябрь 2018 – сентябрь 2019", company: "Премиум Пресс", role: "Дизайнер" },
+        { year: "август 2018", company: "Hyundai Motor Manufacturing Russia", role: "Дизайнер (стажировка)" }
       ]
     },
     projectsPage: {
