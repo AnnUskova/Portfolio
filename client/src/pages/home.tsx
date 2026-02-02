@@ -262,7 +262,7 @@ export default function Home() {
               transition={{ duration: 0.5 }}
               className="flex flex-col h-[392px]"
             >
-              <div className="flex-1 pt-4">
+              <div className="flex-1 flex flex-col pt-4">
                 <div className="flex items-center gap-2 text-xs text-gray-400 uppercase tracking-wider mb-14">
                   <span>{projects[activeProject].year}</span>
                   <span className="text-gray-200">/</span>
@@ -273,11 +273,12 @@ export default function Home() {
                 
                 <AnimatePresence mode="wait">
                   <motion.div
-                    key={activeProject}
+                    key={`${activeProject}-${language}`}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.4 }}
+                    className="flex-1 flex flex-col justify-center"
                   >
                     <h3 className="text-5xl font-medium mb-6 tracking-tight" data-testid="text-project-title">
                       {projects[activeProject].title}
