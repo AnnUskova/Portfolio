@@ -138,7 +138,7 @@ export default function ProjectDetail() {
               {project.title}
             </h1>
             
-            <p className="text-lg md:text-xl text-gray-500 leading-relaxed max-w-2xl">
+            <p className="md:text-xl text-gray-500 max-w-2xl text-[18px]">
               {project.description}
             </p>
           </div>
@@ -146,7 +146,7 @@ export default function ProjectDetail() {
 
         {/* Project Content */}
         <section className="px-6 lg:px-12 max-w-7xl mx-auto mb-20">
-          {project.id === 5 && project.content ? (
+          {project.id === 5 && project.content && (
             <div className="max-w-4xl space-y-12 mb-24">
               <div className="p-6 bg-gray-50 rounded-2xl border border-gray-100 text-gray-500 text-[15px] italic">
                 {project.content.nda}
@@ -180,14 +180,6 @@ export default function ProjectDetail() {
                   {project.content.results.text}
                 </div>
               </section>
-            </div>
-          ) : (
-            <div className="aspect-[16/9] rounded-[32px] overflow-hidden bg-gray-100 shadow-xl">
-              <img 
-                src={projectImages[project.id]} 
-                alt={project.title} 
-                className="w-full h-full object-cover"
-              />
             </div>
           )}
         </section>
