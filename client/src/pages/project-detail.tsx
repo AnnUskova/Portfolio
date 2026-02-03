@@ -5,14 +5,21 @@ import { ArrowUpRight, ArrowLeft, X, ChevronRight, Download } from "lucide-react
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { translations, projectTranslations, type Language } from "@/lib/translations";
 
-import glacisImg from "@assets/GLACIS_1768337984889.png";
-import maatImg from "@assets/MAAT_1768337984889.png";
+import glacisImg from "@assets/зеро_дельта_1770041205735.png";
+import xSwapImg from "@assets/image_1770052489389.png";
 import skiziImg from "@assets/SKIZI_1768337984890.png";
 import chefImg from "@assets/AI_Chef_1768337984889.png";
 
+const projectMocks: Record<number, string> = {
+  1: glacisImg,
+  2: xSwapImg,
+  3: skiziImg,
+  4: chefImg
+};
+
 const projectImages: Record<number, string> = {
   1: glacisImg,
-  2: maatImg,
+  2: xSwapImg,
   3: skiziImg,
   4: chefImg
 };
@@ -150,7 +157,7 @@ export default function ProjectDetail() {
 
             <div className="max-w-xl aspect-[16/9] rounded-2xl overflow-hidden bg-gray-100 shadow-sm border border-gray-100 mb-12">
               <img 
-                src={projectImages[project.id]} 
+                src={projectMocks[project.id]} 
                 alt={project.title} 
                 className="w-full h-full object-cover"
               />
