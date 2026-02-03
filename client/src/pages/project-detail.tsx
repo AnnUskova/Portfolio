@@ -132,13 +132,13 @@ export default function ProjectDetail() {
               </h1>
 
               <div className="flex flex-wrap gap-2 items-center translate-y-[8px]">
-                <span className="px-3 py-[6px] bg-white text-indigo-600 rounded-full text-[10px] font-semibold uppercase tracking-wider border border-indigo-100 shadow-[0_2px_10px_-3px_rgba(79,70,229,0.1)] hover:scale-105 transition-transform cursor-default">
+                <span className="px-3 py-[6px] bg-gray-100 rounded-full text-[10px] font-medium text-gray-500 uppercase tracking-wider">
                   {project.year}
                 </span>
-                <span className="px-3 py-[6px] bg-white text-emerald-600 rounded-full text-[10px] font-semibold uppercase tracking-wider border border-emerald-100 shadow-[0_2px_10px_-3px_rgba(16,185,129,0.1)] hover:scale-105 transition-transform cursor-default">
+                <span className="px-3 py-[6px] bg-gray-100 rounded-full text-[10px] font-medium text-gray-500 uppercase tracking-wider">
                   {project.category}
                 </span>
-                <span className="px-3 py-[6px] bg-white text-amber-600 rounded-full text-[10px] font-semibold uppercase tracking-wider border border-amber-100 shadow-[0_2px_10px_-3px_rgba(245,158,11,0.1)] hover:scale-105 transition-transform cursor-default">
+                <span className="px-3 py-[6px] bg-gray-100 rounded-full text-[10px] font-medium text-gray-500 uppercase tracking-wider">
                   {project.role}
                 </span>
               </div>
