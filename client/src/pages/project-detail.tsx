@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useRoute } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, ArrowLeft, X, ChevronRight, Download, Info } from "lucide-react";
+import { ArrowUpRight, ArrowLeft, X, ChevronRight, Download, Zap } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { translations, projectTranslations, type Language } from "@/lib/translations";
 
@@ -155,12 +155,10 @@ export default function ProjectDetail() {
                 <div className="md:ml-auto relative">
                   <button 
                     onClick={() => setTldrOpen(!tldrOpen)}
-                    className="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-100 bg-white shadow-sm hover:shadow-md transition-all duration-300 group"
+                    className="flex items-center gap-3 px-6 py-3 rounded-full bg-black text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 group"
                   >
-                    <div className="w-5 h-5 rounded-full bg-black text-white flex items-center justify-center">
-                      <span className="text-[10px] font-bold">!</span>
-                    </div>
-                    <span className="text-sm font-medium">TL;DR</span>
+                    <Zap className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                    <span className="text-base font-bold tracking-tight">TL;DR</span>
                   </button>
 
                   <AnimatePresence>
@@ -169,23 +167,23 @@ export default function ProjectDetail() {
                         initial={{ opacity: 0, y: 10, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                        className="absolute right-0 top-14 w-[320px] md:w-[480px] bg-white rounded-3xl p-8 shadow-2xl border border-gray-100 z-50"
+                        className="absolute right-0 top-16 w-[320px] md:w-[480px] bg-white rounded-[32px] p-10 shadow-2xl border border-gray-100 z-50"
                       >
-                        <div className="flex items-start justify-between mb-6">
-                          <div className="flex items-center gap-3">
-                            <div className="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center">
-                              <span className="text-[11px] font-bold">!</span>
+                        <div className="flex items-start justify-between mb-8">
+                          <div className="flex items-center gap-4">
+                            <div className="w-10 h-10 rounded-2xl bg-gray-50 flex items-center justify-center">
+                              <Zap className="w-6 h-6 fill-yellow-400 text-yellow-400" />
                             </div>
-                            <h4 className="font-medium text-lg">TL;DR Summary</h4>
+                            <h4 className="font-bold text-2xl tracking-tight">Quick Summary</h4>
                           </div>
                           <button 
                             onClick={() => setTldrOpen(false)}
-                            className="p-1 hover:bg-gray-100 rounded-full transition-colors"
+                            className="w-10 h-10 flex items-center justify-center hover:bg-gray-100 rounded-full transition-colors"
                           >
-                            <X className="w-5 h-5" />
+                            <X className="w-6 h-6" />
                           </button>
                         </div>
-                        <p className="text-[15px] leading-relaxed text-gray-600">
+                        <p className="text-[18px] leading-relaxed text-gray-600">
                           xSwap — AMM dApp на CrossFi. За 1 месяц собрала UX/UI для Swap, Pools, Token Sale и Lock/Voting, координировала фронт, работала в связке с solidity. Сделала интерфейс, который не пугает: slippage и прозрачный Route в swap, понятные liquidity-пулы с multi-step подсказками, Token Sale с Profit Estimator и видеогайдами, плюс сложный Lock/Voting — с продуманными корнер-кейсами и состояниями транзакций.
                         </p>
                       </motion.div>
