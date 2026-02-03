@@ -66,7 +66,6 @@ export default function ProjectDetail() {
           </div>
         </div>
       </nav>
-
       <AnimatePresence>
         {contactOpen && (
           <motion.div
@@ -118,7 +117,6 @@ export default function ProjectDetail() {
           </motion.div>
         )}
       </AnimatePresence>
-
       <main className="pt-24 lg:pt-32">
         {/* Hero Section */}
         <section className="px-6 lg:px-12 max-w-7xl mx-auto mb-12">
@@ -136,7 +134,7 @@ export default function ProjectDetail() {
               <span>{project.role}</span>
             </div>
             
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight mb-6" style={{ lineHeight: '110%' }}>
+            <h1 className="md:text-5xl lg:text-6xl font-medium tracking-tight mb-6 text-[48px]" style={{ lineHeight: '110%' }}>
               {project.title}
             </h1>
             
@@ -209,7 +207,6 @@ export default function ProjectDetail() {
           </div>
         </section>
       </main>
-
       <footer className="py-12 border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-8">
           <p className="text-[15px] text-gray-400">{t.footer.copyright}</p>
