@@ -125,13 +125,13 @@ export default function ProjectDetail() {
             <span className="text-sm font-medium">{t.projectsPage.backToProjects}</span>
           </Link>
 
-          <div className="max-w-4xl">
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8">
+          <div className="w-full">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8 w-full">
               <h1 className="md:text-5xl lg:text-6xl font-medium tracking-tight text-[40px] md:text-[48px] leading-[1.1]" style={{ lineHeight: '110%' }}>
                 {project.title}
               </h1>
 
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 md:mb-2">
                 <span className="px-3 py-1 bg-gray-100 rounded-full text-[12px] font-medium text-gray-500 uppercase tracking-wider">
                   {project.year}
                 </span>
