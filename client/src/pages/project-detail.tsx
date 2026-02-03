@@ -131,7 +131,7 @@ export default function ProjectDetail() {
                 {project.title}
               </h1>
 
-              <div className="flex flex-wrap gap-2 items-center">
+              <div className="flex flex-wrap gap-2 items-center translate-y-[4px]">
                 <span className="px-3 py-[6px] bg-gray-100 rounded-full text-[10px] font-medium text-gray-500 uppercase tracking-wider">
                   {project.year}
                 </span>
