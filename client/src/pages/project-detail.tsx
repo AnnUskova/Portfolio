@@ -228,6 +228,83 @@ export default function ProjectDetail() {
                 </ul>
               </div>
             )}
+
+            {project.id === 2 && (
+              <div className="max-w-4xl space-y-20 pb-20">
+                <section>
+                  <h2 className="text-3xl font-medium mb-8">Решения по фичам</h2>
+                  
+                  <div className="space-y-12">
+                    <div className="space-y-6">
+                      <h3 className="text-xl font-medium flex items-center gap-3">
+                        <span className="text-gray-300 font-mono text-xs">01</span>
+                        Swap: slippage + “Faucet” + прозрачность маршрута
+                      </h3>
+                      <div className="grid md:grid-cols-2 gap-8">
+                        <div className="space-y-4">
+                          <h4 className="font-medium text-gray-900">Slippage</h4>
+                          <p className="text-gray-600 leading-relaxed">
+                            Сделала выбор slippage с быстрыми пресетами и возможностью кастомного значения — чтобы новичку было просто, а опытному достаточно контроля.
+                          </p>
+                        </div>
+                        <div className="space-y-4">
+                          <h4 className="font-medium text-gray-900">Faucet для XFI</h4>
+                          <p className="text-gray-600 leading-relaxed">
+                            Встроенный Faucet внутри интерфейса позволяет получить токены для газа прямо на месте, убирая главный фрикшн и снижая отток пользователей.
+                          </p>
+                        </div>
+                      </div>
+                      <div className="p-6 bg-gray-50 rounded-2xl border border-gray-100 italic text-gray-500 text-sm">
+                        “Прозрачность маршрута: объясняем логику, газ и оптимизацию, чтобы убрать ‘чёрный ящик’.”
+                      </div>
+                    </div>
+
+                    <div className="space-y-6">
+                      <h3 className="text-xl font-medium flex items-center gap-3">
+                        <span className="text-gray-300 font-mono text-xs">02</span>
+                        Pools: “My positions” vs “All pools”
+                      </h3>
+                      <p className="text-gray-600 leading-relaxed">
+                        Разделила интерфейс на два слоя: управление текущими активами и витрина для выбора. Это ускоряет повторные действия и не перегружает страницу лишней информацией.
+                      </p>
+                    </div>
+
+                    <div className="space-y-6">
+                      <h3 className="text-xl font-medium flex items-center gap-3">
+                        <span className="text-gray-300 font-mono text-xs">03</span>
+                        Token Sale: Profit Estimator & Guides
+                      </h3>
+                      <p className="text-gray-600 leading-relaxed">
+                        Добавила калькулятор доходности и видео-гайды для снижения барьера входа. Это помогает пользователю быстро понять выгоду и разобраться в процессе без обращения в саппорт.
+                      </p>
+                      <div className="p-6 bg-gray-50 rounded-2xl border border-gray-100 italic text-gray-500 text-sm">
+                        “Снижение барьера входа: Profit Estimator + видеогайды для новичков.”
+                      </div>
+                    </div>
+
+                    <div className="space-y-6">
+                      <h3 className="text-xl font-medium flex items-center gap-3">
+                        <span className="text-gray-300 font-mono text-xs">04</span>
+                        Lock + Voting: Сложные механики
+                      </h3>
+                      <p className="text-gray-600 leading-relaxed">
+                        Разложила механику ve-токеномики на понятные сущности. Спроектировала сценарии голосования с наглядным расчетом влияния на доходность (APY) и сетевые затраты.
+                      </p>
+                      <div className="p-6 bg-gray-50 rounded-2xl border border-gray-100 italic text-gray-500 text-sm">
+                        “Голосование как продуктовый инструмент: показываем влияние на APY и стоимость транзакции.”
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <section className="bg-black text-white p-10 rounded-[32px]">
+                  <h2 className="text-sm font-medium mb-6 uppercase tracking-widest text-gray-500">Main screen = short onboarding</h2>
+                  <p className="text-xl leading-relaxed">
+                    Я спроектировала главную как навигационный хаб: быстро вводит в механику (swap/pools/rewards/token sale) и помогает выбрать следующий шаг без чтения документации.
+                  </p>
+                </section>
+              </div>
+            )}
           </div>
         </section>
 
