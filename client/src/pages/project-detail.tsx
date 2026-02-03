@@ -157,7 +157,7 @@ export default function ProjectDetail() {
                     onClick={() => setTldrOpen(!tldrOpen)}
                     className="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-100 bg-white shadow-sm hover:bg-gray-50 transition-all duration-300 group"
                   >
-                    <Zap className="w-4 h-4 text-yellow-500" />
+                    <Zap className="w-4 h-4 text-yellow-500 fill-yellow-500" />
                     <span className="text-sm font-medium text-gray-600">TL;DR</span>
                   </button>
 
@@ -172,7 +172,7 @@ export default function ProjectDetail() {
                         <div className="flex items-start justify-between mb-6">
                           <div className="flex items-center gap-3">
                             <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center">
-                              <Zap className="w-4 h-4 text-yellow-500" />
+                              <Zap className="w-4 h-4 text-yellow-500 fill-yellow-500" />
                             </div>
                             <h4 className="font-medium text-lg">Quick Summary</h4>
                           </div>
