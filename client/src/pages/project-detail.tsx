@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useRoute } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, ArrowLeft, X, ChevronRight, Download } from "lucide-react";
+import { ArrowUpRight, ArrowLeft, X, ChevronRight, Download, Info } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { translations, projectTranslations, type Language } from "@/lib/translations";
 
@@ -29,6 +29,7 @@ export default function ProjectDetail() {
   const id = params?.id ? parseInt(params.id) : 1;
   const [language, setLanguage] = useState<Language>("en");
   const [contactOpen, setContactOpen] = useState(false);
+  const [tldrOpen, setTldrOpen] = useState(false);
 
   const t = translations[language];
   const projects = projectTranslations[language];
@@ -133,7 +134,7 @@ export default function ProjectDetail() {
           </Link>
 
           <div className="w-full">
-            <div className="flex flex-col md:flex-row md:items-center gap-9 mb-8 w-full">
+            <div className="flex flex-col md:flex-row md:items-center gap-9 mb-8 w-full relative">
               <h1 className="md:text-5xl lg:text-6xl font-medium tracking-tight text-[40px] md:text-[48px] leading-[1.1]" style={{ lineHeight: '110%' }}>
                 {project.title}
               </h1>
@@ -149,6 +150,49 @@ export default function ProjectDetail() {
                   {project.role}
                 </span>
               </div>
+
+              {project.id === 2 && (
+                <div className="md:ml-auto relative">
+                  <button 
+                    onClick={() => setTldrOpen(!tldrOpen)}
+                    className="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-100 bg-white shadow-sm hover:shadow-md transition-all duration-300 group"
+                  >
+                    <div className="w-5 h-5 rounded-full bg-black text-white flex items-center justify-center">
+                      <span className="text-[10px] font-bold">!</span>
+                    </div>
+                    <span className="text-sm font-medium">TL;DR</span>
+                  </button>
+
+                  <AnimatePresence>
+                    {tldrOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                        className="absolute right-0 top-14 w-[320px] md:w-[480px] bg-white rounded-3xl p-8 shadow-2xl border border-gray-100 z-50"
+                      >
+                        <div className="flex items-start justify-between mb-6">
+                          <div className="flex items-center gap-3">
+                            <div className="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center">
+                              <span className="text-[11px] font-bold">!</span>
+                            </div>
+                            <h4 className="font-medium text-lg">TL;DR Summary</h4>
+                          </div>
+                          <button 
+                            onClick={() => setTldrOpen(false)}
+                            className="p-1 hover:bg-gray-100 rounded-full transition-colors"
+                          >
+                            <X className="w-5 h-5" />
+                          </button>
+                        </div>
+                        <p className="text-[15px] leading-relaxed text-gray-600">
+                          xSwap — AMM dApp на CrossFi. За 1 месяц собрала UX/UI для Swap, Pools, Token Sale и Lock/Voting, координировала фронт, работала в связке с solidity. Сделала интерфейс, который не пугает: slippage и прозрачный Route в swap, понятные liquidity-пулы с multi-step подсказками, Token Sale с Profit Estimator и видеогайдами, плюс сложный Lock/Voting — с продуманными корнер-кейсами и состояниями транзакций.
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              )}
             </div>
             
             <p className="md:text-xl text-gray-500 max-w-2xl text-[18px] leading-relaxed mb-12">
