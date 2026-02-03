@@ -155,7 +155,7 @@ export default function ProjectDetail() {
               {project.description}
             </p>
 
-            <div className="max-w-xl aspect-[16/9] rounded-2xl overflow-hidden bg-gray-100 shadow-sm border border-gray-100 mb-12">
+            <div className="max-w-2xl aspect-[16/9] rounded-2xl overflow-hidden bg-gray-100 shadow-sm border border-gray-100 mb-12">
               <img 
                 src={projectMocks[project.id]} 
                 alt={project.title} 
