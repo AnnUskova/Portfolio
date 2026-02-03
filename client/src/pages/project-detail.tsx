@@ -208,9 +208,7 @@ export default function ProjectDetail() {
             {project.id === 2 && (
               <div className="max-w-4xl mb-20">
                 <h2 className="text-2xl font-medium mb-6">Контекст и продуктовые вызовы</h2>
-                <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                  DeFi-интерфейсы — это зона высокого риска: ошибка стоит денег, а непонимание механики быстро превращается в недоверие. В этом проекте я решала четыре ключевые задачи:
-                </p>
+                <p className="text-lg text-gray-600 leading-relaxed mb-8">DeFi-интерфейсы — это зона высокого риска: ошибка стоит денег, а непонимание механики быстро превращается в недоверие. Поэтому важно было:</p>
                 <ul className="space-y-4">
                   {[
                     "Снизить тревожность и вероятность ошибок при транзакциях (approval, slippage, комиссии, газ, статусы).",
