@@ -206,6 +206,28 @@ export default function ProjectDetail() {
                 className="w-full h-full object-cover"
               />
             </div>
+
+            {project.id === 2 && (
+              <div className="max-w-4xl mb-20">
+                <h2 className="text-2xl font-medium mb-6">Контекст и продуктовые вызовы</h2>
+                <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                  DeFi-интерфейсы — это зона высокого риска: ошибка стоит денег, а непонимание механики быстро превращается в недоверие. В этом проекте я решала четыре ключевые задачи:
+                </p>
+                <ul className="space-y-4">
+                  {[
+                    "Снизить тревожность и вероятность ошибок при транзакциях (approval, slippage, комиссии, газ, статусы).",
+                    "Сделать сложные механики прозрачными для опытных пользователей (route, pool address, детали расчетов).",
+                    "Не терять новичков на онбординге, особенно в сетевой “боли” (нужен XFI для газа).",
+                    "Поддержать маркетинговые цели, не ломая продукт (token sale, стимулы, объяснение “как это работает”)."
+                  ].map((item, i) => (
+                    <li key={i} className="flex gap-4 text-lg text-gray-600 leading-relaxed">
+                      <span className="text-black font-medium">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </section>
 
