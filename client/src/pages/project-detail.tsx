@@ -126,17 +126,23 @@ export default function ProjectDetail() {
           </Link>
 
           <div className="max-w-4xl">
-            <div className="flex items-center gap-3 text-[12px] text-gray-400 uppercase tracking-widest mb-4">
-              <span>{project.year}</span>
-              <span className="w-1 h-1 rounded-full bg-gray-300" />
-              <span>{project.category}</span>
-              <span className="w-1 h-1 rounded-full bg-gray-300" />
-              <span>{project.role}</span>
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8">
+              <h1 className="md:text-5xl lg:text-6xl font-medium tracking-tight text-[40px] md:text-[48px] leading-[1.1]" style={{ lineHeight: '110%' }}>
+                {project.title}
+              </h1>
+
+              <div className="flex flex-wrap gap-2">
+                <span className="px-3 py-1 bg-gray-100 rounded-full text-[12px] font-medium text-gray-500 uppercase tracking-wider">
+                  {project.year}
+                </span>
+                <span className="px-3 py-1 bg-gray-100 rounded-full text-[12px] font-medium text-gray-500 uppercase tracking-wider">
+                  {project.category}
+                </span>
+                <span className="px-3 py-1 bg-gray-100 rounded-full text-[12px] font-medium text-gray-500 uppercase tracking-wider">
+                  {project.role}
+                </span>
+              </div>
             </div>
-            
-            <h1 className="md:text-5xl lg:text-6xl font-medium tracking-tight mb-6 text-[48px]" style={{ lineHeight: '110%' }}>
-              {project.title}
-            </h1>
             
             <p className="md:text-xl text-gray-500 max-w-2xl text-[18px] leading-relaxed">
               {project.description}
