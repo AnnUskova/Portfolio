@@ -126,25 +126,27 @@ export default function ProjectDetail() {
           </Link>
 
           <div className="w-full">
-            <h1 className="md:text-5xl lg:text-6xl font-medium tracking-tight text-[40px] md:text-[48px] leading-[1.1] mb-8" style={{ lineHeight: '110%' }}>
-              {project.title}
-            </h1>
+            <div className="flex flex-col md:flex-row md:items-center gap-9 mb-8 w-full">
+              <h1 className="md:text-5xl lg:text-6xl font-medium tracking-tight text-[40px] md:text-[48px] leading-[1.1]" style={{ lineHeight: '110%' }}>
+                {project.title}
+              </h1>
+
+              <div className="flex flex-wrap gap-2 items-center">
+                <span className="px-3 py-[6px] bg-gray-100 rounded-full text-[10px] font-medium text-gray-500 uppercase tracking-wider">
+                  {project.year}
+                </span>
+                <span className="px-3 py-[6px] bg-gray-100 rounded-full text-[10px] font-medium text-gray-500 uppercase tracking-wider">
+                  {project.category}
+                </span>
+                <span className="px-3 py-[6px] bg-gray-100 rounded-full text-[10px] font-medium text-gray-500 uppercase tracking-wider">
+                  {project.role}
+                </span>
+              </div>
+            </div>
             
-            <p className="md:text-xl text-gray-500 max-w-2xl text-[18px] leading-relaxed mb-8">
+            <p className="md:text-xl text-gray-500 max-w-2xl text-[18px] leading-relaxed">
               {project.description}
             </p>
-
-            <div className="flex flex-wrap gap-2">
-              <span className="px-3 py-[6px] bg-gray-100 rounded-full text-[10px] font-medium text-gray-500 uppercase tracking-wider">
-                {project.year}
-              </span>
-              <span className="px-3 py-[6px] bg-gray-100 rounded-full text-[10px] font-medium text-gray-500 uppercase tracking-wider">
-                {project.category}
-              </span>
-              <span className="px-3 py-[6px] bg-gray-100 rounded-full text-[10px] font-medium text-gray-500 uppercase tracking-wider">
-                {project.role}
-              </span>
-            </div>
           </div>
         </section>
 
