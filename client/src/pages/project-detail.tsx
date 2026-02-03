@@ -126,12 +126,12 @@ export default function ProjectDetail() {
           </Link>
 
           <div className="w-full">
-            <div className="flex flex-col md:flex-row md:items-center gap-9 mb-8 w-full">
+            <div className="flex flex-col md:flex-row md:items-baseline gap-9 mb-8 w-full">
               <h1 className="md:text-5xl lg:text-6xl font-medium tracking-tight text-[40px] md:text-[48px] leading-[1.1]" style={{ lineHeight: '110%' }}>
                 {project.title}
               </h1>
 
-              <div className="flex flex-wrap gap-2 items-center">
+              <div className="flex flex-wrap gap-2 items-center translate-y-[-4px]">
                 <span className="px-3 py-[6px] bg-gray-100 rounded-full text-[10px] font-medium text-gray-500 uppercase tracking-wider">
                   {project.year}
                 </span>
