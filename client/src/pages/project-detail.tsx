@@ -138,7 +138,7 @@ export default function ProjectDetail() {
               {project.title}
             </h1>
             
-            <p className="md:text-xl text-gray-500 max-w-2xl text-[18px]">
+            <p className="md:text-xl text-gray-500 max-w-2xl text-[18px] leading-relaxed">
               {project.description}
             </p>
           </div>
