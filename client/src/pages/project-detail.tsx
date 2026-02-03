@@ -132,13 +132,13 @@ export default function ProjectDetail() {
               </h1>
 
               <div className="flex flex-wrap gap-2 items-center translate-y-[8px]">
-                <span className="px-3 py-[6px] bg-gray-100 rounded-full text-[10px] font-medium text-gray-500 uppercase tracking-wider">
+                <span className="px-3 py-[6px] bg-[#F3F8FF] rounded-full text-[10px] font-medium text-gray-500 uppercase tracking-wider">
                   {project.year}
                 </span>
-                <span className="px-3 py-[6px] bg-gray-100 rounded-full text-[10px] font-medium text-gray-500 uppercase tracking-wider">
+                <span className="px-3 py-[6px] bg-[#F3F8FF] rounded-full text-[10px] font-medium text-gray-500 uppercase tracking-wider">
                   {project.category}
                 </span>
-                <span className="px-3 py-[6px] bg-gray-100 rounded-full text-[10px] font-medium text-gray-500 uppercase tracking-wider">
+                <span className="px-3 py-[6px] bg-[#F3F8FF] rounded-full text-[10px] font-medium text-gray-500 uppercase tracking-wider">
                   {project.role}
                 </span>
               </div>
