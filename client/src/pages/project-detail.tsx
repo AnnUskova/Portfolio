@@ -162,7 +162,7 @@ export default function ProjectDetail() {
               <section>
                 <h2 className="text-sm font-medium mb-8 uppercase tracking-wider text-gray-400">{project.content.process.title}</h2>
                 <div className="space-y-8">
-                  {project.content.process.steps.map((step, idx) => (
+                  {project.content.process.steps.map((step: any, idx: number) => (
                     <div key={idx} className="flex gap-4 group">
                       <span className="text-xs font-mono text-gray-300 mt-1.5 flex-shrink-0">0{idx + 1}</span>
                       <div>
