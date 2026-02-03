@@ -155,7 +155,7 @@ export default function ProjectDetail() {
                 <div className="md:ml-auto relative">
                   <button 
                     onClick={() => setTldrOpen(!tldrOpen)}
-                    className="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-100 bg-white shadow-sm hover:bg-gray-50 transition-all duration-300 group"
+                    className="flex items-center gap-2 px-4 py-3 rounded-full border border-gray-100 bg-white shadow-sm hover:bg-gray-50 transition-all duration-300 group"
                   >
                     <Zap className="w-4 h-4 text-yellow-500 fill-yellow-500" />
                     <span className="text-sm font-medium text-gray-600">TL;DR</span>
