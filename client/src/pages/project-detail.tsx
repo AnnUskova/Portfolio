@@ -485,7 +485,6 @@ export default function ProjectDetail() {
                               onClick={() => setSelectedImage("/Add_Liquidity_Showcase.png")}
                             />
                           </div>
-                          <p className="text-sm text-gray-400 mt-4 text-center italic">Процесс добавления ликвидности: степпер, подтверждения и состояния загрузки</p>
                         </div>
                       </div>
                     </div>
