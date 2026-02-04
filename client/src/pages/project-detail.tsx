@@ -492,12 +492,24 @@ export default function ProjectDetail() {
                       </p>
                     </div>
 
-                    <div className="space-y-4">
-                      <p className="font-medium text-black">Отдельный акцент: Add Liquidity как многошаговый процесс без потерь</p>
-                      <p>
-                        Чтобы снизить ошибки в сложном процессе добавления ликвидности, я добавила stepper (понятный прогресс), якоря и подсказки, а также Pool address для опытных пользователей.
-                      </p>
-                    </div>
+                      <div className="space-y-4">
+                        <p className="font-medium text-black">Отдельный акцент: Add Liquidity как многошаговый процесс без потерь</p>
+                        <p>
+                          Добавление ликвидности – это несколько шагов с подтверждениями в кошельке. Я добавила подсказки и степпер, чтобы было понятно, на каком этапе пользователь сейчас. Пока шаг выполняется – все кнопки и поля задизейблены, чтобы избежать ошибок.
+                        </p>
+
+                        <div className="my-12">
+                          <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
+                            <img 
+                              src="/Add_Liquidity_Showcase.png" 
+                              alt="Add Liquidity Stepper and States" 
+                              className="w-full h-auto object-contain cursor-pointer"
+                              onClick={() => setSelectedImage("/Add_Liquidity_Showcase.png")}
+                            />
+                          </div>
+                          <p className="text-sm text-gray-400 mt-4 text-center italic">Процесс добавления ликвидности: степпер, подтверждения и состояния загрузки</p>
+                        </div>
+                      </div>
 
                     <div className="space-y-4">
                       <p className="font-medium text-black">Главная страница: “посадочная внутри продукта”</p>
