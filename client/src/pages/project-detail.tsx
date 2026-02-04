@@ -222,6 +222,39 @@ export default function ProjectDetail() {
                     </li>
                   ))}
                 </ul>
+
+                <div className="mt-16">
+                  <h2 className="text-2xl font-medium mb-8">User Flow и другие лекарства</h2>
+                  <p className="text-[18px] text-gray-600 leading-relaxed mb-12">
+                    Чтобы избежать ошибок, определяю все места, где они могут возникнуть:
+                  </p>
+                  
+                  <div className="relative -mx-6 lg:-mx-12">
+                    <div className="flex overflow-x-auto pb-8 gap-6 px-6 lg:px-12 scrollbar-hide snap-x">
+                      {[
+                        { src: "/attached_assets/image_1770223245841.png", alt: "User Flow Swap" },
+                        { src: "/attached_assets/image_1770223259027.png", alt: "User Flow Pools Add" },
+                        { src: "/attached_assets/image_1770223307137.png", alt: "User Flow Pools Remove" },
+                        { src: "/attached_assets/image_1770223315324.png", alt: "User Flow Token Sale" }
+                      ].map((img, idx) => (
+                        <div key={idx} className="flex-shrink-0 w-[85vw] md:w-[600px] snap-center">
+                          <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
+                            <img 
+                              src={img.src} 
+                              alt={img.alt} 
+                              className="w-full h-auto object-contain"
+                              onError={(e) => {
+                                // Fallback for development if asset path is tricky
+                                console.error("Image failed to load:", img.src);
+                              }}
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="absolute right-0 top-0 bottom-8 w-24 bg-gradient-to-l from-white to-transparent pointer-events-none hidden md:block" />
+                  </div>
+                </div>
               </div>
             )}
 
@@ -289,27 +322,6 @@ export default function ProjectDetail() {
                       <p className="italic">
                         “Main screen = short onboarding.”
                       </p>
-                    </div>
-                  </div>
-                </section>
-
-                <section>
-                  <h2 className="text-2xl font-medium mb-8">User Flow и другие лекарства</h2>
-                  <p className="text-[18px] text-gray-600 leading-relaxed mb-12">
-                    Чтобы избежать ошибок, определяю все места, где они могут возникнуть:
-                  </p>
-                  <div className="space-y-12">
-                    <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
-                      <img src="/attached_assets/image_1770223245841.png" alt="User Flow Swap" className="w-full h-auto" />
-                    </div>
-                    <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
-                      <img src="/attached_assets/image_1770223259027.png" alt="User Flow Pools Add" className="w-full h-auto" />
-                    </div>
-                    <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
-                      <img src="/attached_assets/image_1770223307137.png" alt="User Flow Pools Remove" className="w-full h-auto" />
-                    </div>
-                    <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
-                      <img src="/attached_assets/image_1770223315324.png" alt="User Flow Token Sale" className="w-full h-auto" />
                     </div>
                   </div>
                 </section>
