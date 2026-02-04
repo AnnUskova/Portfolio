@@ -506,6 +506,18 @@ export default function ProjectDetail() {
                       <p>
                         Token Sale должен не только работать технически, но и мотивировать. Я добавила Profit Estimator (калькулятор доходности) и видео-гайды для новичков, чтобы снизить барьера входа и нагрузку на саппорт.
                       </p>
+
+                      <div className="my-12">
+                        <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
+                          <img 
+                            src="/Token_Sale_Showcase.png" 
+                            alt="Token Sale Showcase" 
+                            className="w-full h-auto object-contain cursor-pointer"
+                            onClick={() => setSelectedImage("/Token_Sale_Showcase.png")}
+                          />
+                        </div>
+                      </div>
+
                       <p className="italic">
                         “Снижение барьера входа: Profit Estimator + видеогайды для новичков.”
                       </p>
