@@ -229,8 +229,8 @@ export default function ProjectDetail() {
                     Чтобы избежать ошибок, определяю все места, где они могут возникнуть:
                   </p>
                   
-                  <div className="relative -mx-6 lg:-mx-12">
-                    <div className="flex overflow-x-auto pb-8 gap-6 px-6 lg:px-12 scrollbar-hide snap-x no-scrollbar">
+                  <div className="relative -mr-6 lg:-mr-12">
+                    <div className="flex overflow-x-auto pb-8 gap-6 no-scrollbar snap-x">
                       {[
                         { src: "/Swap_1770223795857.png", alt: "User Flow Swap" },
                         { src: "/Provide_Liquidity_1770223795856.png", alt: "User Flow Pools Add" },
@@ -247,6 +247,8 @@ export default function ProjectDetail() {
                           </div>
                         </div>
                       ))}
+                      {/* Spacer to allow scrolling past the last item to the screen edge */}
+                      <div className="flex-shrink-0 w-6 lg:w-12" />
                     </div>
                   </div>
                 </div>
