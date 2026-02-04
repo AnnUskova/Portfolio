@@ -127,7 +127,6 @@ export default function ProjectDetail() {
           </motion.div>
         )}
       </AnimatePresence>
-
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between h-16">
@@ -390,7 +389,7 @@ export default function ProjectDetail() {
                   
                   <div className="space-y-12 text-[18px] text-gray-600 leading-relaxed">
                     <div className="space-y-4">
-                      <p className="font-medium text-black">Swap: slippage + “Faucet” + прозрачность маршрута</p>
+                      <p className="font-medium text-black">Swap</p>
                       <p>
                         Что было важно: swap — самый частый сценарий, он должен быть быстрым, но безопасным.
                       </p>
