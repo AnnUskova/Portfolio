@@ -40,12 +40,14 @@ export default function ProjectDetail() {
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
+  const [hasMoved, setHasMoved] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
 
   const handleMouseDown = (e: React.MouseEvent) => {
     if (!scrollContainerRef.current) return;
     setIsDragging(true);
+    setHasMoved(false);
     setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
     setScrollLeft(scrollContainerRef.current.scrollLeft);
   };
@@ -63,6 +65,9 @@ export default function ProjectDetail() {
     e.preventDefault();
     const x = e.pageX - scrollContainerRef.current.offsetLeft;
     const walk = (x - startX) * 2;
+    if (Math.abs(walk) > 5) {
+      setHasMoved(true);
+    }
     scrollContainerRef.current.scrollLeft = scrollLeft - walk;
   };
 
@@ -86,14 +91,8 @@ export default function ProjectDetail() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedImage(null)}
-            className="fixed inset-0 z-[200] bg-black/95 backdrop-blur-md flex items-center justify-center p-6 cursor-zoom-out"
+            className="fixed inset-0 z-[200] bg-black/25 backdrop-blur-sm flex items-center justify-center p-6 cursor-pointer"
           >
-            <button 
-              onClick={() => setSelectedImage(null)}
-              className="absolute top-8 right-8 w-12 h-12 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors"
-            >
-              <X className="w-6 h-6" />
-            </button>
             <motion.img
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -101,7 +100,6 @@ export default function ProjectDetail() {
               src={selectedImage}
               alt="Full screen view"
               className="max-w-full max-h-full object-contain rounded-lg"
-              onClick={(e) => e.stopPropagation()}
             />
           </motion.div>
         )}
@@ -303,8 +301,8 @@ export default function ProjectDetail() {
                       ].map((img, idx) => (
                         <div key={idx} className="flex-shrink-0 w-[85vw] md:w-[600px]">
                           <div 
-                            onClick={() => !isDragging && setSelectedImage(img.src)}
-                            className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white cursor-zoom-in"
+                            onClick={() => !hasMoved && setSelectedImage(img.src)}
+                            className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
                           >
                             <img 
                               src={img.src} 
