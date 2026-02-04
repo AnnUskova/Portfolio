@@ -445,8 +445,20 @@ export default function ProjectDetail() {
 
                     <div className="space-y-4">
                       <p className="font-medium text-black">Pools</p>
+                      <p>Пулы я разделила на два блока:</p>
+                      <ul className="space-y-4">
+                        {[
+                          "My positions — управление активными позициями и быстрые действия",
+                          "и All pools — витрина для сравнения и выбора (TVL/APY/объёмы)."
+                        ].map((item, i) => (
+                          <li key={i} className="flex gap-4 text-lg text-gray-600 leading-relaxed">
+                            <span className="text-black font-medium">•</span>
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
                       <p>
-                        Что было важно: пользователь решает две разные задачи: управлять своими позициями (оперативные действия) и изучать куда вложиться (выбор и сравнение). Поэтому я разделила интерфейс на два слоя: My positions — всё про текущие активы и быстрые действия (Add/Remove, Stake/Unstake, Claim rewards), и All pools — витрина для выбора: TVL, APY, объемы и другие метрики в таблице.
+                        Собираю награды я не с каждой позиции отдельно, а со всех сразу, чтобы упростить процесс.
                       </p>
                     </div>
 
