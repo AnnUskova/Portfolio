@@ -391,21 +391,19 @@ export default function ProjectDetail() {
                     <div className="space-y-4">
                       <p className="font-medium text-black">Swap</p>
                       <p>Один из главных флоу – это свап. Пользователь здесь хочет поменять один токен на другой. По устоявшемуся паттерну облегчаем ему жизнь кнопкой «Мах», добавляем кнопку свапа полей, показываем, сколько в кошельке и значение в долларах.</p>
-                      <div className="space-y-2">
+                      <div className="space-y-4">
                         <p>Из нового – правый блок с кнопками:</p>
-                        <ul className="list-none space-y-2 ml-4">
-                          <li className="flex gap-2">
-                            <span className="text-black">•</span>
-                            <span>настройки – это изменение слиппэджа с возможностью ввести кастомное значение;</span>
-                          </li>
-                          <li className="flex gap-2">
-                            <span className="text-black">•</span>
-                            <span>знак вопроса – пояснение, как работает наша (любая) свапалка, с указанием конкретных шагов;</span>
-                          </li>
-                          <li className="flex gap-2">
-                            <span className="text-black">•</span>
-                            <span>и faucet – клейм XFI (нативной валюты сети). Там же объяснили, зачем XFI нужен, и как работает клейм.</span>
-                          </li>
+                        <ul className="space-y-4">
+                          {[
+                            "настройки – это изменение слиппэджа с возможностью ввести кастомное значение;",
+                            "знак вопроса – пояснение, как работает наша (любая) свапалка, с указанием конкретных шагов;",
+                            "и faucet – клейм XFI (нативной валюты сети). Там же объяснили, зачем XFI нужен, и как работает клейм."
+                          ].map((item, i) => (
+                            <li key={i} className="flex gap-4 text-lg text-gray-600 leading-relaxed">
+                              <span className="text-black font-medium">•</span>
+                              <span>{item}</span>
+                            </li>
+                          ))}
                         </ul>
                       </div>
                       <p>
