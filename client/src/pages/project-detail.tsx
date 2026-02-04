@@ -264,7 +264,7 @@ export default function ProjectDetail() {
                       onMouseLeave={handleMouseLeave}
                       onMouseUp={handleMouseUp}
                       onMouseMove={handleMouseMove}
-                      className={`flex overflow-x-auto pb-8 gap-6 no-scrollbar snap-x ${isDragging ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
+                      className={`flex overflow-x-auto pb-8 gap-6 no-scrollbar ${isDragging ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
                     >
                       {[
                         { src: "/Swap_1770223795857.png", alt: "User Flow Swap" },
@@ -272,7 +272,7 @@ export default function ProjectDetail() {
                         { src: "/Remove_Liquidity_1770223795857.png", alt: "User Flow Pools Remove" },
                         { src: "/Token_sale_1770223795858.png", alt: "User Flow Token Sale" }
                       ].map((img, idx) => (
-                        <div key={idx} className="flex-shrink-0 w-[85vw] md:w-[600px] snap-start">
+                        <div key={idx} className="flex-shrink-0 w-[85vw] md:w-[600px]">
                           <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white pointer-events-none">
                             <img 
                               src={img.src} 
