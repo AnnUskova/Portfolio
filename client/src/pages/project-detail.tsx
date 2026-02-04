@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useRoute } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, ArrowLeft, X, ChevronRight, Download, Zap } from "lucide-react";
@@ -36,6 +36,34 @@ export default function ProjectDetail() {
   const projectIndex = projects.findIndex(p => p.id === id);
   const project = projects[projectIndex] || projects[0];
   const nextProject = projects[(projectIndex + 1) % projects.length];
+
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!scrollContainerRef.current) return;
+    setIsDragging(true);
+    setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
+    setScrollLeft(scrollContainerRef.current.scrollLeft);
+  };
+
+  const handleMouseLeave = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !scrollContainerRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainerRef.current.offsetLeft;
+    const walk = (x - startX) * 2;
+    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+  };
 
   const contactData = {
     telegramUrl: "https://t.me/Ann_uskova",
@@ -229,8 +257,15 @@ export default function ProjectDetail() {
                     Чтобы избежать ошибок, определяю все места, где они могут возникнуть:
                   </p>
                   
-                  <div className="relative -mr-6 lg:-mr-12">
-                    <div className="flex overflow-x-auto pb-8 gap-6 no-scrollbar snap-x">
+                  <div className="relative -mr-[calc((100vw-100%)/2+24px)] md:-mr-[calc((100vw-100%)/2+48px)]">
+                    <div 
+                      ref={scrollContainerRef}
+                      onMouseDown={handleMouseDown}
+                      onMouseLeave={handleMouseLeave}
+                      onMouseUp={handleMouseUp}
+                      onMouseMove={handleMouseMove}
+                      className={`flex overflow-x-auto pb-8 gap-6 no-scrollbar snap-x ${isDragging ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
+                    >
                       {[
                         { src: "/Swap_1770223795857.png", alt: "User Flow Swap" },
                         { src: "/Provide_Liquidity_1770223795856.png", alt: "User Flow Pools Add" },
@@ -238,7 +273,7 @@ export default function ProjectDetail() {
                         { src: "/Token_sale_1770223795858.png", alt: "User Flow Token Sale" }
                       ].map((img, idx) => (
                         <div key={idx} className="flex-shrink-0 w-[85vw] md:w-[600px] snap-start">
-                          <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
+                          <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white pointer-events-none">
                             <img 
                               src={img.src} 
                               alt={img.alt} 
@@ -248,7 +283,7 @@ export default function ProjectDetail() {
                         </div>
                       ))}
                       {/* Spacer to allow scrolling past the last item to the screen edge */}
-                      <div className="flex-shrink-0 w-6 lg:w-12" />
+                      <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
                     </div>
                   </div>
                 </div>
