@@ -468,7 +468,6 @@ export default function ProjectDetail() {
                             onClick={() => setSelectedImage("/Pools_UI_Showcase.png")}
                           />
                         </div>
-                        <p className="text-sm text-gray-400 mt-4 text-center italic">Интерфейс Pools: активные позиции и общий список пулов</p>
                       </div>
                     </div>
 
