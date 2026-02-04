@@ -223,32 +223,30 @@ export default function ProjectDetail() {
                   ))}
                 </ul>
 
-                <div className="mt-16 w-screen relative left-1/2 right-1/2 -ml-[50vw] mr-[50vw]">
-                  <h2 className="text-2xl font-medium mb-8 px-6 lg:px-12 max-w-7xl mx-auto">User Flow и другие лекарства</h2>
-                  <p className="text-[18px] text-gray-600 leading-relaxed mb-12 px-6 lg:px-12 max-w-7xl mx-auto">
+                <div className="mt-16">
+                  <h2 className="text-2xl font-medium mb-8">User Flow и другие лекарства</h2>
+                  <p className="text-[18px] text-gray-600 leading-relaxed mb-12">
                     Чтобы избежать ошибок, определяю все места, где они могут возникнуть:
                   </p>
                   
-                  <div className="relative w-full">
-                    <div className="flex overflow-x-auto pb-12 gap-6 px-6 lg:px-12 no-scrollbar snap-x cursor-grab active:cursor-grabbing">
+                  <div className="relative -mx-6 lg:-mx-12">
+                    <div className="flex overflow-x-auto pb-8 gap-6 px-6 lg:px-12 scrollbar-hide snap-x no-scrollbar">
                       {[
                         { src: "/Swap_1770223795857.png", alt: "User Flow Swap" },
                         { src: "/Provide_Liquidity_1770223795856.png", alt: "User Flow Pools Add" },
                         { src: "/Remove_Liquidity_1770223795857.png", alt: "User Flow Pools Remove" },
                         { src: "/Token_sale_1770223795858.png", alt: "User Flow Token Sale" }
                       ].map((img, idx) => (
-                        <div key={idx} className="flex-shrink-0 w-[85vw] md:w-[700px] snap-start">
-                          <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white select-none">
+                        <div key={idx} className="flex-shrink-0 w-[85vw] md:w-[600px] snap-start">
+                          <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
                             <img 
                               src={img.src} 
                               alt={img.alt} 
-                              className="w-full h-auto object-contain pointer-events-none"
+                              className="w-full h-auto object-contain"
                             />
                           </div>
                         </div>
                       ))}
-                      {/* Spacer to allow scrolling past the last item */}
-                      <div className="flex-shrink-0 w-6 md:w-12 h-1" />
                     </div>
                   </div>
                 </div>
