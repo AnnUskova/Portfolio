@@ -493,7 +493,7 @@ export default function ProjectDetail() {
                     </div>
 
                       <div className="space-y-4">
-                        <p className="font-medium text-black">Отдельный акцент: Add Liquidity как многошаговый процесс без потерь</p>
+                        <p className="font-medium text-black">Add/Remove liquidity</p>
                         <p>
                           Добавление ликвидности – это несколько шагов с подтверждениями в кошельке. Я добавила подсказки и степпер, чтобы было понятно, на каком этапе пользователь сейчас. Пока шаг выполняется – все кнопки и поля задизейблены, чтобы избежать ошибок.
                         </p>
