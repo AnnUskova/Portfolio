@@ -418,6 +418,15 @@ export default function ProjectDetail() {
                       <p>
                         Встроенный Faucet закрывает критичную точку оттока: пользователь не уходит из продукта, чтобы найти XFI для газа, и быстрее проходит первый swap.
                       </p>
+
+                      <div className="my-12 rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
+                        <img 
+                          src="/Features_Showcase.png" 
+                          alt="Features Showcase" 
+                          className="w-full h-auto object-contain cursor-pointer"
+                          onClick={() => setSelectedImage("/Features_Showcase.png")}
+                        />
+                      </div>
                     </div>
 
                     <div className="space-y-4">
