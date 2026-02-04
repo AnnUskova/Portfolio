@@ -327,6 +327,42 @@ export default function ProjectDetail() {
                       <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
                     </div>
                   </div>
+
+                  <p className="text-[18px] text-gray-600 leading-relaxed mt-16 mb-12">
+                    И дальше согласуем механики с solidity и фронтом. Вот пара черновых схем — здесь staking/locking, связи между сущностями и немного токен сейла.
+                  </p>
+
+                  <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))]">
+                    <div 
+                      ref={scrollContainerRef}
+                      onMouseDown={handleMouseDown}
+                      onMouseLeave={handleMouseLeave}
+                      onMouseUp={handleMouseUp}
+                      onMouseMove={handleMouseMove}
+                      className={`flex overflow-x-auto pb-8 gap-6 no-scrollbar ${isDragging ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
+                    >
+                      {[
+                        { src: "/Стейкинг_1770225847021.png", alt: "Draft Staking" },
+                        { src: "/Соответствия_1770225847020.png", alt: "Draft Relations" },
+                        { src: "/Токен_сейл_1770225847021.png", alt: "Draft Token Sale" }
+                      ].map((img, idx) => (
+                        <div key={idx} className="flex-shrink-0 w-[85vw] md:w-[600px]">
+                          <div 
+                            onClick={() => !hasMoved && setSelectedImage(img.src)}
+                            className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+                          >
+                            <img 
+                              src={img.src} 
+                              alt={img.alt} 
+                              className="w-full h-auto object-contain pointer-events-none"
+                            />
+                          </div>
+                        </div>
+                      ))}
+                      {/* Spacer to allow scrolling past the last item to the screen edge */}
+                      <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
+                    </div>
+                  </div>
                 </div>
               </div>
             )}
