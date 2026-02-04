@@ -229,15 +229,15 @@ export default function ProjectDetail() {
                     Чтобы избежать ошибок, определяю все места, где они могут возникнуть:
                   </p>
                   
-                  <div className="relative">
-                    <div className="flex overflow-x-auto pb-8 gap-6 scrollbar-hide snap-x">
+                  <div className="relative -mx-6 lg:-mx-12">
+                    <div className="flex overflow-x-auto pb-8 gap-6 px-6 lg:px-12 scrollbar-hide snap-x no-scrollbar">
                       {[
                         { src: "/Swap_1770223795857.png", alt: "User Flow Swap" },
                         { src: "/Provide_Liquidity_1770223795856.png", alt: "User Flow Pools Add" },
                         { src: "/Remove_Liquidity_1770223795857.png", alt: "User Flow Pools Remove" },
                         { src: "/Token_sale_1770223795858.png", alt: "User Flow Token Sale" }
                       ].map((img, idx) => (
-                        <div key={idx} className="flex-shrink-0 w-[85vw] md:w-[800px] snap-start">
+                        <div key={idx} className="flex-shrink-0 w-[85vw] md:w-[600px] snap-start">
                           <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
                             <img 
                               src={img.src} 
