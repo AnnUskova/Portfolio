@@ -292,6 +292,27 @@ export default function ProjectDetail() {
                     </div>
                   </div>
                 </section>
+
+                <section>
+                  <h2 className="text-2xl font-medium mb-8">User Flow и другие лекарства</h2>
+                  <p className="text-[18px] text-gray-600 leading-relaxed mb-12">
+                    Чтобы избежать ошибок, определяю все места, где они могут возникнуть:
+                  </p>
+                  <div className="space-y-12">
+                    <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
+                      <img src="/attached_assets/image_1770223245841.png" alt="User Flow Swap" className="w-full h-auto" />
+                    </div>
+                    <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
+                      <img src="/attached_assets/image_1770223259027.png" alt="User Flow Pools Add" className="w-full h-auto" />
+                    </div>
+                    <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
+                      <img src="/attached_assets/image_1770223307137.png" alt="User Flow Pools Remove" className="w-full h-auto" />
+                    </div>
+                    <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
+                      <img src="/attached_assets/image_1770223315324.png" alt="User Flow Token Sale" className="w-full h-auto" />
+                    </div>
+                  </div>
+                </section>
               </div>
             )}
           </div>
