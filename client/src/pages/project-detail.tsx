@@ -446,7 +446,7 @@ export default function ProjectDetail() {
                     </div>
 
                     <div className="space-y-4">
-                      <p className="font-medium text-black">Pools: “My positions” vs “All pools” + staking/unstaking</p>
+                      <p className="font-medium text-black">Pools</p>
                       <p>
                         Что было важно: пользователь решает две разные задачи: управлять своими позициями (оперативные действия) и изучать куда вложиться (выбор и сравнение). Поэтому я разделила интерфейс на два слоя: My positions — всё про текущие активы и быстрые действия (Add/Remove, Stake/Unstake, Claim rewards), и All pools — витрина для выбора: TVL, APY, объемы и другие метрики в таблице.
                       </p>
