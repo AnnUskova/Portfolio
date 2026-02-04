@@ -284,7 +284,7 @@ export default function ProjectDetail() {
             </div>
 
             {project.id === 2 && (
-              <div className="max-w-4xl mb-20">
+              <div className="max-w-[calc(56rem-80px)] mb-20">
                 <h2 className="text-2xl font-medium mb-6">Контекст и продуктовые вызовы</h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">DeFi-интерфейсы — это зона высокого риска: ошибка стоит денег, а непонимание механики быстро превращается в недоверие. Поэтому важно было:</p>
                 <ul className="space-y-4">
@@ -384,7 +384,7 @@ export default function ProjectDetail() {
             )}
 
             {project.id === 2 && (
-              <div className="max-w-4xl space-y-12 pb-20">
+              <div className="max-w-[calc(56rem-80px)] space-y-12 pb-20">
                 <section>
                   <h2 className="text-2xl font-medium mb-8">Решения по фичам</h2>
                   
