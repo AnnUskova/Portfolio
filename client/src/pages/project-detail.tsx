@@ -49,37 +49,49 @@ export default function ProjectDetail() {
   const project = projects[projectIndex] || projects[0];
   const nextProject = projects[(projectIndex + 1) % projects.length];
 
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [hasMoved, setHasMoved] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
+  const scrollContainerRef1 = useRef<HTMLDivElement>(null);
+  const scrollContainerRef2 = useRef<HTMLDivElement>(null);
+  const [isDragging1, setIsDragging1] = useState(false);
+  const [isDragging2, setIsDragging2] = useState(false);
+  const [hasMoved1, setHasMoved1] = useState(false);
+  const [hasMoved2, setHasMoved2] = useState(false);
+  const [startX1, setStartX1] = useState(0);
+  const [startX2, setStartX2] = useState(0);
+  const [scrollLeft1, setScrollLeft1] = useState(0);
+  const [scrollLeft2, setScrollLeft2] = useState(0);
 
-  const handleMouseDown = (e: React.MouseEvent) => {
-    if (!scrollContainerRef.current) return;
-    setIsDragging(true);
-    setHasMoved(false);
-    setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
-    setScrollLeft(scrollContainerRef.current.scrollLeft);
+  const handleMouseDown1 = (e: React.MouseEvent) => {
+    if (!scrollContainerRef1.current) return;
+    setIsDragging1(true);
+    setHasMoved1(false);
+    setStartX1(e.pageX - scrollContainerRef1.current.offsetLeft);
+    setScrollLeft1(scrollContainerRef1.current.scrollLeft);
   };
 
-  const handleMouseLeave = () => {
-    setIsDragging(false);
+  const handleMouseDown2 = (e: React.MouseEvent) => {
+    if (!scrollContainerRef2.current) return;
+    setIsDragging2(true);
+    setHasMoved2(false);
+    setStartX2(e.pageX - scrollContainerRef2.current.offsetLeft);
+    setScrollLeft2(scrollContainerRef2.current.scrollLeft);
   };
 
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging || !scrollContainerRef.current) return;
+  const handleMouseMove1 = (e: React.MouseEvent) => {
+    if (!isDragging1 || !scrollContainerRef1.current) return;
     e.preventDefault();
-    const x = e.pageX - scrollContainerRef.current.offsetLeft;
-    const walk = (x - startX) * 2;
-    if (Math.abs(walk) > 5) {
-      setHasMoved(true);
-    }
-    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+    const x = e.pageX - scrollContainerRef1.current.offsetLeft;
+    const walk = (x - startX1) * 2;
+    if (Math.abs(walk) > 5) setHasMoved1(true);
+    scrollContainerRef1.current.scrollLeft = scrollLeft1 - walk;
+  };
+
+  const handleMouseMove2 = (e: React.MouseEvent) => {
+    if (!isDragging2 || !scrollContainerRef2.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainerRef2.current.offsetLeft;
+    const walk = (x - startX2) * 2;
+    if (Math.abs(walk) > 5) setHasMoved2(true);
+    scrollContainerRef2.current.scrollLeft = scrollLeft2 - walk;
   };
 
   const contactData = {
@@ -297,12 +309,12 @@ export default function ProjectDetail() {
                   
                   <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))]">
                     <div 
-                      ref={scrollContainerRef}
-                      onMouseDown={handleMouseDown}
-                      onMouseLeave={handleMouseLeave}
-                      onMouseUp={handleMouseUp}
-                      onMouseMove={handleMouseMove}
-                      className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
+                      ref={scrollContainerRef1}
+                      onMouseDown={handleMouseDown1}
+                      onMouseLeave={() => setIsDragging1(false)}
+                      onMouseUp={() => setIsDragging1(false)}
+                      onMouseMove={handleMouseMove1}
+                      className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging1 ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
                     >
                       {[
                         { src: "/Swap_1770223795857.png", alt: "User Flow Swap" },
@@ -312,8 +324,8 @@ export default function ProjectDetail() {
                       ].map((img, idx) => (
                         <div key={idx} className="flex-shrink-0 w-[85vw] md:w-[600px]">
                           <div 
-                            onClick={() => !hasMoved && setSelectedImage(img.src)}
-                            className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+                            onClick={() => !hasMoved1 && setSelectedImage(img.src)}
+                            className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging1 ? 'cursor-grabbing' : 'cursor-grab'}`}
                           >
                             <img 
                               src={img.src} 
@@ -334,12 +346,12 @@ export default function ProjectDetail() {
 
                   <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))]">
                     <div 
-                      ref={scrollContainerRef}
-                      onMouseDown={handleMouseDown}
-                      onMouseLeave={handleMouseLeave}
-                      onMouseUp={handleMouseUp}
-                      onMouseMove={handleMouseMove}
-                      className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
+                      ref={scrollContainerRef2}
+                      onMouseDown={handleMouseDown2}
+                      onMouseLeave={() => setIsDragging2(false)}
+                      onMouseUp={() => setIsDragging2(false)}
+                      onMouseMove={handleMouseMove2}
+                      className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging2 ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
                     >
                       {[
                         { src: "/Staking_Draft_Updated.png", alt: "Draft Staking", width: "md:w-[600px]" },
@@ -348,8 +360,8 @@ export default function ProjectDetail() {
                       ].map((img, idx) => (
                         <div key={idx} className={`flex-shrink-0 w-[85vw] ${img.width}`}>
                           <div 
-                            onClick={() => !hasMoved && setSelectedImage(img.src)}
-                            className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+                            onClick={() => !hasMoved2 && setSelectedImage(img.src)}
+                            className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging2 ? 'cursor-grabbing' : 'cursor-grab'}`}
                           >
                             <img 
                               src={img.src} 
