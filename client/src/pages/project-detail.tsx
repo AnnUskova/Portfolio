@@ -30,6 +30,7 @@ export default function ProjectDetail() {
   const [language, setLanguage] = useState<Language>("en");
   const [contactOpen, setContactOpen] = useState(false);
   const [tldrOpen, setTldrOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const t = translations[language];
   const projects = projectTranslations[language];
@@ -78,6 +79,34 @@ export default function ProjectDetail() {
 
   return (
     <div className="min-h-screen bg-white">
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedImage(null)}
+            className="fixed inset-0 z-[200] bg-black/95 backdrop-blur-md flex items-center justify-center p-6 cursor-zoom-out"
+          >
+            <button 
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-8 right-8 w-12 h-12 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors"
+            >
+              <X className="w-6 h-6" />
+            </button>
+            <motion.img
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              src={selectedImage}
+              alt="Full screen view"
+              className="max-w-full max-h-full object-contain rounded-lg"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between h-16">
@@ -257,7 +286,7 @@ export default function ProjectDetail() {
                     Чтобы избежать ошибок, определяю все места, где они могут возникнуть:
                   </p>
                   
-                  <div className="relative -mr-[calc((100vw-100%)/2+24px)] md:-mr-[calc((100vw-100%)/2+48px)]">
+                  <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))]">
                     <div 
                       ref={scrollContainerRef}
                       onMouseDown={handleMouseDown}
@@ -273,11 +302,14 @@ export default function ProjectDetail() {
                         { src: "/Token_sale_1770223795858.png", alt: "User Flow Token Sale" }
                       ].map((img, idx) => (
                         <div key={idx} className="flex-shrink-0 w-[85vw] md:w-[600px]">
-                          <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white pointer-events-none">
+                          <div 
+                            onClick={() => !isDragging && setSelectedImage(img.src)}
+                            className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white cursor-zoom-in"
+                          >
                             <img 
                               src={img.src} 
                               alt={img.alt} 
-                              className="w-full h-auto object-contain"
+                              className="w-full h-auto object-contain pointer-events-none"
                             />
                           </div>
                         </div>
