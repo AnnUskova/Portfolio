@@ -342,7 +342,7 @@ export default function ProjectDetail() {
                       className={`flex overflow-x-auto pb-8 gap-6 no-scrollbar ${isDragging ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
                     >
                       {[
-                        { src: "/Staking_Draft.png", alt: "Draft Staking" },
+                        { src: "/Staking_Draft_Updated.png", alt: "Draft Staking" },
                         { src: "/Relations_Draft.png", alt: "Draft Relations" },
                         { src: "/TokenSale_Draft.png", alt: "Draft Token Sale" }
                       ].map((img, idx) => (
