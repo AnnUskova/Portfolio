@@ -302,7 +302,7 @@ export default function ProjectDetail() {
                       onMouseLeave={handleMouseLeave}
                       onMouseUp={handleMouseUp}
                       onMouseMove={handleMouseMove}
-                      className={`flex overflow-x-auto pb-8 gap-6 no-scrollbar ${isDragging ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
+                      className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
                     >
                       {[
                         { src: "/Swap_1770223795857.png", alt: "User Flow Swap" },
@@ -328,7 +328,7 @@ export default function ProjectDetail() {
                     </div>
                   </div>
 
-                  <p className="text-[18px] text-gray-600 leading-relaxed mt-16 mb-12">
+                  <p className="text-[18px] text-gray-600 leading-relaxed mt-8 mb-4">
                     И дальше согласуем механики с solidity и фронтом. Вот пара черновых схем — здесь staking/locking, связи между сущностями и немного токен сейла.
                   </p>
 
@@ -339,7 +339,7 @@ export default function ProjectDetail() {
                       onMouseLeave={handleMouseLeave}
                       onMouseUp={handleMouseUp}
                       onMouseMove={handleMouseMove}
-                      className={`flex overflow-x-auto pb-8 gap-6 no-scrollbar ${isDragging ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
+                      className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
                     >
                       {[
                         { src: "/Staking_Draft_Updated.png", alt: "Draft Staking", width: "md:w-[600px]" },
