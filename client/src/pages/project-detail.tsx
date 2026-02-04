@@ -391,6 +391,15 @@ export default function ProjectDetail() {
                     <div className="space-y-4">
                       <p className="font-medium text-black">Swap</p>
                       <p>Один из главных флоу – это свап. Пользователь здесь хочет поменять один токен на другой. По устоявшемуся паттерну облегчаем ему жизнь кнопкой «Мах», добавляем кнопку свапа полей, показываем, сколько в кошельке и значение в долларах.</p>
+                      
+                      <div className="my-12 rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
+                        <img 
+                          src="/Swap_UI_Showcase_New.png" 
+                          alt="Swap UI Showcase" 
+                          className="w-full h-auto object-contain cursor-pointer"
+                          onClick={() => setSelectedImage("/Swap_UI_Showcase_New.png")}
+                        />
+                      </div>
                       <div className="space-y-4">
                         <p>Из нового – правый блок с кнопками:</p>
                         <ul className="space-y-4">
