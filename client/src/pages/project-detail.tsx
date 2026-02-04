@@ -232,10 +232,10 @@ export default function ProjectDetail() {
                   <div className="relative -mx-6 lg:-mx-12">
                     <div className="flex overflow-x-auto pb-8 gap-6 px-6 lg:px-12 scrollbar-hide snap-x">
                       {[
-                        { src: "/attached_assets/Swap_1770223795857.png", alt: "User Flow Swap" },
-                        { src: "/attached_assets/Provide_Liquidity_1770223795856.png", alt: "User Flow Pools Add" },
-                        { src: "/attached_assets/Remove_Liquidity_1770223795857.png", alt: "User Flow Pools Remove" },
-                        { src: "/attached_assets/Token_sale_1770223795858.png", alt: "User Flow Token Sale" }
+                        { src: "/Swap_1770223795857.png", alt: "User Flow Swap" },
+                        { src: "/Provide_Liquidity_1770223795856.png", alt: "User Flow Pools Add" },
+                        { src: "/Remove_Liquidity_1770223795857.png", alt: "User Flow Pools Remove" },
+                        { src: "/Token_sale_1770223795858.png", alt: "User Flow Token Sale" }
                       ].map((img, idx) => (
                         <div key={idx} className="flex-shrink-0 w-[85vw] md:w-[600px] snap-center">
                           <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
