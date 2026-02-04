@@ -431,6 +431,18 @@ export default function ProjectDetail() {
                       <p>
                         После заполнения формы показываем пользователю информацию о будущем свапе – курс, price impact (предупреждаем, если он слишком высокий), network cost и т.д. Для advanced-пользователей добавили Route – он показывает, через какие токены и пулы пройдёт свап. Здесь есть возможность скопировать адрес пула или контракта токена + объяснение оптимизации и стоимости газа: “Best price route costs ~$6.97 in gas… considers split routes, multiple hops, and gas cost of each step.” Это делает продукт прозрачным – мы точно видим, как он работает, откуда эти цифры и уверены в том, что произойдет дальше (вот бы в жизни так).
                       </p>
+
+                      <div className="my-12">
+                        <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
+                          <img 
+                            src="/Swap_States_Showcase.png" 
+                            alt="Route и некоторые состояния формы свапа" 
+                            className="w-full h-auto object-contain cursor-pointer"
+                            onClick={() => setSelectedImage("/Swap_States_Showcase.png")}
+                          />
+                        </div>
+                        <p className="text-sm text-gray-400 mt-4 text-center italic">Route и некоторые состояния формы свапа</p>
+                      </div>
                     </div>
 
                     <div className="space-y-4">
