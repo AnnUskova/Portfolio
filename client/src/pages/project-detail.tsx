@@ -486,6 +486,18 @@ export default function ProjectDetail() {
                             />
                           </div>
                         </div>
+
+                        <div className="my-12">
+                          <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
+                            <img 
+                              src="/Remove_Liquidity_Showcase.png" 
+                              alt="Remove Liquidity Showcase" 
+                              className="w-full h-auto object-contain cursor-pointer"
+                              onClick={() => setSelectedImage("/Remove_Liquidity_Showcase.png")}
+                            />
+                          </div>
+                          <p className="text-sm text-gray-400 mt-4 text-center italic">Remove liquidity выглядит уже проще, но увеличился инфо блок.</p>
+                        </div>
                       </div>
                     </div>
 
