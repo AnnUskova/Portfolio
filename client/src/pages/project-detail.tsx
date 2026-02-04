@@ -342,11 +342,11 @@ export default function ProjectDetail() {
                       className={`flex overflow-x-auto pb-8 gap-6 no-scrollbar ${isDragging ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
                     >
                       {[
-                        { src: "/Staking_Draft_Updated.png", alt: "Draft Staking" },
-                        { src: "/Relations_Draft.png", alt: "Draft Relations" },
-                        { src: "/TokenSale_Draft.png", alt: "Draft Token Sale" }
+                        { src: "/Staking_Draft_Updated.png", alt: "Draft Staking", width: "md:w-[600px]" },
+                        { src: "/TokenSale_Draft.png", alt: "Draft Token Sale", width: "md:w-[400px]" },
+                        { src: "/Relations_Draft.png", alt: "Draft Relations", width: "md:w-[600px]" }
                       ].map((img, idx) => (
-                        <div key={idx} className="flex-shrink-0 w-[85vw] md:w-[600px]">
+                        <div key={idx} className={`flex-shrink-0 w-[85vw] ${img.width}`}>
                           <div 
                             onClick={() => !hasMoved && setSelectedImage(img.src)}
                             className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
