@@ -25,7 +25,18 @@ const projectImages: Record<number, string | null> = {
 
 export default function Home() {
   const [activeProject, setActiveProject] = useState(0);
-  const [language, setLanguage] = useState<Language>("en");
+  const [language, setLanguage] = useState<Language>(() => {
+    const saved = localStorage.getItem("app_language");
+    if (saved === "en" || saved === "ru") return saved as Language;
+    const browserLang = navigator.language.split('-')[0];
+    return browserLang === "ru" ? "ru" : "en";
+  });
+  
+  const handleLanguageChange = (lang: Language) => {
+    setLanguage(lang);
+    localStorage.setItem("app_language", lang);
+  };
+  
   const [contactOpen, setContactOpen] = useState(false);
   const [experienceOpen, setExperienceOpen] = useState(false);
 
@@ -84,7 +95,7 @@ export default function Home() {
                 {t.nav.contact}
               </button>
             </div>
-            <LanguageSwitcher language={language} onLanguageChange={setLanguage} />
+            <LanguageSwitcher language={language} onLanguageChange={handleLanguageChange} />
           </div>
         </div>
       </nav>
