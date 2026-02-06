@@ -519,12 +519,10 @@ export default function ProjectDetail() {
                       <p>Еще я добавила видео-гайды для новичков, чтобы снизить барьер входа и нагрузку на саппорт. Вот так они выглядели:</p>
                       
                       <div className="my-12">
-                        <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
+                        <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white relative group">
                           <video 
                             src="/Token_Sale_Guides.mp4" 
-                            autoPlay 
-                            loop 
-                            muted 
+                            controls
                             playsInline
                             className="w-full h-auto object-contain"
                           />
