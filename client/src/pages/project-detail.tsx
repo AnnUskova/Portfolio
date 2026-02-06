@@ -517,6 +517,19 @@ export default function ProjectDetail() {
                         </div>
                       </div>
                       <p>Еще я добавила видео-гайды для новичков, чтобы снизить барьер входа и нагрузку на саппорт. Вот так они выглядели:</p>
+                      
+                      <div className="my-12">
+                        <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
+                          <video 
+                            src="/Token_Sale_Guides.mp4" 
+                            autoPlay 
+                            loop 
+                            muted 
+                            playsInline
+                            className="w-full h-auto object-contain"
+                          />
+                        </div>
+                      </div>
                     </div>
 
                     <div className="space-y-4">
