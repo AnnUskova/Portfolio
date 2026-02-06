@@ -502,7 +502,7 @@ export default function ProjectDetail() {
                     </div>
 
                     <div className="space-y-4">
-                      <p className="font-medium text-black">Token Sale: маркетинг без ощущения “впаривания”</p>
+                      <p className="font-medium text-black">Token Sale</p>
                       <p>
                         Token Sale должен не только работать технически, но и мотивировать. Я добавила Profit Estimator (калькулятор доходности) и видео-гайды для новичков, чтобы снизить барьера входа и нагрузку на саппорт.
                       </p>
