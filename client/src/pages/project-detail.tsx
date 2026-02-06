@@ -516,10 +516,6 @@ export default function ProjectDetail() {
                           />
                         </div>
                       </div>
-
-                      <p className="italic">
-                        “Снижение барьера входа: Profit Estimator + видеогайды для новичков.”
-                      </p>
                     </div>
 
                     <div className="space-y-4">
