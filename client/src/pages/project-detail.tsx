@@ -545,6 +545,18 @@ export default function ProjectDetail() {
                           />
                         </div>
                       </div>
+
+                      <div className="my-12">
+                        <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
+                          <img 
+                            src="/Lock_Voting_Popups.png" 
+                            alt="Lock and Vote Popups" 
+                            className="w-full h-auto object-contain cursor-pointer"
+                            onClick={() => setSelectedImage("/Lock_Voting_Popups.png")}
+                          />
+                        </div>
+                        <p className="text-sm text-gray-400 mt-4 text-center italic">Попапы для vote и lock</p>
+                      </div>
                     </div>
 
                     <div className="space-y-4">
