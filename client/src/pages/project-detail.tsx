@@ -531,7 +531,7 @@ export default function ProjectDetail() {
                     </div>
 
                     <div className="space-y-4">
-                      <p className="font-medium text-black">Lock + Voting: самый сложный модуль</p>
+                      <p className="font-medium text-black">Lock + Voting</p>
                       <p>
                         Это был самый нетривиальный блок: мало референсов, высокая цена ошибки. Я разложила механику на понятные сущности, спроектировала сценарии голосования и оформила действие с понятными подсказками и расчетами влияния на APY.
                       </p>
