@@ -301,7 +301,7 @@ export default function ProjectDetail() {
                 </ul>
 
                 <div className="mt-16">
-                  <h2 className="text-2xl font-medium mb-2">User Flow и другие лекарства</h2>
+                  <h2 className="text-2xl font-medium mb-2">User Flow и другие схемы</h2>
                   <p className="text-[18px] text-gray-600 leading-relaxed mt-3 mb-12">
                     Чтобы избежать ошибок, определяю все места, где они могут возникнуть:
                   </p>
