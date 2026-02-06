@@ -516,6 +516,7 @@ export default function ProjectDetail() {
                           />
                         </div>
                       </div>
+                      <p>Еще я добавила видео-гайды для новичков, чтобы снизить барьер входа и нагрузку на саппорт. Вот так они выглядели:</p>
                     </div>
 
                     <div className="space-y-4">
