@@ -558,7 +558,8 @@ export default function ProjectDetail() {
                     </div>
 
                     <div className="space-y-4">
-                      <p className="font-medium text-black">Главная страница: “посадочная внутри продукта”</p>
+                      <p className="font-medium text-black">Итог
+</p>
                       <p>
                         Я спроектировала главную как навигационный хаб: быстро вводит в механику (swap/pools/rewards/token sale) и помогает выбрать следующий шаг без чтения документации.
                       </p>
