@@ -534,9 +534,6 @@ export default function ProjectDetail() {
                       <p className="font-medium text-black">Lock + Voting</p>
                       <p>Этот раздел был самым нетривиальным в проектировании: мало хороших референсов, много новых сущностей (veSWA, voting power, incentives). Механика следующая: когда пользователь лочит SWA, он получает veSWA – это его voting power. С помощью veSWA он голосует за пулы и тем самым влияет на распределение incentives и итоговую доходность. 
                       Я разделила сценарии на Lock (локи, сроки, unlock) и Voting (голоса и их эффект), добавила ключевые метрики (veSWA, rewards, unlock date) и подсказки/empty states.</p>
-                      <p className="italic">
-                        “Голосование как продуктовый инструмент: показываем влияние на APY и стоимость транзакции.”
-                      </p>
                     </div>
 
                     <div className="space-y-4">
