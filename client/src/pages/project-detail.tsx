@@ -616,7 +616,8 @@ export default function ProjectDetail() {
                             <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
                           </div>
                         </div>
-                        <p className="text-sm text-gray-400 mt-6 text-center italic">Вьетнамская версия (зачем она в фигме, спросите вы, – все поедет, давай лучше отрисуем – ответят заказчик и фронты) и некоторые элементы библиотеки</p>
+                        <p className="text-sm text-gray-400 mt-6 text-center italic">Вьетнамская версия (зачем она в фигме, спросите вы, – все поедет, давай лучше отрисуем – ответят заказчик и фронты)
+                        и некоторые элементы библиотеки</p>
                       </div>
                     </div>
                   </div>
