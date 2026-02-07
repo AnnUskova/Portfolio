@@ -458,13 +458,22 @@ export default function ProjectDetail() {
                         />
                       </div>
                       <div className="space-y-4">
-                        <p>Правый блок с кнопками:</p>
+                        <p>
+                          {language === "ru" ? "Правый блок с кнопками:" : "On the right, there’s a small action block:"}
+                        </p>
                         <ul className="space-y-4">
-                          {[
-                            "настройки – это изменение слиппэджа с возможностью ввести кастомное значение;",
-                            "знак вопроса – пояснение, как работает наша (любая) свапалка, с указанием конкретных шагов;",
-                            "и faucet – клейм XFI (нативной валюты сети). Там же объяснили, зачем XFI нужен, и как работает клейм."
-                          ].map((item, i) => (
+                          {(language === "ru" 
+                            ? [
+                                "настройки – это изменение слиппэджа с возможностью ввести кастомное значение;",
+                                "знак вопроса – пояснение, как работает наша (любая) свапалка, с указанием конкретных шагов;",
+                                "и faucet – клейм XFI (нативной валюты сети). Там же объяснили, зачем XFI нужен, и как работает клейм."
+                              ]
+                            : [
+                                "Settings: slippage presets + custom slippage input",
+                                "Help (?): a short “how this swap works” walkthrough with concrete steps",
+                                "Faucet: claim XFI (the network’s native token). We explain why XFI is needed and how claiming works."
+                              ]
+                          ).map((item, i) => (
                             <li key={i} className="flex gap-4 text-lg text-gray-600 leading-relaxed">
                               <span className="text-black font-medium">•</span>
                               <span>{item}</span>
@@ -473,7 +482,10 @@ export default function ProjectDetail() {
                         </ul>
                       </div>
                       <p>
-                        Встроенный Faucet закрывает критичную точку оттока: пользователь не уходит из продукта, чтобы найти XFI для газа, и быстрее проходит первый swap.
+                        {language === "ru"
+                          ? "Встроенный Faucet закрывает критичную точку оттока: пользователь не уходит из продукта, чтобы найти XFI для газа, и быстрее проходит первый swap."
+                          : "The built-in Faucet removes a major drop-off point: users don’t leave the product to hunt for gas, and can complete their first swap faster."
+                        }
                       </p>
 
                       <div className="my-12 rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
