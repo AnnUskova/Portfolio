@@ -293,7 +293,13 @@ export default function ProjectDetail() {
             </div>
             
             <p className="md:text-xl text-gray-500 max-w-2xl text-[18px] leading-relaxed mb-12">
-              {project.description}
+              {project.id === 2 ? (
+                language === "ru" 
+                  ? "xSwap – AMM на сети CrossFi. Здесь есть swap, liquidity pools, staking, token sale и veToken-механика с голосованием за распределение инсентивов. Моя задача – собрать UX/UI так, чтобы новички не спотыкались о \"как свапать на новой сети\", а опытные пользователи могли заглянуть в Route и удивиться, как система здорово его оптимизирует."
+                  : "xSwap is an AMM on the CrossFi network. It includes swap, liquidity pools, staking, token sale, and a veToken voting mechanism that controls how incentives are distributed. My goal was to design a product UX/UI where beginners don’t get stuck on “how do I even swap on a new network?”, while advanced users can open the Route view and see (and trust) how well the system optimizes it."
+              ) : (
+                project.description
+              )}
             </p>
 
             <div className="max-w-2xl aspect-[16/9] rounded-2xl overflow-hidden bg-gray-100 shadow-sm border border-gray-100 mb-12">
