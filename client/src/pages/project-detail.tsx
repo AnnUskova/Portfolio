@@ -312,16 +312,29 @@ export default function ProjectDetail() {
 
             {project.id === 2 && (
               <div className="max-w-[calc(56rem-80px)] mb-20">
-                <h2 className="text-2xl font-medium mb-6">Контекст и продуктовые задачи
-</h2>
-                <p className="text-lg text-gray-600 leading-relaxed mb-8">DeFi-интерфейсы — это зона высокого риска: ошибка стоит денег, а непонимание механики может превратиться в недоверие. Поэтому важно было:</p>
+                <h2 className="text-2xl font-medium mb-6">
+                  {language === "ru" ? "Контекст и продуктовые задачи" : "Context & product challenges"}
+                </h2>
+                <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                  {language === "ru" 
+                    ? "DeFi-интерфейсы — это зона высокого риска: ошибка стоит денег, а непонимание механики может превратиться в недоверие. Поэтому важно было:"
+                    : "DeFi UX is high-stakes: one mistake costs money, and confusing mechanics quickly turn into distrust. So the key goals were:"}
+                </p>
                 <ul className="space-y-4">
-                  {[
-                    "снизить вероятность ошибок при транзакциях (например, изменение значений в инпутах, когда свап в процессе, или уход с формы во время аппрува, или недостаток газа и тд);",
-                    "обеспечить максимальную прозрачность для опытных пользователей и поддержку для новичков (когда только вникаешь в DeFi, хочется, чтобы везде были развешаны хинты...);",
-                    "снизить барьер входа: без XFI нельзя оплатить gas и провести транзакцию, из-за этого пользователи часто уходят разбираться и не возвращаются;",
-                    "помочь маркетингу: оформить token sale так, чтобы стимулировать пользователя цифрами и ясной логикой."
-                  ].map((item, i) => (
+                  {(language === "ru" 
+                    ? [
+                        "снизить вероятность ошибок при транзакциях (например, изменение значений в инпутах, когда свап в процессе, или уход с формы во время аппрува, или недостаток газа и тд);",
+                        "обеспечить максимальную прозрачность для опытных пользователей и поддержку для новичков (когда только вникаешь в DeFi, хочется, чтобы везде были развешаны хинты...);",
+                        "снизить барьер входа: без XFI нельзя оплатить gas и провести транзакцию, из-за этого пользователи часто уходят разбираться и не возвращаются;",
+                        "помочь маркетингу: оформить token sale так, чтобы стимулировать пользователя цифрами и ясной логикой."
+                      ]
+                    : [
+                        "Reduce transaction errors, like changing inputs mid-swap, leaving the form during approval, running out of gas, and other “classic” crypto pitfalls.",
+                        "Keep it transparent for advanced users while still being friendly to beginners (when you’re new to DeFi, you want helpful hints everywhere).",
+                        "Lower the entry barrier: without XFI you can’t pay gas and send a transaction, and people often leave to “figure it out” and never come back.",
+                        "Support marketing without breaking UX: make token sale conversion-friendly through numbers and clear logic."
+                      ]
+                  ).map((item, i) => (
                     <li key={i} className="flex gap-4 text-lg text-gray-600 leading-relaxed">
                       <span className="text-black font-medium">•</span>
                       <span>{item}</span>
@@ -330,9 +343,13 @@ export default function ProjectDetail() {
                 </ul>
 
                 <div className="mt-16">
-                  <h2 className="text-2xl font-medium mb-2">User Flow и другие схемы</h2>
+                  <h2 className="text-2xl font-medium mb-2">
+                    {language === "ru" ? "User Flow и другие схемы" : "User flows (and other diagrams I use as medicine)"}
+                  </h2>
                   <p className="text-[18px] text-gray-600 leading-relaxed mt-3 mb-12">
-                    Чтобы избежать ошибок, определяю все места, где они могут возникнуть:
+                    {language === "ru"
+                      ? "Чтобы избежать ошибок, определяю все места, где они могут возникнуть:"
+                      : "To prevent mistakes, I first map every place where things can go wrong and attach the relevant states and errors."}
                   </p>
                   
                   <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))]">
