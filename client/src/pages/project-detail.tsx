@@ -497,7 +497,12 @@ export default function ProjectDetail() {
                         />
                       </div>
 
-                      <p>После заполнения формы показываем пользователю информацию о будущем свапе – курс, price impact (предупреждаем, если он слишком высокий), network cost и т.д. Для advanced-пользователей добавили Route – он показывает, через какие токены и пулы пройдёт свап. Здесь есть возможность скопировать адрес пула или контракта токена + объяснение оптимизации и стоимости газа: "Best price route costs ~$6.97 in gas... considers split routes, multiple hops, and gas cost of each step." Это делает продукт прозрачным – мы точно видим, как он работает, откуда эти цифры и уверены в том, что произойдет дальше (вот бы в жизни так).</p>
+                      <p>
+                        {language === "ru"
+                          ? "После заполнения формы показываем пользователю информацию о будущем свапе – курс, price impact (предупреждаем, если он слишком высокий), network cost и т.д. Для advanced-пользователей добавили Route – он показывает, через какие токены и пулы пройдёт свап. Здесь есть возможность скопировать адрес пула или контракта токена + объяснение оптимизации и стоимости газа: \"Best price route costs ~$6.97 in gas... considers split routes, multiple hops, and gas cost of each step.\" Это делает продукт прозрачным – мы точно видим, как он работает, откуда эти цифры и уверены в том, что произойдет дальше (вот бы в жизни так)."
+                          : "After the form is filled, we show the important details: rate, price impact (with warnings when it’s too high), network cost, etc. For advanced users, there’s Route — it shows which tokens and pools the swap goes through. You can copy pool or token contract addresses, and we explain route optimization and gas cost, e.g.:\n“Best price route costs ~$6.97 in gas… considers split routes, multiple hops, and the gas cost of each step.”\nThis makes the product feel transparent: you can see how it works and why the numbers look the way they do."
+                        }
+                      </p>
 
                       <div className="my-12">
                         <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
