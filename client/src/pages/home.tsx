@@ -15,10 +15,9 @@ import annaPhoto from "@assets/1046_1_1768336698195.png";
 import zeroDeltaImg from "@assets/зеро_дельта_1770041205735.png";
 import xSwapImg from "@assets/image_1770052489389.png";
 import gradientBar from "@assets/image_1770061190853.png";
-import zeroDeltaCover from "@/assets/zero_delta_cover.png";
 
 const projectImages: Record<number, string | null> = {
-  1: zeroDeltaCover,
+  1: zeroDeltaImg,
   2: xSwapImg,
   3: null,
   4: null
