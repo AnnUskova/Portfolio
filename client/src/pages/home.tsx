@@ -41,7 +41,7 @@ export default function Home() {
   const [experienceOpen, setExperienceOpen] = useState(false);
 
   const t = translations[language];
-  const projects = projectTranslations[language].filter(p => p.id >= 6);
+  const projects = projectTranslations[language];
 
   const stats = [
     { label: t.stats.experience, value: "8+" },
