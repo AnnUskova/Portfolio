@@ -165,7 +165,40 @@ export const projectTranslations = {
       category: "DEFI",
       role: "Senior Product Designer",
       title: "xSwap",
-      description: "AMM on the CrossFi network. Not just a swap UI — it includes liquidity pools, a native token, and a rewards system. I created the brand style, landing page, and dApp UI, and worked through the product logic with Solidity devs."
+      description: "xSwap is an AMM on the CrossFi network. It includes swap, liquidity pools, staking, token sale, and a veToken voting mechanism that controls how incentives are distributed. My goal was to design a product UX/UI where beginners don’t get stuck on “how do I even swap on a new network?”, while advanced users can open the Route view and see (and trust) how well the system optimizes it.",
+      content: {
+        nda: "DeFi UX is high-stakes: one mistake costs money, and confusing mechanics quickly turn into distrust.",
+        goal: {
+          title: "Context & product challenges",
+          text: "The key goals were: Reduce transaction errors, like changing inputs mid-swap, leaving the form during approval, running out of gas. Keep it transparent for advanced users while still being friendly to beginners. Lower the entry barrier: without XFI you can’t pay gas and send a transaction. Support marketing without breaking UX: make token sale conversion-friendly through numbers and clear logic."
+        },
+        process: {
+          title: "User flows (and other diagrams I use as medicine)",
+          steps: [
+            {
+              name: "Mapping",
+              text: "To prevent mistakes, I first map every place where things can go wrong and attach the relevant states and errors."
+            },
+            {
+              name: "Alignment",
+              text: "Then we align the mechanics with the Solidity and frontend teams. I also did a few “marker on a whiteboard” drafts."
+            },
+            {
+              name: "Testing & Iteration",
+              text: "I built interactive prototypes and ran quick A/B checks inside the team and with a few users. Based on the feedback, I iterated on copy, hints, and structure."
+            }
+          ]
+        },
+        results: {
+          title: "Feature decisions",
+          text: "Swap: I followed the standard pattern to keep it familiar. The built-in Faucet removes a major drop-off point. For advanced users, there’s Route showing pool optimization. Pools: I split Pools into My positions and All pools for simpler comparison. Token Sale: Added an interactive profit estimator to boost motivation. Lock + Voting: Split the experience into Lock and Voting to simplify veSWA concepts."
+        },
+        conclusion: {
+          title: "Outcome",
+          text: "In one month, I designed the product, handed it off to frontend, and coordinated implementation quality. The result is a clean, understandable AMM interface. We also shipped a Vietnamese version and launched for the Vietnamese market.",
+          vietnamCaption: "Vietnamese version (why it lives in Figma? because “it’s going to break, let’s just redraw it” — said the client and the frontend team). Also: some UI library components."
+        }
+      }
     },
     {
       id: 3,
@@ -199,7 +232,40 @@ export const projectTranslations = {
       category: "DEFI",
       role: "Senior Product Designer",
       title: "xSwap",
-      description: "xSwap — AMM на сети CrossFi. Здесь есть swap, liquidity pools, staking, token sale и veToken-механика с голосованием за распределение инсентивов. Моя задача — собрать продуктовый UX/UI так, чтобы новички не спотыкались о \"как свапать на новой сети\", а опытные пользователи могли заглянуть в Route и удивиться, как система здорово его оптимизирует."
+      description: "xSwap — AMM на сети CrossFi. Здесь есть swap, liquidity pools, staking, token sale и veToken-механика с голосованием за распределение инсентивов. Моя задача — собрать продуктовый UX/UI так, чтобы новички не спотыкались о \"как свапать на новой сети\", а опытные пользователи могли заглянуть в Route и удивиться, как система здорово его оптимизирует.",
+      content: {
+        nda: "В DeFi UX ставки высоки: одна ошибка стоит денег, а запутанная механика быстро превращается в недоверие.",
+        goal: {
+          title: "Контекст и вызовы продукта",
+          text: "Основные цели: Снизить ошибки транзакций (смена инпутов во время свапа, уход из формы во время апрува, нехватка газа). Сохранить прозрачность для профи и дружелюбность для новичков. Снизить порог входа: без XFI нельзя отправить транзакцию, а за ним часто уходят и не возвращаются. Поддержать маркетинг: сделать Token sale конверсионным за счет цифр и понятной логики."
+        },
+        process: {
+          title: "User flows (и другие схемы, которые я использую как лекарство)",
+          steps: [
+            {
+              name: "Мэппинг",
+              text: "Чтобы предотвратить ошибки, я сначала отрисовываю все места, где что-то может пойти не так, и прикручиваю туда соответствующие состояния и ошибки."
+            },
+            {
+              name: "Согласование",
+              text: "Затем мы синхронизируем механику с Solidity и фронт-командой. Я также сделала несколько набросков «маркером по доске»."
+            },
+            {
+              name: "Тесты и итерации",
+              text: "Собрала интерактивные прототипы и провела быстрые A/B чеки внутри команды и на паре пользователей. По итогам поправили тексты, подсказки и структуру."
+            }
+          ]
+        },
+        results: {
+          title: "Продуктовые решения",
+          text: "Swap: Я придерживалась стандартного паттерна для привычности. Встроенный Faucet убирает точку отсева. Для продвинутых — Route с детализацией оптимизации. Pools: Разделила на My positions и All pools для удобного сравнения. Token Sale: Добавила калькулятор доходности для повышения мотивации. Lock + Voting: Разделила опыт на блоки Lock и Voting для упрощения концепции veSWA."
+        },
+        conclusion: {
+          title: "Итог",
+          text: "За месяц я собрала дизайн продукта, отдала фронту и проконтролировала реализацию. xSwap получился чистым и понятным. Мы также реализовали вьетнамскую версию и запустили на вьетнамский рынок.",
+          vietnamCaption: "Вьетнамская версия (зачем она в фигме, спросите вы, – все поедет, давай лучше отрисуем – ответят заказчик и фронты) и некоторые элементы библиотеки"
+        }
+      }
     },
     {
       id: 3,
