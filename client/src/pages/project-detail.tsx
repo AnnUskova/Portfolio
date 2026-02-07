@@ -344,7 +344,7 @@ export default function ProjectDetail() {
 
                 <div className="mt-16">
                   <h2 className="text-2xl font-medium mb-2">
-                    {language === "ru" ? "User Flow и другие схемы" : "User flows (and other diagrams I use as medicine)"}
+                    {language === "ru" ? "User Flow и другие схемы" : "User flows and other diagrams"}
                   </h2>
                   <p className="text-[18px] text-gray-600 leading-relaxed mt-3 mb-12">
                     {language === "ru"
