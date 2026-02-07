@@ -261,7 +261,7 @@ We also shipped a Vietnamese version and launched for the Vietnamese market (and
       category: "DEFI",
       role: "Senior Product Designer",
       title: "xSwap",
-      description: "xSwap — AMM на сети CrossFi. Здесь есть swap, liquidity pools, staking, token sale и veToken-механика. Я создала визуальный стиль бренда, лендинг и интерфейс dApp, а также проработала логику продукта совместно с разработчиками.",
+      description: "xSwap – AMM на сети CrossFi. Здесь есть swap, liquidity pools, staking, token sale и veToken-механика. Я создала визуальный стиль продукта, лендинг и dApp, а также продумала логику с solidity-коллегами.",
       content: {
         nda: "В DeFi UX ставки высоки: одна ошибка стоит денег, а запутанная механика быстро превращается в недоверие.",
         goal: {
