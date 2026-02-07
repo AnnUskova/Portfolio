@@ -51,14 +51,19 @@ export default function ProjectDetail() {
 
   const scrollContainerRef1 = useRef<HTMLDivElement>(null);
   const scrollContainerRef2 = useRef<HTMLDivElement>(null);
+  const scrollContainerRef3 = useRef<HTMLDivElement>(null);
   const [isDragging1, setIsDragging1] = useState(false);
   const [isDragging2, setIsDragging2] = useState(false);
+  const [isDragging3, setIsDragging3] = useState(false);
   const [hasMoved1, setHasMoved1] = useState(false);
   const [hasMoved2, setHasMoved2] = useState(false);
+  const [hasMoved3, setHasMoved3] = useState(false);
   const [startX1, setStartX1] = useState(0);
   const [startX2, setStartX2] = useState(0);
+  const [startX3, setStartX3] = useState(0);
   const [scrollLeft1, setScrollLeft1] = useState(0);
   const [scrollLeft2, setScrollLeft2] = useState(0);
+  const [scrollLeft3, setScrollLeft3] = useState(0);
 
   const handleMouseDown1 = (e: React.MouseEvent) => {
     if (!scrollContainerRef1.current) return;
@@ -74,6 +79,14 @@ export default function ProjectDetail() {
     setHasMoved2(false);
     setStartX2(e.pageX - scrollContainerRef2.current.offsetLeft);
     setScrollLeft2(scrollContainerRef2.current.scrollLeft);
+  };
+
+  const handleMouseDown3 = (e: React.MouseEvent) => {
+    if (!scrollContainerRef3.current) return;
+    setIsDragging3(true);
+    setHasMoved3(false);
+    setStartX3(e.pageX - scrollContainerRef3.current.offsetLeft);
+    setScrollLeft3(scrollContainerRef3.current.scrollLeft);
   };
 
   const handleMouseMove1 = (e: React.MouseEvent) => {
@@ -92,6 +105,15 @@ export default function ProjectDetail() {
     const walk = (x - startX2) * 2;
     if (Math.abs(walk) > 5) setHasMoved2(true);
     scrollContainerRef2.current.scrollLeft = scrollLeft2 - walk;
+  };
+
+  const handleMouseMove3 = (e: React.MouseEvent) => {
+    if (!isDragging3 || !scrollContainerRef3.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainerRef3.current.offsetLeft;
+    const walk = (x - startX3) * 2;
+    if (Math.abs(walk) > 5) setHasMoved3(true);
+    scrollContainerRef3.current.scrollLeft = scrollLeft3 - walk;
   };
 
   const contactData = {
@@ -560,6 +582,42 @@ export default function ProjectDetail() {
                       <p className="font-medium text-black">Итог
 </p>
                       <p>За месяц я собрала дизайн продукта, отдала фронту и проконтролировала реализацию. xSwap получился чистым и понятным, с некоторыми наворотами для DeFi-дегенов и многочисленными ориентирами для новичков. Мы также реализовали вьетнамскую версию и запустили на вьетнамский рынок (и для нее я отдельно нарисовала дизайн)).</p>
+
+                      <div className="mt-12">
+                        <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))]">
+                          <div 
+                            ref={scrollContainerRef3}
+                            onMouseDown={handleMouseDown3}
+                            onMouseLeave={() => setIsDragging3(false)}
+                            onMouseUp={() => setIsDragging3(false)}
+                            onMouseMove={handleMouseMove3}
+                            className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging3 ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
+                          >
+                            {[
+                              { src: "/Viet_Token_Sale.png", alt: "Vietnamese Token Sale", width: "md:w-[600px]" },
+                              { src: "/Viet_Pools.png", alt: "Vietnamese Pools", width: "md:w-[600px]" },
+                              { src: "/Viet_Route.png", alt: "Vietnamese Route", width: "md:w-[400px]" },
+                              { src: "/UI_Library_1.png", alt: "UI Library 1", width: "md:w-[600px]" },
+                              { src: "/UI_Library_2.png", alt: "UI Library 2", width: "md:w-[600px]" }
+                            ].map((img, idx) => (
+                              <div key={idx} className={`flex-shrink-0 w-[85vw] ${img.width}`}>
+                                <div 
+                                  onClick={() => !hasMoved3 && setSelectedImage(img.src)}
+                                  className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging3 ? 'cursor-grabbing' : 'cursor-grab'}`}
+                                >
+                                  <img 
+                                    src={img.src} 
+                                    alt={img.alt} 
+                                    className="w-full h-auto object-contain pointer-events-none"
+                                  />
+                                </div>
+                              </div>
+                            ))}
+                            <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
+                          </div>
+                        </div>
+                        <p className="text-sm text-gray-400 mt-6 text-center italic">Вьетнамская версия (зачем она в фигме, спросите вы, – все поедет, давай лучше отрисуем – ответят заказчик и фронты) и некоторые элементы библиотеки</p>
+                      </div>
                     </div>
                   </div>
                 </section>
