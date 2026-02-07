@@ -14,6 +14,9 @@ import uxResearchImg from "@/assets/ux_research_cover.jpg";
 import pholendImg from "@/assets/pholend_cover.jpg";
 import dickbuttsImg from "@/assets/dickbutts_cover.jpg";
 import maatImg from "@/assets/maat_cover.jpg";
+import zeroDeltaPresentationImg from "@assets/зеро_дельта_1770041205735.png";
+import zoodaoImg from "@/assets/zoodao_cover.jpg";
+import maatPitchImg from "@/assets/maat_pitch_cover.jpg";
 
 const projectImages: Record<number, string | null> = {
   1: zeroDeltaImg,
@@ -25,7 +28,10 @@ const projectImages: Record<number, string | null> = {
   7: uxResearchImg,
   8: pholendImg,
   9: dickbuttsImg,
-  10: maatImg
+  10: maatImg,
+  11: zeroDeltaPresentationImg,
+  12: zoodaoImg,
+  13: maatPitchImg
 };
 
 export default function Projects() {
@@ -49,7 +55,7 @@ export default function Projects() {
   
   const projects = allProjects.filter(p => {
     if (activeTab === "uxui") return [1, 2, 3, 4, 5, 6, 8, 9, 10].includes(p.id);
-    if (activeTab === "strategy") return false;
+    if (activeTab === "strategy") return [11, 12, 13].includes(p.id);
     if (activeTab === "research") return [7].includes(p.id);
     return true; 
   });

@@ -292,6 +292,30 @@ We also shipped a Vietnamese version and launched for the Vietnamese market (and
       role: "Lead Designer",
       title: "MAAT",
       description: "Refinancing system with customizable analytics and deep financial insights."
+    },
+    {
+      id: 11,
+      year: "2026",
+      category: "DEFI",
+      role: "Senior Designer",
+      title: "Zero Delta",
+      description: "Glacis product presentation for the next generation of DeFi users."
+    },
+    {
+      id: 12,
+      year: "2023",
+      category: "DEFI",
+      role: "Senior Designer",
+      title: "ZooDAO",
+      description: "Technical system architecture and complex logic diagrams for a DAO ecosystem."
+    },
+    {
+      id: 13,
+      year: "2023",
+      category: "DEFI",
+      role: "Lead Designer",
+      title: "MAAT Pitch Deck",
+      description: "Investor presentation deck for the MAAT protocol, focusing on clear data visualization."
     }
   ],
   ru: [
@@ -428,6 +452,30 @@ Lock + Voting
       role: "Lead Designer",
       title: "MAAT",
       description: "Система рефинансирования средств с кастомизируемой аналитикой."
+    },
+    {
+      id: 11,
+      year: "2026",
+      category: "DEFI",
+      role: "Senior Designer",
+      title: "Zero Delta",
+      description: "Презентация нового продукта Glacis."
+    },
+    {
+      id: 12,
+      year: "2023",
+      category: "DEFI",
+      role: "Senior Designer",
+      title: "ZooDAO",
+      description: "Схема, отражающая принцип работы системы."
+    },
+    {
+      id: 13,
+      year: "2023",
+      category: "DEFI",
+      role: "Lead Designer",
+      title: "MAAT Pitch Deck",
+      description: "Презентация продукта MAAT для инвесторов."
     }
   ]
 };
