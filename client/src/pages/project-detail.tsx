@@ -442,7 +442,12 @@ export default function ProjectDetail() {
                   <div className="space-y-12 text-[18px] text-gray-600 leading-relaxed">
                     <div className="space-y-4">
                       <p className="font-medium text-black">Swap</p>
-                      <p>Один из главных флоу – это свап. Пользователь здесь хочет поменять один токен на другой. По устоявшемуся паттерну облегчаем ему жизнь кнопкой «Мах», добавляем кнопку свапа полей, показываем, сколько в кошельке, и значение в долларах.</p>
+                      <p>
+                        {language === "ru" 
+                          ? "Один из главных флоу – это свап. Пользователь здесь хочет поменять один токен на другой. По устоявшемуся паттерну облегчаем ему жизнь кнопкой «Мах», добавляем кнопку свапа полей, показываем, сколько в кошельке, и значение в долларах."
+                          : "Swap is one of the core flows: users come here to exchange one token for another. I followed the standard pattern to keep it familiar: Max button, token-field switch, wallet balance, and USD value."
+                        }
+                      </p>
                       
                       <div className="my-12 rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
                         <img 
