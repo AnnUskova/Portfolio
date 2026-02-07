@@ -21,8 +21,8 @@ import gradientBar from "@assets/image_1770061190853.png";
 const projectImages: Record<number, string | null> = {
   1: zeroDeltaImg,
   2: xSwapImg,
-  3: twoGoCoverImg,
-  4: null
+  3: null, // SKIZI
+  4: twoGoCoverImg // 2Go
 };
 
 export default function Home() {

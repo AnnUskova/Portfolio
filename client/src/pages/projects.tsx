@@ -13,8 +13,8 @@ import twoGoCoverImg from "@/assets/2go_cover.png";
 const projectImages: Record<number, string | null> = {
   1: zeroDeltaImg,
   2: xSwapImg,
-  3: twoGoCoverImg,
-  4: null,
+  3: null, // SKIZI
+  4: twoGoCoverImg, // 2Go
   5: null,
   6: null,
   7: null,
