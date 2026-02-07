@@ -7,9 +7,10 @@ import { translations, projectTranslations, type Language } from "@/lib/translat
 
 import zeroDeltaImg from "@assets/зеро_дельта_1770041205735.png";
 import xSwapImg from "@assets/image_1770052489389.png";
+import zeroDeltaCoverImg from "@/assets/zero_delta_cover.png";
 
 const projectImages: Record<number, string | null> = {
-  1: zeroDeltaImg,
+  1: zeroDeltaCoverImg,
   2: xSwapImg,
   3: null,
   4: null,
@@ -19,7 +20,7 @@ const projectImages: Record<number, string | null> = {
   8: null,
   9: null,
   10: null,
-  11: null,
+  11: zeroDeltaCoverImg,
   12: null,
   13: null
 };
