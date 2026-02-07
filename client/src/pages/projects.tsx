@@ -8,30 +8,20 @@ import { translations, projectTranslations, type Language } from "@/lib/translat
 import zeroDeltaImg from "@assets/зеро_дельта_1770041205735.png";
 import xSwapImg from "@assets/image_1770052489389.png";
 
-import moonbeamImg from "@/assets/moonbeam_cover.jpg";
-import cryptovecheImg from "@/assets/cryptoveche_cover.jpg";
-import uxResearchImg from "@/assets/ux_research_cover.jpg";
-import pholendImg from "@/assets/pholend_cover.jpg";
-import dickbuttsImg from "@/assets/dickbutts_cover.jpg";
-import maatImg from "@/assets/maat_cover.jpg";
-import zeroDeltaPresentationImg from "@assets/зеро_дельта_1770041205735.png";
-import zoodaoImg from "@/assets/zoodao_cover.jpg";
-import maatPitchImg from "@/assets/maat_pitch_cover.jpg";
-
 const projectImages: Record<number, string | null> = {
   1: zeroDeltaImg,
   2: xSwapImg,
   3: null,
   4: null,
-  5: moonbeamImg,
-  6: cryptovecheImg,
-  7: uxResearchImg,
-  8: pholendImg,
-  9: dickbuttsImg,
-  10: maatImg,
-  11: zeroDeltaPresentationImg,
-  12: zoodaoImg,
-  13: maatPitchImg
+  5: null,
+  6: null,
+  7: null,
+  8: null,
+  9: null,
+  10: null,
+  11: null,
+  12: null,
+  13: null
 };
 
 export default function Projects() {
