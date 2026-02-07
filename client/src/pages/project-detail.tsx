@@ -422,7 +422,7 @@ export default function ProjectDetail() {
                         />
                       </div>
                       <div className="space-y-4">
-                        <p>Из нового – правый блок с кнопками:</p>
+                        <p>Правый блок с кнопками:</p>
                         <ul className="space-y-4">
                           {[
                             "настройки – это изменение слиппэджа с возможностью ввести кастомное значение;",
