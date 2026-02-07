@@ -340,9 +340,7 @@ export default function ProjectDetail() {
                     </div>
                   </div>
 
-                  <p className="text-[18px] text-gray-600 leading-relaxed mt-8 mb-4">
-                    И дальше согласуем механики с solidity и фронтом. Вот пара черновых схем — здесь staking/locking, связи между сущностями и немного токен сейла.
-                  </p>
+                  <p className="text-[18px] text-gray-600 leading-relaxed mt-8 mb-4">И дальше согласуем механики с solidity и фронтом. Вот парочка схем – здесь staking/locking, связи между сущностями и немного токен сейла.</p>
 
                   <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))]">
                     <div 
