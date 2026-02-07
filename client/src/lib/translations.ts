@@ -165,7 +165,7 @@ export const projectTranslations = {
       category: "DEFI",
       role: "Senior Product Designer",
       title: "xSwap",
-      description: "xSwap is an AMM on the CrossFi network. It includes swap, liquidity pools, staking, token sale, and a veToken voting mechanism that controls how incentives are distributed. My goal was to design a product UX/UI where beginners don’t get stuck on “how do I even swap on a new network?”, while advanced users can open the Route view and see (and trust) how well the system optimizes it.",
+      description: "AMM on the CrossFi network. Not just a swap UI — it includes liquidity pools, a native token, and a rewards system. I created the brand style, landing page, and dApp UI, and worked through the product logic with Solidity devs.",
       content: {
         nda: "DeFi UX is high-stakes: one mistake costs money, and confusing mechanics quickly turn into distrust.",
         goal: {
@@ -261,7 +261,7 @@ We also shipped a Vietnamese version and launched for the Vietnamese market (and
       category: "DEFI",
       role: "Senior Product Designer",
       title: "xSwap",
-      description: "xSwap — AMM на сети CrossFi. Здесь есть swap, liquidity pools, staking, token sale и veToken-механика с голосованием за распределение инсентивов. Моя задача — собрать продуктовый UX/UI так, чтобы новички не спотыкались о \"как свапать на новой сети\", а опытные пользователи могли заглянуть в Route и удивиться, как система здорово его оптимизирует.",
+      description: "xSwap — AMM на сети CrossFi. Здесь есть swap, liquidity pools, staking, token sale и veToken-механика. Я создала визуальный стиль бренда, лендинг и интерфейс dApp, а также проработала логику продукта совместно с разработчиками.",
       content: {
         nda: "В DeFi UX ставки высоки: одна ошибка стоит денег, а запутанная механика быстро превращается в недоверие.",
         goal: {
