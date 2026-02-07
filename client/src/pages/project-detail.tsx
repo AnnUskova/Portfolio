@@ -423,9 +423,7 @@ export default function ProjectDetail() {
                     </div>
                   </div>
 
-                  <p className="text-[18px] text-gray-600 leading-relaxed mt-12 mb-4">
-                    После – собираю интерактивные прототипы и прогняю быстрые A/B-проверки внутри команды и на нескольких пользователях (более масштабное тестирование не проводим, потому что нет времени и ресурсов, потому что стартап). По результатам – итеративно улучшаю копирайт, подсказки и структуру, чтобы уменьшить непонимание на критичных шагах.
-                  </p>
+                  <p className="text-[18px] text-gray-600 leading-relaxed mt-12 mb-4">After that, I built interactive prototypes and ran quick A/B checks inside the team and with a few users. Based on the feedback, I iterated on copy, hints, and structure to reduce confusion on the critical steps.</p>
                 </div>
               </div>
             )}
