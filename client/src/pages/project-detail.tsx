@@ -10,18 +10,37 @@ import xSwapImg from "@assets/image_1770052489389.png";
 import skiziImg from "@assets/SKIZI_1768337984890.png";
 import chefImg from "@assets/AI_Chef_1768337984889.png";
 
+import moonbeamImg from "@/assets/moonbeam_cover.jpg";
+import cryptovecheImg from "@/assets/cryptoveche_cover.jpg";
+import uxResearchImg from "@/assets/ux_research_cover.jpg";
+import pholendImg from "@/assets/pholend_cover.jpg";
+import dickbuttsImg from "@/assets/dickbutts_cover.jpg";
+import maatImg from "@/assets/maat_cover.jpg";
+
 const projectMocks: Record<number, string> = {
   1: glacisImg,
   2: xSwapImg,
   3: skiziImg,
-  4: chefImg
+  4: chefImg,
+  5: moonbeamImg,
+  6: cryptovecheImg,
+  7: uxResearchImg,
+  8: pholendImg,
+  9: dickbuttsImg,
+  10: maatImg
 };
 
 const projectImages: Record<number, string> = {
   1: glacisImg,
   2: xSwapImg,
   3: skiziImg,
-  4: chefImg
+  4: chefImg,
+  5: moonbeamImg,
+  6: cryptovecheImg,
+  7: uxResearchImg,
+  8: pholendImg,
+  9: dickbuttsImg,
+  10: maatImg
 };
 
 export default function ProjectDetail() {

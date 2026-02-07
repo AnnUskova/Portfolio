@@ -244,6 +244,54 @@ We also shipped a Vietnamese version and launched for the Vietnamese market (and
       role: "Senior Product Designer",
       title: "2Go",
       description: "Freelance promos/deals service. Includes a mobile app for customers, a desktop app for B2B partners, and an admin panel."
+    },
+    {
+      id: 5,
+      year: "2023",
+      category: "DEFI",
+      role: "Senior Designer",
+      title: "Moonbeam",
+      description: "Part-time project with a DeFi giant – designed the 'Projects' section and redesigned the 'Governance' section for their dApp."
+    },
+    {
+      id: 6,
+      year: "2020-21",
+      category: "BLOCKCHAIN",
+      role: "Product Designer",
+      title: "Cryptoveche",
+      description: "Blockchain online voting system. My first major product – developed the customer service, admin panel, and mobile app."
+    },
+    {
+      id: 7,
+      year: "2025",
+      category: "RESEARCH",
+      role: "UX Researcher",
+      title: "UX Research (NDA)",
+      description: "UX study for a major travel/e-commerce platform: ~100 participants, mobile/desktop, unmoderated scenarios, and first-click tests."
+    },
+    {
+      id: 8,
+      year: "2023",
+      category: "DEFI",
+      role: "Senior Designer",
+      title: "PhoLend",
+      description: "Lending protocol on CrossFi. Created the visual style, dApp interface, and landing page."
+    },
+    {
+      id: 9,
+      year: "2023",
+      category: "NFT",
+      role: "Senior Designer",
+      title: "DickButts",
+      description: "Designed an NFT collection landing page for DickButts in just a few days."
+    },
+    {
+      id: 10,
+      year: "2023",
+      category: "DEFI",
+      role: "Lead Designer",
+      title: "MAAT",
+      description: "Refinancing system with customizable analytics and deep financial insights."
     }
   ],
   ru: [
@@ -332,6 +380,54 @@ Lock + Voting
       role: "Senior Product Designer",
       title: "2Go",
       description: "Фриланс-проект сервиса акций. Внутри - мобильное приложение для клиента, десктоп для B2B и админ-панель."
+    },
+    {
+      id: 5,
+      year: "2023",
+      category: "DEFI",
+      role: "Senior Designer",
+      title: "Moonbeam",
+      description: "Парт-тайм проект с DeFi гигантом – собрала для них раздел 'Projects' и сделала редизайн раздела 'Governance' для dApp."
+    },
+    {
+      id: 6,
+      year: "2020-21",
+      category: "BLOCKCHAIN",
+      role: "Product Designer",
+      title: "Криптовече",
+      description: "Система онлайн-голосования на блокчейне. Мой первый большой продукт – разработка клиентского сервиса, админки и мобильного приложения."
+    },
+    {
+      id: 7,
+      year: "2025",
+      category: "RESEARCH",
+      role: "UX Researcher",
+      title: "UX-исследование (NDA)",
+      description: "UX-исследование посадочной страницы: ~100 участников, mobile/desktop, немодерируемые сценарии и first-click."
+    },
+    {
+      id: 8,
+      year: "2023",
+      category: "DEFI",
+      role: "Senior Designer",
+      title: "PhoLend",
+      description: "Лендинг-протокол на сети CrossFi. Визуальный стиль, dApp и посадочная страница."
+    },
+    {
+      id: 9,
+      year: "2023",
+      category: "NFT",
+      role: "Senior Designer",
+      title: "DickButts",
+      description: "За пару дней собрала дизайн лендинга NFT коллекции DickButts."
+    },
+    {
+      id: 10,
+      year: "2023",
+      category: "DEFI",
+      role: "Lead Designer",
+      title: "MAAT",
+      description: "Система рефинансирования средств с кастомизируемой аналитикой."
     }
   ]
 };
