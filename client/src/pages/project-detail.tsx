@@ -435,7 +435,9 @@ export default function ProjectDetail() {
             {project.id === 2 && (
               <div className="max-w-[calc(56rem-80px)] space-y-12 pb-20">
                 <section>
-                  <h2 className="text-2xl font-medium mb-8">Решения по фичам</h2>
+                  <h2 className="text-2xl font-medium mb-8">
+                    {language === "ru" ? "Решения по фичам" : "Feature decisions"}
+                  </h2>
                   
                   <div className="space-y-12 text-[18px] text-gray-600 leading-relaxed">
                     <div className="space-y-4">
