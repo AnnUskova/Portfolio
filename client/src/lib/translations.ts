@@ -170,32 +170,61 @@ export const projectTranslations = {
         nda: "DeFi UX is high-stakes: one mistake costs money, and confusing mechanics quickly turn into distrust.",
         goal: {
           title: "Context & product challenges",
-          text: "The key goals were: Reduce transaction errors, like changing inputs mid-swap, leaving the form during approval, running out of gas. Keep it transparent for advanced users while still being friendly to beginners. Lower the entry barrier: without XFI you can’t pay gas and send a transaction. Support marketing without breaking UX: make token sale conversion-friendly through numbers and clear logic."
+          text: `DeFi UX is high-stakes: one mistake costs money, and confusing mechanics quickly turn into distrust. So the key goals were:
+• Reduce transaction errors, like changing inputs mid-swap, leaving the form during approval, running out of gas, and other “classic” crypto pitfalls.
+• Keep it transparent for advanced users while still being friendly to beginners (when you’re new to DeFi, you want helpful hints everywhere).
+• Lower the entry barrier: without XFI you can’t pay gas and send a transaction, and people often leave to “figure it out” and never come back.
+• Support marketing without breaking UX: make token sale conversion-friendly through numbers and clear logic.`
         },
         process: {
           title: "User flows (and other diagrams I use as medicine)",
           steps: [
             {
-              name: "Mapping",
+              name: "Error Prevention",
               text: "To prevent mistakes, I first map every place where things can go wrong and attach the relevant states and errors."
             },
             {
               name: "Alignment",
-              text: "Then we align the mechanics with the Solidity and frontend teams. I also did a few “marker on a whiteboard” drafts."
+              text: "Then we align the mechanics with the Solidity and frontend teams. I also did a few “marker on a whiteboard” drafts — staking/locking logic, entity relationships, and a bit of token sale."
             },
             {
-              name: "Testing & Iteration",
-              text: "I built interactive prototypes and ran quick A/B checks inside the team and with a few users. Based on the feedback, I iterated on copy, hints, and structure."
+              name: "Prototyping",
+              text: "After that, I built interactive prototypes and ran quick A/B checks inside the team and with a few users. Based on the feedback, I iterated on copy, hints, and structure to reduce confusion on the critical steps."
             }
           ]
         },
         results: {
           title: "Feature decisions",
-          text: "Swap: I followed the standard pattern to keep it familiar. The built-in Faucet removes a major drop-off point. For advanced users, there’s Route showing pool optimization. Pools: I split Pools into My positions and All pools for simpler comparison. Token Sale: Added an interactive profit estimator to boost motivation. Lock + Voting: Split the experience into Lock and Voting to simplify veSWA concepts."
+          text: `Swap
+Swap is one of the core flows: users come here to exchange one token for another. I followed the standard pattern to keep it familiar: Max button, token-field switch, wallet balance, and USD value.
+On the right, there’s a small action block: Settings (slippage presets + custom slippage input), Help (?) walkthrough, and Faucet to claim XFI (the network’s native token).
+The built-in Faucet removes a major drop-off point: users don’t leave the product to hunt for gas, and can complete their first swap faster.
+After the form is filled, we show the important details: rate, price impact (with warnings when it’s too high), network cost, etc. For advanced users, there’s Route — it shows which tokens and pools the swap goes through. You can copy pool or token contract addresses, and we explain route optimization and gas cost, e.g.:
+“Best price route costs ~$6.97 in gas… considers split routes, multiple hops, and the gas cost of each step.”
+This makes the product feel transparent: you can see how it works and why the numbers look the way they do.
+
+Pools
+I split Pools into two clear modes:
+My positions — active positions + quick actions
+All pools — a browsing table for comparison (TVL/APY/volume)
+Rewards claiming is aggregated — not per position — so it’s simpler and faster.
+
+Add / Remove liquidity
+Adding liquidity is a multi-step flow with wallet confirmations. I added step-by-step guidance and a progress stepper so users always know where they are. While a step is running, buttons and inputs are disabled to prevent accidental mistakes.
+
+Token Sale
+Token Sale has to sell the platform token (SWA) and help users make a decision quickly. The first thing is choosing the correct network — that’s why it’s highlighted as the most important requirement. Then it’s about timing: the screen shows the countdown timer, stage conditions, and the current vs next price.
+To boost motivation, I added an interactive profit estimator. It’s pre-filled by default, can be edited, and is synced with the main purchase form — so when users change the amount, they instantly see an estimated outcome (e.g., projected profit in 3 months).
+I also added beginner-friendly video guides to reduce the entry barrier and support load.
+
+Lock + Voting
+This was the most challenging part to design: there aren’t many good references, and the logic introduces new concepts like veSWA, voting power, and incentives. The mechanic is simple once it’s explained: when users lock SWA, they receive veSWA as voting power. With veSWA they vote for pools, which affects how incentives are distributed and ultimately impacts yields.
+I split the experience into Lock (locks, durations, unlock) and Voting (votes and their impact), and surfaced the key metrics directly in the UI: veSWA amount, rewards, and unlock date, plus helpful hints and empty states.`
         },
         conclusion: {
           title: "Outcome",
-          text: "In one month, I designed the product, handed it off to frontend, and coordinated implementation quality. The result is a clean, understandable AMM interface. We also shipped a Vietnamese version and launched for the Vietnamese market.",
+          text: `In one month, I designed the product, handed it off to frontend, and coordinated implementation quality. The result is a clean, understandable AMM interface with extra “goodies” for power users and a lot of guidance for beginners.
+We also shipped a Vietnamese version and launched for the Vietnamese market (and yes — I had to design it as a separate UI set, because “it’s going to break anyway” is a very real argument in startup life).`,
           vietnamCaption: "Vietnamese version (why it lives in Figma? because “it’s going to break, let’s just redraw it” — said the client and the frontend team). Also: some UI library components."
         }
       }
@@ -237,32 +266,53 @@ export const projectTranslations = {
         nda: "В DeFi UX ставки высоки: одна ошибка стоит денег, а запутанная механика быстро превращается в недоверие.",
         goal: {
           title: "Контекст и вызовы продукта",
-          text: "Основные цели: Снизить ошибки транзакций (смена инпутов во время свапа, уход из формы во время апрува, нехватка газа). Сохранить прозрачность для профи и дружелюбность для новичков. Снизить порог входа: без XFI нельзя отправить транзакцию, а за ним часто уходят и не возвращаются. Поддержать маркетинг: сделать Token sale конверсионным за счет цифр и понятной логики."
+          text: `DeFi UX — это высокие ставки: одна ошибка стоит денег, а запутанная механика быстро превращается в недоверие. Ключевые цели были:
+• Снизить ошибки транзакций: смена инпутов во время свапа, уход из формы во время апрува, нехватка газа и другие «классические» крипто-ловушки.
+• Сохранить прозрачность для профи и дружелюбность для новичков (когда ты новичок в DeFi, подсказки нужны везде).
+• Снизить порог входа: без XFI нельзя оплатить газ и отправить транзакцию, а за ним часто уходят «разбираться» и не возвращаются.
+• Поддержать маркетинг: сделать Token sale конверсионным за счет цифр и понятной логики.`
         },
         process: {
           title: "User flows (и другие схемы, которые я использую как лекарство)",
           steps: [
             {
-              name: "Мэппинг",
-              text: "Чтобы предотвратить ошибки, я сначала отрисовываю все места, где что-то может пойти не так, и прикручиваю туда соответствующие состояния и ошибки."
+              name: "Предотвращение ошибок",
+              text: "Чтобы избежать ошибок, я сначала отрисовываю все места, где что-то может пойти не так, и прикручиваю туда соответствующие состояния и ошибки."
             },
             {
               name: "Согласование",
-              text: "Затем мы синхронизируем механику с Solidity и фронт-командой. Я также сделала несколько набросков «маркером по доске»."
+              text: "Затем мы синхронизируем механику с Solidity и фронт-командами. Я также сделала несколько набросков «маркером по доске» — логика локов, связи сущностей."
             },
             {
-              name: "Тесты и итерации",
+              name: "Прототипирование",
               text: "Собрала интерактивные прототипы и провела быстрые A/B чеки внутри команды и на паре пользователей. По итогам поправили тексты, подсказки и структуру."
             }
           ]
         },
         results: {
           title: "Продуктовые решения",
-          text: "Swap: Я придерживалась стандартного паттерна для привычности. Встроенный Faucet убирает точку отсева. Для продвинутых — Route с детализацией оптимизации. Pools: Разделила на My positions и All pools для удобного сравнения. Token Sale: Добавила калькулятор доходности для повышения мотивации. Lock + Voting: Разделила опыт на блоки Lock и Voting для упрощения концепции veSWA."
+          text: `Swap
+Свап — один из ключевых флоу. Я придерживалась стандартного паттерна для привычности: кнопка Max, переключатель токенов, баланс и USD-эквивалент.
+Справа расположен блок действий: Settings (пресеты проскальзывания), Help (?) и Faucet для клейма XFI.
+Встроенный Faucet убирает точку отсева — пользователям не нужно искать газ на стороне, они могут совершить первый свап быстрее.
+После заполнения формы показываем детали: рейт, Price Impact (с предупреждением), стоимость сети. Для продвинутых — Route, показывающий оптимизацию маршрута.
+
+Pools
+Разделила на «Мои позиции» и «Все пулы». Сбор наград агрегирован — это проще и быстрее.
+
+Add / Remove liquidity
+Добавила пошаговое руководство и прогресс-бар, чтобы пользователь всегда понимал статус транзакции. На время выполнения шага кнопки и инпуты блокируются.
+
+Token Sale
+Добавила интерактивный калькулятор доходности, синхронизированный с формой покупки, чтобы повысить мотивацию. Также добавила обучающие видео для новичков.
+
+Lock + Voting
+Самая сложная часть: разделила опыт на Lock (стейкинг) и Voting (голосование), вынесла ключевые метрики (veSWA, награды, дата разлока) прямо в интерфейс.`
         },
         conclusion: {
           title: "Итог",
-          text: "За месяц я собрала дизайн продукта, отдала фронту и проконтролировала реализацию. xSwap получился чистым и понятным. Мы также реализовали вьетнамскую версию и запустили на вьетнамский рынок.",
+          text: `За месяц я собрала дизайн продукта, отдала фронту и проконтролировала реализацию. xSwap получился чистым и понятным, с некоторыми наворотами для DeFi-дегенов и многочисленными ориентирами для новичков.
+Мы также реализовали вьетнамскую версию и запустили на вьетнамский рынок (и для нее я отдельно нарисовала дизайн)).`,
           vietnamCaption: "Вьетнамская версия (зачем она в фигме, спросите вы, – все поедет, давай лучше отрисуем – ответят заказчик и фронты) и некоторые элементы библиотеки"
         }
       }

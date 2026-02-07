@@ -657,7 +657,7 @@ export default function ProjectDetail() {
 
               <section className="p-10 bg-black text-white rounded-[32px]">
                 <h2 className="text-[11px] font-medium mb-6 uppercase tracking-widest text-gray-500">{project.content.results.title}</h2>
-                <div className="text-lg md:text-xl leading-relaxed font-normal">
+                <div className="text-lg md:text-xl leading-relaxed font-normal whitespace-pre-line">
                   {project.content.results.text}
                 </div>
               </section>
