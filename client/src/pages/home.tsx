@@ -18,7 +18,7 @@ import zeroDeltaCoverImg from "@/assets/zero_delta_cover.png";
 import gradientBar from "@assets/image_1770061190853.png";
 
 const projectImages: Record<number, string | null> = {
-  1: zeroDeltaCoverImg,
+  1: zeroDeltaImg,
   2: xSwapImg,
   3: null,
   4: null

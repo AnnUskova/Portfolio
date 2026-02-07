@@ -10,7 +10,7 @@ import xSwapImg from "@assets/image_1770052489389.png";
 import zeroDeltaCoverImg from "@/assets/zero_delta_cover.png";
 
 const projectImages: Record<number, string | null> = {
-  1: zeroDeltaCoverImg,
+  1: zeroDeltaImg,
   2: xSwapImg,
   3: null,
   4: null,
