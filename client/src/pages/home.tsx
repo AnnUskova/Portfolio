@@ -50,11 +50,11 @@ export default function Home() {
   ];
 
   const nextProject = () => {
-    setActiveProject((prev) => (prev + 1) % projects.length);
+    setActiveProject((prev) => (prev + 1) % 6); // Limit to first 6 projects
   };
 
   const prevProject = () => {
-    setActiveProject((prev) => (prev - 1 + projects.length) % projects.length);
+    setActiveProject((prev) => (prev - 1 + 6) % 6); // Limit to first 6 projects
   };
 
   const contactData = {
@@ -314,7 +314,10 @@ export default function Home() {
                     <ChevronLeft className="w-6 h-6" />
                   </button>
                   <button 
-                    onClick={nextProject}
+                    onClick={() => {
+                      const nextIdx = (activeProject + 1) % 6; // Limit to first 6 projects
+                      setActiveProject(nextIdx);
+                    }}
                     className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:border-black hover:bg-black hover:text-white transition-all duration-300 group"
                     data-testid="button-next-project"
                   >
@@ -337,7 +340,7 @@ export default function Home() {
               <div className="flex gap-2 items-start w-full">
                 <AnimatePresence mode="popLayout">
                     {[0, 1, 2].map((offset) => {
-                    const index = (activeProject + offset) % projects.length;
+                    const index = (activeProject + offset) % 6; // Limit to first 6 projects
                     const isFirst = offset === 0;
                     return (
                       <Link 
