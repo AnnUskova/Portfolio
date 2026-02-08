@@ -482,7 +482,21 @@ export default function Home() {
                                 {item.year}
                               </span>
                               <div>
-                                <h3 className="text-2xl font-medium mb-1">{item.company}</h3>
+                                <h3 className="text-2xl font-medium mb-1">
+                                  {item.company === "Glacis Labs" ? (
+                                    <a 
+                                      href="https://glacislabs.com/" 
+                                      target="_blank" 
+                                      rel="noopener noreferrer"
+                                      className="hover:text-gray-600 transition-colors inline-flex items-center gap-1"
+                                    >
+                                      {item.company}
+                                      <ArrowUpRight className="w-4 h-4" />
+                                    </a>
+                                  ) : (
+                                    item.company
+                                  )}
+                                </h3>
                                 <p className="text-gray-500">{item.role}</p>
                               </div>
                             </div>
