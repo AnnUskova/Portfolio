@@ -240,7 +240,7 @@ We also shipped a Vietnamese version and launched for the Vietnamese market (and
     {
       id: 4,
       year: "2025",
-      category: "PRODUCT",
+      category: "Food App",
       role: "Senior Product Designer",
       title: "2Go",
       description: "Freelance promos/deals service. Includes a mobile app for customers, a desktop app for B2B partners, and an admin panel."
@@ -400,7 +400,7 @@ Lock + Voting
     {
       id: 4,
       year: "2025",
-      category: "ПРОДУКТ",
+      category: "Food App",
       role: "Senior Product Designer",
       title: "2Go",
       description: "Фриланс-проект сервиса акций. Внутри - мобильное приложение для клиента, десктоп для B2B и админ-панель."
