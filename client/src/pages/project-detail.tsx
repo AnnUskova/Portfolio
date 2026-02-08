@@ -759,7 +759,7 @@ export default function ProjectDetail() {
                     href={`/projects/${p.id}`}
                     className="group flex flex-col"
                   >
-                    <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-[#F1F1F1] border border-gray-100 mb-6">
+                    <div className="relative aspect-[4/3] rounded-[28px] overflow-hidden bg-[#F1F1F1] border border-gray-100 mb-6">
                       {projectImages[p.id] ? (
                         <img 
                           src={projectImages[p.id] as string}
@@ -775,9 +775,12 @@ export default function ProjectDetail() {
                       <span className="text-gray-200">/</span>
                       <span>{p.category}</span>
                     </div>
-                    <h3 className="text-xl font-medium group-hover:text-gray-600 transition-colors">
+                    <h3 className="text-xl font-medium mb-2 group-hover:text-gray-600 transition-colors">
                       {p.title}
                     </h3>
+                    <p className="text-sm text-gray-500 line-clamp-2 leading-relaxed">
+                      {p.description}
+                    </p>
                   </Link>
                 ))}
             </div>
