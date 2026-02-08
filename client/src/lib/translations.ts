@@ -411,7 +411,7 @@ Lock + Voting
       category: "DEFI",
       role: "Senior Designer",
       title: "Moonbeam",
-      description: "Парт-тайм проект с DeFi гигантом – собрала для них раздел 'Projects' и сделала редизайн раздела 'Governance' для dApp."
+      description: "Парт-тайм проект с DeFi-гигантом – собрала для них раздел Projects и сделала редизайн раздела Governance в dApp."
     },
     {
       id: 6,
