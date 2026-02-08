@@ -215,7 +215,11 @@ export default function Projects() {
                       <p className="text-gray-500 text-[15px] leading-relaxed mb-5 line-clamp-2">
                         {project.id === 8 && language === "ru" 
                           ? "Лендинг-протокол на сети CrossFi. Визуальный стиль, dApp и лендинг."
-                          : project.description}
+                          : project.id === 3
+                            ? (language === "ru" 
+                              ? "Система автоматизации учета зеленой энергии. Десктоп интерфейс на 8 ролей."
+                              : "Green energy accounting automation system. Desktop interface with 8 user roles.")
+                            : project.description}
                       </p>
                       <div className="flex flex-wrap gap-2 mt-auto">
                         <span className="px-3 py-1 bg-gray-50 text-gray-500 text-[11px] font-medium uppercase tracking-wider rounded-full border border-gray-100">{project.year}</span>
