@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, X, Download } from "lucide-react";
@@ -27,6 +27,10 @@ const projectImages: Record<number, string | null> = {
 };
 
 export default function Projects() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const [language, setLanguage] = useState<Language>(() => {
     const saved = localStorage.getItem("app_language");
     if (saved === "en" || saved === "ru") return saved as Language;
