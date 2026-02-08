@@ -7,7 +7,7 @@ export const translations = {
     },
     hero: {
       title: "Hi! I'm Anna Uskova — a product designer with 8+ years in the industry.",
-      description: "I work with high-load systems, DeFi protocols and B2C products — from research to polished UI.",
+      description: "I work with high-load systems, DeFi protocols \nand B2C products – from research to polished UI.",
       viewWork: "Explore projects",
       getInTouch: "Get in touch"
     },
