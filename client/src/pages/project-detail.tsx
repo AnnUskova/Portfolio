@@ -737,18 +737,50 @@ export default function ProjectDetail() {
           )}
         </section>
 
-        {/* Footer Navigation */}
-        <section className="border-t border-gray-100 py-24">
-          <div className="max-w-7xl auto px-6 lg:px-12">
-            <Link href={`/projects/${nextProject.id}`} className="group flex flex-col items-center text-center">
-              <span className="text-gray-400 uppercase tracking-widest text-sm mb-8">{t.projectsPage.nextProject}</span>
-              <h2 className="text-5xl md:text-7xl font-medium mb-12 tracking-tight group-hover:scale-105 transition-transform duration-500">
-                {nextProject.title}
+        {/* Footer Navigation - Related Projects */}
+        <section className="border-t border-gray-100 py-24 lg:py-32">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <div className="flex justify-between items-end mb-12">
+              <h2 className="text-3xl font-medium tracking-tight">
+                {language === "ru" ? "Другие проекты" : "Other Projects"}
               </h2>
-              <div className="w-20 h-20 rounded-full border border-gray-200 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all duration-300">
-                <ChevronRight className="w-8 h-8" />
-              </div>
-            </Link>
+              <Link href="/projects" className="text-[15px] font-medium link-underline">
+                {language === "ru" ? "Все проекты" : "All Projects"}
+              </Link>
+            </div>
+            
+            <div className="grid md:grid-cols-3 gap-8">
+              {projects
+                .filter(p => p.id !== id)
+                .slice(0, 3)
+                .map((p) => (
+                  <Link 
+                    key={p.id} 
+                    href={`/projects/${p.id}`}
+                    className="group flex flex-col"
+                  >
+                    <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-[#F1F1F1] border border-gray-100 mb-6">
+                      {projectImages[p.id] ? (
+                        <img 
+                          src={projectImages[p.id] as string}
+                          alt={p.title}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-[#F1F1F1]" />
+                      )}
+                    </div>
+                    <div className="flex items-center gap-2 text-[12px] text-gray-400 uppercase tracking-wider mb-2">
+                      <span>{p.year}</span>
+                      <span className="text-gray-200">/</span>
+                      <span>{p.category}</span>
+                    </div>
+                    <h3 className="text-xl font-medium group-hover:text-gray-600 transition-colors">
+                      {p.title}
+                    </h3>
+                  </Link>
+                ))}
+            </div>
           </div>
         </section>
       </main>
