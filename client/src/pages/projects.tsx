@@ -219,7 +219,11 @@ export default function Projects() {
                             ? (language === "ru" 
                               ? "Система автоматизации учета зеленой энергии. Десктоп интерфейс на 8 ролей."
                               : "Green energy accounting automation system. Desktop interface with 8 user roles.")
-                            : project.description}
+                            : project.id === 2
+                              ? (language === "ru"
+                                ? "AMM на сети CrossFi. Swap, pools и veToken voting – дизайн и запуск за 1 месяц."
+                                : "AMM on CrossFi network. Swap, pools, and veToken voting – design and launch in 1 month.")
+                              : project.description}
                       </p>
                       <div className="flex flex-wrap gap-2 mt-auto">
                         <span className="px-3 py-1 bg-gray-50 text-gray-500 text-[11px] font-medium uppercase tracking-wider rounded-full border border-gray-100">{project.year}</span>
