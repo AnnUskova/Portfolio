@@ -513,6 +513,16 @@ export default function Home() {
                                       {item.company}
                                       <ArrowUpRight className="w-4 h-4" />
                                     </a>
+                                  ) : item.company === "Единая электронная торговая площадка, ОАО (группа ВТБ)" || item.company === "EETP, JSC (VTB Group)" ? (
+                                    <a 
+                                      href="https://www.roseltorg.ru/" 
+                                      target="_blank" 
+                                      rel="noopener noreferrer"
+                                      className="hover:text-gray-600 transition-colors inline-flex items-center gap-1"
+                                    >
+                                      {item.company}
+                                      <ArrowUpRight className="w-4 h-4" />
+                                    </a>
                                   ) : (
                                     item.company
                                   )}
