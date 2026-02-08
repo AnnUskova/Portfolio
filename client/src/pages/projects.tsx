@@ -212,7 +212,11 @@ export default function Projects() {
                         <h3 className="text-2xl font-medium tracking-tight group-hover:text-gray-600 transition-colors">{project.title}</h3>
                         <ArrowUpRight className="w-5 h-5 text-gray-300 group-hover:text-black transition-colors" />
                       </div>
-                      <p className="text-gray-500 text-[15px] leading-relaxed mb-5 line-clamp-2">{project.description}</p>
+                      <p className="text-gray-500 text-[15px] leading-relaxed mb-5 line-clamp-2">
+                        {project.id === 8 && language === "ru" 
+                          ? "Лендинг-протокол на сети CrossFi. Визуальный стиль, dApp и лендинг."
+                          : project.description}
+                      </p>
                       <div className="flex flex-wrap gap-2 mt-auto">
                         <span className="px-3 py-1 bg-gray-50 text-gray-500 text-[11px] font-medium uppercase tracking-wider rounded-full border border-gray-100">{project.year}</span>
                         <span className="px-3 py-1 bg-gray-50 text-gray-500 text-[11px] font-medium uppercase tracking-wider rounded-full border border-gray-100">{project.role}</span>
