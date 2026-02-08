@@ -491,7 +491,7 @@ export default function Home() {
                                       className="hover:text-gray-600 transition-colors inline-flex items-center gap-1"
                                     >
                                       {item.company}
-                                      <ArrowUpRight className="w-4 h-4" />
+                                      <ArrowUpRight className="w-4 h-4 text-gray-300 group-hover:text-gray-400 transition-colors" />
                                     </a>
                                   ) : item.company === "Moonbeam Foundation" ? (
                                     <a 
@@ -501,7 +501,7 @@ export default function Home() {
                                       className="hover:text-gray-600 transition-colors inline-flex items-center gap-1"
                                     >
                                       {item.company}
-                                      <ArrowUpRight className="w-4 h-4" />
+                                      <ArrowUpRight className="w-4 h-4 text-gray-300 group-hover:text-gray-400 transition-colors" />
                                     </a>
                                   ) : item.company === "Masterchain" ? (
                                     <a 
@@ -511,7 +511,7 @@ export default function Home() {
                                       className="hover:text-gray-600 transition-colors inline-flex items-center gap-1"
                                     >
                                       {item.company}
-                                      <ArrowUpRight className="w-4 h-4" />
+                                      <ArrowUpRight className="w-4 h-4 text-gray-300 group-hover:text-gray-400 transition-colors" />
                                     </a>
                                   ) : item.company === "Росэлторг (группа ВТБ)" ? (
                                     <a 
@@ -521,7 +521,7 @@ export default function Home() {
                                       className="hover:text-gray-600 transition-colors inline-flex items-center gap-1"
                                     >
                                       {item.company}
-                                      <ArrowUpRight className="w-4 h-4" />
+                                      <ArrowUpRight className="w-4 h-4 text-gray-300 group-hover:text-gray-400 transition-colors" />
                                     </a>
                                   ) : item.company === "ITERIUM.TECH" ? (
                                     <a 
@@ -531,7 +531,7 @@ export default function Home() {
                                       className="hover:text-gray-600 transition-colors inline-flex items-center gap-1"
                                     >
                                       {item.company}
-                                      <ArrowUpRight className="w-4 h-4" />
+                                      <ArrowUpRight className="w-4 h-4 text-gray-300 group-hover:text-gray-400 transition-colors" />
                                     </a>
                                   ) : item.company === "Центр технологий распределенных реестров СПбГУ" || item.company === "Distributed Ledger Technologies Center, SPbU" ? (
                                     <a 
@@ -541,7 +541,7 @@ export default function Home() {
                                       className="hover:text-gray-600 transition-colors inline-flex items-center gap-1"
                                     >
                                       {item.company}
-                                      <ArrowUpRight className="w-4 h-4" />
+                                      <ArrowUpRight className="w-4 h-4 text-gray-300 group-hover:text-gray-400 transition-colors" />
                                     </a>
                                   ) : item.company === "Премиум Пресс" || item.company === "Premium Press" ? (
                                     <a 
@@ -551,7 +551,7 @@ export default function Home() {
                                       className="hover:text-gray-600 transition-colors inline-flex items-center gap-1"
                                     >
                                       {item.company}
-                                      <ArrowUpRight className="w-4 h-4" />
+                                      <ArrowUpRight className="w-4 h-4 text-gray-300 group-hover:text-gray-400 transition-colors" />
                                     </a>
                                   ) : (
                                     item.company
