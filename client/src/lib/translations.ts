@@ -23,7 +23,7 @@ export const translations = {
       items: [
         { num: "01", title: "Education", desc: "Bachelor's degree, SPbU (Saint Petersburg State University), Faculty of Journalism and Mass Communications, Department of Media Design." },
         { num: "02", title: "Languages", desc: "English – B2, Spanish – A2." },
-        { num: "03", title: "Additional Info", desc: "I love my job, and now I'm also learning to build websites with AI tools." },
+        { num: "03", title: "Additional Info", desc: "These days I don’t just do design and research – I’m also learning to build websites with AI tools (this site is one of them)." },
         { num: "04", title: "Free time", desc: "I make music, learn to sew clothes, and try to travel as much as possible." }
       ]
     },
