@@ -533,6 +533,16 @@ export default function Home() {
                                       {item.company}
                                       <ArrowUpRight className="w-4 h-4" />
                                     </a>
+                                  ) : item.company === "Центр технологий распределенных реестров СПбГУ" || item.company === "Distributed Ledger Technologies Center, SPbU" ? (
+                                    <a 
+                                      href="https://dltc.spbu.ru/" 
+                                      target="_blank" 
+                                      rel="noopener noreferrer"
+                                      className="hover:text-gray-600 transition-colors inline-flex items-center gap-1"
+                                    >
+                                      {item.company}
+                                      <ArrowUpRight className="w-4 h-4" />
+                                    </a>
                                   ) : (
                                     item.company
                                   )}
