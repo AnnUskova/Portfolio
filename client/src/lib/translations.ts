@@ -19,7 +19,7 @@ export const translations = {
     },
     competencies: {
       title: "About me",
-      description: "I help companies create exceptional digital products — from early research to final delivery.",
+      description: "I work with enthusiasm (and pixels) and make warm, human-centered design. I think things through, ask the right questions, bring ideas to the table – even when the problem is messy. I genuinely love my job even on office days.",
       items: [
         { num: "01", title: "Education", desc: "Bachelor's degree, SPbU (Saint Petersburg State University), Faculty of Journalism and Mass Communications, Department of Media Design." },
         { num: "02", title: "Languages", desc: "English – B2, Spanish – A2." },
