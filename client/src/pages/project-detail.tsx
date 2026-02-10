@@ -438,8 +438,8 @@ export default function ProjectDetail() {
             </p>
 
             {project.id === 1 && (
-              <div className="w-full mb-12">
-                <div className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-white">
+              <div className="w-full mb-12 max-w-2xl">
+                <div className="rounded-[24px] overflow-hidden border border-gray-100 shadow-sm bg-white">
                   <img 
                     src={projectImages[1] || ""} 
                     alt="Glacis Labs Cover" 
