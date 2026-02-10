@@ -892,7 +892,7 @@ export default function ProjectDetail() {
             
             <div className="grid md:grid-cols-3 gap-8">
               {projects
-                .filter(p => p.id !== id)
+                .filter(p => p.id !== id && p.id !== 4)
                 .slice(0, 3)
                 .map((p) => (
                   <Link 
