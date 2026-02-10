@@ -547,7 +547,7 @@ export default function ProjectDetail() {
                 <p className="text-lg text-gray-600 leading-relaxed mb-4">
                   {language === "ru" ? "Когда я пришла в проект, компании нужны были:" : "When I joined the project, the company needed:"}
                 </p>
-                <ul className="space-y-4 mb-8">
+                <ul className="space-y-2 mb-8">
                   {(language === "ru" ? [
                     "фирменный стиль",
                     "dApp",
@@ -636,7 +636,7 @@ export default function ProjectDetail() {
                     ? "DeFi-интерфейсы — это зона высокого риска: ошибка стоит денег, а непонимание механики может превратиться в недоверие. Поэтому важно было:"
                     : "DeFi UX is high-stakes: one mistake costs money, and confusing mechanics quickly turn into distrust. So the key goals were:"}
                 </p>
-                <ul className="space-y-4">
+                <ul className="space-y-2">
                   {(language === "ru" 
                     ? [
                         "снизить вероятность ошибок при транзакциях (например, изменение значений в инпутах, когда свап в процессе, или уход с формы во время аппрува, или недостаток газа и тд);",
@@ -777,7 +777,7 @@ export default function ProjectDetail() {
                         <p>
                           {language === "ru" ? "Правый блок с кнопками:" : "On the right, there’s a small action block:"}
                         </p>
-                        <ul className="space-y-4">
+                        <ul className="space-y-2">
                           {(language === "ru" 
                             ? [
                                 "настройки – это изменение слиппэджа с возможностью ввести кастомное значение;",
@@ -836,7 +836,7 @@ export default function ProjectDetail() {
                     <div className="space-y-4">
                       <p className="font-medium text-black">Pools</p>
                       <p>Пулы я разделила на два блока:</p>
-                      <ul className="space-y-4">
+                      <ul className="space-y-2">
                         {[
                           "My positions — управление активными позициями и быстрые действия",
                           "и All pools — витрина для сравнения и выбора (TVL/APY/объёмы)."
