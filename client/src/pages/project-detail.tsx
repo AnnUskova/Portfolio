@@ -492,7 +492,7 @@ export default function ProjectDetail() {
                   </div>
                 </>
               ) : project.id === 13 ? (
-                <div className="space-y-8">
+                <div className="space-y-8 max-w-[66%] mx-auto">
                   {[
                     maatSlide1, maatSlide2, maatSlide3, maatSlide4,
                     maatSlide5, maatSlide6, maatSlide7, maatSlide8,
