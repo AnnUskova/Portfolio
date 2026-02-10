@@ -626,9 +626,9 @@ export default function ProjectDetail() {
 
                 <h2 className="text-2xl font-medium mb-6">{language === "ru" ? "Главная страница" : "Main Page"}</h2>
 
-                <div className="my-12 rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
+                <div className="mt-6 mb-12 rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
                   <img 
-                    src={glacisMainPage} 
+                    src={glacisMainPage}  
                     alt="Glacis Main Page" 
                     className="w-full h-auto object-contain cursor-pointer"
                     onClick={() => setSelectedImage(glacisMainPage)}
