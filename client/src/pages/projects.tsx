@@ -10,6 +10,7 @@ import xSwapImg from "@assets/image_1770052489389.png";
 import zeroDeltaCoverImg from "@/assets/zero_delta_cover.png";
 import twoGoCoverImg from "@/assets/2go_cover.png";
 import zoodaoCoverImg from "@/assets/zoodao_cover_v3.png";
+import maatCoverImg from "@/assets/maat_cover_final.png";
 
 const projectImages: Record<number, string | null> = {
   1: zeroDeltaImg,
@@ -21,7 +22,7 @@ const projectImages: Record<number, string | null> = {
   7: null,
   8: null,
   9: null,
-  10: null,
+  10: maatCoverImg,
   11: zeroDeltaCoverImg,
   12: zoodaoCoverImg,
   13: null
