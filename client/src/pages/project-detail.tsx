@@ -21,11 +21,13 @@ import pholendImg from "@/assets/pholend_cover.jpg";
 import dickbuttsImg from "@/assets/dickbutts_cover.jpg";
 import maatImg from "@/assets/maat_cover.jpg";
 
+import twoGoCoverImg from "@/assets/2go_cover.png";
+
 const projectMocks: Record<number, string> = {
   1: glacisImg,
   2: xSwapImg,
   3: skiziImg,
-  4: chefImg,
+  4: twoGoCoverImg,
   5: moonbeamImg,
   6: cryptovecheImg,
   7: uxResearchImg,
@@ -38,7 +40,7 @@ const projectImages: Record<number, string> = {
   1: glacisImg,
   2: xSwapImg,
   3: skiziImg,
-  4: chefImg,
+  4: twoGoCoverImg,
   5: moonbeamImg,
   6: cryptovecheImg,
   7: uxResearchImg,
@@ -892,7 +894,7 @@ export default function ProjectDetail() {
             
             <div className="grid md:grid-cols-3 gap-8">
               {projects
-                .filter(p => p.id !== id && p.id !== 4)
+                .filter(p => p.id !== id)
                 .slice(0, 3)
                 .map((p) => (
                   <Link 
