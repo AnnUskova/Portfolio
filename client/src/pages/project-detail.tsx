@@ -531,6 +531,99 @@ export default function ProjectDetail() {
               ) : null}
             </div>
 
+            {project.id === 1 && (
+              <div className="max-w-[calc(56rem-80px)] mb-20">
+                <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                  {language === "ru" 
+                    ? "Моя роль на проекте – Lead Product Designer. Я руководила международной командой из junior-дизайнера и аутсорс графических и motion-дизайнеров и сама, конечно, много делала руками."
+                    : "My role on the project was Lead Product Designer. I managed an international team consisting of a junior designer and outsourced graphic and motion designers, and of course, I did a lot of hands-on work myself."}
+                </p>
+
+                <h2 className="text-2xl font-medium mb-6">
+                  {language === "ru" ? "Задачи и контекст" : "Tasks and Context"}
+                </h2>
+                <p className="text-lg text-gray-600 leading-relaxed mb-4">
+                  {language === "ru" ? "Когда я пришла в проект, компании нужны были:" : "When I joined the project, the company needed:"}
+                </p>
+                <ul className="space-y-4 mb-8">
+                  {(language === "ru" ? [
+                    "фирменный стиль",
+                    "dApp",
+                    "сайт",
+                    "презентации для инвесторов",
+                    "медиа-материалы."
+                  ] : [
+                    "brand identity",
+                    "dApp",
+                    "website",
+                    "investor presentations",
+                    "media materials."
+                  ]).map((item, i) => (
+                    <li key={i} className="flex gap-4 text-lg text-gray-600 leading-relaxed">
+                      <span className="text-black font-medium">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-lg text-gray-600 leading-relaxed mb-12">
+                   {language === "ru" ? "Медиа-материалы я отдала на аутсорс (и итерационно контролировала), за остальное взялась сама." : "I outsourced the media materials (and managed the process iteratively), and took on the rest myself."}
+                </p>
+
+                <h2 className="text-2xl font-medium mb-6">dApp</h2>
+                <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                  {language === "ru" ? "После определения стилевого направления я начала разрабатывать dApp. Его основная функция – отслеживание статуса транзакции онлайн. Звучит как дефолтный Scan app, но меня попросили отразить статусы графически, а сложность – транзакция может идти через пять бриджей. Выглядит это так (схема от разработчиков):" : "After defining the style direction, I started developing the dApp. Its main function is tracking transaction status online. It sounds like a default Scan app, but I was asked to visualize statuses graphically, and the complexity is that a transaction can go through five bridges. It looks like this (schema from developers):"}
+                </p>
+                
+                <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                  {language === "ru" ? "Еще в приложении должен быть блок аналитики, которая бы отражала общее количество транзакций за период, стоимость газа, скорость транзакции, наиболее популярные Chain Paths и т.д. Не забудем и про расширенный блок фильтрации, чтобы пользователь мог максимально кастомизировать графики." : "The app also needed an analytics block reflecting the total number of transactions over a period, gas cost, transaction speed, most popular Chain Paths, etc. And let's not forget the advanced filtering block so the user can fully customize the charts."}
+                </p>
+                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                  {language === "ru" ? "Аудитория приложения – разработчики (85%) и пользователи web3 продуктов (15%), преимущественно западная." : "The app's audience is developers (85%) and web3 product users (15%), primarily Western."}
+                </p>
+                 <p className="text-lg text-gray-600 leading-relaxed mb-12">
+                  {language === "ru" ? "После разработки дизайна V1 джуниор-дизайнер ушел, а вводные усложнились: у Glacis Labs появился второй продукт, AirLift, который расширял раздел аналитики и вводил еще одну переменную для транзакций. Итак, V2:" : "After developing the V1 design, the junior designer left, and the requirements became more complex: Glacis Labs launched a second product, AirLift, which expanded the analytics section and introduced another variable for transactions. So, V2:"}
+                </p>
+
+                <h2 className="text-2xl font-medium mb-6">{language === "ru" ? "Главная страница" : "Main Page"}</h2>
+                <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                   {language === "ru" ? "Наверху – мини-статистика по всему dApp, которая дает новому пользователю представление о масштабах экосистемы и количестве проходящих через нее транзакций, а пользователю постоянному – возможность отслеживать изменения («ого, было 10 сетей, а сейчас уже 21, как быстро они растут»)." : "At the top is mini-statistics for the entire dApp, giving new users an idea of the ecosystem's scale and transaction volume, and allowing regular users to track changes (“wow, there were 10 networks, now 21, they grow so fast”)."}
+                </p>
+                <p className="text-lg text-gray-600 leading-relaxed mb-12">
+                   {language === "ru" ? "Далее – список последних транзакций с возможностью поиска и фильтрации, а в колонке «Time» еще и сортировка добавлена. Также мы можем переключаться по вкладкам и выбирать продукт – Glacis Core или Airlift (он работает с токенами, но это тонкости)." : "Next is the list of recent transactions with search and filtering, and sorting added to the “Time” column. We can also switch tabs to choose the product – Glacis Core or Airlift (it works with tokens, but that's a detail)."}
+                </p>
+
+                <h2 className="text-2xl font-medium mb-6">{language === "ru" ? "Детали транзакции" : "Transaction Details"}</h2>
+                <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                   {language === "ru" ? "По нажатии на строку таблицы мы проваливаемся в детали транзакции. Под заголовок я вынесла время транзакции, статус и продукт. Далее – все что может быть полезно: Message ID, From/To, Source / Destination и т.д. Везде, где можно и нужно, кнопка копирования. Ниже – подробное отображение статуса транзакции. В данном примере она идет через два бриджа – Wormhole и LayerZero и у каждого свой статус. Пользователь видит, что через Wormhole транзакция уже прошла, а через LayerZero еще нет, но уже почти. Также он видит альтернативные пути, по которым могла пойти транзакция." : "Clicking a table row takes us to transaction details. Under the header, I placed transaction time, status, and product. Then – everything useful: Message ID, From/To, Source / Destination, etc. Copy buttons everywhere needed. Below is the detailed transaction status. In this example, it goes through two bridges – Wormhole and LayerZero, each with its status. The user sees Wormhole is done, LayerZero is pending. They also see alternative paths the transaction could have taken."}
+                </p>
+                <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                   {language === "ru" ? "Для мобильной версии этот блок сделала более компактным, но с возможностью развернуть, перевернув экран:" : "For mobile, I made this block more compact, but expandable by rotating the screen:"}
+                </p>
+                <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                   {language === "ru" ? "В случае ошибки система автоматически запускает Retry и это отображается в интерфейсе dApp:" : "In case of error, the system automatically triggers a Retry, displayed in the dApp interface:"}
+                </p>
+                <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                   {language === "ru" ? "Появляются две вкладки: «Main data» – что с транзакцией сейчас (или, если она в статусе «Executed», как она была выполнена), и «Retry data» – список ретраев. Ретраев может быть несколько (разработчики говорят, 99+, но пока такого кейса не было), все они видны пользователю. Он может отследить, на каком именно этапе и бридже произошла ошибка – так система делает исполнение транзакции прозрачным." : "Two tabs appear: “Main data” – current status (or how it was executed), and “Retry data” – list of retries. There can be multiple retries (devs say 99+, but haven't seen that yet), all visible to the user. They can track exactly at which stage and bridge the error occurred – making execution transparent."}
+                </p>
+                <p className="text-lg text-gray-600 leading-relaxed mb-12">
+                   {language === "ru" ? "Если страница деталей транзакции медленно загружается – видим вот такой чудесный лоадер:" : "If the transaction details page loads slowly – we see this wonderful loader:"}
+                </p>
+
+                <h2 className="text-2xl font-medium mb-6">{language === "ru" ? "Аналитика" : "Analytics"}</h2>
+                <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                   {language === "ru" ? "Аналитику можно посмотреть по продуктам Glacis Core и AirLift – графики и набор данных будут разные. Chains Overview пока в разработке." : "Analytics is available for Glacis Core and AirLift – charts and datasets differ. Chains Overview is in development."}
+                </p>
+                 <p className="text-lg text-gray-600 leading-relaxed mb-12">
+                   {language === "ru" ? "Они придут в приложение для проверки статуса транзакции или отсмотра аналитики (например, скорости транзакций у разных бриджей на разных блокчейнах за определенный период)." : "They come to the app to check transaction status or view analytics (e.g., transaction speeds of different bridges on different blockchains over a period)."}
+                </p>
+
+                <h2 className="text-2xl font-medium mb-6">{language === "ru" ? "Светлая тема" : "Light Theme"}</h2>
+                <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                   {language === "ru" ? "Тоже есть." : "Also available."}
+                </p>
+              </div>
+            )}
+
             {project.id === 2 && (
               <div className="max-w-[calc(56rem-80px)] mb-20">
                 <h2 className="text-2xl font-medium mb-6">
