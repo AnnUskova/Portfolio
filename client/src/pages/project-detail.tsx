@@ -181,13 +181,15 @@ export default function ProjectDetail() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className={`relative flex items-center justify-center transition-transform duration-300 ease-out ${isZoomed ? 'cursor-grab active:cursor-grabbing' : 'cursor-zoom-in'}`}
+              className={`relative flex items-center justify-center ${isZoomed ? 'cursor-grab active:cursor-grabbing' : 'cursor-zoom-in'}`}
               style={{
-                transform: isZoomed ? `translate(${dragOffset.x}px, ${dragOffset.y}px)` : 'none',
+                x: dragOffset.x,
+                y: dragOffset.y,
               }}
               onMouseDown={(e) => {
                 if (!isZoomed) {
                   setIsZoomed(true);
+                  setDragStart({ x: e.clientX, y: e.clientY });
                   return;
                 }
                 setIsDraggingImage(true);
@@ -203,19 +205,19 @@ export default function ProjectDetail() {
               onMouseUp={() => setIsDraggingImage(false)}
               onMouseLeave={() => setIsDraggingImage(false)}
               onClick={(e) => {
-                // If it was a click (not a drag), we toggle zoom
-                if (!isDraggingImage && isZoomed) {
-                  // Small threshold to distinguish click from drag
+                if (isZoomed && !isDraggingImage) {
                   setIsZoomed(false);
                   setDragOffset({ x: 0, y: 0 });
                 }
               }}
             >
-              <img
+              <motion.img
                 src={selectedImage}
                 alt="Full screen view"
                 draggable={false}
-                className={`rounded-xl shadow-2xl transition-all duration-300 pointer-events-none ${isZoomed ? 'w-[150vw] max-w-none' : 'max-w-[90vw] max-h-[90vh] object-contain'}`}
+                animate={{ scale: isZoomed ? 2 : 1 }}
+                transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                className="rounded-xl shadow-2xl pointer-events-none max-w-[90vw] max-h-[90vh] object-contain"
               />
             </motion.div>
           </motion.div>
