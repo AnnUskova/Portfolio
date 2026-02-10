@@ -182,33 +182,38 @@ export default function ProjectDetail() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               className={`relative flex items-center justify-center ${isZoomed ? 'cursor-grab active:cursor-grabbing' : 'cursor-zoom-in'}`}
-              style={{
-                x: dragOffset.x,
-                y: dragOffset.y,
-              }}
               onMouseDown={(e) => {
-                if (!isZoomed) {
-                  setIsZoomed(true);
-                  setDragOffset({ x: 0, y: 0 });
-                  return;
-                }
+                if (!isZoomed) return;
                 setIsDraggingImage(true);
                 setDragStart({ x: e.clientX - dragOffset.x, y: e.clientY - dragOffset.y });
+                e.stopPropagation();
+                e.preventDefault();
               }}
               onMouseMove={(e) => {
                 if (!isDraggingImage || !isZoomed) return;
-                setDragOffset({
-                  x: e.clientX - dragStart.x,
-                  y: e.clientY - dragStart.y
-                });
+                const newX = e.clientX - dragStart.x;
+                const newY = e.clientY - dragStart.y;
+                
+                // Only consider it a drag if moved more than 5px
+                if (Math.abs(newX - dragOffset.x) > 5 || Math.abs(newY - dragOffset.y) > 5) {
+                  setDragOffset({ x: newX, y: newY });
+                }
               }}
-              onMouseUp={() => setIsDraggingImage(false)}
+              onMouseUp={() => {
+                setTimeout(() => setIsDraggingImage(false), 10);
+              }}
               onMouseLeave={() => setIsDraggingImage(false)}
               onClick={(e) => {
-                // Only zoom out if we haven't dragged significantly
-                if (isZoomed && !isDraggingImage) {
-                  // If offset is very small, treat as click to zoom out
-                  if (Math.abs(dragOffset.x) < 5 && Math.abs(dragOffset.y) < 5) {
+                e.stopPropagation();
+                if (!isZoomed) {
+                  setIsZoomed(true);
+                  setDragOffset({ x: 0, y: 0 });
+                } else {
+                  // Only zoom out if we didn't just drag
+                  // We check if the current offset is basically the same as when we started
+                  // but a better way is to check the movement during THIS specific drag
+                  // For now, let's use a simpler toggle that respects the drag state
+                  if (!isDraggingImage) {
                     setIsZoomed(false);
                     setDragOffset({ x: 0, y: 0 });
                   }
@@ -219,8 +224,16 @@ export default function ProjectDetail() {
                 src={selectedImage}
                 alt="Full screen view"
                 draggable={false}
-                animate={{ scale: isZoomed ? 2 : 1 }}
-                transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                animate={{ 
+                  scale: isZoomed ? 2 : 1,
+                  x: isZoomed ? dragOffset.x : 0,
+                  y: isZoomed ? dragOffset.y : 0
+                }}
+                transition={{ 
+                  scale: { type: "spring", damping: 25, stiffness: 200 },
+                  x: { type: "tween", duration: 0 },
+                  y: { type: "tween", duration: 0 }
+                }}
                 className="rounded-xl shadow-2xl pointer-events-none max-w-[90vw] max-h-[90vh] object-contain"
               />
             </motion.div>
