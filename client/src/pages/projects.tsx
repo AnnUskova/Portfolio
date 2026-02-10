@@ -235,6 +235,10 @@ export default function Projects() {
                               ? (language === "ru"
                                 ? "Блокчейн-голосование: клиент, админка, mobile app. Мой первый большой продукт."
                                 : "Blockchain voting: client, admin panel, mobile app. My first major product.")
+                            : project.id === 12
+                              ? (language === "ru"
+                                ? "Схемы работы системы для инвесторов и комьюнити."
+                                : "System diagrams for investors and the community.")
                               : project.description}
                       </p>
                       <div className="flex flex-wrap gap-2 mt-auto">
