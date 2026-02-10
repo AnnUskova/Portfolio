@@ -689,6 +689,17 @@ export default function ProjectDetail() {
                    {language === "ru" ? "Если страница деталей транзакции медленно загружается – видим вот такой чудесный лоадер:" : "If the transaction details page loads slowly – we see this wonderful loader:"}
                 </p>
 
+                <div className="my-12 rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white relative group">
+                  <video 
+                    src="/glacis_loader.mp4" 
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-auto object-contain"
+                  />
+                </div>
+
                 <h2 className="text-2xl font-medium mb-6">{language === "ru" ? "Аналитика" : "Analytics"}</h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                    {language === "ru" ? "Аналитику можно посмотреть по продуктам Glacis Core и AirLift – графики и набор данных будут разные. Chains Overview пока в разработке." : "Analytics is available for Glacis Core and AirLift – charts and datasets differ. Chains Overview is in development."}
