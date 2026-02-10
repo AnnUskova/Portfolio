@@ -160,6 +160,14 @@ export const projectTranslations = {
       description: "DeFi ecosystem for cross-chain operations. Led the project’s design direction and shipped the full set: dApp, website, complex widgets, pitch decks, and diagrams."
     },
     {
+      id: 14,
+      year: "2024-26",
+      category: "WEB",
+      role: "DESIGN LEAD",
+      title: "Glacis Labs site",
+      description: "Corporate website for the Glacis Labs ecosystem. Designed to effectively present the product suite and onboard new users."
+    },
+    {
       id: 2,
       year: "2023",
       category: "DEFI",
@@ -326,6 +334,14 @@ We also shipped a Vietnamese version and launched for the Vietnamese market (and
       role: "DESIGN LEAD",
       title: "Glacis Labs dApp",
       description: "Экосистема DeFi продуктов для работы с cross-chain операциями. Сформировала дизайн-направление проекта и собрала dApp, сайт, сложные виджеты, питч деки и схемы."
+    },
+    {
+      id: 14,
+      year: "2024-26",
+      category: "WEB",
+      role: "DESIGN LEAD",
+      title: "Glacis Labs site",
+      description: "Корпоративный сайт экосистемы Glacis Labs. Разработан для эффективной презентации продуктов и онбординга новых пользователей."
     },
     {
       id: 2,

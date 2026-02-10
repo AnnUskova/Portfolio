@@ -5,6 +5,7 @@ import { ArrowUpRight, X, Download } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { translations, projectTranslations, type Language } from "@/lib/translations";
 
+import glacisImg from "@assets/GLACIS_1768337984889.png";
 import zeroDeltaImg from "@assets/зеро_дельта_1770041205735.png";
 import xSwapImg from "@assets/image_1770052489389.png";
 import zeroDeltaCoverImg from "@/assets/zero_delta_cover.png";
@@ -14,6 +15,7 @@ import maatCoverImg from "@/assets/maat_pd_cover_v3.png";
 
 const projectImages: Record<number, string | null> = {
   1: zeroDeltaImg,
+  14: glacisImg,
   2: xSwapImg,
   3: null, // SKIZI
   4: twoGoCoverImg, // 2Go
@@ -58,7 +60,7 @@ export default function Projects() {
   
   const getProjectsForTab = (tab: string) => {
     if (tab === "uxui") {
-      const ids = [1, 2, 3, 4, 5, 6, 8, 9, 10];
+      const ids = [1, 14, 2, 3, 4, 5, 6, 8, 9, 10];
       return ids.map(id => allProjects.find(p => p.id === id)).filter((p): p is typeof allProjects[0] => p !== undefined);
     }
     if (tab === "strategy") {

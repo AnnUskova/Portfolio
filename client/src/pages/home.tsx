@@ -21,6 +21,7 @@ import gradientBar from "@assets/image_1770061190853.png";
 
 const projectImages: Record<number, string | null> = {
   1: zeroDeltaImg,
+  14: glacisImg,
   2: xSwapImg,
   3: null, // SKIZI
   4: twoGoSliderImg // 2Go
@@ -53,11 +54,11 @@ export default function Home() {
   ];
 
   const nextProject = () => {
-    setActiveProject((prev) => (prev + 1) % 6); // Limit to first 6 projects
+    setActiveProject((prev) => (prev + 1) % 7); // Limit to first 7 projects
   };
 
   const prevProject = () => {
-    setActiveProject((prev) => (prev - 1 + 6) % 6); // Limit to first 6 projects
+    setActiveProject((prev) => (prev - 1 + 7) % 7); // Limit to first 7 projects
   };
 
   const contactData = {
@@ -318,7 +319,7 @@ export default function Home() {
                   </button>
                   <button 
                     onClick={() => {
-                      const nextIdx = (activeProject + 1) % 6; // Limit to first 6 projects
+                      const nextIdx = (activeProject + 1) % 7; // Limit to first 7 projects
                       setActiveProject(nextIdx);
                     }}
                     className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:border-black hover:bg-black hover:text-white transition-all duration-300 group"
@@ -343,7 +344,7 @@ export default function Home() {
               <div className="flex gap-2 items-start w-full">
                 <AnimatePresence mode="popLayout">
                     {[0, 1, 2].map((offset) => {
-                    const index = (activeProject + offset) % 6; // Limit to first 6 projects
+                    const index = (activeProject + offset) % 7; // Limit to first 7 projects
                     const isFirst = offset === 0;
                     return (
                       <Link 
