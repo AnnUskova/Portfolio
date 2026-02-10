@@ -22,7 +22,7 @@ import dickbuttsImg from "@/assets/dickbutts_cover.jpg";
 import maatImg from "@/assets/maat_cover.jpg";
 
 import twoGoCoverImg from "@/assets/2go_cover.png";
-import zoodaoCoverImg from "@/assets/zoodao_cover_v2.png";
+import zoodaoCoverImg from "@/assets/zoodao_cover_v3.png";
 
 const projectMocks: Record<number, string | null> = {
   1: glacisImg,
