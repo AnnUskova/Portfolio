@@ -12,6 +12,7 @@ import chefImg from "@assets/AI_Chef_1768337984889.png";
 import zooGeneral from "@assets/General_1770718382218.png";
 import zooGeneralDark from "@assets/General_Dark_1770718382218.png";
 import zooSchemeV2 from "@assets/V2_scheme_1770718382219.png";
+import zooSchemeNoPic from "@assets/V2_scheme_nopic_1770718643287.png";
 
 import moonbeamImg from "@/assets/moonbeam_cover.jpg";
 import cryptovecheImg from "@/assets/cryptoveche_cover.jpg";
@@ -331,6 +332,14 @@ export default function ProjectDetail() {
             <div className="w-full space-y-8 mb-20">
               {project.id === 12 ? (
                 <>
+                  <div className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-white">
+                    <img 
+                      src={zooSchemeNoPic} 
+                      alt="ZooDAO System Scheme Overview" 
+                      className="w-full h-auto object-contain cursor-pointer"
+                      onClick={() => setSelectedImage(zooSchemeNoPic)}
+                    />
+                  </div>
                   <div className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-white">
                     <img 
                       src={zooGeneral} 
