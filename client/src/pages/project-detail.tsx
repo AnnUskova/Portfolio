@@ -342,10 +342,10 @@ export default function ProjectDetail() {
                   </div>
                   <div className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-white">
                     <img 
-                      src={zooGeneral} 
-                      alt="ZooDAO Concept Light" 
+                      src={zooSchemeV2} 
+                      alt="ZooDAO System Scheme V2" 
                       className="w-full h-auto object-contain cursor-pointer"
-                      onClick={() => setSelectedImage(zooGeneral)}
+                      onClick={() => setSelectedImage(zooSchemeV2)}
                     />
                   </div>
                   <div className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-white">
@@ -358,10 +358,10 @@ export default function ProjectDetail() {
                   </div>
                   <div className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-white">
                     <img 
-                      src={zooSchemeV2} 
-                      alt="ZooDAO System Scheme V2" 
+                      src={zooGeneral} 
+                      alt="ZooDAO Concept Light" 
                       className="w-full h-auto object-contain cursor-pointer"
-                      onClick={() => setSelectedImage(zooSchemeV2)}
+                      onClick={() => setSelectedImage(zooGeneral)}
                     />
                   </div>
                 </>
