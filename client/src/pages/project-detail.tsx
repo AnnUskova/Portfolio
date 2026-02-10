@@ -15,6 +15,9 @@ import zooGeneralDark from "@assets/General_Dark_1770718382218.png";
 import zooSchemeV2 from "@assets/V2_scheme_1770718382219.png";
 import zooSchemeNoPic from "@assets/V2_scheme_nopic_1770718643287.png";
 
+import glacisScheme1 from "@/assets/glacis_scheme_1.png";
+import glacisScheme2 from "@/assets/glacis_scheme_2.png";
+
 import maatSlide1 from "@/assets/maat_slide_1.png";
 import maatSlide2 from "@/assets/maat_slide_2.png";
 import maatSlide3 from "@/assets/maat_slide_3.png";
@@ -575,6 +578,37 @@ export default function ProjectDetail() {
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                   {language === "ru" ? "После определения стилевого направления я начала разрабатывать dApp. Его основная функция – отслеживание статуса транзакции онлайн. Звучит как дефолтный Scan app, но меня попросили отразить статусы графически, а сложность – транзакция может идти через пять бриджей. Выглядит это так (схема от разработчиков):" : "After defining the style direction, I started developing the dApp. Its main function is tracking transaction status online. It sounds like a default Scan app, but I was asked to visualize statuses graphically, and the complexity is that a transaction can go through five bridges. It looks like this (schema from developers):"}
                 </p>
+
+                <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))] mb-12">
+                  <div 
+                    ref={scrollContainerRef1}
+                    onMouseDown={handleMouseDown1}
+                    onMouseLeave={() => setIsDragging1(false)}
+                    onMouseUp={() => setIsDragging1(false)}
+                    onMouseMove={handleMouseMove1}
+                    className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging1 ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
+                  >
+                    {[
+                      { src: glacisScheme1, alt: "Glacis Scheme 1" },
+                      { src: glacisScheme2, alt: "Glacis Scheme 2" }
+                    ].map((img, idx) => (
+                      <div key={idx} className="flex-shrink-0 w-[85vw] md:w-[600px]">
+                        <div 
+                          onClick={() => !hasMoved1 && setSelectedImage(img.src)}
+                          className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging1 ? 'cursor-grabbing' : 'cursor-grab'}`}
+                        >
+                          <img 
+                            src={img.src} 
+                            alt={img.alt} 
+                            className="w-full h-auto object-contain pointer-events-none"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                    {/* Spacer to allow scrolling past the last item to the screen edge */}
+                    <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
+                  </div>
+                </div>
                 
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                   {language === "ru" ? "Еще в приложении должен быть блок аналитики, которая бы отражала общее количество транзакций за период, стоимость газа, скорость транзакции, наиболее популярные Chain Paths и т.д. Не забудем и про расширенный блок фильтрации, чтобы пользователь мог максимально кастомизировать графики." : "The app also needed an analytics block reflecting the total number of transactions over a period, gas cost, transaction speed, most popular Chain Paths, etc. And let's not forget the advanced filtering block so the user can fully customize the charts."}
