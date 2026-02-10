@@ -454,8 +454,8 @@ export default function ProjectDetail() {
                     </div>
                     <p className="text-sm text-gray-400 text-center italic">
                       {language === "ru" 
-                        ? "Менее подробная схема в светлой теме"
-                        : "A less detailed diagram in light theme"}
+                        ? "... и в светлой теме"
+                        : "... and in light theme"}
                     </p>
                   </div>
                 </>
