@@ -19,7 +19,7 @@ import glacisScheme1 from "@/assets/glacis_scheme_1.png";
 import glacisScheme2 from "@/assets/glacis_scheme_2.png";
 import glacisMainPage from "@/assets/glacis_main_page_v2.png";
 import glacisTransactionDetails from "@/assets/glacis_transaction_details.png";
-import glacisMobileDetails from "@/assets/glacis_mobile_details.png";
+import glacisMobileDetails from "@/assets/glacis_mobile_details_v2.png";
 
 import maatSlide1 from "@/assets/maat_slide_1.png";
 import maatSlide2 from "@/assets/maat_slide_2.png";
