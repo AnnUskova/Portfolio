@@ -499,7 +499,7 @@ export default function ProjectDetail() {
                     maatSlide9, maatSlide10, maatSlide11, maatSlide12,
                     maatSlide13, maatSlide14
                   ].map((slide, index) => (
-                    <div key={index} className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-gray-50">
+                    <div key={index} className="rounded-[20px] overflow-hidden border border-gray-100 shadow-sm bg-gray-50">
                       <img
                         src={slide}
                         alt={`MAAT Presentation Slide ${index + 1}`}
