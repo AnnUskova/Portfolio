@@ -18,6 +18,7 @@ import zooSchemeNoPic from "@assets/V2_scheme_nopic_1770718643287.png";
 import glacisScheme1 from "@/assets/glacis_scheme_1.png";
 import glacisScheme2 from "@/assets/glacis_scheme_2.png";
 import glacisMainPage from "@/assets/glacis_main_page.png";
+import glacisTransactionDetails from "@/assets/glacis_transaction_details.png";
 
 import maatSlide1 from "@/assets/maat_slide_1.png";
 import maatSlide2 from "@/assets/maat_slide_2.png";
@@ -643,6 +644,16 @@ export default function ProjectDetail() {
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                    {language === "ru" ? "По нажатии на строку таблицы мы проваливаемся в детали транзакции. Под заголовок я вынесла время транзакции, статус и продукт. Далее – все что может быть полезно: Message ID, From/To, Source / Destination и т.д. Везде, где можно и нужно, кнопка копирования. Ниже – подробное отображение статуса транзакции. В данном примере она идет через два бриджа – Wormhole и LayerZero и у каждого свой статус. Пользователь видит, что через Wormhole транзакция уже прошла, а через LayerZero еще нет, но уже почти. Также он видит альтернативные пути, по которым могла пойти транзакция." : "Clicking a table row takes us to transaction details. Under the header, I placed transaction time, status, and product. Then – everything useful: Message ID, From/To, Source / Destination, etc. Copy buttons everywhere needed. Below is the detailed transaction status. In this example, it goes through two bridges – Wormhole and LayerZero, each with its status. The user sees Wormhole is done, LayerZero is pending. They also see alternative paths the transaction could have taken."}
                 </p>
+
+                <div className="my-12 rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
+                  <img 
+                    src={glacisTransactionDetails} 
+                    alt="Glacis Transaction Details" 
+                    className="w-full h-auto object-contain cursor-pointer"
+                    onClick={() => setSelectedImage(glacisTransactionDetails)}
+                  />
+                </div>
+
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                    {language === "ru" ? "Для мобильной версии этот блок сделала более компактным, но с возможностью развернуть, перевернув экран:" : "For mobile, I made this block more compact, but expandable by rotating the screen:"}
                 </p>
