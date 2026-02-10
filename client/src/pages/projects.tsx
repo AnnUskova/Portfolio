@@ -56,12 +56,23 @@ export default function Projects() {
   const t = translations[language];
   const allProjects = projectTranslations[language];
   
-  const projects = allProjects.filter(p => {
-    if (activeTab === "uxui") return [1, 2, 3, 4, 5, 6, 8, 9, 10].includes(p.id);
-    if (activeTab === "strategy") return [11, 13, 12].includes(p.id);
-    if (activeTab === "research") return [7].includes(p.id);
-    return true; 
-  });
+  const getProjectsForTab = (tab: string) => {
+    if (tab === "uxui") {
+      const ids = [1, 2, 3, 4, 5, 6, 8, 9, 10];
+      return ids.map(id => allProjects.find(p => p.id === id)).filter((p): p is typeof allProjects[0] => p !== undefined);
+    }
+    if (tab === "strategy") {
+      const ids = [11, 13, 12];
+      return ids.map(id => allProjects.find(p => p.id === id)).filter((p): p is typeof allProjects[0] => p !== undefined);
+    }
+    if (tab === "research") {
+      const ids = [7];
+      return ids.map(id => allProjects.find(p => p.id === id)).filter((p): p is typeof allProjects[0] => p !== undefined);
+    }
+    return [];
+  };
+
+  const projects = getProjectsForTab(activeTab);
 
   const tabs = [
     { id: "uxui", label: t.projectsPage.tabs.uxui },
