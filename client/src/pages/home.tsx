@@ -13,6 +13,7 @@ import chefImg from "@assets/AI_Chef_1768337984889.png";
 import annaPhoto from "@assets/1046_1_1768336698195.png";
 
 import zeroDeltaImg from "@assets/зеро_дельта_1770041205735.png";
+import glacisDappImg from "@assets/GL_dApp_1770754812223.png";
 import xSwapImg from "@assets/image_1770052489389.png";
 import zeroDeltaCoverImg from "@/assets/zero_delta_cover.png";
 import twoGoCoverImg from "@/assets/2go_cover.png";
@@ -20,7 +21,7 @@ import twoGoSliderImg from "@/assets/2go_slider.png";
 import gradientBar from "@assets/image_1770061190853.png";
 
 const projectImages: Record<number, string | null> = {
-  1: null,
+  1: glacisDappImg,
   14: zeroDeltaImg,
   2: xSwapImg,
   3: null, // SKIZI

@@ -6,6 +6,7 @@ import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { translations, projectTranslations, type Language } from "@/lib/translations";
 
 import glacisImg from "@assets/зеро_дельта_1770041205735.png";
+import glacisDappImg from "@assets/GL_dApp_1770754812223.png";
 import xSwapImg from "@assets/image_1770052489389.png";
 import skiziImg from "@assets/SKIZI_1768337984890.png";
 import chefImg from "@assets/AI_Chef_1768337984889.png";
@@ -40,7 +41,7 @@ import zoodaoCoverImg from "@/assets/zoodao_cover_v3.png";
 import maatCoverImg from "@/assets/maat_pd_cover_v3.png";
 
 const projectMocks: Record<number, string | null> = {
-  1: glacisImg,
+  1: glacisDappImg,
   2: xSwapImg,
   3: null,
   4: twoGoCoverImg,
@@ -55,7 +56,7 @@ const projectMocks: Record<number, string | null> = {
 };
 
 const projectImages: Record<number, string | null> = {
-  1: glacisImg,
+  1: glacisDappImg,
   2: xSwapImg,
   3: null,
   4: twoGoCoverImg,
