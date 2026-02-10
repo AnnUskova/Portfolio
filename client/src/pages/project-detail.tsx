@@ -189,7 +189,7 @@ export default function ProjectDetail() {
               onMouseDown={(e) => {
                 if (!isZoomed) {
                   setIsZoomed(true);
-                  setDragStart({ x: e.clientX, y: e.clientY });
+                  setDragOffset({ x: 0, y: 0 });
                   return;
                 }
                 setIsDraggingImage(true);
@@ -205,9 +205,13 @@ export default function ProjectDetail() {
               onMouseUp={() => setIsDraggingImage(false)}
               onMouseLeave={() => setIsDraggingImage(false)}
               onClick={(e) => {
+                // Only zoom out if we haven't dragged significantly
                 if (isZoomed && !isDraggingImage) {
-                  setIsZoomed(false);
-                  setDragOffset({ x: 0, y: 0 });
+                  // If offset is very small, treat as click to zoom out
+                  if (Math.abs(dragOffset.x) < 5 && Math.abs(dragOffset.y) < 5) {
+                    setIsZoomed(false);
+                    setDragOffset({ x: 0, y: 0 });
+                  }
                 }
               }}
             >
