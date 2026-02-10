@@ -58,7 +58,7 @@ export default function Projects() {
   
   const projects = allProjects.filter(p => {
     if (activeTab === "uxui") return [1, 2, 3, 4, 5, 6, 8, 9, 10].includes(p.id);
-    if (activeTab === "strategy") return [11, 12, 13].includes(p.id);
+    if (activeTab === "strategy") return [11, 13, 12].includes(p.id);
     if (activeTab === "research") return [7].includes(p.id);
     return true; 
   });
