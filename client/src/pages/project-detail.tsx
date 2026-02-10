@@ -19,6 +19,7 @@ import glacisScheme1 from "@/assets/glacis_scheme_1.png";
 import glacisScheme2 from "@/assets/glacis_scheme_2.png";
 import glacisMainPage from "@/assets/glacis_main_page_v2.png";
 import glacisTransactionDetails from "@/assets/glacis_transaction_details.png";
+import glacisMobileDetails from "@/assets/glacis_mobile_details.png";
 
 import maatSlide1 from "@/assets/maat_slide_1.png";
 import maatSlide2 from "@/assets/maat_slide_2.png";
@@ -657,6 +658,16 @@ export default function ProjectDetail() {
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                    {language === "ru" ? "Для мобильной версии этот блок сделала более компактным, но с возможностью развернуть, перевернув экран:" : "For mobile, I made this block more compact, but expandable by rotating the screen:"}
                 </p>
+
+                <div className="my-12 rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
+                  <img 
+                    src={glacisMobileDetails} 
+                    alt="Glacis Mobile Details" 
+                    className="w-full h-auto object-contain cursor-pointer"
+                    onClick={() => setSelectedImage(glacisMobileDetails)}
+                  />
+                </div>
+
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                    {language === "ru" ? "В случае ошибки система автоматически запускает Retry и это отображается в интерфейсе dApp:" : "In case of error, the system automatically triggers a Retry, displayed in the dApp interface:"}
                 </p>
