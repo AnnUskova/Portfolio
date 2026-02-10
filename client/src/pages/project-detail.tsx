@@ -316,6 +316,10 @@ export default function ProjectDetail() {
                 language === "ru" 
                   ? "xSwap – AMM на сети CrossFi. Здесь есть swap, liquidity pools, staking, token sale и veToken-механика с голосованием за распределение инсентивов. Моя задача – собрать UX/UI так, чтобы новички не спотыкались о \"как свапать на новой сети\", а опытные пользователи могли заглянуть в Route и удивиться, как система здорово его оптимизирует."
                   : "xSwap is an AMM on the CrossFi network. It includes swap, liquidity pools, staking, token sale, and a veToken voting mechanism that controls how incentives are distributed. My goal was to design a product UX/UI where beginners don’t get stuck on “how do I even swap on a new network?”, while advanced users can open the Route view and see (and trust) how well the system optimizes it."
+              ) : project.id === 12 ? (
+                language === "ru"
+                  ? "ZooDAO – платформа под управлением сообщества, которая позволяет получать пассивный доход от протоколов за счёт геймификации. DeFi протоколы \"сражаются\" друг с другом на арене, а пользователи вносят депозит и голосуют, победители получают инсентивы. Звучит просто, но под капотом механики zAggregator, zBribe и boost, которые проще объяснить наглядно."
+                  : "ZooDAO is a community-governed platform that enables passive income from protocols through gamification. DeFi protocols “battle” in the arena, while users deposit and vote, with winners receiving incentives. It sounds simple, but under the hood are zAggregator, zBribe, and boost mechanics that are easier to explain visually."
               ) : (
                 project.description
               )}
