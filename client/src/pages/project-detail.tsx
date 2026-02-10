@@ -420,16 +420,14 @@ export default function ProjectDetail() {
                     <img 
                       src={zooGeneralDark} 
                       alt="ZooDAO Concept Dark" 
-                      className="w-full h-auto object-contain cursor-pointer"
-                      onClick={() => setSelectedImage(zooGeneralDark)}
+                      className="w-full h-auto object-contain"
                     />
                   </div>
                   <div className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-white">
                     <img 
                       src={zooGeneral} 
                       alt="ZooDAO Concept Light" 
-                      className="w-full h-auto object-contain cursor-pointer"
-                      onClick={() => setSelectedImage(zooGeneral)}
+                      className="w-full h-auto object-contain"
                     />
                   </div>
                 </>
