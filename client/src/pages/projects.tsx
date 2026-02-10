@@ -43,7 +43,12 @@ export default function Projects() {
     localStorage.setItem("app_language", lang);
   };
 
-  const [activeTab, setActiveTab] = useState("uxui");
+  const [activeTab, setActiveTab] = useState(() => {
+    // Check URL parameters for initial tab
+    const params = new URLSearchParams(window.location.search);
+    const tab = params.get("tab");
+    return (tab && ["uxui", "strategy", "research"].includes(tab)) ? tab : "uxui";
+  });
   const [contactOpen, setContactOpen] = useState(false);
 
   const t = translations[language];

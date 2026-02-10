@@ -156,6 +156,12 @@ export default function ProjectDetail() {
     window.scrollTo(0, 0);
   }, [id]);
 
+  const getBackLink = () => {
+    if ([11, 12, 13].includes(id)) return "/projects?tab=strategy";
+    if ([7].includes(id)) return "/projects?tab=research";
+    return "/projects?tab=uxui";
+  };
+
   return (
     <div className="min-h-screen bg-white">
       <AnimatePresence>
@@ -320,7 +326,7 @@ export default function ProjectDetail() {
       <main className="pt-24 lg:pt-32">
         {/* Hero Section */}
         <section className="px-6 lg:px-12 max-w-7xl mx-auto mb-12">
-          <Link href="/projects" className="inline-flex items-center gap-2 text-gray-400 hover:text-black transition-colors mb-8 group">
+          <Link href={getBackLink()} className="inline-flex items-center gap-2 text-gray-400 hover:text-black transition-colors mb-8 group">
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             <span className="text-sm font-medium">{t.projectsPage.backToProjects}</span>
           </Link>
