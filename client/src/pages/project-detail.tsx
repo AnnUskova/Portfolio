@@ -17,7 +17,7 @@ import zooSchemeNoPic from "@assets/V2_scheme_nopic_1770718643287.png";
 
 import glacisScheme1 from "@/assets/glacis_scheme_1.png";
 import glacisScheme2 from "@/assets/glacis_scheme_2.png";
-import glacisMainPage from "@/assets/glacis_main_page.png";
+import glacisMainPage from "@/assets/glacis_main_page_v2.png";
 import glacisTransactionDetails from "@/assets/glacis_transaction_details.png";
 
 import maatSlide1 from "@/assets/maat_slide_1.png";
