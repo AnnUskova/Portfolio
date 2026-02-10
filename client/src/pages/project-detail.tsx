@@ -9,6 +9,9 @@ import glacisImg from "@assets/зеро_дельта_1770041205735.png";
 import xSwapImg from "@assets/image_1770052489389.png";
 import skiziImg from "@assets/SKIZI_1768337984890.png";
 import chefImg from "@assets/AI_Chef_1768337984889.png";
+import zooGeneral from "@assets/General_1770718382218.png";
+import zooGeneralDark from "@assets/General_Dark_1770718382218.png";
+import zooSchemeV2 from "@assets/V2_scheme_1770718382219.png";
 
 import moonbeamImg from "@/assets/moonbeam_cover.jpg";
 import cryptovecheImg from "@/assets/cryptoveche_cover.jpg";
@@ -330,26 +333,26 @@ export default function ProjectDetail() {
                 <>
                   <div className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-white">
                     <img 
-                      src="/attached_assets/General_1770718382218.png" 
+                      src={zooGeneral} 
                       alt="ZooDAO Concept Light" 
                       className="w-full h-auto object-contain cursor-pointer"
-                      onClick={() => setSelectedImage("/attached_assets/General_1770718382218.png")}
+                      onClick={() => setSelectedImage(zooGeneral)}
                     />
                   </div>
                   <div className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-white">
                     <img 
-                      src="/attached_assets/General_Dark_1770718382218.png" 
+                      src={zooGeneralDark} 
                       alt="ZooDAO Concept Dark" 
                       className="w-full h-auto object-contain cursor-pointer"
-                      onClick={() => setSelectedImage("/attached_assets/General_Dark_1770718382218.png")}
+                      onClick={() => setSelectedImage(zooGeneralDark)}
                     />
                   </div>
                   <div className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-white">
                     <img 
-                      src="/attached_assets/V2_scheme_1770718382219.png" 
+                      src={zooSchemeV2} 
                       alt="ZooDAO System Scheme V2" 
                       className="w-full h-auto object-contain cursor-pointer"
-                      onClick={() => setSelectedImage("/attached_assets/V2_scheme_1770718382219.png")}
+                      onClick={() => setSelectedImage(zooSchemeV2)}
                     />
                   </div>
                 </>
