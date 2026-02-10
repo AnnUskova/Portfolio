@@ -369,7 +369,7 @@ export default function ProjectDetail() {
                 </span>
               </div>
 
-              {project.id === 2 && (
+              {(project.id === 2 || project.id === 1) && (
                 <div className="md:ml-auto relative">
                   <button 
                     onClick={() => setTldrOpen(!tldrOpen)}
@@ -402,7 +402,10 @@ export default function ProjectDetail() {
                           </button>
                         </div>
                         <p className="text-[16px] leading-relaxed text-gray-600">
-                          xSwap — AMM dApp на CrossFi. За 1 месяц собрала UX/UI для Swap, Pools, Token Sale и Lock/Voting, координировала фронт, работала в связке с solidity. Сделала интерфейс, который не пугает: slippage и прозрачный Route в swap, понятные liquidity-пулы с multi-step подсказками, Token Sale с Profit Estimator и видеогайдами, плюс сложный Lock/Voting — с продуманными корнер-кейсами и состояниями транзакций.
+                          {project.id === 1 
+                            ? "Lead Product Designer в Glacis Labs: собрала визуальную систему бренда и спроектировала dApp для трекинга кроссчейн-транзакций (до 5 бриджей) с прозрачной моделью статусов, ретраями и аналитикой. Масштабировала продукт с V1 до V2 после запуска AirLift и расширения аналитики."
+                            : "xSwap — AMM dApp на CrossFi. За 1 месяц собрала UX/UI для Swap, Pools, Token Sale и Lock/Voting, координировала фронт, работала в связке с solidity. Сделала интерфейс, который не пугает: slippage и прозрачный Route в swap, понятные liquidity-пулы с multi-step подсказками, Token Sale с Profit Estimator и видеогайдами, плюс сложный Lock/Voting — с продуманными корнер-кейсами и состояниями транзакций."
+                          }
                         </p>
                       </motion.div>
                     )}
