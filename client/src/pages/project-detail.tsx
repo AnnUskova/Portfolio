@@ -405,6 +405,10 @@ export default function ProjectDetail() {
                 language === "ru"
                   ? "ZooDAO – платформа под управлением сообщества, которая позволяет получать пассивный доход от протоколов за счёт геймификации. DeFi протоколы \"сражаются\" друг с другом на арене, а пользователи вносят депозит и голосуют, победители получают инсентивы. Звучит просто, но под капотом механики zAggregator, zBribe и boost, которые проще объяснить наглядно."
                   : "ZooDAO is a community-governed platform that enables passive income from protocols through gamification. DeFi protocols “battle” in the arena, while users deposit and vote, with winners receiving incentives. It sounds simple, but under the hood are zAggregator, zBribe, and boost mechanics that are easier to explain visually."
+              ) : project.id === 13 ? (
+                language === "ru"
+                  ? <>Презентация продукта MAAT для инвесторов.<br/>Некоторые данные заблюрены – это специально.</>
+                  : <>Investor presentation deck for the MAAT protocol.<br/>Some data is blurred intentionally.</>
               ) : (
                 project.description
               )}
