@@ -443,8 +443,8 @@ export default function ProjectDetail() {
                     </div>
                     <p className="text-sm text-gray-400 text-center italic">
                       {language === "ru" 
-                        ? "Та самая схема, из которой вы поймете, как работают все модули приложения."
-                        : "The very scheme that helps you understand how all application modules work."}
+                        ? "Та самая схема, из которой вы поймете, как работают все модули приложения"
+                        : "The very scheme that helps you understand how all application modules work"}
                     </p>
                   </div>
                   <div className="space-y-4">
@@ -458,8 +458,8 @@ export default function ProjectDetail() {
                     </div>
                     <p className="text-sm text-gray-400 text-center italic">
                       {language === "ru" 
-                        ? "Та же схема, но с картинками."
-                        : "The same scheme, but with images."}
+                        ? "Та же схема, но с картинками"
+                        : "The same scheme, but with images"}
                     </p>
                   </div>
                   <div className="space-y-4">
