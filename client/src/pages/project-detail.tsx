@@ -325,13 +325,42 @@ export default function ProjectDetail() {
               )}
             </p>
 
-            <div className="max-w-2xl aspect-[16/9] rounded-2xl overflow-hidden bg-gray-100 shadow-sm border border-gray-100 mb-12">
-              {project.id !== 12 && (
-                <img 
-                  src={projectMocks[project.id]} 
-                  alt={project.title} 
-                  className="w-full h-full object-cover"
-                />
+            <div className="w-full space-y-8 mb-20">
+              {project.id === 12 ? (
+                <>
+                  <div className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-white">
+                    <img 
+                      src="/attached_assets/General_1770718382218.png" 
+                      alt="ZooDAO Concept Light" 
+                      className="w-full h-auto object-contain cursor-pointer"
+                      onClick={() => setSelectedImage("/attached_assets/General_1770718382218.png")}
+                    />
+                  </div>
+                  <div className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-white">
+                    <img 
+                      src="/attached_assets/General_Dark_1770718382218.png" 
+                      alt="ZooDAO Concept Dark" 
+                      className="w-full h-auto object-contain cursor-pointer"
+                      onClick={() => setSelectedImage("/attached_assets/General_Dark_1770718382218.png")}
+                    />
+                  </div>
+                  <div className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-white">
+                    <img 
+                      src="/attached_assets/V2_scheme_1770718382219.png" 
+                      alt="ZooDAO System Scheme V2" 
+                      className="w-full h-auto object-contain cursor-pointer"
+                      onClick={() => setSelectedImage("/attached_assets/V2_scheme_1770718382219.png")}
+                    />
+                  </div>
+                </>
+              ) : (
+                <div className="max-w-2xl aspect-[16/9] rounded-2xl overflow-hidden bg-gray-100 shadow-sm border border-gray-100 mb-12">
+                  <img 
+                    src={projectMocks[project.id]} 
+                    alt={project.title} 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               )}
             </div>
 
