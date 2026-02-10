@@ -333,7 +333,7 @@ We also shipped a Vietnamese version and launched for the Vietnamese market (and
       category: "DEFI",
       role: "DESIGN LEAD",
       title: "Glacis Labs dApp",
-      description: "Экосистема DeFi продуктов для работы с cross-chain операциями. Сформировала дизайн-направление проекта и собрала dApp, сайт, сложные виджеты, питч деки и схемы."
+      description: "Экосистема DeFi продуктов для работы с cross-chain операциями. Сформировала дизайн-направление проекта и собрала dApp для трекинга кроссчейн-транзакций и аналитики."
     },
     {
       id: 14,
