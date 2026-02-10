@@ -14,8 +14,8 @@ import zoodaoCoverImg from "@/assets/zoodao_cover_v3.png";
 import maatCoverImg from "@/assets/maat_pd_cover_v3.png";
 
 const projectImages: Record<number, string | null> = {
-  1: zeroDeltaImg,
-  14: glacisImg,
+  1: null,
+  14: zeroDeltaImg,
   2: xSwapImg,
   3: null, // SKIZI
   4: twoGoCoverImg, // 2Go

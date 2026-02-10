@@ -20,8 +20,8 @@ import twoGoSliderImg from "@/assets/2go_slider.png";
 import gradientBar from "@assets/image_1770061190853.png";
 
 const projectImages: Record<number, string | null> = {
-  1: zeroDeltaImg,
-  14: glacisImg,
+  1: null,
+  14: zeroDeltaImg,
   2: xSwapImg,
   3: null, // SKIZI
   4: twoGoSliderImg // 2Go
