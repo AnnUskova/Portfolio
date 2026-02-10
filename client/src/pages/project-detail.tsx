@@ -22,6 +22,7 @@ import dickbuttsImg from "@/assets/dickbutts_cover.jpg";
 import maatImg from "@/assets/maat_cover.jpg";
 
 import twoGoCoverImg from "@/assets/2go_cover.png";
+import zoodaoCoverImg from "@/assets/zoodao_cover_final.png";
 
 const projectMocks: Record<number, string | null> = {
   1: glacisImg,
@@ -33,7 +34,8 @@ const projectMocks: Record<number, string | null> = {
   7: uxResearchImg,
   8: pholendImg,
   9: dickbuttsImg,
-  10: maatImg
+  10: maatImg,
+  12: zoodaoCoverImg
 };
 
 const projectImages: Record<number, string | null> = {
@@ -46,7 +48,8 @@ const projectImages: Record<number, string | null> = {
   7: uxResearchImg,
   8: pholendImg,
   9: dickbuttsImg,
-  10: maatImg
+  10: maatImg,
+  12: zoodaoCoverImg
 };
 
 export default function ProjectDetail() {
