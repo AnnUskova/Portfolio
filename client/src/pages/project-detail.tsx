@@ -415,7 +415,7 @@ export default function ProjectDetail() {
               )}
             </div>
             
-            <p className="md:text-xl text-gray-500 max-w-2xl text-[18px] leading-relaxed mb-12">
+            <p className="md:text-xl text-gray-500 max-w-2xl text-[18px] leading-relaxed mb-6">
               {project.id === 2 ? (
                 language === "ru" 
                   ? "xSwap – AMM на сети CrossFi. Здесь есть swap, liquidity pools, staking, token sale и veToken-механика с голосованием за распределение инсентивов. Моя задача – собрать UX/UI так, чтобы новички не спотыкались о \"как свапать на новой сети\", а опытные пользователи могли заглянуть в Route и удивиться, как система здорово его оптимизирует."
@@ -437,87 +437,89 @@ export default function ProjectDetail() {
               )}
             </p>
 
-            <div className="w-full space-y-8 mb-20">
-              {project.id === 12 ? (
-                <>
-                  <div className="space-y-4">
-                    <div className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-white">
-                      <img 
-                        src={zooSchemeNoPic} 
-                        alt="ZooDAO System Scheme Overview" 
-                        className="w-full h-auto object-contain cursor-zoom-in"
-                        onClick={() => setSelectedImage(zooSchemeNoPic)}
-                      />
+            {(project.id === 12 || project.id === 13) && (
+              <div className="w-full space-y-8 mb-20">
+                {project.id === 12 ? (
+                  <>
+                    <div className="space-y-4">
+                      <div className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-white">
+                        <img 
+                          src={zooSchemeNoPic} 
+                          alt="ZooDAO System Scheme Overview" 
+                          className="w-full h-auto object-contain cursor-zoom-in"
+                          onClick={() => setSelectedImage(zooSchemeNoPic)}
+                        />
+                      </div>
+                      <p className="text-sm text-gray-400 text-center italic">
+                        {language === "ru" 
+                          ? "Та самая схема, из которой вы поймете, как работают все модули приложения"
+                          : "The very scheme that helps you understand how all application modules work"}
+                      </p>
                     </div>
-                    <p className="text-sm text-gray-400 text-center italic">
-                      {language === "ru" 
-                        ? "Та самая схема, из которой вы поймете, как работают все модули приложения"
-                        : "The very scheme that helps you understand how all application modules work"}
-                    </p>
+                    <div className="space-y-4">
+                      <div className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-white">
+                        <img 
+                          src={zooSchemeV2} 
+                          alt="ZooDAO System Scheme V2" 
+                          className="w-full h-auto object-contain cursor-zoom-in"
+                          onClick={() => setSelectedImage(zooSchemeV2)}
+                        />
+                      </div>
+                      <p className="text-sm text-gray-400 text-center italic">
+                        {language === "ru" 
+                          ? "Та же схема, но с картинками"
+                          : "The same scheme, but with images"}
+                      </p>
+                    </div>
+                    <div className="space-y-4">
+                      <div className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-white">
+                        <img 
+                          src={zooGeneralDark} 
+                          alt="ZooDAO Concept Dark" 
+                          className="w-full h-auto object-contain"
+                        />
+                      </div>
+                      <p className="text-sm text-gray-400 text-center italic">
+                        {language === "ru" 
+                          ? "Менее подробная схема в темной теме"
+                          : "A less detailed diagram in dark theme"}
+                      </p>
+                    </div>
+                    <div className="space-y-4">
+                      <div className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-white">
+                        <img 
+                          src={zooGeneral} 
+                          alt="ZooDAO Concept Light" 
+                          className="w-full h-auto object-contain"
+                        />
+                      </div>
+                      <p className="text-sm text-gray-400 text-center italic">
+                        {language === "ru" 
+                          ? "... и в светлой теме"
+                          : "... and in light theme"}
+                      </p>
+                    </div>
+                  </>
+                ) : project.id === 13 ? (
+                  <div className="space-y-8 max-w-[80%]">
+                    {[
+                      maatSlide1, maatSlide2, maatSlide3, maatSlide4,
+                      maatSlide5, maatSlide6, maatSlide7, maatSlide8,
+                      maatSlide9, maatSlide10, maatSlide11, maatSlide12,
+                      maatSlide13, maatSlide14
+                    ].map((slide, index) => (
+                      <div key={index} className="rounded-[20px] overflow-hidden border border-gray-100 shadow-sm bg-gray-50">
+                        <img
+                          src={slide}
+                          alt={`MAAT Presentation Slide ${index + 1}`}
+                          className="w-full h-auto"
+                        />
+                      </div>
+                    ))}
                   </div>
-                  <div className="space-y-4">
-                    <div className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-white">
-                      <img 
-                        src={zooSchemeV2} 
-                        alt="ZooDAO System Scheme V2" 
-                        className="w-full h-auto object-contain cursor-zoom-in"
-                        onClick={() => setSelectedImage(zooSchemeV2)}
-                      />
-                    </div>
-                    <p className="text-sm text-gray-400 text-center italic">
-                      {language === "ru" 
-                        ? "Та же схема, но с картинками"
-                        : "The same scheme, but with images"}
-                    </p>
-                  </div>
-                  <div className="space-y-4">
-                    <div className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-white">
-                      <img 
-                        src={zooGeneralDark} 
-                        alt="ZooDAO Concept Dark" 
-                        className="w-full h-auto object-contain"
-                      />
-                    </div>
-                    <p className="text-sm text-gray-400 text-center italic">
-                      {language === "ru" 
-                        ? "Менее подробная схема в темной теме"
-                        : "A less detailed diagram in dark theme"}
-                    </p>
-                  </div>
-                  <div className="space-y-4">
-                    <div className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-white">
-                      <img 
-                        src={zooGeneral} 
-                        alt="ZooDAO Concept Light" 
-                        className="w-full h-auto object-contain"
-                      />
-                    </div>
-                    <p className="text-sm text-gray-400 text-center italic">
-                      {language === "ru" 
-                        ? "... и в светлой теме"
-                        : "... and in light theme"}
-                    </p>
-                  </div>
-                </>
-              ) : project.id === 13 ? (
-                <div className="space-y-8 max-w-[80%]">
-                  {[
-                    maatSlide1, maatSlide2, maatSlide3, maatSlide4,
-                    maatSlide5, maatSlide6, maatSlide7, maatSlide8,
-                    maatSlide9, maatSlide10, maatSlide11, maatSlide12,
-                    maatSlide13, maatSlide14
-                  ].map((slide, index) => (
-                    <div key={index} className="rounded-[20px] overflow-hidden border border-gray-100 shadow-sm bg-gray-50">
-                      <img
-                        src={slide}
-                        alt={`MAAT Presentation Slide ${index + 1}`}
-                        className="w-full h-auto"
-                      />
-                    </div>
-                  ))}
-                </div>
-              ) : null}
-            </div>
+                ) : null}
+              </div>
+            )}
             
             {![7, 12, 13].includes(project.id) && projectImages[project.id] && (
               <div className="w-full mb-12 max-w-2xl">
