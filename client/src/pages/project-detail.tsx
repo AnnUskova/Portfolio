@@ -430,19 +430,33 @@ export default function ProjectDetail() {
                         : "The same scheme, but with images."}
                     </p>
                   </div>
-                  <div className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-white">
-                    <img 
-                      src={zooGeneralDark} 
-                      alt="ZooDAO Concept Dark" 
-                      className="w-full h-auto object-contain"
-                    />
+                  <div className="space-y-4">
+                    <div className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-white">
+                      <img 
+                        src={zooGeneralDark} 
+                        alt="ZooDAO Concept Dark" 
+                        className="w-full h-auto object-contain"
+                      />
+                    </div>
+                    <p className="text-sm text-gray-400 text-center italic">
+                      {language === "ru" 
+                        ? "Менее подробная схема в темной теме"
+                        : "A less detailed diagram in dark theme"}
+                    </p>
                   </div>
-                  <div className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-white">
-                    <img 
-                      src={zooGeneral} 
-                      alt="ZooDAO Concept Light" 
-                      className="w-full h-auto object-contain"
-                    />
+                  <div className="space-y-4">
+                    <div className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-white">
+                      <img 
+                        src={zooGeneral} 
+                        alt="ZooDAO Concept Light" 
+                        className="w-full h-auto object-contain"
+                      />
+                    </div>
+                    <p className="text-sm text-gray-400 text-center italic">
+                      {language === "ru" 
+                        ? "Менее подробная схема в светлой теме"
+                        : "A less detailed diagram in light theme"}
+                    </p>
                   </div>
                 </>
               ) : (
