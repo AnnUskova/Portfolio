@@ -231,6 +231,10 @@ export default function Projects() {
                               ? (language === "ru"
                                 ? "Парт-тайм с топ DeFi-протоколом: раздел Projects и редизайн Governance в dApp."
                                 : "Part-time with top DeFi protocol: Projects section and Governance redesign in dApp.")
+                            : project.id === 6
+                              ? (language === "ru"
+                                ? "Блокчейн-голосование: клиент, админка, mobile app. Мой первый большой продукт."
+                                : "Blockchain voting: client, admin panel, mobile app. My first major product.")
                               : project.description}
                       </p>
                       <div className="flex flex-wrap gap-2 mt-auto">
