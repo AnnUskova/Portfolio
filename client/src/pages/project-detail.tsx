@@ -17,6 +17,7 @@ import zooSchemeNoPic from "@assets/V2_scheme_nopic_1770718643287.png";
 
 import glacisScheme1 from "@/assets/glacis_scheme_1.png";
 import glacisScheme2 from "@/assets/glacis_scheme_2.png";
+import glacisMainPage from "@/assets/glacis_main_page.png";
 
 import maatSlide1 from "@/assets/maat_slide_1.png";
 import maatSlide2 from "@/assets/maat_slide_2.png";
@@ -621,6 +622,16 @@ export default function ProjectDetail() {
                 </p>
 
                 <h2 className="text-2xl font-medium mb-6">{language === "ru" ? "Главная страница" : "Main Page"}</h2>
+
+                <div className="my-12 rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
+                  <img 
+                    src={glacisMainPage} 
+                    alt="Glacis Main Page" 
+                    className="w-full h-auto object-contain cursor-pointer"
+                    onClick={() => setSelectedImage(glacisMainPage)}
+                  />
+                </div>
+
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                    {language === "ru" ? "Наверху – мини-статистика по всему dApp, которая дает новому пользователю представление о масштабах экосистемы и количестве проходящих через нее транзакций, а пользователю постоянному – возможность отслеживать изменения («ого, было 10 сетей, а сейчас уже 21, как быстро они растут»)." : "At the top is mini-statistics for the entire dApp, giving new users an idea of the ecosystem's scale and transaction volume, and allowing regular users to track changes (“wow, there were 10 networks, now 21, they grow so fast”)."}
                 </p>
