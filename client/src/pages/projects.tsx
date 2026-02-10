@@ -225,7 +225,7 @@ export default function Projects() {
                                 : "AMM on CrossFi network. Swap, pools, and veToken voting – design and launch in 1 month.")
                               : project.id === 4
                               ? (language === "ru"
-                                ? "Фриланс-проект сервиса акций. Мобильное приложение для В2С, десктоп для B2B и админ-панель."
+                                ? "Фриланс-проект сервиса акций. Mobile app для В2С, десктоп для B2B и админ-панель."
                                 : "Freelance deals service. B2C mobile app, B2B desktop app, and admin panel.")
                               : project.description}
                       </p>
