@@ -415,13 +415,20 @@ export default function ProjectDetail() {
                         : "The very scheme that helps you understand how all application modules work."}
                     </p>
                   </div>
-                  <div className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-white">
-                    <img 
-                      src={zooSchemeV2} 
-                      alt="ZooDAO System Scheme V2" 
-                      className="w-full h-auto object-contain cursor-zoom-in"
-                      onClick={() => setSelectedImage(zooSchemeV2)}
-                    />
+                  <div className="space-y-4">
+                    <div className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-white">
+                      <img 
+                        src={zooSchemeV2} 
+                        alt="ZooDAO System Scheme V2" 
+                        className="w-full h-auto object-contain cursor-zoom-in"
+                        onClick={() => setSelectedImage(zooSchemeV2)}
+                      />
+                    </div>
+                    <p className="text-sm text-gray-400 text-center italic">
+                      {language === "ru" 
+                        ? "Та же самая схема, но с картинками."
+                        : "The same scheme, but with images."}
+                    </p>
                   </div>
                   <div className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-white">
                     <img 
