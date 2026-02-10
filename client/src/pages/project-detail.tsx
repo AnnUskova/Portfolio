@@ -434,7 +434,7 @@ export default function ProjectDetail() {
                     </div>
                     <p className="text-sm text-gray-400 text-center italic">
                       {language === "ru" 
-                        ? "Та же самая схема, но с картинками."
+                        ? "Та же схема, но с картинками."
                         : "The same scheme, but with images."}
                     </p>
                   </div>
