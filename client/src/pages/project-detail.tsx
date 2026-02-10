@@ -437,18 +437,6 @@ export default function ProjectDetail() {
               )}
             </p>
 
-            {project.id === 1 && (
-              <div className="w-full mb-12 max-w-2xl">
-                <div className="rounded-[24px] overflow-hidden border border-gray-100 shadow-sm bg-white">
-                  <img 
-                    src={projectImages[1] || ""} 
-                    alt="Glacis Labs Cover" 
-                    className="w-full h-auto object-cover"
-                  />
-                </div>
-              </div>
-            )}
-
             <div className="w-full space-y-8 mb-20">
               {project.id === 12 ? (
                 <>
@@ -530,6 +518,18 @@ export default function ProjectDetail() {
                 </div>
               ) : null}
             </div>
+            
+            {![1, 2, 7, 12, 13].includes(project.id) && projectImages[project.id] && (
+              <div className="w-full mb-12 max-w-2xl">
+                <div className="rounded-[24px] overflow-hidden border border-gray-100 shadow-sm bg-white">
+                  <img 
+                    src={projectImages[project.id] || ""} 
+                    alt={`${project.title} Cover`} 
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+              </div>
+            )}
 
             {project.id === 1 && (
               <div className="max-w-[calc(56rem-80px)] mb-20">
@@ -621,6 +621,16 @@ export default function ProjectDetail() {
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                    {language === "ru" ? "Тоже есть." : "Also available."}
                 </p>
+                
+                <div className="w-full mt-12 mb-12">
+                  <div className="rounded-[24px] overflow-hidden border border-gray-100 shadow-sm bg-white">
+                    <img 
+                      src={projectImages[1] || ""} 
+                      alt="Glacis Labs Cover" 
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
+                </div>
               </div>
             )}
 
