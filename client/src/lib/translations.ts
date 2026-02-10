@@ -313,7 +313,7 @@ We also shipped a Vietnamese version and launched for the Vietnamese market (and
       id: 13,
       year: "2023",
       category: "DEFI",
-      role: "Lead Designer",
+      role: "Seniour designer",
       title: "MAAT Pitch Deck",
       description: "Investor presentation deck for the MAAT protocol, focusing on clear data visualization."
     }
@@ -473,7 +473,7 @@ Lock + Voting
       id: 13,
       year: "2023",
       category: "DEFI",
-      role: "Lead Designer",
+      role: "Seniour designer",
       title: "MAAT Pitch Deck",
       description: "Презентация продукта MAAT для инвесторов."
     }
