@@ -34,8 +34,9 @@ const projectMocks: Record<number, string | null> = {
   7: uxResearchImg,
   8: pholendImg,
   9: dickbuttsImg,
-  10: maatCoverImg,
-  12: zoodaoCoverImg
+  10: null,
+  12: zoodaoCoverImg,
+  13: maatCoverImg
 };
 
 const projectImages: Record<number, string | null> = {
@@ -48,8 +49,9 @@ const projectImages: Record<number, string | null> = {
   7: uxResearchImg,
   8: pholendImg,
   9: dickbuttsImg,
-  10: maatCoverImg,
-  12: zoodaoCoverImg
+  10: null,
+  12: zoodaoCoverImg,
+  13: maatCoverImg
 };
 
 export default function ProjectDetail() {

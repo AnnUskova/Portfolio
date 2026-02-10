@@ -22,10 +22,10 @@ const projectImages: Record<number, string | null> = {
   7: null,
   8: null,
   9: null,
-  10: maatCoverImg,
+  10: null,
   11: zeroDeltaCoverImg,
   12: zoodaoCoverImg,
-  13: null
+  13: maatCoverImg
 };
 
 export default function Projects() {
