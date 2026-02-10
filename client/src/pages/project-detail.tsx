@@ -14,6 +14,21 @@ import zooGeneralDark from "@assets/General_Dark_1770718382218.png";
 import zooSchemeV2 from "@assets/V2_scheme_1770718382219.png";
 import zooSchemeNoPic from "@assets/V2_scheme_nopic_1770718643287.png";
 
+import maatSlide1 from "@/assets/maat_slide_1.png";
+import maatSlide2 from "@/assets/maat_slide_2.png";
+import maatSlide3 from "@/assets/maat_slide_3.png";
+import maatSlide4 from "@/assets/maat_slide_4.png";
+import maatSlide5 from "@/assets/maat_slide_5.png";
+import maatSlide6 from "@/assets/maat_slide_6.png";
+import maatSlide7 from "@/assets/maat_slide_7.png";
+import maatSlide8 from "@/assets/maat_slide_8.png";
+import maatSlide9 from "@/assets/maat_slide_9.png";
+import maatSlide10 from "@/assets/maat_slide_10.png";
+import maatSlide11 from "@/assets/maat_slide_11.png";
+import maatSlide12 from "@/assets/maat_slide_12.png";
+import maatSlide13 from "@/assets/maat_slide_13.png";
+import maatSlide14 from "@/assets/maat_slide_14.png";
+
 import moonbeamImg from "@/assets/moonbeam_cover.jpg";
 import cryptovecheImg from "@/assets/cryptoveche_cover.jpg";
 import uxResearchImg from "@/assets/ux_research_cover.jpg";
@@ -476,6 +491,23 @@ export default function ProjectDetail() {
                     </p>
                   </div>
                 </>
+              ) : project.id === 13 ? (
+                <div className="space-y-8">
+                  {[
+                    maatSlide1, maatSlide2, maatSlide3, maatSlide4,
+                    maatSlide5, maatSlide6, maatSlide7, maatSlide8,
+                    maatSlide9, maatSlide10, maatSlide11, maatSlide12,
+                    maatSlide13, maatSlide14
+                  ].map((slide, index) => (
+                    <div key={index} className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-gray-50">
+                      <img
+                        src={slide}
+                        alt={`MAAT Presentation Slide ${index + 1}`}
+                        className="w-full h-auto"
+                      />
+                    </div>
+                  ))}
+                </div>
               ) : null}
             </div>
 
