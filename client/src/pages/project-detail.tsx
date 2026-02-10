@@ -20,6 +20,7 @@ import glacisScheme2 from "@/assets/glacis_scheme_2.png";
 import glacisMainPage from "@/assets/glacis_main_page_v2.png";
 import glacisTransactionDetails from "@/assets/glacis_transaction_details.png";
 import glacisMobileDetails from "@/assets/glacis_mobile_details_v2.png";
+import glacisRetryData from "@/assets/glacis_retry_data.png";
 
 import maatSlide1 from "@/assets/maat_slide_1.png";
 import maatSlide2 from "@/assets/maat_slide_2.png";
@@ -671,6 +672,16 @@ export default function ProjectDetail() {
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                    {language === "ru" ? "В случае ошибки система автоматически запускает Retry и это отображается в интерфейсе dApp:" : "In case of error, the system automatically triggers a Retry, displayed in the dApp interface:"}
                 </p>
+
+                <div className="my-12 rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
+                  <img 
+                    src={glacisRetryData} 
+                    alt="Glacis Retry Data" 
+                    className="w-full h-auto object-contain cursor-pointer"
+                    onClick={() => setSelectedImage(glacisRetryData)}
+                  />
+                </div>
+
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                    {language === "ru" ? "Появляются две вкладки: «Main data» – что с транзакцией сейчас (или, если она в статусе «Executed», как она была выполнена), и «Retry data» – список ретраев. Ретраев может быть несколько (разработчики говорят, 99+, но пока такого кейса не было), все они видны пользователю. Он может отследить, на каком именно этапе и бридже произошла ошибка – так система делает исполнение транзакции прозрачным." : "Two tabs appear: “Main data” – current status (or how it was executed), and “Retry data” – list of retries. There can be multiple retries (devs say 99+, but haven't seen that yet), all visible to the user. They can track exactly at which stage and bridge the error occurred – making execution transparent."}
                 </p>
