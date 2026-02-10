@@ -400,13 +400,20 @@ export default function ProjectDetail() {
             <div className="w-full space-y-8 mb-20">
               {project.id === 12 ? (
                 <>
-                  <div className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-white">
-                    <img 
-                      src={zooSchemeNoPic} 
-                      alt="ZooDAO System Scheme Overview" 
-                      className="w-full h-auto object-contain cursor-zoom-in"
-                      onClick={() => setSelectedImage(zooSchemeNoPic)}
-                    />
+                  <div className="space-y-4">
+                    <div className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-white">
+                      <img 
+                        src={zooSchemeNoPic} 
+                        alt="ZooDAO System Scheme Overview" 
+                        className="w-full h-auto object-contain cursor-zoom-in"
+                        onClick={() => setSelectedImage(zooSchemeNoPic)}
+                      />
+                    </div>
+                    <p className="text-sm text-gray-400 text-center italic">
+                      {language === "ru" 
+                        ? "Та самая схема, из которой вы поймете, как работают все модули приложения."
+                        : "The very scheme that helps you understand how all application modules work."}
+                    </p>
                   </div>
                   <div className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-white">
                     <img 
