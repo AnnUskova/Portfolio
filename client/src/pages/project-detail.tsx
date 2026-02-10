@@ -21,6 +21,7 @@ import glacisMainPage from "@/assets/glacis_main_page_v2.png";
 import glacisTransactionDetails from "@/assets/glacis_transaction_details.png";
 import glacisMobileDetails from "@/assets/glacis_mobile_details_v2.png";
 import glacisRetryData from "@/assets/glacis_retry_data.png";
+import glacisAnalytics from "@/assets/glacis_analytics.png";
 
 import maatSlide1 from "@/assets/maat_slide_1.png";
 import maatSlide2 from "@/assets/maat_slide_2.png";
@@ -704,6 +705,16 @@ export default function ProjectDetail() {
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                    {language === "ru" ? "Аналитику можно посмотреть по продуктам Glacis Core и AirLift – графики и набор данных будут разные. Chains Overview пока в разработке." : "Analytics is available for Glacis Core and AirLift – charts and datasets differ. Chains Overview is in development."}
                 </p>
+
+                <div className="my-12 rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
+                  <img 
+                    src={glacisAnalytics} 
+                    alt="Glacis Analytics" 
+                    className="w-full h-auto object-contain cursor-pointer"
+                    onClick={() => setSelectedImage(glacisAnalytics)}
+                  />
+                </div>
+
                  <p className="text-lg text-gray-600 leading-relaxed mb-12">
                    {language === "ru" ? "Они придут в приложение для проверки статуса транзакции или отсмотра аналитики (например, скорости транзакций у разных бриджей на разных блокчейнах за определенный период)." : "They come to the app to check transaction status or view analytics (e.g., transaction speeds of different bridges on different blockchains over a period)."}
                 </p>
