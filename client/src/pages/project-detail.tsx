@@ -23,10 +23,10 @@ import maatImg from "@/assets/maat_cover.jpg";
 
 import twoGoCoverImg from "@/assets/2go_cover.png";
 
-const projectMocks: Record<number, string> = {
+const projectMocks: Record<number, string | null> = {
   1: glacisImg,
   2: xSwapImg,
-  3: skiziImg,
+  3: null,
   4: twoGoCoverImg,
   5: moonbeamImg,
   6: cryptovecheImg,
@@ -36,10 +36,10 @@ const projectMocks: Record<number, string> = {
   10: maatImg
 };
 
-const projectImages: Record<number, string> = {
+const projectImages: Record<number, string | null> = {
   1: glacisImg,
   2: xSwapImg,
-  3: skiziImg,
+  3: null,
   4: twoGoCoverImg,
   5: moonbeamImg,
   6: cryptovecheImg,
