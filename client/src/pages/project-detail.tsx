@@ -65,6 +65,7 @@ export default function ProjectDetail() {
   const [contactOpen, setContactOpen] = useState(false);
   const [tldrOpen, setTldrOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [isZoomed, setIsZoomed] = useState(false);
 
   const t = translations[language];
   const projects = projectTranslations[language];
@@ -158,17 +159,33 @@ export default function ProjectDetail() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setSelectedImage(null)}
-            className="fixed inset-0 z-[200] bg-black/25 backdrop-blur-sm flex items-center justify-center p-6 cursor-pointer"
+            className="fixed inset-0 z-[200] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 md:p-12 overflow-auto"
           >
-            <motion.img
+            <div className="absolute top-6 right-6 z-[210]">
+              <button 
+                onClick={() => {
+                  setSelectedImage(null);
+                  setIsZoomed(false);
+                }}
+                className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center backdrop-blur-md transition-colors"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              src={selectedImage}
-              alt="Full screen view"
-              className="max-w-full max-h-full object-contain rounded-lg"
-            />
+              className={`relative transition-all duration-300 ${isZoomed ? 'cursor-zoom-out min-w-max' : 'cursor-zoom-in max-w-full max-h-full'}`}
+              onClick={() => setIsZoomed(!isZoomed)}
+            >
+              <img
+                src={selectedImage}
+                alt="Full screen view"
+                className={`rounded-xl shadow-2xl transition-all duration-300 ${isZoomed ? 'w-[200vw] max-w-none' : 'w-full h-full object-contain'}`}
+              />
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -336,7 +353,7 @@ export default function ProjectDetail() {
                     <img 
                       src={zooSchemeNoPic} 
                       alt="ZooDAO System Scheme Overview" 
-                      className="w-full h-auto object-contain cursor-pointer"
+                      className="w-full h-auto object-contain cursor-zoom-in"
                       onClick={() => setSelectedImage(zooSchemeNoPic)}
                     />
                   </div>
@@ -344,7 +361,7 @@ export default function ProjectDetail() {
                     <img 
                       src={zooSchemeV2} 
                       alt="ZooDAO System Scheme V2" 
-                      className="w-full h-auto object-contain cursor-pointer"
+                      className="w-full h-auto object-contain cursor-zoom-in"
                       onClick={() => setSelectedImage(zooSchemeV2)}
                     />
                   </div>
