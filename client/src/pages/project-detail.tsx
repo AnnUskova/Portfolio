@@ -430,7 +430,7 @@ export default function ProjectDetail() {
                   : <>Investor presentation deck for the MAAT protocol.<br/>Some data is blurred intentionally.</>
               ) : project.id === 1 ? (
                 language === "ru"
-                  ? "Glacis labs – американский стартап, который предлагает решения разработчикам децентрализованных приложений. Компания создала экосистему продуктов, а я отвечала за все ее визуальные составляющие."
+                  ? "Glacis labs – стартап, который предлагает решения разработчикам децентрализованных приложений. Компания создала экосистему продуктов, а я отвечала за все ее визуальные составляющие."
                   : project.description
               ) : (
                 project.description
