@@ -1021,6 +1021,7 @@ export default function ProjectDetail() {
                           <img 
                             src="/Pools_UI_Showcase.png" 
                             alt="Pools UI Showcase" 
+                            loading="lazy"
                             className="w-full h-auto object-contain cursor-pointer"
                             onClick={() => setSelectedImage("/Pools_UI_Showcase.png")}
                           />
@@ -1038,6 +1039,7 @@ export default function ProjectDetail() {
                             <img 
                               src="/Add_Liquidity_Showcase.png" 
                               alt="Add Liquidity Stepper and States" 
+                              loading="lazy"
                               className="w-full h-auto object-contain cursor-pointer"
                               onClick={() => setSelectedImage("/Add_Liquidity_Showcase.png")}
                             />
@@ -1049,6 +1051,7 @@ export default function ProjectDetail() {
                             <img 
                               src="/Remove_Liquidity_Showcase.png" 
                               alt="Remove Liquidity Showcase" 
+                              loading="lazy"
                               className="w-full h-auto object-contain cursor-pointer"
                               onClick={() => setSelectedImage("/Remove_Liquidity_Showcase.png")}
                             />
@@ -1067,6 +1070,7 @@ export default function ProjectDetail() {
                           <img 
                             src="/Token_Sale_Showcase.png" 
                             alt="Token Sale Showcase" 
+                            loading="lazy"
                             className="w-full h-auto object-contain cursor-pointer"
                             onClick={() => setSelectedImage("/Token_Sale_Showcase.png")}
                           />
@@ -1095,6 +1099,7 @@ export default function ProjectDetail() {
                           <img 
                             src="/Lock_Voting_Showcase.png" 
                             alt="Lock + Voting Showcase" 
+                            loading="lazy"
                             className="w-full h-auto object-contain cursor-pointer"
                             onClick={() => setSelectedImage("/Lock_Voting_Showcase.png")}
                           />
@@ -1106,6 +1111,7 @@ export default function ProjectDetail() {
                           <img 
                             src="/Lock_Voting_Popups.png" 
                             alt="Lock and Vote Popups" 
+                            loading="lazy"
                             className="w-full h-auto object-contain cursor-pointer"
                             onClick={() => setSelectedImage("/Lock_Voting_Popups.png")}
                           />
@@ -1143,6 +1149,7 @@ export default function ProjectDetail() {
                                   <img 
                                     src={img.src} 
                                     alt={img.alt} 
+                                    loading="lazy"
                                     className="w-full h-auto object-contain pointer-events-none"
                                   />
                                 </div>
@@ -1228,6 +1235,7 @@ export default function ProjectDetail() {
                         <img 
                           src={projectImages[p.id] as string}
                           alt={p.title}
+                          loading="lazy"
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                         />
                       ) : (

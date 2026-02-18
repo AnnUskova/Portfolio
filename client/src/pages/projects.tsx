@@ -222,6 +222,7 @@ export default function Projects() {
                         <img 
                           src={projectImages[project.id] as string} 
                           alt={project.title}
+                          loading={index < 3 ? "eager" : "lazy"}
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         />
                       ) : (
