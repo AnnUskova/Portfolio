@@ -835,16 +835,12 @@ export default function ProjectDetail() {
                       { src: glacisLight404, alt: "404 Light" }
                     ].map((img, idx, arr) => (
                       <div key={idx} className="flex-shrink-0 w-[85vw] md:w-[600px]">
-                        <div 
+                        <img 
+                          src={img.src} 
+                          alt={img.alt} 
+                          className={`w-full h-auto object-contain pointer-events-none rounded-3xl border border-gray-100 shadow-sm bg-white ${isDragging4 ? 'cursor-grabbing' : 'cursor-grab'}`}
                           onClick={() => !hasMoved4 && openGallery(img.src, arr.map(item => item.src))}
-                          className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging4 ? 'cursor-grabbing' : 'cursor-grab'}`}
-                        >
-                          <img 
-                            src={img.src} 
-                            alt={img.alt} 
-                            className="w-full h-auto object-contain pointer-events-none"
-                          />
-                        </div>
+                        />
                       </div>
                     ))}
                     {/* Spacer to allow scrolling past the last item to the screen edge */}
