@@ -6,7 +6,7 @@ import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { translations, projectTranslations, type Language } from "@/lib/translations";
 
 import glacisImg from "@assets/зеро_дельта_1770041205735.png";
-import glacisDappImg from "@assets/GL_dApp_1770754812223.webp";
+import glacisDappImg from "@/assets/GL_dApp_1770754812223.webp";
 import xSwapImg from "@assets/image_1770052489389.png";
 import skiziImg from "@assets/SKIZI_1768337984890.png";
 import chefImg from "@assets/AI_Chef_1768337984889.png";
