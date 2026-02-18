@@ -718,7 +718,7 @@ export default function ProjectDetail() {
 
                 <h2 className="text-2xl font-medium mb-6">{language === "ru" ? "Светлая тема" : "Light Theme"}</h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                   {language === "ru" ? "Тоже есть." : "Also available."}
+                   {language === "ru" ? "Выглядит вот так:" : "Looks like this:"}
                 </p>
               </div>
             )}
