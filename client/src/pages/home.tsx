@@ -50,7 +50,8 @@ export default function Home() {
   }, []);
 
   const t = translations[language];
-  const projects = projectTranslations[language];
+  // Filter out hidden projects (5: Moonbeam, 10: MAAT)
+  const projects = projectTranslations[language].filter(p => ![5, 10].includes(p.id));
 
   const stats = [
     { label: t.stats.experience, value: "8+" },
@@ -59,11 +60,11 @@ export default function Home() {
   ];
 
   const nextProject = () => {
-    setActiveProject((prev) => (prev + 1) % 7); // Limit to first 7 projects
+    setActiveProject((prev) => (prev + 1) % projects.length);
   };
 
   const prevProject = () => {
-    setActiveProject((prev) => (prev - 1 + 7) % 7); // Limit to first 7 projects
+    setActiveProject((prev) => (prev - 1 + projects.length) % projects.length);
   };
 
   const contactData = {
@@ -349,7 +350,7 @@ export default function Home() {
               <div className="flex gap-2 items-start w-full">
                 <AnimatePresence mode="popLayout">
                     {[0, 1, 2].map((offset) => {
-                    const index = (activeProject + offset) % 7; // Limit to first 7 projects
+                    const index = (activeProject + offset) % projects.length;
                     const isFirst = offset === 0;
                     return (
                       <Link 
