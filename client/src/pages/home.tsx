@@ -20,12 +20,15 @@ import twoGoCoverImg from "@/assets/2go_cover.png";
 import twoGoSliderImg from "@/assets/2go_slider.png";
 import gradientBar from "@assets/image_1770061190853.png";
 
+import cryptovecheImg from "@/assets/cryptoveche_cover.jpg";
+
 const projectImages: Record<number, string | null> = {
   1: glacisDappImg,
   14: zeroDeltaImg,
   2: xSwapImg,
   3: skiziImg, // SKIZI
-  4: twoGoSliderImg // 2Go
+  4: twoGoSliderImg, // 2Go
+  6: cryptovecheImg // Cryptoveche
 };
 
 export default function Home() {
@@ -50,8 +53,9 @@ export default function Home() {
   }, []);
 
   const t = translations[language];
-  // Filter out hidden projects (5: Moonbeam, 10: MAAT)
-  const projects = projectTranslations[language].filter(p => ![5, 10].includes(p.id));
+  // Filter for specific slider projects: Glacis dApp (1), Glacis Site (14), xSwap (2), SKIZI (3), 2Go (4), Cryptoveche (6)
+  const allowedProjectIds = [1, 14, 2, 3, 4, 6];
+  const projects = projectTranslations[language].filter(p => allowedProjectIds.includes(p.id));
 
   const stats = [
     { label: t.stats.experience, value: "8+" },
@@ -296,7 +300,7 @@ export default function Home() {
                 
                 <AnimatePresence mode="wait">
                   <motion.div
-                    key={`${activeProject}-${language}`}
+                    key={`${projects[activeProject].id}-${language}`}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
