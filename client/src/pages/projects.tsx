@@ -62,11 +62,11 @@ export default function Projects() {
   
   const getProjectsForTab = (tab: string) => {
     if (tab === "uxui") {
-      const ids = [1, 14, 2, 3, 4, 5, 6, 8, 9, 10];
+      const ids = [1, 14, 2, 3, 4, 6, 8, 9]; // Hidden: 5 (Moonbeam), 10 (MAAT)
       return ids.map(id => allProjects.find(p => p.id === id)).filter((p): p is typeof allProjects[0] => p !== undefined);
     }
     if (tab === "strategy") {
-      const ids = [11, 13, 12];
+      const ids = [11, 12]; // Hidden: 13 (MAAT Pitch Deck)
       return ids.map(id => allProjects.find(p => p.id === id)).filter((p): p is typeof allProjects[0] => p !== undefined);
     }
     if (tab === "research") {
