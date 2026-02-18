@@ -44,6 +44,7 @@ import cryptovecheImg from "@/assets/cryptoveche_cover.jpg";
 import uxResearchImg from "@/assets/ux_research_cover.jpg";
 import pholendImg from "@/assets/pholend_cover.jpg";
 import dickbuttsImg from "@/assets/dickbutts_cover_v2.png";
+import skiziCoverImg from "@/assets/skizi_cover_new.png";
 
 import twoGoCoverImg from "@/assets/2go_cover.png";
 import zoodaoCoverImg from "@/assets/zoodao_cover_v3.png";
@@ -52,7 +53,7 @@ import maatCoverImg from "@/assets/maat_pd_cover_v3.png";
 const projectMocks: Record<number, string | null> = {
   1: glacisDappImg,
   2: xSwapImg,
-  3: null,
+  3: skiziCoverImg,
   4: twoGoCoverImg,
   5: moonbeamImg,
   6: cryptovecheImg,
@@ -68,7 +69,7 @@ const projectMocks: Record<number, string | null> = {
 const projectImages: Record<number, string | null> = {
   1: glacisDappImg,
   2: xSwapImg,
-  3: null,
+  3: skiziCoverImg,
   4: twoGoCoverImg,
   5: moonbeamImg,
   6: cryptovecheImg,
