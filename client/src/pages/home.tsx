@@ -7,7 +7,7 @@ import { translations, projectTranslations, type Language } from "@/lib/translat
 
 import glacisImg from "@assets/GLACIS_1768337984889.png";
 import maatImg from "@assets/MAAT_1768337984889.png";
-import skiziImg from "@assets/SKIZI_1768337984890.png";
+import skiziImg from "@/assets/skizi_cover_new.png";
 import chefImg from "@assets/AI_Chef_1768337984889.png";
 
 import annaPhoto from "@assets/1046_1_1768336698195.png";
@@ -24,7 +24,7 @@ const projectImages: Record<number, string | null> = {
   1: glacisDappImg,
   14: zeroDeltaImg,
   2: xSwapImg,
-  3: null, // SKIZI
+  3: skiziImg, // SKIZI
   4: twoGoSliderImg // 2Go
 };
 
