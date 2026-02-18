@@ -110,18 +110,23 @@ export default function ProjectDetail() {
   const scrollContainerRef1 = useRef<HTMLDivElement>(null);
   const scrollContainerRef2 = useRef<HTMLDivElement>(null);
   const scrollContainerRef3 = useRef<HTMLDivElement>(null);
+  const scrollContainerRef4 = useRef<HTMLDivElement>(null);
   const [isDragging1, setIsDragging1] = useState(false);
   const [isDragging2, setIsDragging2] = useState(false);
   const [isDragging3, setIsDragging3] = useState(false);
+  const [isDragging4, setIsDragging4] = useState(false);
   const [hasMoved1, setHasMoved1] = useState(false);
   const [hasMoved2, setHasMoved2] = useState(false);
   const [hasMoved3, setHasMoved3] = useState(false);
+  const [hasMoved4, setHasMoved4] = useState(false);
   const [startX1, setStartX1] = useState(0);
   const [startX2, setStartX2] = useState(0);
   const [startX3, setStartX3] = useState(0);
+  const [startX4, setStartX4] = useState(0);
   const [scrollLeft1, setScrollLeft1] = useState(0);
   const [scrollLeft2, setScrollLeft2] = useState(0);
   const [scrollLeft3, setScrollLeft3] = useState(0);
+  const [scrollLeft4, setScrollLeft4] = useState(0);
 
   const handleMouseDown1 = (e: React.MouseEvent) => {
     if (!scrollContainerRef1.current) return;
@@ -145,6 +150,14 @@ export default function ProjectDetail() {
     setHasMoved3(false);
     setStartX3(e.pageX - scrollContainerRef3.current.offsetLeft);
     setScrollLeft3(scrollContainerRef3.current.scrollLeft);
+  };
+
+  const handleMouseDown4 = (e: React.MouseEvent) => {
+    if (!scrollContainerRef4.current) return;
+    setIsDragging4(true);
+    setHasMoved4(false);
+    setStartX4(e.pageX - scrollContainerRef4.current.offsetLeft);
+    setScrollLeft4(scrollContainerRef4.current.scrollLeft);
   };
 
   const handleMouseMove1 = (e: React.MouseEvent) => {
@@ -172,6 +185,15 @@ export default function ProjectDetail() {
     const walk = (x - startX3) * 2;
     if (Math.abs(walk) > 5) setHasMoved3(true);
     scrollContainerRef3.current.scrollLeft = scrollLeft3 - walk;
+  };
+
+  const handleMouseMove4 = (e: React.MouseEvent) => {
+    if (!isDragging4 || !scrollContainerRef4.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainerRef4.current.offsetLeft;
+    const walk = (x - startX4) * 2;
+    if (Math.abs(walk) > 5) setHasMoved4(true);
+    scrollContainerRef4.current.scrollLeft = scrollLeft4 - walk;
   };
 
   const contactData = {
@@ -720,6 +742,42 @@ export default function ProjectDetail() {
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                    {language === "ru" ? "Выглядит вот так:" : "Looks like this:"}
                 </p>
+
+                <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))]">
+                  <div 
+                    ref={scrollContainerRef4}
+                    onMouseDown={handleMouseDown4}
+                    onMouseLeave={() => setIsDragging4(false)}
+                    onMouseUp={() => setIsDragging4(false)}
+                    onMouseMove={handleMouseMove4}
+                    className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging4 ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
+                  >
+                    {[
+                      { src: "/glacis_light_main.png", alt: "Main" },
+                      { src: "/glacis_light_tx_details.png", alt: "Transaction Details" },
+                      { src: "/glacis_light_retry.png", alt: "Retry" },
+                      { src: "/glacis_light_analytics.png", alt: "Analytics" },
+                      { src: "/glacis_light_select_chain.png", alt: "Select Chain" },
+                      { src: "/glacis_light_airlift.png", alt: "Airlift" },
+                      { src: "/glacis_light_404.png", alt: "404" }
+                    ].map((img, idx) => (
+                      <div key={idx} className="flex-shrink-0 w-[85vw] md:w-[600px]">
+                        <div 
+                          onClick={() => !hasMoved4 && setSelectedImage(img.src)}
+                          className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging4 ? 'cursor-grabbing' : 'cursor-grab'}`}
+                        >
+                          <img 
+                            src={img.src} 
+                            alt={img.alt} 
+                            className="w-full h-auto object-contain pointer-events-none"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                    {/* Spacer to allow scrolling past the last item to the screen edge */}
+                    <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
+                  </div>
+                </div>
               </div>
             )}
 
