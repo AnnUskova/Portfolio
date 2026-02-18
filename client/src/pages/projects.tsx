@@ -13,6 +13,7 @@ import zeroDeltaCoverImg from "@/assets/zero_delta_cover.png";
 import twoGoCoverImg from "@/assets/2go_cover.png";
 import zoodaoCoverImg from "@/assets/zoodao_cover_v3.png";
 import maatCoverImg from "@/assets/maat_pd_cover_v3.png";
+import dickbuttsImg from "@assets/dickbutts_cover_new.png";
 
 const projectImages: Record<number, string | null> = {
   1: glacisDappImg,
@@ -24,7 +25,7 @@ const projectImages: Record<number, string | null> = {
   6: null,
   7: null,
   8: null,
-  9: null,
+  9: dickbuttsImg,
   10: null,
   11: zeroDeltaCoverImg,
   12: zoodaoCoverImg,
