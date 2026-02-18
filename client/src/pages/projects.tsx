@@ -66,7 +66,7 @@ export default function Projects() {
       return ids.map(id => allProjects.find(p => p.id === id)).filter((p): p is typeof allProjects[0] => p !== undefined);
     }
     if (tab === "strategy") {
-      const ids = [11, 12]; // Hidden: 13 (MAAT Pitch Deck)
+      const ids = [11, 13, 12]; 
       return ids.map(id => allProjects.find(p => p.id === id)).filter((p): p is typeof allProjects[0] => p !== undefined);
     }
     if (tab === "research") {

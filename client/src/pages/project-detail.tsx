@@ -105,8 +105,8 @@ export default function ProjectDetail() {
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
 
   const t = translations[language];
-  // Filter out hidden projects (5: Moonbeam, 10: MAAT, 13: MAAT Pitch Deck)
-  const projects = projectTranslations[language].filter(p => ![5, 10, 13].includes(p.id));
+  // Filter out hidden projects (5: Moonbeam, 10: MAAT)
+  const projects = projectTranslations[language].filter(p => ![5, 10].includes(p.id));
   const projectIndex = projects.findIndex(p => p.id === id);
   // If current project is hidden/not found, default to first available
   const project = projectIndex !== -1 ? projects[projectIndex] : projectTranslations[language].find(p => p.id === id) || projects[0];
