@@ -545,7 +545,7 @@ export default function ProjectDetail() {
               <div className="max-w-[calc(56rem-80px)] mb-20">
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                   {language === "ru" 
-                    ? "Моя роль на проекте – Lead Product Designer. Я руководила международной командой из junior-дизайнера и аутсорс графических и motion-дизайнеров и сама, конечно, много делала руками."
+                    ? "Моя роль на проекте – Lead Product Designer. Я руководила международной командой из junior-дизайнера, аутсорс графических и motion-дизайнеров и сама много делала руками."
                     : "My role on the project was Lead Product Designer. I managed an international team consisting of a junior designer and outsourced graphic and motion designers, and of course, I did a lot of hands-on work myself."}
                 </p>
 
