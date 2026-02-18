@@ -23,16 +23,6 @@ import glacisMobileDetails from "@/assets/glacis_mobile_details_v2.png";
 import glacisRetryData from "@/assets/glacis_retry_data.png";
 import glacisAnalytics from "@/assets/glacis_analytics.png";
 
-import glacisLightMain from "@/assets/glacis_light_main.png";
-import glacisLightTxDetails from "@/assets/glacis_light_tx_details.png";
-import glacisLightMobileDetails from "@/assets/glacis_light_mobile_details.png";
-import glacisLightRetry from "@/assets/glacis_light_retry.png";
-import glacisLightAnalytics from "@/assets/glacis_light_analytics.png";
-import glacisLightTabletAnalytics from "@/assets/glacis_light_tablet_analytics.png";
-import glacisLightSelectChain from "@/assets/glacis_light_select_chain.png";
-import glacisLightAirlift from "@/assets/glacis_light_airlift.png";
-import glacisLight404 from "@/assets/glacis_light_404.png";
-
 import maatSlide1 from "@/assets/maat_slide_1.png";
 import maatSlide2 from "@/assets/maat_slide_2.png";
 import maatSlide3 from "@/assets/maat_slide_3.png";
@@ -120,71 +110,18 @@ export default function ProjectDetail() {
   const scrollContainerRef1 = useRef<HTMLDivElement>(null);
   const scrollContainerRef2 = useRef<HTMLDivElement>(null);
   const scrollContainerRef3 = useRef<HTMLDivElement>(null);
-  const scrollContainerRef4 = useRef<HTMLDivElement>(null);
   const [isDragging1, setIsDragging1] = useState(false);
   const [isDragging2, setIsDragging2] = useState(false);
   const [isDragging3, setIsDragging3] = useState(false);
-  const [isDragging4, setIsDragging4] = useState(false);
   const [hasMoved1, setHasMoved1] = useState(false);
   const [hasMoved2, setHasMoved2] = useState(false);
   const [hasMoved3, setHasMoved3] = useState(false);
-  const [hasMoved4, setHasMoved4] = useState(false);
   const [startX1, setStartX1] = useState(0);
   const [startX2, setStartX2] = useState(0);
   const [startX3, setStartX3] = useState(0);
-  const [startX4, setStartX4] = useState(0);
   const [scrollLeft1, setScrollLeft1] = useState(0);
   const [scrollLeft2, setScrollLeft2] = useState(0);
   const [scrollLeft3, setScrollLeft3] = useState(0);
-  const [scrollLeft4, setScrollLeft4] = useState(0);
-
-  const [currentGalleryImages, setCurrentGalleryImages] = useState<string[]>([]);
-  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
-
-  const openGallery = (imageSrc: string, images: string[]) => {
-    setSelectedImage(imageSrc);
-    setCurrentGalleryImages(images);
-    setCurrentImageIndex(images.indexOf(imageSrc));
-    setIsZoomed(false);
-    setDragOffset({ x: 0, y: 0 });
-  };
-
-  const handleNextImage = (e?: React.MouseEvent) => {
-    e?.stopPropagation();
-    if (currentGalleryImages.length <= 1) return;
-    const nextIndex = (currentImageIndex + 1) % currentGalleryImages.length;
-    setCurrentImageIndex(nextIndex);
-    setSelectedImage(currentGalleryImages[nextIndex]);
-    setIsZoomed(false);
-    setDragOffset({ x: 0, y: 0 });
-  };
-
-  const handlePrevImage = (e?: React.MouseEvent) => {
-    e?.stopPropagation();
-    if (currentGalleryImages.length <= 1) return;
-    const prevIndex = (currentImageIndex - 1 + currentGalleryImages.length) % currentGalleryImages.length;
-    setCurrentImageIndex(prevIndex);
-    setSelectedImage(currentGalleryImages[prevIndex]);
-    setIsZoomed(false);
-    setDragOffset({ x: 0, y: 0 });
-  };
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (!selectedImage) return;
-      
-      if (e.key === 'ArrowRight') {
-        handleNextImage();
-      } else if (e.key === 'ArrowLeft') {
-        handlePrevImage();
-      } else if (e.key === 'Escape') {
-        setSelectedImage(null);
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [selectedImage, currentImageIndex, currentGalleryImages]);
 
   const handleMouseDown1 = (e: React.MouseEvent) => {
     if (!scrollContainerRef1.current) return;
@@ -237,23 +174,6 @@ export default function ProjectDetail() {
     scrollContainerRef3.current.scrollLeft = scrollLeft3 - walk;
   };
 
-  const handleMouseDown4 = (e: React.MouseEvent) => {
-    if (!scrollContainerRef4.current) return;
-    setIsDragging4(true);
-    setHasMoved4(false);
-    setStartX4(e.pageX - scrollContainerRef4.current.offsetLeft);
-    setScrollLeft4(scrollContainerRef4.current.scrollLeft);
-  };
-
-  const handleMouseMove4 = (e: React.MouseEvent) => {
-    if (!isDragging4 || !scrollContainerRef4.current) return;
-    e.preventDefault();
-    const x = e.pageX - scrollContainerRef4.current.offsetLeft;
-    const walk = (x - startX4) * 2;
-    if (Math.abs(walk) > 5) setHasMoved4(true);
-    scrollContainerRef4.current.scrollLeft = scrollLeft4 - walk;
-  };
-
   const contactData = {
     telegramUrl: "https://t.me/Ann_uskova",
     linkedinUrl: "https://www.linkedin.com/in/anna-uskova-4b1169268/",
@@ -298,7 +218,7 @@ export default function ProjectDetail() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className={`relative flex items-center justify-center w-full h-full ${isZoomed ? 'cursor-grab active:cursor-grabbing' : 'cursor-zoom-in'}`}
+              className={`relative flex items-center justify-center ${isZoomed ? 'cursor-grab active:cursor-grabbing' : 'cursor-zoom-in'}`}
               onMouseDown={(e) => {
                 if (!isZoomed) return;
                 setIsDraggingImage(true);
@@ -326,6 +246,10 @@ export default function ProjectDetail() {
                   setIsZoomed(true);
                   setDragOffset({ x: 0, y: 0 });
                 } else {
+                  // Only zoom out if we didn't just drag
+                  // We check if the current offset is basically the same as when we started
+                  // but a better way is to check the movement during THIS specific drag
+                  // For now, let's use a simpler toggle that respects the drag state
                   if (!isDraggingImage) {
                     setIsZoomed(false);
                     setDragOffset({ x: 0, y: 0 });
@@ -333,23 +257,6 @@ export default function ProjectDetail() {
                 }
               }}
             >
-              {currentGalleryImages.length > 1 && !isZoomed && (
-                <>
-                  <button
-                    className="absolute left-4 z-[220] p-4 text-white/50 hover:text-white transition-colors hover:bg-white/10 rounded-full"
-                    onClick={handlePrevImage}
-                  >
-                    <ChevronRight className="w-8 h-8 rotate-180" />
-                  </button>
-                  <button
-                    className="absolute right-4 z-[220] p-4 text-white/50 hover:text-white transition-colors hover:bg-white/10 rounded-full"
-                    onClick={handleNextImage}
-                  >
-                    <ChevronRight className="w-8 h-8" />
-                  </button>
-                </>
-              )}
-              
               <motion.img
                 src={selectedImage}
                 alt="Full screen view"
@@ -813,40 +720,6 @@ export default function ProjectDetail() {
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                    {language === "ru" ? "Выглядит вот так:" : "Looks like this:"}
                 </p>
-
-                <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))]">
-                  <div 
-                    ref={scrollContainerRef4}
-                    onMouseDown={handleMouseDown4}
-                    onMouseLeave={() => setIsDragging4(false)}
-                    onMouseUp={() => setIsDragging4(false)}
-                    onMouseMove={handleMouseMove4}
-                    className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging4 ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
-                  >
-                    {[
-                      { src: glacisLightMain, alt: "Main Page Light" },
-                      { src: glacisLightTxDetails, alt: "Transaction Details Light" },
-                      { src: glacisLightMobileDetails, alt: "Mobile Details Light" },
-                      { src: glacisLightRetry, alt: "Retry Light" },
-                      { src: glacisLightAnalytics, alt: "Analytics Light" },
-                      { src: glacisLightTabletAnalytics, alt: "Tablet Analytics Light" },
-                      { src: glacisLightSelectChain, alt: "Select Chain Light" },
-                      { src: glacisLightAirlift, alt: "Airlift Light" },
-                      { src: glacisLight404, alt: "404 Light" }
-                    ].map((img, idx, arr) => (
-                      <div key={idx} className="flex-shrink-0 w-[85vw] md:w-[600px]">
-                        <img 
-                          src={img.src} 
-                          alt={img.alt} 
-                          className={`w-full h-auto object-contain pointer-events-none rounded-3xl border border-gray-100 shadow-sm bg-white ${isDragging4 ? 'cursor-grabbing' : 'cursor-grab'}`}
-                          onClick={() => !hasMoved4 && openGallery(img.src, arr.map(item => item.src))}
-                        />
-                      </div>
-                    ))}
-                    {/* Spacer to allow scrolling past the last item to the screen edge */}
-                    <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
-                  </div>
-                </div>
               </div>
             )}
 
@@ -906,10 +779,10 @@ export default function ProjectDetail() {
                         { src: "/Provide_Liquidity_1770223795856.png", alt: "User Flow Pools Add" },
                         { src: "/Remove_Liquidity_1770223795857.png", alt: "User Flow Pools Remove" },
                         { src: "/Token_sale_1770223795858.png", alt: "User Flow Token Sale" }
-                      ].map((img, idx, arr) => (
+                      ].map((img, idx) => (
                         <div key={idx} className="flex-shrink-0 w-[85vw] md:w-[600px]">
                           <div 
-                            onClick={() => !hasMoved1 && openGallery(img.src, arr.map(item => item.src))}
+                            onClick={() => !hasMoved1 && setSelectedImage(img.src)}
                             className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging1 ? 'cursor-grabbing' : 'cursor-grab'}`}
                           >
                             <img 
@@ -944,10 +817,10 @@ export default function ProjectDetail() {
                         { src: "/Staking_Draft_Updated.png", alt: "Draft Staking", width: "md:w-[600px]" },
                         { src: "/TokenSale_Draft.png", alt: "Draft Token Sale", width: "md:w-[400px]" },
                         { src: "/Relations_Draft.png", alt: "Draft Relations", width: "md:w-[600px]" }
-                      ].map((img, idx, arr) => (
+                      ].map((img, idx) => (
                         <div key={idx} className={`flex-shrink-0 w-[85vw] ${img.width}`}>
                           <div 
-                            onClick={() => !hasMoved2 && openGallery(img.src, arr.map(item => item.src))}
+                            onClick={() => !hasMoved2 && setSelectedImage(img.src)}
                             className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging2 ? 'cursor-grabbing' : 'cursor-grab'}`}
                           >
                             <img 
@@ -1191,10 +1064,10 @@ export default function ProjectDetail() {
                               { src: "/Viet_Route.png", alt: "Vietnamese Route", width: "md:w-[400px]" },
                               { src: "/UI_Library_1.png", alt: "UI Library 1", width: "md:w-[600px]" },
                               { src: "/UI_Library_2.png", alt: "UI Library 2", width: "md:w-[600px]" }
-                            ].map((img, idx, arr) => (
+                            ].map((img, idx) => (
                               <div key={idx} className={`flex-shrink-0 w-[85vw] ${img.width}`}>
                                 <div 
-                                  onClick={() => !hasMoved3 && openGallery(img.src, arr.map(item => item.src))}
+                                  onClick={() => !hasMoved3 && setSelectedImage(img.src)}
                                   className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging3 ? 'cursor-grabbing' : 'cursor-grab'}`}
                                 >
                                   <img 
