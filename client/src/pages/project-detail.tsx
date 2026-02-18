@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useRoute } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, ArrowLeft, X, ChevronRight, Download, Zap } from "lucide-react";
+import { ArrowUpRight, ArrowLeft, ChevronLeft, X, ChevronRight, Download, Zap } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { translations, projectTranslations, type Language } from "@/lib/translations";
 
@@ -113,6 +113,17 @@ export default function ProjectDetail() {
   const [isDragging1, setIsDragging1] = useState(false);
   const [isDragging2, setIsDragging2] = useState(false);
   const [isDragging3, setIsDragging3] = useState(false);
+  const [currentLightSlide, setCurrentLightSlide] = useState(0);
+
+  const lightThemeImages = [
+    "/glacis_light_main.png",
+    "/glacis_light_tx_details.png",
+    "/glacis_light_retry.png",
+    "/glacis_light_analytics.png",
+    "/glacis_light_select_chain.png",
+    "/glacis_light_airlift.png",
+    "/glacis_light_404.png"
+  ];
   const [hasMoved1, setHasMoved1] = useState(false);
   const [hasMoved2, setHasMoved2] = useState(false);
   const [hasMoved3, setHasMoved3] = useState(false);
@@ -720,6 +731,57 @@ export default function ProjectDetail() {
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                    {language === "ru" ? "Выглядит вот так:" : "Looks like this:"}
                 </p>
+
+                <div className="relative group rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white mb-12">
+                  <div className="relative aspect-[16/9] w-full bg-gray-50">
+                    <img 
+                      src={lightThemeImages[currentLightSlide]} 
+                      alt={`Light Theme Slide ${currentLightSlide + 1}`} 
+                      className="w-full h-full object-contain cursor-pointer"
+                      onClick={() => setSelectedImage(lightThemeImages[currentLightSlide])}
+                    />
+                    
+                    {/* Navigation Arrows */}
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setCurrentLightSlide((prev) => (prev === 0 ? lightThemeImages.length - 1 : prev - 1));
+                      }}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-all shadow-md opacity-0 group-hover:opacity-100 duration-300 transform hover:scale-105"
+                      aria-label="Previous slide"
+                    >
+                      <ChevronLeft className="w-6 h-6 text-gray-700" />
+                    </button>
+                    
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setCurrentLightSlide((prev) => (prev === lightThemeImages.length - 1 ? 0 : prev + 1));
+                      }}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-all shadow-md opacity-0 group-hover:opacity-100 duration-300 transform hover:scale-105"
+                      aria-label="Next slide"
+                    >
+                      <ChevronRight className="w-6 h-6 text-gray-700" />
+                    </button>
+
+                    {/* Dots Indicators */}
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                      {lightThemeImages.map((_, idx) => (
+                        <button
+                          key={idx}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setCurrentLightSlide(idx);
+                          }}
+                          className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                            idx === currentLightSlide ? "bg-gray-800 w-6" : "bg-gray-300 hover:bg-gray-400"
+                          }`}
+                          aria-label={`Go to slide ${idx + 1}`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
             )}
 
