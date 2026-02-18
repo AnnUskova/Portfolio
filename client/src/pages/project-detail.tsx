@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useRoute } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, ArrowLeft, ChevronLeft, X, ChevronRight, Download, Zap } from "lucide-react";
+import { ArrowUpRight, ArrowLeft, X, ChevronRight, Download, Zap } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { translations, projectTranslations, type Language } from "@/lib/translations";
 
@@ -107,25 +107,18 @@ export default function ProjectDetail() {
   const project = projects[projectIndex] || projects[0];
   const nextProject = projects[(projectIndex + 1) % projects.length];
 
-  const [currentGalleryImages, setCurrentGalleryImages] = useState<string[]>([]);
-  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-
   const scrollContainerRef1 = useRef<HTMLDivElement>(null);
   const scrollContainerRef2 = useRef<HTMLDivElement>(null);
   const scrollContainerRef3 = useRef<HTMLDivElement>(null);
-  
   const [isDragging1, setIsDragging1] = useState(false);
   const [isDragging2, setIsDragging2] = useState(false);
   const [isDragging3, setIsDragging3] = useState(false);
-  
   const [hasMoved1, setHasMoved1] = useState(false);
   const [hasMoved2, setHasMoved2] = useState(false);
   const [hasMoved3, setHasMoved3] = useState(false);
-  
   const [startX1, setStartX1] = useState(0);
   const [startX2, setStartX2] = useState(0);
   const [startX3, setStartX3] = useState(0);
-  
   const [scrollLeft1, setScrollLeft1] = useState(0);
   const [scrollLeft2, setScrollLeft2] = useState(0);
   const [scrollLeft3, setScrollLeft3] = useState(0);
@@ -181,86 +174,6 @@ export default function ProjectDetail() {
     scrollContainerRef3.current.scrollLeft = scrollLeft3 - walk;
   };
 
-  const openGallery = (image: string, gallery: string[]) => {
-    if (!hasMoved1 && !hasMoved2 && !hasMoved3 && !hasMovedLight) {
-        setSelectedImage(image);
-        setCurrentGalleryImages(gallery);
-        setSelectedImageIndex(gallery.indexOf(image));
-        setIsZoomed(false);
-        setDragOffset({ x: 0, y: 0 });
-    }
-  };
-
-  const openSingleImage = (image: string) => {
-      setSelectedImage(image);
-      setCurrentGalleryImages([image]);
-      setSelectedImageIndex(0);
-      setIsZoomed(false);
-      setDragOffset({ x: 0, y: 0 });
-  };
-
-  const handleNextImage = (e: React.MouseEvent) => {
-      e.stopPropagation();
-      const nextIndex = (selectedImageIndex + 1) % currentGalleryImages.length;
-      setSelectedImage(currentGalleryImages[nextIndex]);
-      setSelectedImageIndex(nextIndex);
-      setIsZoomed(false);
-      setDragOffset({ x: 0, y: 0 });
-  };
-
-  const handlePrevImage = (e: React.MouseEvent) => {
-      e.stopPropagation();
-      const prevIndex = (selectedImageIndex - 1 + currentGalleryImages.length) % currentGalleryImages.length;
-      setSelectedImage(currentGalleryImages[prevIndex]);
-      setSelectedImageIndex(prevIndex);
-      setIsZoomed(false);
-      setDragOffset({ x: 0, y: 0 });
-  };
-
-  const userFlowImages = [
-    { src: "/Swap_1770223795857.png", alt: "User Flow Swap" },
-    { src: "/Provide_Liquidity_1770223795856.png", alt: "User Flow Pools Add" },
-    { src: "/Remove_Liquidity_1770223795857.png", alt: "User Flow Pools Remove" },
-    { src: "/Token_sale_1770223795858.png", alt: "User Flow Token Sale" }
-  ];
-
-  const draftImages = [
-    { src: "/Staking_Draft_Updated.png", alt: "Draft Staking", width: "md:w-[600px]" },
-    { src: "/TokenSale_Draft.png", alt: "Draft Token Sale", width: "md:w-[400px]" },
-    { src: "/Relations_Draft.png", alt: "Draft Relations", width: "md:w-[600px]" }
-  ];
-
-  const vietImages = [
-    { src: "/Viet_Token_Sale.png", alt: "Vietnamese Token Sale", width: "md:w-[600px]" },
-    { src: "/Viet_Pools.png", alt: "Vietnamese Pools", width: "md:w-[600px]" },
-    { src: "/Viet_Route.png", alt: "Vietnamese Route", width: "md:w-[400px]" },
-    { src: "/UI_Library_1.png", alt: "UI Library 1", width: "md:w-[600px]" },
-    { src: "/UI_Library_2.png", alt: "UI Library 2", width: "md:w-[600px]" }
-  ];
-
-  const scrollContainerRefLight = useRef<HTMLDivElement>(null);
-  const [isDraggingLight, setIsDraggingLight] = useState(false);
-  const [hasMovedLight, setHasMovedLight] = useState(false);
-  const [startXLight, setStartXLight] = useState(0);
-  const [scrollLeftLight, setScrollLeftLight] = useState(0);
-
-  const handleMouseDownLight = (e: React.MouseEvent) => {
-    if (!scrollContainerRefLight.current) return;
-    setIsDraggingLight(true);
-    setHasMovedLight(false);
-    setStartXLight(e.pageX - scrollContainerRefLight.current.offsetLeft);
-    setScrollLeftLight(scrollContainerRefLight.current.scrollLeft);
-  };
-
-  const handleMouseMoveLight = (e: React.MouseEvent) => {
-    if (!isDraggingLight || !scrollContainerRefLight.current) return;
-    e.preventDefault();
-    const x = e.pageX - scrollContainerRefLight.current.offsetLeft;
-    const walk = (x - startXLight) * 2;
-    if (Math.abs(walk) > 5) setHasMovedLight(true);
-    scrollContainerRefLight.current.scrollLeft = scrollLeftLight - walk;
-  };
-
   const contactData = {
     telegramUrl: "https://t.me/Ann_uskova",
     linkedinUrl: "https://www.linkedin.com/in/anna-uskova-4b1169268/",
@@ -305,82 +218,61 @@ export default function ProjectDetail() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className={`relative flex items-center justify-center w-full h-full`}
-            >
-              {/* Previous Button */}
-              {currentGalleryImages.length > 1 && (
-                <button
-                  onClick={handlePrevImage}
-                  className="absolute left-4 z-[220] p-4 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all hover:scale-105"
-                >
-                  <ChevronLeft className="w-8 h-8" />
-                </button>
-              )}
-
-              {/* Next Button */}
-              {currentGalleryImages.length > 1 && (
-                <button
-                  onClick={handleNextImage}
-                  className="absolute right-4 z-[220] p-4 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all hover:scale-105"
-                >
-                  <ChevronRight className="w-8 h-8" />
-                </button>
-              )}
-
-              <div 
-                className={`relative ${isZoomed ? 'cursor-grab active:cursor-grabbing' : 'cursor-zoom-in'}`}
-                onMouseDown={(e) => {
-                  if (!isZoomed) return;
-                  setIsDraggingImage(true);
-                  setDragStart({ x: e.clientX - dragOffset.x, y: e.clientY - dragOffset.y });
-                  e.stopPropagation();
-                  e.preventDefault();
-                }}
-                onMouseMove={(e) => {
-                  if (!isDraggingImage || !isZoomed) return;
-                  const newX = e.clientX - dragStart.x;
-                  const newY = e.clientY - dragStart.y;
-                  
-                  // Only consider it a drag if moved more than 5px
-                  if (Math.abs(newX - dragOffset.x) > 5 || Math.abs(newY - dragOffset.y) > 5) {
-                    setDragOffset({ x: newX, y: newY });
-                  }
-                }}
-                onMouseUp={() => {
-                  setTimeout(() => setIsDraggingImage(false), 10);
-                }}
-                onMouseLeave={() => setIsDraggingImage(false)}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  if (!isZoomed) {
-                    setIsZoomed(true);
+              className={`relative flex items-center justify-center ${isZoomed ? 'cursor-grab active:cursor-grabbing' : 'cursor-zoom-in'}`}
+              onMouseDown={(e) => {
+                if (!isZoomed) return;
+                setIsDraggingImage(true);
+                setDragStart({ x: e.clientX - dragOffset.x, y: e.clientY - dragOffset.y });
+                e.stopPropagation();
+                e.preventDefault();
+              }}
+              onMouseMove={(e) => {
+                if (!isDraggingImage || !isZoomed) return;
+                const newX = e.clientX - dragStart.x;
+                const newY = e.clientY - dragStart.y;
+                
+                // Only consider it a drag if moved more than 5px
+                if (Math.abs(newX - dragOffset.x) > 5 || Math.abs(newY - dragOffset.y) > 5) {
+                  setDragOffset({ x: newX, y: newY });
+                }
+              }}
+              onMouseUp={() => {
+                setTimeout(() => setIsDraggingImage(false), 10);
+              }}
+              onMouseLeave={() => setIsDraggingImage(false)}
+              onClick={(e) => {
+                e.stopPropagation();
+                if (!isZoomed) {
+                  setIsZoomed(true);
+                  setDragOffset({ x: 0, y: 0 });
+                } else {
+                  // Only zoom out if we didn't just drag
+                  // We check if the current offset is basically the same as when we started
+                  // but a better way is to check the movement during THIS specific drag
+                  // For now, let's use a simpler toggle that respects the drag state
+                  if (!isDraggingImage) {
+                    setIsZoomed(false);
                     setDragOffset({ x: 0, y: 0 });
-                  } else {
-                    if (!isDraggingImage) {
-                      setIsZoomed(false);
-                      setDragOffset({ x: 0, y: 0 });
-                    }
                   }
+                }
+              }}
+            >
+              <motion.img
+                src={selectedImage}
+                alt="Full screen view"
+                draggable={false}
+                animate={{ 
+                  scale: isZoomed ? 2 : 1,
+                  x: isZoomed ? dragOffset.x : 0,
+                  y: isZoomed ? dragOffset.y : 0
                 }}
-              >
-                <motion.img
-                  key={selectedImage} // Add key to force re-render on image change
-                  src={selectedImage}
-                  alt="Full screen view"
-                  draggable={false}
-                  animate={{ 
-                    scale: isZoomed ? 2 : 1,
-                    x: isZoomed ? dragOffset.x : 0,
-                    y: isZoomed ? dragOffset.y : 0
-                  }}
-                  transition={{ 
-                    scale: { type: "spring", damping: 25, stiffness: 200 },
-                    x: { type: "tween", duration: 0 },
-                    y: { type: "tween", duration: 0 }
-                  }}
-                  className="rounded-xl shadow-2xl pointer-events-none max-w-[90vw] max-h-[90vh] object-contain"
-                />
-              </div>
+                transition={{ 
+                  scale: { type: "spring", damping: 25, stiffness: 200 },
+                  x: { type: "tween", duration: 0 },
+                  y: { type: "tween", duration: 0 }
+                }}
+                className="rounded-xl shadow-2xl pointer-events-none max-w-[90vw] max-h-[90vh] object-contain"
+              />
             </motion.div>
           </motion.div>
         )}
@@ -819,7 +711,7 @@ export default function ProjectDetail() {
                     src={glacisAnalytics} 
                     alt="Glacis Analytics" 
                     className="w-full h-auto object-contain cursor-pointer"
-                    onClick={() => openSingleImage(glacisAnalytics)}
+                    onClick={() => setSelectedImage(glacisAnalytics)}
                   />
                 </div>
 
@@ -828,34 +720,6 @@ export default function ProjectDetail() {
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                    {language === "ru" ? "Выглядит вот так:" : "Looks like this:"}
                 </p>
-
-                <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))] mb-12">
-                  <div 
-                    ref={scrollContainerRefLight}
-                    onMouseDown={handleMouseDownLight}
-                    onMouseLeave={() => setIsDraggingLight(false)}
-                    onMouseUp={() => setIsDraggingLight(false)}
-                    onMouseMove={handleMouseMoveLight}
-                    className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDraggingLight ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
-                  >
-                    {lightThemeImages.map((src, idx) => (
-                      <div key={idx} className="flex-shrink-0 w-[85vw] md:w-[800px]">
-                        <div 
-                          onClick={() => openGallery(src, lightThemeImages)}
-                          className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDraggingLight ? 'cursor-grabbing' : 'cursor-grab'}`}
-                        >
-                          <img 
-                            src={src} 
-                            alt={`Light Theme ${idx + 1}`} 
-                            className="w-full h-auto object-contain pointer-events-none"
-                          />
-                        </div>
-                      </div>
-                    ))}
-                    {/* Spacer to allow scrolling past the last item to the screen edge */}
-                    <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
-                  </div>
-                </div>
               </div>
             )}
 
@@ -910,10 +774,15 @@ export default function ProjectDetail() {
                       onMouseMove={handleMouseMove1}
                       className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging1 ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
                     >
-                      {userFlowImages.map((img, idx) => (
+                      {[
+                        { src: "/Swap_1770223795857.png", alt: "User Flow Swap" },
+                        { src: "/Provide_Liquidity_1770223795856.png", alt: "User Flow Pools Add" },
+                        { src: "/Remove_Liquidity_1770223795857.png", alt: "User Flow Pools Remove" },
+                        { src: "/Token_sale_1770223795858.png", alt: "User Flow Token Sale" }
+                      ].map((img, idx) => (
                         <div key={idx} className="flex-shrink-0 w-[85vw] md:w-[600px]">
                           <div 
-                            onClick={() => !hasMoved1 && openGallery(img.src, userFlowImages.map(i => i.src))}
+                            onClick={() => !hasMoved1 && setSelectedImage(img.src)}
                             className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging1 ? 'cursor-grabbing' : 'cursor-grab'}`}
                           >
                             <img 
@@ -944,10 +813,14 @@ export default function ProjectDetail() {
                       onMouseMove={handleMouseMove2}
                       className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging2 ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
                     >
-                      {draftImages.map((img, idx) => (
+                      {[
+                        { src: "/Staking_Draft_Updated.png", alt: "Draft Staking", width: "md:w-[600px]" },
+                        { src: "/TokenSale_Draft.png", alt: "Draft Token Sale", width: "md:w-[400px]" },
+                        { src: "/Relations_Draft.png", alt: "Draft Relations", width: "md:w-[600px]" }
+                      ].map((img, idx) => (
                         <div key={idx} className={`flex-shrink-0 w-[85vw] ${img.width}`}>
                           <div 
-                            onClick={() => !hasMoved2 && openGallery(img.src, draftImages.map(i => i.src))}
+                            onClick={() => !hasMoved2 && setSelectedImage(img.src)}
                             className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging2 ? 'cursor-grabbing' : 'cursor-grab'}`}
                           >
                             <img 
@@ -994,7 +867,7 @@ export default function ProjectDetail() {
                           src="/Swap_UI_Showcase_New.png" 
                           alt="Swap UI Showcase" 
                           className="w-full h-auto object-contain cursor-pointer"
-                          onClick={() => openSingleImage("/Swap_UI_Showcase_New.png")}
+                          onClick={() => setSelectedImage("/Swap_UI_Showcase_New.png")}
                         />
                       </div>
                       <div className="space-y-4">
@@ -1033,7 +906,7 @@ export default function ProjectDetail() {
                           src="/Features_Showcase.png" 
                           alt="Features Showcase" 
                           className="w-full h-auto object-contain cursor-pointer"
-                          onClick={() => openSingleImage("/Features_Showcase.png")}
+                          onClick={() => setSelectedImage("/Features_Showcase.png")}
                         />
                       </div>
 
@@ -1050,7 +923,7 @@ export default function ProjectDetail() {
                             src="/Swap_States_Showcase.png" 
                             alt="Route и некоторые состояния формы свапа" 
                             className="w-full h-auto object-contain cursor-pointer"
-                            onClick={() => openSingleImage("/Swap_States_Showcase.png")}
+                            onClick={() => setSelectedImage("/Swap_States_Showcase.png")}
                           />
                         </div>
                         <p className="text-sm text-gray-400 mt-4 text-center italic">Route и некоторые состояния формы свапа</p>
@@ -1079,7 +952,7 @@ export default function ProjectDetail() {
                             src="/Pools_UI_Showcase.png" 
                             alt="Pools UI Showcase" 
                             className="w-full h-auto object-contain cursor-pointer"
-                            onClick={() => openSingleImage("/Pools_UI_Showcase.png")}
+                            onClick={() => setSelectedImage("/Pools_UI_Showcase.png")}
                           />
                         </div>
                       </div>
@@ -1096,7 +969,7 @@ export default function ProjectDetail() {
                               src="/Add_Liquidity_Showcase.png" 
                               alt="Add Liquidity Stepper and States" 
                               className="w-full h-auto object-contain cursor-pointer"
-                              onClick={() => openSingleImage("/Add_Liquidity_Showcase.png")}
+                              onClick={() => setSelectedImage("/Add_Liquidity_Showcase.png")}
                             />
                           </div>
                         </div>
@@ -1107,7 +980,7 @@ export default function ProjectDetail() {
                               src="/Remove_Liquidity_Showcase.png" 
                               alt="Remove Liquidity Showcase" 
                               className="w-full h-auto object-contain cursor-pointer"
-                              onClick={() => openSingleImage("/Remove_Liquidity_Showcase.png")}
+                              onClick={() => setSelectedImage("/Remove_Liquidity_Showcase.png")}
                             />
                           </div>
                           <p className="text-sm text-gray-400 mt-4 text-center italic">Remove liquidity выглядит уже проще, но увеличился инфо блок.</p>
@@ -1125,7 +998,7 @@ export default function ProjectDetail() {
                             src="/Token_Sale_Showcase.png" 
                             alt="Token Sale Showcase" 
                             className="w-full h-auto object-contain cursor-pointer"
-                            onClick={() => openSingleImage("/Token_Sale_Showcase.png")}
+                            onClick={() => setSelectedImage("/Token_Sale_Showcase.png")}
                           />
                         </div>
                       </div>
@@ -1153,7 +1026,7 @@ export default function ProjectDetail() {
                             src="/Lock_Voting_Showcase.png" 
                             alt="Lock + Voting Showcase" 
                             className="w-full h-auto object-contain cursor-pointer"
-                            onClick={() => openSingleImage("/Lock_Voting_Showcase.png")}
+                            onClick={() => setSelectedImage("/Lock_Voting_Showcase.png")}
                           />
                         </div>
                       </div>
@@ -1164,7 +1037,7 @@ export default function ProjectDetail() {
                             src="/Lock_Voting_Popups.png" 
                             alt="Lock and Vote Popups" 
                             className="w-full h-auto object-contain cursor-pointer"
-                            onClick={() => openSingleImage("/Lock_Voting_Popups.png")}
+                            onClick={() => setSelectedImage("/Lock_Voting_Popups.png")}
                           />
                         </div>
                         <p className="text-sm text-gray-400 mt-4 text-center italic">Попапы для vote и lock</p>
@@ -1185,10 +1058,16 @@ export default function ProjectDetail() {
                             onMouseMove={handleMouseMove3}
                             className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging3 ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
                           >
-                      {vietImages.map((img, idx) => (
+                            {[
+                              { src: "/Viet_Token_Sale.png", alt: "Vietnamese Token Sale", width: "md:w-[600px]" },
+                              { src: "/Viet_Pools.png", alt: "Vietnamese Pools", width: "md:w-[600px]" },
+                              { src: "/Viet_Route.png", alt: "Vietnamese Route", width: "md:w-[400px]" },
+                              { src: "/UI_Library_1.png", alt: "UI Library 1", width: "md:w-[600px]" },
+                              { src: "/UI_Library_2.png", alt: "UI Library 2", width: "md:w-[600px]" }
+                            ].map((img, idx) => (
                               <div key={idx} className={`flex-shrink-0 w-[85vw] ${img.width}`}>
                                 <div 
-                                  onClick={() => !hasMoved3 && openGallery(img.src, vietImages.map(i => i.src))}
+                                  onClick={() => !hasMoved3 && setSelectedImage(img.src)}
                                   className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging3 ? 'cursor-grabbing' : 'cursor-grab'}`}
                                 >
                                   <img 
