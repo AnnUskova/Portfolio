@@ -6,7 +6,7 @@ import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { translations, projectTranslations, type Language } from "@/lib/translations";
 
 import glacisImg from "@assets/зеро_дельта_1770041205735.png";
-import glacisDappImg from "@assets/GL_dApp_1770754812223.png";
+import glacisDappImg from "@assets/GL_dApp_1770754812223.webp";
 import xSwapImg from "@assets/image_1770052489389.png";
 import skiziImg from "@assets/SKIZI_1768337984890.png";
 import chefImg from "@assets/AI_Chef_1768337984889.png";
@@ -16,39 +16,39 @@ import zooSchemeV2 from "@assets/V2_scheme_1770718382219.png";
 import zooSchemeNoPic from "@assets/V2_scheme_nopic_1770718643287.png";
 import zeroDeltaImg from "@assets/зеро_дельта_1770041205735.png";
 
-import glacisScheme1 from "@/assets/glacis_scheme_1.png";
-import glacisScheme2 from "@/assets/glacis_scheme_2.png";
-import glacisMainPage from "@/assets/glacis_main_page_v2.png";
-import glacisTransactionDetails from "@/assets/glacis_transaction_details.png";
+import glacisScheme1 from "@/assets/glacis_scheme_1.webp";
+import glacisScheme2 from "@/assets/glacis_scheme_2.webp";
+import glacisMainPage from "@/assets/glacis_main_page_v2.webp";
+import glacisTransactionDetails from "@/assets/glacis_transaction_details.webp";
 import glacisMobileDetails from "@/assets/glacis_mobile_details_v2.png";
-import glacisRetryData from "@/assets/glacis_retry_data.png";
-import glacisAnalytics from "@/assets/glacis_analytics.png";
+import glacisRetryData from "@/assets/glacis_retry_data.webp";
+import glacisAnalytics from "@/assets/glacis_analytics.webp";
 
-import maatSlide1 from "@/assets/maat_slide_1.png";
-import maatSlide2 from "@/assets/maat_slide_2.png";
-import maatSlide3 from "@/assets/maat_slide_3.png";
-import maatSlide4 from "@/assets/maat_slide_4.png";
-import maatSlide5 from "@/assets/maat_slide_5.png";
-import maatSlide6 from "@/assets/maat_slide_6.png";
-import maatSlide7 from "@/assets/maat_slide_7.png";
-import maatSlide8 from "@/assets/maat_slide_8.png";
-import maatSlide9 from "@/assets/maat_slide_9.png";
-import maatSlide10 from "@/assets/maat_slide_10.png";
-import maatSlide11 from "@/assets/maat_slide_11.png";
-import maatSlide12 from "@/assets/maat_slide_12.png";
-import maatSlide13 from "@/assets/maat_slide_13.png";
-import maatSlide14 from "@/assets/maat_slide_14.png";
+import maatSlide1 from "@/assets/maat_slide_1.webp";
+import maatSlide2 from "@/assets/maat_slide_2.webp";
+import maatSlide3 from "@/assets/maat_slide_3.webp";
+import maatSlide4 from "@/assets/maat_slide_4.webp";
+import maatSlide5 from "@/assets/maat_slide_5.webp";
+import maatSlide6 from "@/assets/maat_slide_6.webp";
+import maatSlide7 from "@/assets/maat_slide_7.webp";
+import maatSlide8 from "@/assets/maat_slide_8.webp";
+import maatSlide9 from "@/assets/maat_slide_9.webp";
+import maatSlide10 from "@/assets/maat_slide_10.webp";
+import maatSlide11 from "@/assets/maat_slide_11.webp";
+import maatSlide12 from "@/assets/maat_slide_12.webp";
+import maatSlide13 from "@/assets/maat_slide_13.webp";
+import maatSlide14 from "@/assets/maat_slide_14.webp";
 
-import moonbeamImg from "@/assets/moonbeam_cover.jpg";
-import cryptovecheImg from "@/assets/cryptoveche_cover.jpg";
-import uxResearchImg from "@/assets/ux_research_cover.jpg";
-import pholendImg from "@/assets/pholend_cover.jpg";
-import dickbuttsImg from "@/assets/dickbutts_cover_v2.png";
-import skiziCoverImg from "@/assets/skizi_cover_new.png";
+import moonbeamImg from "@/assets/moonbeam_cover.webp";
+import cryptovecheImg from "@/assets/cryptoveche_cover.webp";
+import uxResearchImg from "@/assets/ux_research_cover.webp";
+import pholendImg from "@/assets/pholend_cover.webp";
+import dickbuttsImg from "@/assets/dickbutts_cover_v2.webp";
+import skiziCoverImg from "@/assets/skizi_cover_new.webp";
 
-import twoGoCoverImg from "@/assets/2go_cover.png";
-import zoodaoCoverImg from "@/assets/zoodao_cover_v3.png";
-import maatCoverImg from "@/assets/maat_pd_cover_v3.png";
+import twoGoCoverImg from "@/assets/2go_cover.webp";
+import zoodaoCoverImg from "@/assets/zoodao_cover_v3.webp";
+import maatCoverImg from "@/assets/maat_pd_cover_v3.webp";
 
 const projectMocks: Record<number, string | null> = {
   1: glacisDappImg,

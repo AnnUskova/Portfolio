@@ -7,14 +7,14 @@ import { translations, projectTranslations, type Language } from "@/lib/translat
 
 import glacisImg from "@assets/GLACIS_1768337984889.png";
 import zeroDeltaImg from "@assets/зеро_дельта_1770041205735.png";
-import glacisDappImg from "@assets/GL_dApp_1770754812223.png";
+import glacisDappImg from "@assets/GL_dApp_1770754812223.webp";
 import xSwapImg from "@assets/image_1770052489389.png";
-import zeroDeltaCoverImg from "@/assets/zero_delta_cover.png";
-import twoGoCoverImg from "@/assets/2go_cover.png";
-import zoodaoCoverImg from "@/assets/zoodao_cover_v3.png";
-import maatCoverImg from "@/assets/maat_pd_cover_v3.png";
-import dickbuttsImg from "@/assets/dickbutts_cover_v2.png";
-import skiziCoverImg from "@/assets/skizi_cover_new.png";
+import zeroDeltaCoverImg from "@/assets/zero_delta_cover.webp";
+import twoGoCoverImg from "@/assets/2go_cover.webp";
+import zoodaoCoverImg from "@/assets/zoodao_cover_v3.webp";
+import maatCoverImg from "@/assets/maat_pd_cover_v3.webp";
+import dickbuttsImg from "@/assets/dickbutts_cover_v2.webp";
+import skiziCoverImg from "@/assets/skizi_cover_new.webp";
 
 const projectImages: Record<number, string | null> = {
   1: glacisDappImg,
