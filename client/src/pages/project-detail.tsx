@@ -110,6 +110,77 @@ export default function ProjectDetail() {
   const [currentGalleryImages, setCurrentGalleryImages] = useState<string[]>([]);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
+  const scrollContainerRef1 = useRef<HTMLDivElement>(null);
+  const scrollContainerRef2 = useRef<HTMLDivElement>(null);
+  const scrollContainerRef3 = useRef<HTMLDivElement>(null);
+  
+  const [isDragging1, setIsDragging1] = useState(false);
+  const [isDragging2, setIsDragging2] = useState(false);
+  const [isDragging3, setIsDragging3] = useState(false);
+  
+  const [hasMoved1, setHasMoved1] = useState(false);
+  const [hasMoved2, setHasMoved2] = useState(false);
+  const [hasMoved3, setHasMoved3] = useState(false);
+  
+  const [startX1, setStartX1] = useState(0);
+  const [startX2, setStartX2] = useState(0);
+  const [startX3, setStartX3] = useState(0);
+  
+  const [scrollLeft1, setScrollLeft1] = useState(0);
+  const [scrollLeft2, setScrollLeft2] = useState(0);
+  const [scrollLeft3, setScrollLeft3] = useState(0);
+
+  const handleMouseDown1 = (e: React.MouseEvent) => {
+    if (!scrollContainerRef1.current) return;
+    setIsDragging1(true);
+    setHasMoved1(false);
+    setStartX1(e.pageX - scrollContainerRef1.current.offsetLeft);
+    setScrollLeft1(scrollContainerRef1.current.scrollLeft);
+  };
+
+  const handleMouseDown2 = (e: React.MouseEvent) => {
+    if (!scrollContainerRef2.current) return;
+    setIsDragging2(true);
+    setHasMoved2(false);
+    setStartX2(e.pageX - scrollContainerRef2.current.offsetLeft);
+    setScrollLeft2(scrollContainerRef2.current.scrollLeft);
+  };
+
+  const handleMouseDown3 = (e: React.MouseEvent) => {
+    if (!scrollContainerRef3.current) return;
+    setIsDragging3(true);
+    setHasMoved3(false);
+    setStartX3(e.pageX - scrollContainerRef3.current.offsetLeft);
+    setScrollLeft3(scrollContainerRef3.current.scrollLeft);
+  };
+
+  const handleMouseMove1 = (e: React.MouseEvent) => {
+    if (!isDragging1 || !scrollContainerRef1.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainerRef1.current.offsetLeft;
+    const walk = (x - startX1) * 2;
+    if (Math.abs(walk) > 5) setHasMoved1(true);
+    scrollContainerRef1.current.scrollLeft = scrollLeft1 - walk;
+  };
+
+  const handleMouseMove2 = (e: React.MouseEvent) => {
+    if (!isDragging2 || !scrollContainerRef2.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainerRef2.current.offsetLeft;
+    const walk = (x - startX2) * 2;
+    if (Math.abs(walk) > 5) setHasMoved2(true);
+    scrollContainerRef2.current.scrollLeft = scrollLeft2 - walk;
+  };
+
+  const handleMouseMove3 = (e: React.MouseEvent) => {
+    if (!isDragging3 || !scrollContainerRef3.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainerRef3.current.offsetLeft;
+    const walk = (x - startX3) * 2;
+    if (Math.abs(walk) > 5) setHasMoved3(true);
+    scrollContainerRef3.current.scrollLeft = scrollLeft3 - walk;
+  };
+
   const openGallery = (image: string, gallery: string[]) => {
     if (!hasMoved1 && !hasMoved2 && !hasMoved3 && !hasMovedLight) {
         setSelectedImage(image);
