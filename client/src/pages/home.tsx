@@ -45,6 +45,10 @@ export default function Home() {
   const [contactOpen, setContactOpen] = useState(false);
   const [experienceOpen, setExperienceOpen] = useState(false);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const t = translations[language];
   const projects = projectTranslations[language];
 
