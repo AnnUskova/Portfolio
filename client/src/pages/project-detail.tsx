@@ -138,6 +138,54 @@ export default function ProjectDetail() {
   const [scrollLeft3, setScrollLeft3] = useState(0);
   const [scrollLeft4, setScrollLeft4] = useState(0);
 
+  const [currentGalleryImages, setCurrentGalleryImages] = useState<string[]>([]);
+  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
+
+  const openGallery = (imageSrc: string, images: string[]) => {
+    setSelectedImage(imageSrc);
+    setCurrentGalleryImages(images);
+    setCurrentImageIndex(images.indexOf(imageSrc));
+    setIsZoomed(false);
+    setDragOffset({ x: 0, y: 0 });
+  };
+
+  const handleNextImage = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    if (currentGalleryImages.length <= 1) return;
+    const nextIndex = (currentImageIndex + 1) % currentGalleryImages.length;
+    setCurrentImageIndex(nextIndex);
+    setSelectedImage(currentGalleryImages[nextIndex]);
+    setIsZoomed(false);
+    setDragOffset({ x: 0, y: 0 });
+  };
+
+  const handlePrevImage = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    if (currentGalleryImages.length <= 1) return;
+    const prevIndex = (currentImageIndex - 1 + currentGalleryImages.length) % currentGalleryImages.length;
+    setCurrentImageIndex(prevIndex);
+    setSelectedImage(currentGalleryImages[prevIndex]);
+    setIsZoomed(false);
+    setDragOffset({ x: 0, y: 0 });
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!selectedImage) return;
+      
+      if (e.key === 'ArrowRight') {
+        handleNextImage();
+      } else if (e.key === 'ArrowLeft') {
+        handlePrevImage();
+      } else if (e.key === 'Escape') {
+        setSelectedImage(null);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedImage, currentImageIndex, currentGalleryImages]);
+
   const handleMouseDown1 = (e: React.MouseEvent) => {
     if (!scrollContainerRef1.current) return;
     setIsDragging1(true);
@@ -250,7 +298,7 @@ export default function ProjectDetail() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className={`relative flex items-center justify-center ${isZoomed ? 'cursor-grab active:cursor-grabbing' : 'cursor-zoom-in'}`}
+              className={`relative flex items-center justify-center w-full h-full ${isZoomed ? 'cursor-grab active:cursor-grabbing' : 'cursor-zoom-in'}`}
               onMouseDown={(e) => {
                 if (!isZoomed) return;
                 setIsDraggingImage(true);
@@ -278,10 +326,6 @@ export default function ProjectDetail() {
                   setIsZoomed(true);
                   setDragOffset({ x: 0, y: 0 });
                 } else {
-                  // Only zoom out if we didn't just drag
-                  // We check if the current offset is basically the same as when we started
-                  // but a better way is to check the movement during THIS specific drag
-                  // For now, let's use a simpler toggle that respects the drag state
                   if (!isDraggingImage) {
                     setIsZoomed(false);
                     setDragOffset({ x: 0, y: 0 });
@@ -289,6 +333,23 @@ export default function ProjectDetail() {
                 }
               }}
             >
+              {currentGalleryImages.length > 1 && !isZoomed && (
+                <>
+                  <button
+                    className="absolute left-4 z-[220] p-4 text-white/50 hover:text-white transition-colors hover:bg-white/10 rounded-full"
+                    onClick={handlePrevImage}
+                  >
+                    <ChevronRight className="w-8 h-8 rotate-180" />
+                  </button>
+                  <button
+                    className="absolute right-4 z-[220] p-4 text-white/50 hover:text-white transition-colors hover:bg-white/10 rounded-full"
+                    onClick={handleNextImage}
+                  >
+                    <ChevronRight className="w-8 h-8" />
+                  </button>
+                </>
+              )}
+              
               <motion.img
                 src={selectedImage}
                 alt="Full screen view"
@@ -772,10 +833,10 @@ export default function ProjectDetail() {
                       { src: glacisLightSelectChain, alt: "Select Chain Light" },
                       { src: glacisLightAirlift, alt: "Airlift Light" },
                       { src: glacisLight404, alt: "404 Light" }
-                    ].map((img, idx) => (
+                    ].map((img, idx, arr) => (
                       <div key={idx} className="flex-shrink-0 w-[85vw] md:w-[600px]">
                         <div 
-                          onClick={() => !hasMoved4 && setSelectedImage(img.src)}
+                          onClick={() => !hasMoved4 && openGallery(img.src, arr.map(item => item.src))}
                           className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging4 ? 'cursor-grabbing' : 'cursor-grab'}`}
                         >
                           <img 
@@ -849,10 +910,10 @@ export default function ProjectDetail() {
                         { src: "/Provide_Liquidity_1770223795856.png", alt: "User Flow Pools Add" },
                         { src: "/Remove_Liquidity_1770223795857.png", alt: "User Flow Pools Remove" },
                         { src: "/Token_sale_1770223795858.png", alt: "User Flow Token Sale" }
-                      ].map((img, idx) => (
+                      ].map((img, idx, arr) => (
                         <div key={idx} className="flex-shrink-0 w-[85vw] md:w-[600px]">
                           <div 
-                            onClick={() => !hasMoved1 && setSelectedImage(img.src)}
+                            onClick={() => !hasMoved1 && openGallery(img.src, arr.map(item => item.src))}
                             className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging1 ? 'cursor-grabbing' : 'cursor-grab'}`}
                           >
                             <img 
@@ -887,10 +948,10 @@ export default function ProjectDetail() {
                         { src: "/Staking_Draft_Updated.png", alt: "Draft Staking", width: "md:w-[600px]" },
                         { src: "/TokenSale_Draft.png", alt: "Draft Token Sale", width: "md:w-[400px]" },
                         { src: "/Relations_Draft.png", alt: "Draft Relations", width: "md:w-[600px]" }
-                      ].map((img, idx) => (
+                      ].map((img, idx, arr) => (
                         <div key={idx} className={`flex-shrink-0 w-[85vw] ${img.width}`}>
                           <div 
-                            onClick={() => !hasMoved2 && setSelectedImage(img.src)}
+                            onClick={() => !hasMoved2 && openGallery(img.src, arr.map(item => item.src))}
                             className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging2 ? 'cursor-grabbing' : 'cursor-grab'}`}
                           >
                             <img 
@@ -1134,10 +1195,10 @@ export default function ProjectDetail() {
                               { src: "/Viet_Route.png", alt: "Vietnamese Route", width: "md:w-[400px]" },
                               { src: "/UI_Library_1.png", alt: "UI Library 1", width: "md:w-[600px]" },
                               { src: "/UI_Library_2.png", alt: "UI Library 2", width: "md:w-[600px]" }
-                            ].map((img, idx) => (
+                            ].map((img, idx, arr) => (
                               <div key={idx} className={`flex-shrink-0 w-[85vw] ${img.width}`}>
                                 <div 
-                                  onClick={() => !hasMoved3 && setSelectedImage(img.src)}
+                                  onClick={() => !hasMoved3 && openGallery(img.src, arr.map(item => item.src))}
                                   className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging3 ? 'cursor-grabbing' : 'cursor-grab'}`}
                                 >
                                   <img 
