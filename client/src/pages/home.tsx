@@ -20,15 +20,13 @@ import twoGoCoverImg from "@/assets/2go_cover.png";
 import twoGoSliderImg from "@/assets/2go_slider.png";
 import gradientBar from "@assets/image_1770061190853.png";
 
-import cryptovecheImg from "@/assets/cryptoveche_cover.jpg";
-
 const projectImages: Record<number, string | null> = {
   1: glacisDappImg,
   14: zeroDeltaImg,
   2: xSwapImg,
   3: skiziImg, // SKIZI
   4: twoGoSliderImg, // 2Go
-  6: cryptovecheImg // Cryptoveche
+  6: null // Cryptoveche - gray placeholder
 };
 
 export default function Home() {
