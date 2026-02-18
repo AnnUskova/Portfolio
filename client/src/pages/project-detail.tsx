@@ -715,9 +715,6 @@ export default function ProjectDetail() {
                   />
                 </div>
 
-                 <p className="text-lg text-gray-600 leading-relaxed mb-12">
-                   {language === "ru" ? "Они придут в приложение для проверки статуса транзакции или отсмотра аналитики (например, скорости транзакций у разных бриджей на разных блокчейнах за определенный период)." : "They come to the app to check transaction status or view analytics (e.g., transaction speeds of different bridges on different blockchains over a period)."}
-                </p>
 
                 <h2 className="text-2xl font-medium mb-6">{language === "ru" ? "Светлая тема" : "Light Theme"}</h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
