@@ -14,6 +14,7 @@ import zooGeneral from "@assets/General_1770718382218.png";
 import zooGeneralDark from "@assets/General_Dark_1770718382218.png";
 import zooSchemeV2 from "@assets/V2_scheme_1770718382219.png";
 import zooSchemeNoPic from "@assets/V2_scheme_nopic_1770718643287.png";
+import zeroDeltaImg from "@assets/зеро_дельта_1770041205735.png";
 
 import glacisScheme1 from "@/assets/glacis_scheme_1.png";
 import glacisScheme2 from "@/assets/glacis_scheme_2.png";
@@ -60,7 +61,8 @@ const projectMocks: Record<number, string | null> = {
   9: dickbuttsImg,
   10: null,
   12: zoodaoCoverImg,
-  13: maatCoverImg
+  13: maatCoverImg,
+  14: zeroDeltaImg
 };
 
 const projectImages: Record<number, string | null> = {
@@ -75,7 +77,8 @@ const projectImages: Record<number, string | null> = {
   9: dickbuttsImg,
   10: null,
   12: zoodaoCoverImg,
-  13: maatCoverImg
+  13: maatCoverImg,
+  14: zeroDeltaImg
 };
 
 export default function ProjectDetail() {
