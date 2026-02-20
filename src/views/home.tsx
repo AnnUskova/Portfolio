@@ -53,7 +53,12 @@ export default function Home() {
   const allowedProjectIds = [1, 14, 2, 3, 4, 6];
   const projects = projectTranslations[language].filter(p => allowedProjectIds.includes(p.id));
   const hasProjects = projects.length > 0;
-  const currentProject = hasProjects ? projects[activeProject] : null;
+  const getCircularIndex = (value: number) => {
+    if (!projects.length) return 0;
+    return ((value % projects.length) + projects.length) % projects.length;
+  };
+  const safeActiveProject = hasProjects ? getCircularIndex(activeProject) : 0;
+  const currentProject = hasProjects ? projects[safeActiveProject] : null;
 
   const stats = [
     { label: t.stats.experience, value: "8+" },
@@ -63,23 +68,13 @@ export default function Home() {
 
   const nextProject = () => {
     if (!projects.length) return;
-    setActiveProject((prev) => (prev + 1) % projects.length);
+    setActiveProject((prev) => prev + 1);
   };
 
   const prevProject = () => {
     if (!projects.length) return;
-    setActiveProject((prev) => (prev - 1 + projects.length) % projects.length);
+    setActiveProject((prev) => prev - 1);
   };
-
-  useEffect(() => {
-    if (!projects.length) {
-      if (activeProject !== 0) setActiveProject(0);
-      return;
-    }
-    if (activeProject >= projects.length) {
-      setActiveProject(0);
-    }
-  }, [activeProject, projects.length]);
 
   const contactData = {
     telegram: "@Ann_uskova",
@@ -368,11 +363,12 @@ export default function Home() {
                 <AnimatePresence mode="popLayout">
                   {hasProjects
                     ? [0, 1, 2].map((offset) => {
-                        const index = (activeProject + offset) % projects.length;
+                        const virtualIndex = activeProject + offset;
+                        const index = getCircularIndex(virtualIndex);
                         const isFirst = offset === 0;
                         return (
                           <Link 
-                            key={`${index}-${offset}`}
+                            key={`${projects[index].id}-${virtualIndex}-${offset}`}
                             href={`/projects/${projects[index].id}`}
                             className={`${isFirst ? "w-[calc(65%+104px)]" : "w-[calc(25%+152px)]"} flex-shrink-0`}
                           >

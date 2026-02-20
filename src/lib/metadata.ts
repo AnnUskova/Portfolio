@@ -39,10 +39,18 @@ const PROJECT_IMAGES: Record<number, string> = {
 };
 
 function resolveSiteUrl() {
-  const raw = process.env.NEXT_PUBLIC_SITE_URL ?? process.env.SITE_URL;
-  if (!raw) return "http://localhost:3000";
-  if (raw.startsWith("http://") || raw.startsWith("https://")) return raw;
-  return `https://${raw}`;
+  const raw =
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    process.env.SITE_URL ??
+    process.env.VERCEL_URL;
+  if (!raw) {
+    return process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : "https://portfolio-green-mu-48.vercel.app";
+  }
+  const withProtocol =
+    raw.startsWith("http://") || raw.startsWith("https://") ? raw : `https://${raw}`;
+  return withProtocol.replace(/\/+$/, "");
 }
 
 export const metadataBase = new URL(resolveSiteUrl());
