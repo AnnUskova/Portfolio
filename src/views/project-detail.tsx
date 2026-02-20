@@ -1,5 +1,8 @@
+"use client";
+
 import { useState, useEffect, useRef } from "react";
-import { Link, useRoute } from "wouter";
+import Link from "next/link";
+import { useParams, usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, ArrowLeft, X, ChevronRight, Download, Zap } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
@@ -47,42 +50,29 @@ import twoGoCoverImg from "@/assets/2go_cover.webp";
 import zoodaoCoverImg from "@/assets/zoodao_cover_v3.webp";
 import maatCoverImg from "@/assets/maat_pd_cover_v3.webp";
 
-const projectMocks: Record<number, string | null> = {
-  1: glacisDappImg,
-  2: xSwapImg,
-  3: skiziCoverImg,
-  4: twoGoCoverImg,
-  5: moonbeamImg,
-  6: cryptovecheImg,
-  7: uxResearchImg,
-  8: pholendImg,
-  9: dickbuttsImg,
-  10: null,
-  12: zoodaoCoverImg,
-  13: maatCoverImg,
-  14: zeroDeltaImg
-};
-
 const projectImages: Record<number, string | null> = {
-  1: glacisDappImg,
-  2: xSwapImg,
-  3: skiziCoverImg,
-  4: twoGoCoverImg,
-  5: moonbeamImg,
-  6: cryptovecheImg,
-  7: uxResearchImg,
-  8: pholendImg,
-  9: dickbuttsImg,
+  1: glacisDappImg.src,
+  2: xSwapImg.src,
+  3: skiziCoverImg.src,
+  4: twoGoCoverImg.src,
+  5: moonbeamImg.src,
+  6: cryptovecheImg.src,
+  7: uxResearchImg.src,
+  8: pholendImg.src,
+  9: dickbuttsImg.src,
   10: null,
-  12: zoodaoCoverImg,
-  13: maatCoverImg,
-  14: zeroDeltaImg
+  12: zoodaoCoverImg.src,
+  13: maatCoverImg.src,
+  14: zeroDeltaImg.src
 };
 
 export default function ProjectDetail() {
-  const [, params] = useRoute("/projects/:id");
-  const id = params?.id ? parseInt(params.id) : 1;
+  const params = useParams<{ id: string }>();
+  const pathname = usePathname();
+  const rawId = Array.isArray(params?.id) ? params.id[0] : params?.id;
+  const id = rawId ? parseInt(rawId, 10) : 1;
   const [language, setLanguage] = useState<Language>(() => {
+    if (typeof window === "undefined") return "en";
     const saved = localStorage.getItem("app_language");
     if (saved === "en" || saved === "ru") return saved as Language;
     const browserLang = navigator.language.split('-')[0];
@@ -310,13 +300,13 @@ export default function ProjectDetail() {
             <div className="flex items-center gap-12">
               <Link 
                 href="/" 
-                className={`text-[15px] font-medium transition-colors ${window.location.pathname === "/" ? "text-black" : "text-gray-400 hover:text-black"}`}
+                className={`text-[15px] font-medium transition-colors ${pathname === "/" ? "text-black" : "text-gray-400 hover:text-black"}`}
               >
                 {t.nav.home}
               </Link>
               <Link 
                 href="/projects" 
-                className={`text-[15px] font-medium transition-colors ${window.location.pathname.startsWith("/projects") ? "text-black" : "text-gray-400 hover:text-black"}`}
+                className={`text-[15px] font-medium transition-colors ${pathname.startsWith("/projects") ? "text-black" : "text-gray-400 hover:text-black"}`}
               >
                 {t.nav.projects}
               </Link>
@@ -483,10 +473,10 @@ export default function ProjectDetail() {
                     <div className="space-y-4">
                       <div className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-white">
                         <img 
-                          src={zooSchemeNoPic} 
+                          src={zooSchemeNoPic.src} 
                           alt="ZooDAO System Scheme Overview" 
                           className="w-full h-auto object-contain cursor-zoom-in"
-                          onClick={() => setSelectedImage(zooSchemeNoPic)}
+                          onClick={() => setSelectedImage(zooSchemeNoPic.src)}
                         />
                       </div>
                       <p className="text-sm text-gray-400 text-center italic">
@@ -498,10 +488,10 @@ export default function ProjectDetail() {
                     <div className="space-y-4">
                       <div className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-white">
                         <img 
-                          src={zooSchemeV2} 
+                          src={zooSchemeV2.src} 
                           alt="ZooDAO System Scheme V2" 
                           className="w-full h-auto object-contain cursor-zoom-in"
-                          onClick={() => setSelectedImage(zooSchemeV2)}
+                          onClick={() => setSelectedImage(zooSchemeV2.src)}
                         />
                       </div>
                       <p className="text-sm text-gray-400 text-center italic">
@@ -513,7 +503,7 @@ export default function ProjectDetail() {
                     <div className="space-y-4">
                       <div className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-white">
                         <img 
-                          src={zooGeneralDark} 
+                          src={zooGeneralDark.src} 
                           alt="ZooDAO Concept Dark" 
                           className="w-full h-auto object-contain"
                         />
@@ -527,7 +517,7 @@ export default function ProjectDetail() {
                     <div className="space-y-4">
                       <div className="rounded-[32px] overflow-hidden border border-gray-100 shadow-sm bg-white">
                         <img 
-                          src={zooGeneral} 
+                          src={zooGeneral.src} 
                           alt="ZooDAO Concept Light" 
                           className="w-full h-auto object-contain"
                         />
@@ -542,10 +532,10 @@ export default function ProjectDetail() {
                 ) : project.id === 13 ? (
                   <div className="space-y-8 max-w-[80%]">
                     {[
-                      maatSlide1, maatSlide2, maatSlide3, maatSlide4,
-                      maatSlide5, maatSlide6, maatSlide7, maatSlide8,
-                      maatSlide9, maatSlide10, maatSlide11, maatSlide12,
-                      maatSlide13, maatSlide14
+                      maatSlide1.src, maatSlide2.src, maatSlide3.src, maatSlide4.src,
+                      maatSlide5.src, maatSlide6.src, maatSlide7.src, maatSlide8.src,
+                      maatSlide9.src, maatSlide10.src, maatSlide11.src, maatSlide12.src,
+                      maatSlide13.src, maatSlide14.src
                     ].map((slide, index) => (
                       <div key={index} className="rounded-[20px] overflow-hidden border border-gray-100 shadow-sm bg-gray-50">
                         <img
@@ -625,8 +615,8 @@ export default function ProjectDetail() {
                     className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging1 ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
                   >
                     {[
-                      { src: glacisScheme1, alt: "Glacis Scheme 1" },
-                      { src: glacisScheme2, alt: "Glacis Scheme 2" }
+                      { src: glacisScheme1.src, alt: "Glacis Scheme 1" },
+                      { src: glacisScheme2.src, alt: "Glacis Scheme 2" }
                     ].map((img, idx) => (
                       <div key={idx} className="flex-shrink-0 w-[85vw] md:w-[600px]">
                         <div 
@@ -660,10 +650,10 @@ export default function ProjectDetail() {
 
                 <div className="mt-6 mb-12 rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
                   <img 
-                    src={glacisMainPage}  
+                    src={glacisMainPage.src}  
                     alt="Glacis Main Page" 
                     className="w-full h-auto object-contain cursor-pointer"
-                    onClick={() => setSelectedImage(glacisMainPage)}
+                    onClick={() => setSelectedImage(glacisMainPage.src)}
                   />
                 </div>
 
@@ -681,10 +671,10 @@ export default function ProjectDetail() {
 
                 <div className="my-12 rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
                   <img 
-                    src={glacisTransactionDetails} 
+                    src={glacisTransactionDetails.src} 
                     alt="Glacis Transaction Details" 
                     className="w-full h-auto object-contain cursor-pointer"
-                    onClick={() => setSelectedImage(glacisTransactionDetails)}
+                    onClick={() => setSelectedImage(glacisTransactionDetails.src)}
                   />
                 </div>
 
@@ -694,10 +684,10 @@ export default function ProjectDetail() {
 
                 <div className="my-12 rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
                   <img 
-                    src={glacisMobileDetails} 
+                    src={glacisMobileDetails.src} 
                     alt="Glacis Mobile Details" 
                     className="w-full h-auto object-contain cursor-pointer"
-                    onClick={() => setSelectedImage(glacisMobileDetails)}
+                    onClick={() => setSelectedImage(glacisMobileDetails.src)}
                   />
                 </div>
 
@@ -707,10 +697,10 @@ export default function ProjectDetail() {
 
                 <div className="my-12 rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
                   <img 
-                    src={glacisRetryData} 
+                    src={glacisRetryData.src} 
                     alt="Glacis Retry Data" 
                     className="w-full h-auto object-contain cursor-pointer"
-                    onClick={() => setSelectedImage(glacisRetryData)}
+                    onClick={() => setSelectedImage(glacisRetryData.src)}
                   />
                 </div>
 
@@ -739,10 +729,10 @@ export default function ProjectDetail() {
 
                 <div className="my-12 rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
                   <img 
-                    src={glacisAnalytics} 
+                    src={glacisAnalytics.src} 
                     alt="Glacis Analytics" 
                     className="w-full h-auto object-contain cursor-pointer"
-                    onClick={() => setSelectedImage(glacisAnalytics)}
+                    onClick={() => setSelectedImage(glacisAnalytics.src)}
                   />
                 </div>
 

@@ -1,5 +1,8 @@
+"use client";
+
 import { useState, useEffect } from "react";
-import { Link } from "wouter";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, ChevronLeft, ChevronRight, X, Download } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
@@ -14,17 +17,19 @@ import twoGoSliderImg from "@/assets/2go_slider.webp";
 import gradientBar from "@/assets/gradient_bar.webp";
 
 const projectImages: Record<number, string | null> = {
-  1: glacisDappImg,
-  14: zeroDeltaImg,
-  2: xSwapImg,
-  3: skiziImg, // SKIZI
-  4: twoGoSliderImg, // 2Go
+  1: glacisDappImg.src,
+  14: zeroDeltaImg.src,
+  2: xSwapImg.src,
+  3: skiziImg.src, // SKIZI
+  4: twoGoSliderImg.src, // 2Go
   6: null // Cryptoveche - gray placeholder
 };
 
 export default function Home() {
+  const pathname = usePathname();
   const [activeProject, setActiveProject] = useState(0);
   const [language, setLanguage] = useState<Language>(() => {
+    if (typeof window === "undefined") return "en";
     const saved = localStorage.getItem("app_language");
     if (saved === "en" || saved === "ru") return saved as Language;
     const browserLang = navigator.language.split('-')[0];
@@ -80,14 +85,14 @@ export default function Home() {
             <div className="flex items-center gap-12">
               <Link 
                 href="/" 
-                className={`text-[15px] font-medium transition-colors ${window.location.pathname === "/" ? "text-black" : "text-gray-400 hover:text-black"}`}
+                className={`text-[15px] font-medium transition-colors ${pathname === "/" ? "text-black" : "text-gray-400 hover:text-black"}`}
                 data-testid="nav-home"
               >
                 {t.nav.home}
               </Link>
               <Link 
                 href="/projects" 
-                className={`text-[15px] font-medium transition-colors ${window.location.pathname === "/projects" ? "text-black" : "text-gray-400 hover:text-black"}`}
+                className={`text-[15px] font-medium transition-colors ${pathname === "/projects" ? "text-black" : "text-gray-400 hover:text-black"}`}
                 data-testid="nav-projects"
               >
                 {t.nav.projects}
@@ -241,7 +246,7 @@ export default function Home() {
             className="hidden lg:block w-[360px] aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl relative z-10 -mt-12"
           >
             <img 
-              src={annaPhoto} 
+              src={annaPhoto.src} 
               alt="Anna Uskova" 
               loading="eager"
               decoding="async"
@@ -433,7 +438,7 @@ export default function Home() {
         >
           {!experienceOpen && (
             <div className="absolute inset-0 z-0">
-              <img src={gradientBar} className="w-full h-full object-cover opacity-80" alt="" />
+              <img src={gradientBar.src} className="w-full h-full object-cover opacity-80" alt="" />
             </div>
           )}
           <div className="relative z-10 flex items-center gap-3 text-lg font-medium transition-transform group-hover:scale-105">

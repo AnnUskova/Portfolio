@@ -1,5 +1,8 @@
+"use client";
+
 import { useState, useEffect } from "react";
-import { Link } from "wouter";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, X, Download } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
@@ -16,28 +19,31 @@ import dickbuttsImg from "@/assets/dickbutts_cover_v2.webp";
 import skiziCoverImg from "@/assets/skizi_cover_new.webp";
 
 const projectImages: Record<number, string | null> = {
-  1: glacisDappImg,
-  14: zeroDeltaImg,
-  2: xSwapImg,
-  3: skiziCoverImg, // SKIZI
-  4: twoGoCoverImg, // 2Go
+  1: glacisDappImg.src,
+  14: zeroDeltaImg.src,
+  2: xSwapImg.src,
+  3: skiziCoverImg.src, // SKIZI
+  4: twoGoCoverImg.src, // 2Go
   5: null,
   6: null,
   7: null,
   8: null,
-  9: dickbuttsImg,
+  9: dickbuttsImg.src,
   10: null,
-  11: zeroDeltaCoverImg,
-  12: zoodaoCoverImg,
-  13: maatCoverImg
+  11: zeroDeltaCoverImg.src,
+  12: zoodaoCoverImg.src,
+  13: maatCoverImg.src
 };
 
 export default function Projects() {
+  const pathname = usePathname();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   const [language, setLanguage] = useState<Language>(() => {
+    if (typeof window === "undefined") return "en";
     const saved = localStorage.getItem("app_language");
     if (saved === "en" || saved === "ru") return saved as Language;
     const browserLang = navigator.language.split('-')[0];
@@ -49,12 +55,14 @@ export default function Projects() {
     localStorage.setItem("app_language", lang);
   };
 
-  const [activeTab, setActiveTab] = useState(() => {
-    // Check URL parameters for initial tab
-    const params = new URLSearchParams(window.location.search);
-    const tab = params.get("tab");
-    return (tab && ["uxui", "strategy", "research"].includes(tab)) ? tab : "uxui";
-  });
+  const [activeTab, setActiveTab] = useState("uxui");
+
+  useEffect(() => {
+    const tab = new URLSearchParams(window.location.search).get("tab");
+    if (tab && ["uxui", "strategy", "research"].includes(tab)) {
+      setActiveTab(tab);
+    }
+  }, []);
   const [contactOpen, setContactOpen] = useState(false);
 
   const t = translations[language];
@@ -99,13 +107,13 @@ export default function Projects() {
             <div className="flex items-center gap-12">
               <Link 
                 href="/" 
-                className={`text-[15px] font-medium transition-colors ${window.location.pathname === "/" ? "text-black" : "text-gray-400 hover:text-black"}`}
+                className={`text-[15px] font-medium transition-colors ${pathname === "/" ? "text-black" : "text-gray-400 hover:text-black"}`}
               >
                 {t.nav.home}
               </Link>
               <Link 
                 href="/projects" 
-                className={`text-[15px] font-medium transition-colors ${window.location.pathname === "/projects" ? "text-black" : "text-gray-400 hover:text-black"}`}
+                className={`text-[15px] font-medium transition-colors ${pathname === "/projects" ? "text-black" : "text-gray-400 hover:text-black"}`}
               >
                 {t.nav.projects}
               </Link>
