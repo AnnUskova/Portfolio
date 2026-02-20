@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
+import { defaultSiteMetadata, metadataBase } from "@/lib/metadata";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Anna Uskova — Product Designer",
-  description:
-    "UX/UI Designer with 8+ years of experience crafting DeFi protocols, high-load systems, and products for mass audiences.",
+  ...defaultSiteMetadata,
+  metadataBase,
 };
 
 export default function RootLayout({
