@@ -162,14 +162,14 @@ export const projectTranslations = {
     {
       id: 14,
       year: "2024-26",
-      category: "WEB",
+      category: "DEFI",
       role: "DESIGN LEAD",
       title: "Glacis Labs site",
       description: "Corporate website for the Glacis Labs ecosystem. Designed to effectively present the product suite and onboard new users."
     },
     {
       id: 2,
-      year: "2023",
+      year: "2024",
       category: "DEFI",
       role: "Senior Product Designer",
       title: "xSwap",
@@ -239,7 +239,7 @@ We also shipped a Vietnamese version and launched for the Vietnamese market (and
     },
     {
       id: 3,
-      year: "2022",
+      year: "2022-23",
       category: "GREEN TOOLS",
       role: "PRODUCT DESIGNER",
       title: "SKIZI",
@@ -338,14 +338,14 @@ We also shipped a Vietnamese version and launched for the Vietnamese market (and
     {
       id: 14,
       year: "2024-26",
-      category: "WEB",
+      category: "DEFI",
       role: "DESIGN LEAD",
       title: "Glacis Labs site",
-      description: "Корпоративный сайт экосистемы Glacis Labs. Разработан для эффективной презентации продуктов и онбординга новых пользователей."
+      description: "Корпоративный сайт экосистемы Glacis Labs. Многостраничник со сложными виджетами и схемами работы продуктов."
     },
     {
       id: 2,
-      year: "2023",
+      year: "2024",
       category: "DEFI",
       role: "Senior Product Designer",
       title: "xSwap",
@@ -407,7 +407,7 @@ Lock + Voting
     },
     {
       id: 3,
-      year: "2022",
+      year: "2022-23",
       category: "GREEN TOOLS",
       role: "PRODUCT DESIGNER",
       title: "СКИЗИ",
