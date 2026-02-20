@@ -5,20 +5,13 @@ import { ArrowUpRight, ChevronLeft, ChevronRight, X, Download } from "lucide-rea
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { translations, projectTranslations, type Language } from "@/lib/translations";
 
-import glacisImg from "@assets/GLACIS_1768337984889.png";
-import maatImg from "@assets/MAAT_1768337984889.png";
 import skiziImg from "@/assets/skizi_cover_new.webp";
-import chefImg from "@assets/AI_Chef_1768337984889.png";
-
-import annaPhoto from "@assets/1046_1_1768336698195.png";
-
-import zeroDeltaImg from "@assets/зеро_дельта_1770041205735.png";
+import annaPhoto from "@/assets/anna_photo.webp";
+import zeroDeltaImg from "@/assets/zero_delta_main.webp";
 import glacisDappImg from "@/assets/GL_dApp_1770754812223.webp";
-import xSwapImg from "@assets/image_1770052489389.png";
-import zeroDeltaCoverImg from "@/assets/zero_delta_cover.webp";
-import twoGoCoverImg from "@/assets/2go_cover.webp";
+import xSwapImg from "@/assets/xswap_main.webp";
 import twoGoSliderImg from "@/assets/2go_slider.webp";
-import gradientBar from "@assets/image_1770061190853.png";
+import gradientBar from "@/assets/gradient_bar.webp";
 
 const projectImages: Record<number, string | null> = {
   1: glacisDappImg,

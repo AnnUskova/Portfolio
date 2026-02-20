@@ -5,10 +5,9 @@ import { ArrowUpRight, X, Download } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { translations, projectTranslations, type Language } from "@/lib/translations";
 
-import glacisImg from "@assets/GLACIS_1768337984889.png";
-import zeroDeltaImg from "@assets/зеро_дельта_1770041205735.png";
+import zeroDeltaImg from "@/assets/zero_delta_main.webp";
 import glacisDappImg from "@/assets/GL_dApp_1770754812223.webp";
-import xSwapImg from "@assets/image_1770052489389.png";
+import xSwapImg from "@/assets/xswap_main.webp";
 import zeroDeltaCoverImg from "@/assets/zero_delta_cover.webp";
 import twoGoCoverImg from "@/assets/2go_cover.webp";
 import zoodaoCoverImg from "@/assets/zoodao_cover_v3.webp";

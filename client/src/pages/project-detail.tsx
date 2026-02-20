@@ -5,16 +5,13 @@ import { ArrowUpRight, ArrowLeft, X, ChevronRight, Download, Zap } from "lucide-
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { translations, projectTranslations, type Language } from "@/lib/translations";
 
-import glacisImg from "@assets/зеро_дельта_1770041205735.png";
 import glacisDappImg from "@/assets/GL_dApp_1770754812223.webp";
-import xSwapImg from "@assets/image_1770052489389.png";
-import skiziImg from "@assets/SKIZI_1768337984890.png";
-import chefImg from "@assets/AI_Chef_1768337984889.png";
-import zooGeneral from "@assets/General_1770718382218.png";
-import zooGeneralDark from "@assets/General_Dark_1770718382218.png";
-import zooSchemeV2 from "@assets/V2_scheme_1770718382219.png";
-import zooSchemeNoPic from "@assets/V2_scheme_nopic_1770718643287.png";
-import zeroDeltaImg from "@assets/зеро_дельта_1770041205735.png";
+import xSwapImg from "@/assets/xswap_main.webp";
+import zooGeneral from "@/assets/zoodao_general.webp";
+import zooGeneralDark from "@/assets/zoodao_general_dark.webp";
+import zooSchemeV2 from "@/assets/zoodao_scheme_v2.webp";
+import zooSchemeNoPic from "@/assets/zoodao_scheme_nopic.webp";
+import zeroDeltaImg from "@/assets/zero_delta_main.webp";
 
 import glacisScheme1 from "@/assets/glacis_scheme_1.webp";
 import glacisScheme2 from "@/assets/glacis_scheme_2.webp";
@@ -765,13 +762,13 @@ export default function ProjectDetail() {
                     className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging4 ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
                   >
                     {[
-                      { src: "/glacis_light_main.png", alt: "Main" },
-                      { src: "/glacis_light_tx_details.png", alt: "Transaction Details" },
-                      { src: "/glacis_light_retry.png", alt: "Retry" },
-                      { src: "/glacis_light_analytics.png", alt: "Analytics" },
-                      { src: "/glacis_light_select_chain.png", alt: "Select Chain" },
-                      { src: "/glacis_light_airlift.png", alt: "Airlift" },
-                      { src: "/glacis_light_404.png", alt: "404" }
+                      { src: "/glacis_light_main.webp", alt: "Main" },
+                      { src: "/glacis_light_tx_details.webp", alt: "Transaction Details" },
+                      { src: "/glacis_light_retry.webp", alt: "Retry" },
+                      { src: "/glacis_light_analytics.webp", alt: "Analytics" },
+                      { src: "/glacis_light_select_chain.webp", alt: "Select Chain" },
+                      { src: "/glacis_light_airlift.webp", alt: "Airlift" },
+                      { src: "/glacis_light_404.webp", alt: "404" }
                     ].map((img, idx) => (
                       <div key={idx} className="flex-shrink-0 w-[85vw] md:w-[600px]">
                         <div 
@@ -845,10 +842,10 @@ export default function ProjectDetail() {
                       className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging1 ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
                     >
                       {[
-                        { src: "/Swap_1770223795857.png", alt: "User Flow Swap" },
-                        { src: "/Provide_Liquidity_1770223795856.png", alt: "User Flow Pools Add" },
-                        { src: "/Remove_Liquidity_1770223795857.png", alt: "User Flow Pools Remove" },
-                        { src: "/Token_sale_1770223795858.png", alt: "User Flow Token Sale" }
+                        { src: "/Swap_1770223795857.webp", alt: "User Flow Swap" },
+                        { src: "/Provide_Liquidity_1770223795856.webp", alt: "User Flow Pools Add" },
+                        { src: "/Remove_Liquidity_1770223795857.webp", alt: "User Flow Pools Remove" },
+                        { src: "/Token_sale_1770223795858.webp", alt: "User Flow Token Sale" }
                       ].map((img, idx) => (
                         <div key={idx} className="flex-shrink-0 w-[85vw] md:w-[600px]">
                           <div 
@@ -884,9 +881,9 @@ export default function ProjectDetail() {
                       className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging2 ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
                     >
                       {[
-                        { src: "/Staking_Draft_Updated.png", alt: "Draft Staking", width: "md:w-[600px]" },
-                        { src: "/TokenSale_Draft.png", alt: "Draft Token Sale", width: "md:w-[400px]" },
-                        { src: "/Relations_Draft.png", alt: "Draft Relations", width: "md:w-[600px]" }
+                        { src: "/Staking_Draft_Updated.webp", alt: "Draft Staking", width: "md:w-[600px]" },
+                        { src: "/TokenSale_Draft.webp", alt: "Draft Token Sale", width: "md:w-[400px]" },
+                        { src: "/Relations_Draft.webp", alt: "Draft Relations", width: "md:w-[600px]" }
                       ].map((img, idx) => (
                         <div key={idx} className={`flex-shrink-0 w-[85vw] ${img.width}`}>
                           <div 
@@ -934,10 +931,10 @@ export default function ProjectDetail() {
                       
                       <div className="my-12 rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
                         <img 
-                          src="/Swap_UI_Showcase_New.png" 
+                          src="/Swap_UI_Showcase_New.webp" 
                           alt="Swap UI Showcase" 
                           className="w-full h-auto object-contain cursor-pointer"
-                          onClick={() => setSelectedImage("/Swap_UI_Showcase_New.png")}
+                          onClick={() => setSelectedImage("/Swap_UI_Showcase_New.webp")}
                         />
                       </div>
                       <div className="space-y-4">
@@ -973,10 +970,10 @@ export default function ProjectDetail() {
 
                       <div className="my-12 rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
                         <img 
-                          src="/Features_Showcase.png" 
+                          src="/Features_Showcase.webp" 
                           alt="Features Showcase" 
                           className="w-full h-auto object-contain cursor-pointer"
-                          onClick={() => setSelectedImage("/Features_Showcase.png")}
+                          onClick={() => setSelectedImage("/Features_Showcase.webp")}
                         />
                       </div>
 
@@ -990,10 +987,10 @@ export default function ProjectDetail() {
                       <div className="my-12">
                         <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
                           <img 
-                            src="/Swap_States_Showcase.png" 
+                            src="/Swap_States_Showcase.webp" 
                             alt="Route и некоторые состояния формы свапа" 
                             className="w-full h-auto object-contain cursor-pointer"
-                            onClick={() => setSelectedImage("/Swap_States_Showcase.png")}
+                            onClick={() => setSelectedImage("/Swap_States_Showcase.webp")}
                           />
                         </div>
                         <p className="text-sm text-gray-400 mt-4 text-center italic">Route и некоторые состояния формы свапа</p>
@@ -1019,11 +1016,11 @@ export default function ProjectDetail() {
                       <div className="my-12">
                         <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
                           <img 
-                            src="/Pools_UI_Showcase.png" 
+                            src="/Pools_UI_Showcase.webp" 
                             alt="Pools UI Showcase" 
                             loading="lazy"
                             className="w-full h-auto object-contain cursor-pointer"
-                            onClick={() => setSelectedImage("/Pools_UI_Showcase.png")}
+                            onClick={() => setSelectedImage("/Pools_UI_Showcase.webp")}
                           />
                         </div>
                       </div>
@@ -1037,11 +1034,11 @@ export default function ProjectDetail() {
                         <div className="my-12">
                           <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
                             <img 
-                              src="/Add_Liquidity_Showcase.png" 
+                              src="/Add_Liquidity_Showcase.webp" 
                               alt="Add Liquidity Stepper and States" 
                               loading="lazy"
                               className="w-full h-auto object-contain cursor-pointer"
-                              onClick={() => setSelectedImage("/Add_Liquidity_Showcase.png")}
+                              onClick={() => setSelectedImage("/Add_Liquidity_Showcase.webp")}
                             />
                           </div>
                         </div>
@@ -1049,11 +1046,11 @@ export default function ProjectDetail() {
                         <div className="my-12">
                           <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
                             <img 
-                              src="/Remove_Liquidity_Showcase.png" 
+                              src="/Remove_Liquidity_Showcase.webp" 
                               alt="Remove Liquidity Showcase" 
                               loading="lazy"
                               className="w-full h-auto object-contain cursor-pointer"
-                              onClick={() => setSelectedImage("/Remove_Liquidity_Showcase.png")}
+                              onClick={() => setSelectedImage("/Remove_Liquidity_Showcase.webp")}
                             />
                           </div>
                           <p className="text-sm text-gray-400 mt-4 text-center italic">Remove liquidity выглядит уже проще, но увеличился инфо блок.</p>
@@ -1068,11 +1065,11 @@ export default function ProjectDetail() {
                       <div className="my-12">
                         <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
                           <img 
-                            src="/Token_Sale_Showcase.png" 
+                            src="/Token_Sale_Showcase.webp" 
                             alt="Token Sale Showcase" 
                             loading="lazy"
                             className="w-full h-auto object-contain cursor-pointer"
-                            onClick={() => setSelectedImage("/Token_Sale_Showcase.png")}
+                            onClick={() => setSelectedImage("/Token_Sale_Showcase.webp")}
                           />
                         </div>
                       </div>
@@ -1097,11 +1094,11 @@ export default function ProjectDetail() {
                       <div className="my-12">
                         <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
                           <img 
-                            src="/Lock_Voting_Showcase.png" 
+                            src="/Lock_Voting_Showcase.webp" 
                             alt="Lock + Voting Showcase" 
                             loading="lazy"
                             className="w-full h-auto object-contain cursor-pointer"
-                            onClick={() => setSelectedImage("/Lock_Voting_Showcase.png")}
+                            onClick={() => setSelectedImage("/Lock_Voting_Showcase.webp")}
                           />
                         </div>
                       </div>
@@ -1109,11 +1106,11 @@ export default function ProjectDetail() {
                       <div className="my-12">
                         <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
                           <img 
-                            src="/Lock_Voting_Popups.png" 
+                            src="/Lock_Voting_Popups.webp" 
                             alt="Lock and Vote Popups" 
                             loading="lazy"
                             className="w-full h-auto object-contain cursor-pointer"
-                            onClick={() => setSelectedImage("/Lock_Voting_Popups.png")}
+                            onClick={() => setSelectedImage("/Lock_Voting_Popups.webp")}
                           />
                         </div>
                         <p className="text-sm text-gray-400 mt-4 text-center italic">Попапы для vote и lock</p>
@@ -1121,8 +1118,8 @@ export default function ProjectDetail() {
                     </div>
 
                     <div className="space-y-4">
-                      <p className="font-medium text-black">{project.content.conclusion.title}</p>
-                      <p>{project.content.conclusion.text}</p>
+                      <p className="font-medium text-black">{project.content?.conclusion?.title}</p>
+                      <p>{project.content?.conclusion?.text}</p>
 
                       <div className="mt-12">
                         <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))]">
@@ -1135,11 +1132,11 @@ export default function ProjectDetail() {
                             className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging3 ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
                           >
                             {[
-                              { src: "/Viet_Token_Sale.png", alt: "Vietnamese Token Sale", width: "md:w-[600px]" },
-                              { src: "/Viet_Pools.png", alt: "Vietnamese Pools", width: "md:w-[600px]" },
-                              { src: "/Viet_Route.png", alt: "Vietnamese Route", width: "md:w-[400px]" },
-                              { src: "/UI_Library_1.png", alt: "UI Library 1", width: "md:w-[600px]" },
-                              { src: "/UI_Library_2.png", alt: "UI Library 2", width: "md:w-[600px]" }
+                              { src: "/Viet_Token_Sale.webp", alt: "Vietnamese Token Sale", width: "md:w-[600px]" },
+                              { src: "/Viet_Pools.webp", alt: "Vietnamese Pools", width: "md:w-[600px]" },
+                              { src: "/Viet_Route.webp", alt: "Vietnamese Route", width: "md:w-[400px]" },
+                              { src: "/UI_Library_1.webp", alt: "UI Library 1", width: "md:w-[600px]" },
+                              { src: "/UI_Library_2.webp", alt: "UI Library 2", width: "md:w-[600px]" }
                             ].map((img, idx) => (
                               <div key={idx} className={`flex-shrink-0 w-[85vw] ${img.width}`}>
                                 <div 
@@ -1158,7 +1155,7 @@ export default function ProjectDetail() {
                             <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
                           </div>
                         </div>
-                        <p className="text-sm text-gray-400 mt-6 text-center italic">{project.content.conclusion.vietnamCaption}</p>
+                        <p className="text-sm text-gray-400 mt-6 text-center italic">{project.content?.conclusion?.vietnamCaption}</p>
                       </div>
                     </div>
                   </div>
