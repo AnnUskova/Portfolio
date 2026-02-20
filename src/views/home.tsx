@@ -52,6 +52,8 @@ export default function Home() {
   // Filter for specific slider projects: Glacis dApp (1), Glacis Site (14), xSwap (2), SKIZI (3), 2Go (4), Cryptoveche (6)
   const allowedProjectIds = [1, 14, 2, 3, 4, 6];
   const projects = projectTranslations[language].filter(p => allowedProjectIds.includes(p.id));
+  const hasProjects = projects.length > 0;
+  const currentProject = hasProjects ? projects[activeProject] : null;
 
   const stats = [
     { label: t.stats.experience, value: "8+" },
@@ -60,12 +62,24 @@ export default function Home() {
   ];
 
   const nextProject = () => {
+    if (!projects.length) return;
     setActiveProject((prev) => (prev + 1) % projects.length);
   };
 
   const prevProject = () => {
+    if (!projects.length) return;
     setActiveProject((prev) => (prev - 1 + projects.length) % projects.length);
   };
+
+  useEffect(() => {
+    if (!projects.length) {
+      if (activeProject !== 0) setActiveProject(0);
+      return;
+    }
+    if (activeProject >= projects.length) {
+      setActiveProject(0);
+    }
+  }, [activeProject, projects.length]);
 
   const contactData = {
     telegram: "@Ann_uskova",
@@ -287,30 +301,36 @@ export default function Home() {
             >
               <div className="flex-1 flex flex-col pt-4">
                 <div className="flex items-center gap-2 text-xs text-gray-400 uppercase tracking-wider mb-14">
-                  <span>{projects[activeProject].year}</span>
-                  <span className="text-gray-200">/</span>
-                  <span>{projects[activeProject].category}</span>
-                  <span className="text-gray-200">/</span>
-                  <span>{projects[activeProject].role}</span>
+                  {currentProject ? (
+                    <>
+                      <span>{currentProject.year}</span>
+                      <span className="text-gray-200">/</span>
+                      <span>{currentProject.category}</span>
+                      <span className="text-gray-200">/</span>
+                      <span>{currentProject.role}</span>
+                    </>
+                  ) : null}
                 </div>
                 
                 <AnimatePresence mode="wait">
-                  <motion.div
-                    key={`${projects[activeProject].id}-${language}`}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.4 }}
-                    className="h-[200px] flex flex-col justify-center"
-                  >
-                    <h3 className="text-5xl font-medium mb-6 tracking-tight" data-testid="text-project-title">
-                      {projects[activeProject].title}
-                    </h3>
-                    
-                    <p className="text-gray-500 leading-[1.6] text-lg max-w-[320px]" data-testid="text-project-description">
-                      {projects[activeProject].description}
-                    </p>
-                  </motion.div>
+                  {currentProject ? (
+                    <motion.div
+                      key={`${currentProject.id}-${language}`}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.4 }}
+                      className="h-[200px] flex flex-col justify-center"
+                    >
+                      <h3 className="text-5xl font-medium mb-6 tracking-tight" data-testid="text-project-title">
+                        {currentProject.title}
+                      </h3>
+                      
+                      <p className="text-gray-500 leading-[1.6] text-lg max-w-[320px]" data-testid="text-project-description">
+                        {currentProject.description}
+                      </p>
+                    </motion.div>
+                  ) : null}
                 </AnimatePresence>
               </div>
 
@@ -324,10 +344,7 @@ export default function Home() {
                     <ChevronLeft className="w-6 h-6" />
                   </button>
                   <button 
-                    onClick={() => {
-                      const nextIdx = (activeProject + 1) % 7; // Limit to first 7 projects
-                      setActiveProject(nextIdx);
-                    }}
+                    onClick={nextProject}
                     className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:border-black hover:bg-black hover:text-white transition-all duration-300 group"
                     data-testid="button-next-project"
                   >
@@ -349,41 +366,43 @@ export default function Home() {
             <div className="relative flex items-center h-[392px]">
               <div className="flex gap-2 items-start w-full">
                 <AnimatePresence mode="popLayout">
-                    {[0, 1, 2].map((offset) => {
-                    const index = (activeProject + offset) % projects.length;
-                    const isFirst = offset === 0;
-                    return (
-                      <Link 
-                        key={`${index}-${offset}`}
-                        href={`/projects/${projects[index].id}`}
-                        className={`${isFirst ? "w-[calc(65%+104px)]" : "w-[calc(25%+152px)]"} flex-shrink-0`}
-                      >
-                        <motion.div
-                          initial={{ opacity: 0, x: 100 }}
-                          animate={{ 
-                            opacity: 1, 
-                            x: 0,
-                            scale: isFirst ? 1 : 0.95
-                          }}
-                          exit={{ opacity: 0, x: -100 }}
-                          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                          className="relative h-[392px] rounded-[24px] overflow-hidden bg-[#F1F1F1] border border-gray-100 shadow-sm cursor-pointer group"
-                        >
-                          {projectImages[projects[index].id] ? (
-                            <img 
-                              src={projectImages[projects[index].id] as string}
-                              alt={projects[index].title}
-                              loading={offset === 0 ? "eager" : "lazy"}
-                              decoding="async"
-                              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                            />
-                          ) : (
-                            <div className="w-full h-full bg-[#F1F1F1]" />
-                          )}
-                        </motion.div>
-                      </Link>
-                    );
-                  })}
+                  {hasProjects
+                    ? [0, 1, 2].map((offset) => {
+                        const index = (activeProject + offset) % projects.length;
+                        const isFirst = offset === 0;
+                        return (
+                          <Link 
+                            key={`${index}-${offset}`}
+                            href={`/projects/${projects[index].id}`}
+                            className={`${isFirst ? "w-[calc(65%+104px)]" : "w-[calc(25%+152px)]"} flex-shrink-0`}
+                          >
+                            <motion.div
+                              initial={{ opacity: 0, x: 100 }}
+                              animate={{ 
+                                opacity: 1, 
+                                x: 0,
+                                scale: isFirst ? 1 : 0.95
+                              }}
+                              exit={{ opacity: 0, x: -100 }}
+                              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                              className="relative h-[392px] rounded-[24px] overflow-hidden bg-[#F1F1F1] border border-gray-100 shadow-sm cursor-pointer group"
+                            >
+                              {projectImages[projects[index].id] ? (
+                                <img 
+                                  src={projectImages[projects[index].id] as string}
+                                  alt={projects[index].title}
+                                  loading={offset === 0 ? "eager" : "lazy"}
+                                  decoding="async"
+                                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                />
+                              ) : (
+                                <div className="w-full h-full bg-[#F1F1F1]" />
+                              )}
+                            </motion.div>
+                          </Link>
+                        );
+                      })
+                    : null}
                 </AnimatePresence>
               </div>
             </div>
