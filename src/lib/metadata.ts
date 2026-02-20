@@ -39,15 +39,19 @@ const PROJECT_IMAGES: Record<number, string> = {
 };
 
 function resolveSiteUrl() {
-  const raw =
-    process.env.NEXT_PUBLIC_SITE_URL ??
-    process.env.SITE_URL ??
-    process.env.VERCEL_URL;
-  if (!raw) {
-    return process.env.NODE_ENV === "development"
-      ? "http://localhost:3000"
-      : "https://portfolio-green-mu-48.vercel.app";
+  const explicit = process.env.NEXT_PUBLIC_SITE_URL ?? process.env.SITE_URL;
+  if (explicit) {
+    const withProtocol =
+      explicit.startsWith("http://") || explicit.startsWith("https://")
+        ? explicit
+        : `https://${explicit}`;
+    return withProtocol.replace(/\/+$/, "");
   }
+
+  if (process.env.NODE_ENV === "development") return "http://localhost:3000";
+
+  // Avoid protected Vercel deployment URLs in OG tags; use public production alias.
+  const raw = "https://portfolio-green-mu-48.vercel.app";
   const withProtocol =
     raw.startsWith("http://") || raw.startsWith("https://") ? raw : `https://${raw}`;
   return withProtocol.replace(/\/+$/, "");
