@@ -1,6 +1,7 @@
 {
   "name": "designer-portfolio",
   "version": "1.0.0",
+  "packageManager": "pnpm@8.15.8",
   "type": "module",
   "license": "MIT",
   "scripts": {
