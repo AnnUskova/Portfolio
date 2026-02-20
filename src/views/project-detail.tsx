@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, ArrowLeft, X, ChevronRight, Download, Zap } from "lucide-react";
+import { ArrowUpRight, ArrowLeft, X, ChevronRight, ChevronLeft, Download, Zap, ZoomIn, ZoomOut } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { translations, projectTranslations, type Language } from "@/lib/translations";
 
@@ -66,6 +66,71 @@ const projectImages: Record<number, string | null> = {
   14: zeroDeltaImg.src
 };
 
+type LightboxItem = {
+  src: string;
+  alt: string;
+};
+
+const zooSlides: LightboxItem[] = [
+  { src: zooSchemeNoPic.src, alt: "ZooDAO System Scheme Overview" },
+  { src: zooSchemeV2.src, alt: "ZooDAO System Scheme V2" },
+  { src: zooGeneralDark.src, alt: "ZooDAO Concept Dark" },
+  { src: zooGeneral.src, alt: "ZooDAO Concept Light" }
+];
+
+const maatSlides: LightboxItem[] = [
+  { src: maatSlide1.src, alt: "MAAT Presentation Slide 1" },
+  { src: maatSlide2.src, alt: "MAAT Presentation Slide 2" },
+  { src: maatSlide3.src, alt: "MAAT Presentation Slide 3" },
+  { src: maatSlide4.src, alt: "MAAT Presentation Slide 4" },
+  { src: maatSlide5.src, alt: "MAAT Presentation Slide 5" },
+  { src: maatSlide6.src, alt: "MAAT Presentation Slide 6" },
+  { src: maatSlide7.src, alt: "MAAT Presentation Slide 7" },
+  { src: maatSlide8.src, alt: "MAAT Presentation Slide 8" },
+  { src: maatSlide9.src, alt: "MAAT Presentation Slide 9" },
+  { src: maatSlide10.src, alt: "MAAT Presentation Slide 10" },
+  { src: maatSlide11.src, alt: "MAAT Presentation Slide 11" },
+  { src: maatSlide12.src, alt: "MAAT Presentation Slide 12" },
+  { src: maatSlide13.src, alt: "MAAT Presentation Slide 13" },
+  { src: maatSlide14.src, alt: "MAAT Presentation Slide 14" }
+];
+
+const glacisSchemeSlides: LightboxItem[] = [
+  { src: glacisScheme1.src, alt: "Glacis Scheme 1" },
+  { src: glacisScheme2.src, alt: "Glacis Scheme 2" }
+];
+
+const glacisLightSlides: LightboxItem[] = [
+  { src: "/glacis_light_main.webp", alt: "Main" },
+  { src: "/glacis_light_tx_details.webp", alt: "Transaction Details" },
+  { src: "/glacis_light_retry.webp", alt: "Retry" },
+  { src: "/glacis_light_analytics.webp", alt: "Analytics" },
+  { src: "/glacis_light_select_chain.webp", alt: "Select Chain" },
+  { src: "/glacis_light_airlift.webp", alt: "Airlift" },
+  { src: "/glacis_light_404.webp", alt: "404" }
+];
+
+const xswapFlowSlides: LightboxItem[] = [
+  { src: "/Swap_1770223795857.webp", alt: "User Flow Swap" },
+  { src: "/Provide_Liquidity_1770223795856.webp", alt: "User Flow Pools Add" },
+  { src: "/Remove_Liquidity_1770223795857.webp", alt: "User Flow Pools Remove" },
+  { src: "/Token_sale_1770223795858.webp", alt: "User Flow Token Sale" }
+];
+
+const xswapDraftSlides: LightboxItem[] = [
+  { src: "/Staking_Draft_Updated.webp", alt: "Draft Staking" },
+  { src: "/TokenSale_Draft.webp", alt: "Draft Token Sale" },
+  { src: "/Relations_Draft.webp", alt: "Draft Relations" }
+];
+
+const xswapConclusionSlides: LightboxItem[] = [
+  { src: "/Viet_Token_Sale.webp", alt: "Vietnamese Token Sale" },
+  { src: "/Viet_Pools.webp", alt: "Vietnamese Pools" },
+  { src: "/Viet_Route.webp", alt: "Vietnamese Route" },
+  { src: "/UI_Library_1.webp", alt: "UI Library 1" },
+  { src: "/UI_Library_2.webp", alt: "UI Library 2" }
+];
+
 export default function ProjectDetail() {
   const params = useParams<{ id: string }>();
   const pathname = usePathname();
@@ -86,11 +151,14 @@ export default function ProjectDetail() {
 
   const [contactOpen, setContactOpen] = useState(false);
   const [tldrOpen, setTldrOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [isZoomed, setIsZoomed] = useState(false);
-  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
-  const [isDraggingImage, setIsDraggingImage] = useState(false);
-  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+  const [lightboxItems, setLightboxItems] = useState<LightboxItem[]>([]);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [lightboxZoom, setLightboxZoom] = useState(1);
+  const [lightboxPan, setLightboxPan] = useState({ x: 0, y: 0 });
+  const [isPanningImage, setIsPanningImage] = useState(false);
+  const [panStart, setPanStart] = useState({ x: 0, y: 0 });
+  const [maatInlineIndex, setMaatInlineIndex] = useState(0);
+  const touchStartX = useRef<number | null>(null);
 
   const t = translations[language];
   // Filter out hidden projects (5: Moonbeam, 10: MAAT)
@@ -200,6 +268,7 @@ export default function ProjectDetail() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    setMaatInlineIndex(0);
   }, [id]);
 
   const getBackLink = () => {
@@ -208,26 +277,121 @@ export default function ProjectDetail() {
     return "/projects?tab=uxui";
   };
 
+  const isLightboxOpen = lightboxItems.length > 0;
+  const currentLightboxItem = lightboxItems[lightboxIndex];
+
+  const resetLightboxView = () => {
+    setLightboxZoom(1);
+    setLightboxPan({ x: 0, y: 0 });
+    setIsPanningImage(false);
+  };
+
+  const openLightbox = (items: LightboxItem[], index = 0) => {
+    if (!items.length) return;
+    setLightboxItems(items);
+    setLightboxIndex(Math.min(Math.max(index, 0), items.length - 1));
+    resetLightboxView();
+  };
+
+  const closeLightbox = () => {
+    setLightboxItems([]);
+    setLightboxIndex(0);
+    resetLightboxView();
+  };
+
+  const goToLightboxIndex = (index: number) => {
+    if (!lightboxItems.length) return;
+    const nextIndex = (index + lightboxItems.length) % lightboxItems.length;
+    setLightboxIndex(nextIndex);
+    resetLightboxView();
+  };
+
+  const zoomLightbox = (direction: 1 | -1) => {
+    setLightboxZoom((prev) => {
+      const next = Math.min(3, Math.max(1, Number((prev + direction * 0.25).toFixed(2))));
+      if (next === 1) setLightboxPan({ x: 0, y: 0 });
+      return next;
+    });
+  };
+
+  const openSingleImage = (src: string, alt: string) => {
+    openLightbox([{ src, alt }], 0);
+  };
+
+  useEffect(() => {
+    if (!isLightboxOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") closeLightbox();
+      if (event.key === "ArrowRight") goToLightboxIndex(lightboxIndex + 1);
+      if (event.key === "ArrowLeft") goToLightboxIndex(lightboxIndex - 1);
+      if (event.key === "+" || event.key === "=") zoomLightbox(1);
+      if (event.key === "-" || event.key === "_") zoomLightbox(-1);
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isLightboxOpen, lightboxIndex, lightboxItems.length]);
+
   return (
     <div className="min-h-screen bg-white">
       <AnimatePresence>
-        {selectedImage && (
+        {isLightboxOpen && currentLightboxItem && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[200] bg-black/90 backdrop-blur-sm flex items-center justify-center overflow-hidden"
+            className="fixed inset-0 z-[200] bg-black/35 flex items-center justify-center overflow-hidden p-4 md:p-8"
+            onClick={closeLightbox}
+            onTouchStart={(event) => {
+              if (lightboxZoom > 1) return;
+              touchStartX.current = event.touches[0]?.clientX ?? null;
+            }}
+            onTouchEnd={(event) => {
+              if (lightboxZoom > 1 || touchStartX.current === null) return;
+              const endX = event.changedTouches[0]?.clientX ?? touchStartX.current;
+              const deltaX = endX - touchStartX.current;
+              if (Math.abs(deltaX) > 50) {
+                goToLightboxIndex(lightboxIndex + (deltaX < 0 ? 1 : -1));
+              }
+              touchStartX.current = null;
+            }}
           >
-            <div className="absolute top-6 right-6 z-[210]">
-              <button 
-                onClick={() => {
-                  setSelectedImage(null);
-                  setIsZoomed(false);
-                  setDragOffset({ x: 0, y: 0 });
+            <div className="absolute top-5 right-5 z-[210] flex items-center gap-2">
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  zoomLightbox(-1);
                 }}
-                className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center backdrop-blur-md transition-colors"
+                className="w-10 h-10 rounded-full bg-black/65 hover:bg-black/80 border border-white/40 text-white shadow-lg backdrop-blur-md flex items-center justify-center transition-colors"
+                aria-label="Zoom out"
               >
-                <X className="w-6 h-6" />
+                <ZoomOut className="w-5 h-5" />
+              </button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  zoomLightbox(1);
+                }}
+                className="w-10 h-10 rounded-full bg-black/65 hover:bg-black/80 border border-white/40 text-white shadow-lg backdrop-blur-md flex items-center justify-center transition-colors"
+                aria-label="Zoom in"
+              >
+                <ZoomIn className="w-5 h-5" />
+              </button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  closeLightbox();
+                }}
+                className="w-10 h-10 rounded-full bg-black/65 hover:bg-black/80 border border-white/40 text-white shadow-lg backdrop-blur-md flex items-center justify-center transition-colors"
+                aria-label="Close lightbox"
+              >
+                <X className="w-5 h-5" />
               </button>
             </div>
 
@@ -235,62 +399,77 @@ export default function ProjectDetail() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className={`relative flex items-center justify-center ${isZoomed ? 'cursor-grab active:cursor-grabbing' : 'cursor-zoom-in'}`}
-              onMouseDown={(e) => {
-                if (!isZoomed) return;
-                setIsDraggingImage(true);
-                setDragStart({ x: e.clientX - dragOffset.x, y: e.clientY - dragOffset.y });
-                e.stopPropagation();
-                e.preventDefault();
-              }}
-              onMouseMove={(e) => {
-                if (!isDraggingImage || !isZoomed) return;
-                const newX = e.clientX - dragStart.x;
-                const newY = e.clientY - dragStart.y;
-                
-                // Only consider it a drag if moved more than 5px
-                if (Math.abs(newX - dragOffset.x) > 5 || Math.abs(newY - dragOffset.y) > 5) {
-                  setDragOffset({ x: newX, y: newY });
-                }
-              }}
-              onMouseUp={() => {
-                setTimeout(() => setIsDraggingImage(false), 10);
-              }}
-              onMouseLeave={() => setIsDraggingImage(false)}
+              className={`relative flex items-center justify-center w-full h-full ${lightboxZoom > 1 ? "cursor-grab active:cursor-grabbing" : "cursor-auto"}`}
               onClick={(e) => {
                 e.stopPropagation();
-                if (!isZoomed) {
-                  setIsZoomed(true);
-                  setDragOffset({ x: 0, y: 0 });
-                } else {
-                  // Only zoom out if we didn't just drag
-                  // We check if the current offset is basically the same as when we started
-                  // but a better way is to check the movement during THIS specific drag
-                  // For now, let's use a simpler toggle that respects the drag state
-                  if (!isDraggingImage) {
-                    setIsZoomed(false);
-                    setDragOffset({ x: 0, y: 0 });
-                  }
-                }
+              }}
+              onMouseDown={(event) => {
+                if (lightboxZoom <= 1) return;
+                event.stopPropagation();
+                setIsPanningImage(true);
+                setPanStart({ x: event.clientX - lightboxPan.x, y: event.clientY - lightboxPan.y });
+              }}
+              onMouseMove={(event) => {
+                if (!isPanningImage || lightboxZoom <= 1) return;
+                setLightboxPan({
+                  x: event.clientX - panStart.x,
+                  y: event.clientY - panStart.y
+                });
+              }}
+              onMouseUp={() => setIsPanningImage(false)}
+              onMouseLeave={() => setIsPanningImage(false)}
+              onWheel={(event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                zoomLightbox(event.deltaY < 0 ? 1 : -1);
               }}
             >
               <motion.img
-                src={selectedImage}
-                alt="Full screen view"
+                src={currentLightboxItem.src}
+                alt={currentLightboxItem.alt}
                 draggable={false}
                 animate={{ 
-                  scale: isZoomed ? 2 : 1,
-                  x: isZoomed ? dragOffset.x : 0,
-                  y: isZoomed ? dragOffset.y : 0
+                  scale: lightboxZoom,
+                  x: lightboxZoom > 1 ? lightboxPan.x : 0,
+                  y: lightboxZoom > 1 ? lightboxPan.y : 0
                 }}
                 transition={{ 
-                  scale: { type: "spring", damping: 25, stiffness: 200 },
+                  scale: { type: "spring", damping: 24, stiffness: 210 },
                   x: { type: "tween", duration: 0 },
                   y: { type: "tween", duration: 0 }
                 }}
-                className="rounded-xl shadow-2xl pointer-events-none max-w-[90vw] max-h-[90vh] object-contain"
+                className="rounded-xl shadow-2xl pointer-events-none max-w-[92vw] max-h-[88vh] object-contain"
               />
             </motion.div>
+
+            {lightboxItems.length > 1 && (
+              <>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    goToLightboxIndex(lightboxIndex - 1);
+                  }}
+                  className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/65 hover:bg-black/80 border border-white/40 text-white shadow-lg backdrop-blur-md flex items-center justify-center transition-colors"
+                  aria-label="Previous image"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    goToLightboxIndex(lightboxIndex + 1);
+                  }}
+                  className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/65 hover:bg-black/80 border border-white/40 text-white shadow-lg backdrop-blur-md flex items-center justify-center transition-colors"
+                  aria-label="Next image"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+              </>
+            )}
+
+            <div className="absolute bottom-5 left-1/2 -translate-x-1/2 text-white text-sm bg-black/70 border border-white/30 shadow-lg px-3 py-1 rounded-full">
+              {lightboxIndex + 1} / {lightboxItems.length}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -476,7 +655,7 @@ export default function ProjectDetail() {
                           src={zooSchemeNoPic.src} 
                           alt="ZooDAO System Scheme Overview" 
                           className="w-full h-auto object-contain cursor-zoom-in"
-                          onClick={() => setSelectedImage(zooSchemeNoPic.src)}
+                          onClick={() => openLightbox(zooSlides, 0)}
                         />
                       </div>
                       <p className="text-sm text-gray-400 text-center italic">
@@ -491,7 +670,7 @@ export default function ProjectDetail() {
                           src={zooSchemeV2.src} 
                           alt="ZooDAO System Scheme V2" 
                           className="w-full h-auto object-contain cursor-zoom-in"
-                          onClick={() => setSelectedImage(zooSchemeV2.src)}
+                          onClick={() => openLightbox(zooSlides, 1)}
                         />
                       </div>
                       <p className="text-sm text-gray-400 text-center italic">
@@ -505,7 +684,8 @@ export default function ProjectDetail() {
                         <img 
                           src={zooGeneralDark.src} 
                           alt="ZooDAO Concept Dark" 
-                          className="w-full h-auto object-contain"
+                          className="w-full h-auto object-contain cursor-zoom-in"
+                          onClick={() => openLightbox(zooSlides, 2)}
                         />
                       </div>
                       <p className="text-sm text-gray-400 text-center italic">
@@ -519,7 +699,8 @@ export default function ProjectDetail() {
                         <img 
                           src={zooGeneral.src} 
                           alt="ZooDAO Concept Light" 
-                          className="w-full h-auto object-contain"
+                          className="w-full h-auto object-contain cursor-zoom-in"
+                          onClick={() => openLightbox(zooSlides, 3)}
                         />
                       </div>
                       <p className="text-sm text-gray-400 text-center italic">
@@ -530,21 +711,39 @@ export default function ProjectDetail() {
                     </div>
                   </>
                 ) : project.id === 13 ? (
-                  <div className="space-y-8 max-w-[80%]">
-                    {[
-                      maatSlide1.src, maatSlide2.src, maatSlide3.src, maatSlide4.src,
-                      maatSlide5.src, maatSlide6.src, maatSlide7.src, maatSlide8.src,
-                      maatSlide9.src, maatSlide10.src, maatSlide11.src, maatSlide12.src,
-                      maatSlide13.src, maatSlide14.src
-                    ].map((slide, index) => (
-                      <div key={index} className="rounded-[20px] overflow-hidden border border-gray-100 shadow-sm bg-gray-50">
-                        <img
-                          src={slide}
-                          alt={`MAAT Presentation Slide ${index + 1}`}
-                          className="w-full h-auto"
+                  <div className="space-y-4 max-w-[80%]">
+                    <div className="relative rounded-[20px] overflow-hidden border border-gray-100 shadow-sm bg-gray-50">
+                      <img
+                        src={maatSlides[maatInlineIndex].src}
+                        alt={maatSlides[maatInlineIndex].alt}
+                        className="w-full h-auto object-contain cursor-zoom-in"
+                        onClick={() => openLightbox(maatSlides, maatInlineIndex)}
+                      />
+                      <button
+                        onClick={() => setMaatInlineIndex((prev) => (prev - 1 + maatSlides.length) % maatSlides.length)}
+                        className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/35 hover:bg-black/50 text-white flex items-center justify-center transition-colors"
+                        aria-label="Previous slide"
+                      >
+                        <ChevronLeft className="w-5 h-5" />
+                      </button>
+                      <button
+                        onClick={() => setMaatInlineIndex((prev) => (prev + 1) % maatSlides.length)}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/35 hover:bg-black/50 text-white flex items-center justify-center transition-colors"
+                        aria-label="Next slide"
+                      >
+                        <ChevronRight className="w-5 h-5" />
+                      </button>
+                    </div>
+                    <div className="flex items-center justify-center gap-1.5">
+                      {maatSlides.map((slide, idx) => (
+                        <button
+                          key={slide.src}
+                          onClick={() => setMaatInlineIndex(idx)}
+                          className={`h-1.5 rounded-full transition-all ${idx === maatInlineIndex ? "w-6 bg-black" : "w-2 bg-gray-300 hover:bg-gray-400"}`}
+                          aria-label={`Go to slide ${idx + 1}`}
                         />
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 ) : null}
               </div>
@@ -614,13 +813,10 @@ export default function ProjectDetail() {
                     onMouseMove={handleMouseMove1}
                     className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging1 ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
                   >
-                    {[
-                      { src: glacisScheme1.src, alt: "Glacis Scheme 1" },
-                      { src: glacisScheme2.src, alt: "Glacis Scheme 2" }
-                    ].map((img, idx) => (
+                    {glacisSchemeSlides.map((img, idx) => (
                       <div key={idx} className="flex-shrink-0 w-[85vw] md:w-[600px]">
                         <div 
-                          onClick={() => !hasMoved1 && setSelectedImage(img.src)}
+                          onClick={() => !hasMoved1 && openLightbox(glacisSchemeSlides, idx)}
                           className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging1 ? 'cursor-grabbing' : 'cursor-grab'}`}
                         >
                           <img 
@@ -653,7 +849,7 @@ export default function ProjectDetail() {
                     src={glacisMainPage.src}  
                     alt="Glacis Main Page" 
                     className="w-full h-auto object-contain cursor-pointer"
-                    onClick={() => setSelectedImage(glacisMainPage.src)}
+                    onClick={() => openSingleImage(glacisMainPage.src, "Glacis Main Page")}
                   />
                 </div>
 
@@ -674,7 +870,7 @@ export default function ProjectDetail() {
                     src={glacisTransactionDetails.src} 
                     alt="Glacis Transaction Details" 
                     className="w-full h-auto object-contain cursor-pointer"
-                    onClick={() => setSelectedImage(glacisTransactionDetails.src)}
+                    onClick={() => openSingleImage(glacisTransactionDetails.src, "Glacis Transaction Details")}
                   />
                 </div>
 
@@ -687,7 +883,7 @@ export default function ProjectDetail() {
                     src={glacisMobileDetails.src} 
                     alt="Glacis Mobile Details" 
                     className="w-full h-auto object-contain cursor-pointer"
-                    onClick={() => setSelectedImage(glacisMobileDetails.src)}
+                    onClick={() => openSingleImage(glacisMobileDetails.src, "Glacis Mobile Details")}
                   />
                 </div>
 
@@ -700,7 +896,7 @@ export default function ProjectDetail() {
                     src={glacisRetryData.src} 
                     alt="Glacis Retry Data" 
                     className="w-full h-auto object-contain cursor-pointer"
-                    onClick={() => setSelectedImage(glacisRetryData.src)}
+                    onClick={() => openSingleImage(glacisRetryData.src, "Glacis Retry Data")}
                   />
                 </div>
 
@@ -732,7 +928,7 @@ export default function ProjectDetail() {
                     src={glacisAnalytics.src} 
                     alt="Glacis Analytics" 
                     className="w-full h-auto object-contain cursor-pointer"
-                    onClick={() => setSelectedImage(glacisAnalytics.src)}
+                    onClick={() => openSingleImage(glacisAnalytics.src, "Glacis Analytics")}
                   />
                 </div>
 
@@ -751,18 +947,10 @@ export default function ProjectDetail() {
                     onMouseMove={handleMouseMove4}
                     className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging4 ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
                   >
-                    {[
-                      { src: "/glacis_light_main.webp", alt: "Main" },
-                      { src: "/glacis_light_tx_details.webp", alt: "Transaction Details" },
-                      { src: "/glacis_light_retry.webp", alt: "Retry" },
-                      { src: "/glacis_light_analytics.webp", alt: "Analytics" },
-                      { src: "/glacis_light_select_chain.webp", alt: "Select Chain" },
-                      { src: "/glacis_light_airlift.webp", alt: "Airlift" },
-                      { src: "/glacis_light_404.webp", alt: "404" }
-                    ].map((img, idx) => (
+                    {glacisLightSlides.map((img, idx) => (
                       <div key={idx} className="flex-shrink-0 w-[85vw] md:w-[600px]">
                         <div 
-                          onClick={() => !hasMoved4 && setSelectedImage(img.src)}
+                          onClick={() => !hasMoved4 && openLightbox(glacisLightSlides, idx)}
                           className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging4 ? 'cursor-grabbing' : 'cursor-grab'}`}
                         >
                           <img 
@@ -831,15 +1019,10 @@ export default function ProjectDetail() {
                       onMouseMove={handleMouseMove1}
                       className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging1 ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
                     >
-                      {[
-                        { src: "/Swap_1770223795857.webp", alt: "User Flow Swap" },
-                        { src: "/Provide_Liquidity_1770223795856.webp", alt: "User Flow Pools Add" },
-                        { src: "/Remove_Liquidity_1770223795857.webp", alt: "User Flow Pools Remove" },
-                        { src: "/Token_sale_1770223795858.webp", alt: "User Flow Token Sale" }
-                      ].map((img, idx) => (
+                      {xswapFlowSlides.map((img, idx) => (
                         <div key={idx} className="flex-shrink-0 w-[85vw] md:w-[600px]">
                           <div 
-                            onClick={() => !hasMoved1 && setSelectedImage(img.src)}
+                            onClick={() => !hasMoved1 && openLightbox(xswapFlowSlides, idx)}
                             className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging1 ? 'cursor-grabbing' : 'cursor-grab'}`}
                           >
                             <img 
@@ -877,7 +1060,7 @@ export default function ProjectDetail() {
                       ].map((img, idx) => (
                         <div key={idx} className={`flex-shrink-0 w-[85vw] ${img.width}`}>
                           <div 
-                            onClick={() => !hasMoved2 && setSelectedImage(img.src)}
+                            onClick={() => !hasMoved2 && openLightbox(xswapDraftSlides, idx)}
                             className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging2 ? 'cursor-grabbing' : 'cursor-grab'}`}
                           >
                             <img 
@@ -924,7 +1107,7 @@ export default function ProjectDetail() {
                           src="/Swap_UI_Showcase_New.webp" 
                           alt="Swap UI Showcase" 
                           className="w-full h-auto object-contain cursor-pointer"
-                          onClick={() => setSelectedImage("/Swap_UI_Showcase_New.webp")}
+                          onClick={() => openSingleImage("/Swap_UI_Showcase_New.webp", "Swap UI Showcase")}
                         />
                       </div>
                       <div className="space-y-4">
@@ -963,7 +1146,7 @@ export default function ProjectDetail() {
                           src="/Features_Showcase.webp" 
                           alt="Features Showcase" 
                           className="w-full h-auto object-contain cursor-pointer"
-                          onClick={() => setSelectedImage("/Features_Showcase.webp")}
+                          onClick={() => openSingleImage("/Features_Showcase.webp", "Features Showcase")}
                         />
                       </div>
 
@@ -980,7 +1163,7 @@ export default function ProjectDetail() {
                             src="/Swap_States_Showcase.webp" 
                             alt="Route и некоторые состояния формы свапа" 
                             className="w-full h-auto object-contain cursor-pointer"
-                            onClick={() => setSelectedImage("/Swap_States_Showcase.webp")}
+                            onClick={() => openSingleImage("/Swap_States_Showcase.webp", "Swap states showcase")}
                           />
                         </div>
                         <p className="text-sm text-gray-400 mt-4 text-center italic">Route и некоторые состояния формы свапа</p>
@@ -1010,7 +1193,7 @@ export default function ProjectDetail() {
                             alt="Pools UI Showcase" 
                             loading="lazy"
                             className="w-full h-auto object-contain cursor-pointer"
-                            onClick={() => setSelectedImage("/Pools_UI_Showcase.webp")}
+                            onClick={() => openSingleImage("/Pools_UI_Showcase.webp", "Pools UI Showcase")}
                           />
                         </div>
                       </div>
@@ -1028,7 +1211,7 @@ export default function ProjectDetail() {
                               alt="Add Liquidity Stepper and States" 
                               loading="lazy"
                               className="w-full h-auto object-contain cursor-pointer"
-                              onClick={() => setSelectedImage("/Add_Liquidity_Showcase.webp")}
+                              onClick={() => openSingleImage("/Add_Liquidity_Showcase.webp", "Add Liquidity Stepper and States")}
                             />
                           </div>
                         </div>
@@ -1040,7 +1223,7 @@ export default function ProjectDetail() {
                               alt="Remove Liquidity Showcase" 
                               loading="lazy"
                               className="w-full h-auto object-contain cursor-pointer"
-                              onClick={() => setSelectedImage("/Remove_Liquidity_Showcase.webp")}
+                              onClick={() => openSingleImage("/Remove_Liquidity_Showcase.webp", "Remove Liquidity Showcase")}
                             />
                           </div>
                           <p className="text-sm text-gray-400 mt-4 text-center italic">Remove liquidity выглядит уже проще, но увеличился инфо блок.</p>
@@ -1059,7 +1242,7 @@ export default function ProjectDetail() {
                             alt="Token Sale Showcase" 
                             loading="lazy"
                             className="w-full h-auto object-contain cursor-pointer"
-                            onClick={() => setSelectedImage("/Token_Sale_Showcase.webp")}
+                            onClick={() => openSingleImage("/Token_Sale_Showcase.webp", "Token Sale Showcase")}
                           />
                         </div>
                       </div>
@@ -1088,7 +1271,7 @@ export default function ProjectDetail() {
                             alt="Lock + Voting Showcase" 
                             loading="lazy"
                             className="w-full h-auto object-contain cursor-pointer"
-                            onClick={() => setSelectedImage("/Lock_Voting_Showcase.webp")}
+                            onClick={() => openSingleImage("/Lock_Voting_Showcase.webp", "Lock + Voting Showcase")}
                           />
                         </div>
                       </div>
@@ -1100,7 +1283,7 @@ export default function ProjectDetail() {
                             alt="Lock and Vote Popups" 
                             loading="lazy"
                             className="w-full h-auto object-contain cursor-pointer"
-                            onClick={() => setSelectedImage("/Lock_Voting_Popups.webp")}
+                            onClick={() => openSingleImage("/Lock_Voting_Popups.webp", "Lock and Vote Popups")}
                           />
                         </div>
                         <p className="text-sm text-gray-400 mt-4 text-center italic">Попапы для vote и lock</p>
@@ -1130,7 +1313,7 @@ export default function ProjectDetail() {
                             ].map((img, idx) => (
                               <div key={idx} className={`flex-shrink-0 w-[85vw] ${img.width}`}>
                                 <div 
-                                  onClick={() => !hasMoved3 && setSelectedImage(img.src)}
+                                  onClick={() => !hasMoved3 && openLightbox(xswapConclusionSlides, idx)}
                                   className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging3 ? 'cursor-grabbing' : 'cursor-grab'}`}
                                 >
                                   <img 
