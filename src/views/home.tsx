@@ -76,6 +76,21 @@ export default function Home() {
     setActiveProject((prev) => prev - 1);
   };
 
+  useEffect(() => {
+    if (!projects.length) return;
+
+    // Preload upcoming slides to avoid the first-loop stutter.
+    [1, 2, 3].forEach((offset) => {
+      const index = getCircularIndex(activeProject + offset);
+      const imageSrc = projectImages[projects[index].id];
+      if (!imageSrc) return;
+
+      const image = new window.Image();
+      image.decoding = "async";
+      image.src = imageSrc;
+    });
+  }, [activeProject, projects]);
+
   const contactData = {
     telegram: "@Ann_uskova",
     linkedin: "Anna Uskova",
@@ -311,10 +326,10 @@ export default function Home() {
                   {currentProject ? (
                     <motion.div
                       key={`${currentProject.id}-${language}`}
-                      initial={{ opacity: 0, y: 10 }}
+                      initial={{ opacity: 0, y: 12 }}
                       animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.4 }}
+                      exit={{ opacity: 0, y: -12 }}
+                      transition={{ duration: 0.72, ease: [0.25, 0.1, 0.25, 1] }}
                       className="h-[200px] flex flex-col justify-center"
                     >
                       <h3 className="text-5xl font-medium mb-6 tracking-tight" data-testid="text-project-title">
@@ -373,21 +388,22 @@ export default function Home() {
                             className={`${isFirst ? "w-[calc(65%+104px)]" : "w-[calc(25%+152px)]"} flex-shrink-0`}
                           >
                             <motion.div
-                              initial={{ opacity: 0, x: 100 }}
+                              initial={{ opacity: 0, x: 64, scale: 0.985 }}
                               animate={{ 
                                 opacity: 1, 
                                 x: 0,
                                 scale: isFirst ? 1 : 0.95
                               }}
-                              exit={{ opacity: 0, x: -100 }}
-                              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                              exit={{ opacity: 0, x: -64, scale: 0.985 }}
+                              transition={{ duration: 1.28, ease: [0.25, 0.1, 0.25, 1] }}
                               className="relative h-[392px] rounded-[24px] overflow-hidden bg-[#F1F1F1] border border-gray-100 shadow-sm cursor-pointer group"
                             >
                               {projectImages[projects[index].id] ? (
                                 <img 
                                   src={projectImages[projects[index].id] as string}
                                   alt={projects[index].title}
-                                  loading={offset === 0 ? "eager" : "lazy"}
+                                  loading={offset < 2 ? "eager" : "lazy"}
+                                  fetchPriority={offset === 0 ? "high" : "auto"}
                                   decoding="async"
                                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                 />
