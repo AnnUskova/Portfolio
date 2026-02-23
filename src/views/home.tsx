@@ -61,7 +61,7 @@ export default function Home() {
   const currentProject = hasProjects ? projects[safeActiveProject] : null;
 
   const stats = [
-    { label: t.stats.experience, value: "8+" },
+    { label: t.stats.experience, value: "7+" },
     { label: t.stats.projects, value: "30+" },
     { label: t.stats.location, value: t.stats.locationValue }
   ];
@@ -173,6 +173,18 @@ export default function Home() {
                 </a>
 
                 <a 
+                  href={contactData.emailUrl}
+                  className="flex items-center justify-between p-6 border border-gray-200 rounded-[18px] hover:bg-gray-50 transition-colors group"
+                  data-testid="link-email"
+                >
+                  <span className="text-lg">{t.contact.email}</span>
+                  <span className="text-gray-500 group-hover:text-black transition-colors flex items-center gap-2">
+                    {contactData.email}
+                    <ArrowUpRight className="w-4 h-4" />
+                  </span>
+                </a>
+
+                <a 
                   href={contactData.linkedinUrl}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -182,18 +194,6 @@ export default function Home() {
                   <span className="text-lg">{t.contact.linkedin}</span>
                   <span className="text-gray-500 group-hover:text-black transition-colors flex items-center gap-2">
                     {contactData.linkedin}
-                    <ArrowUpRight className="w-4 h-4" />
-                  </span>
-                </a>
-
-                <a 
-                  href={contactData.emailUrl}
-                  className="flex items-center justify-between p-6 border border-gray-200 rounded-[18px] hover:bg-gray-50 transition-colors group"
-                  data-testid="link-email"
-                >
-                  <span className="text-lg">{t.contact.email}</span>
-                  <span className="text-gray-500 group-hover:text-black transition-colors flex items-center gap-2">
-                    {contactData.email}
                     <ArrowUpRight className="w-4 h-4" />
                   </span>
                 </a>

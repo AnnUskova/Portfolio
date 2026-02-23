@@ -149,16 +149,16 @@ export default function Projects() {
                     @Ann_uskova <ArrowUpRight className="w-4 h-4" />
                   </span>
                 </a>
-                <a href={contactData.linkedinUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-6 border border-gray-200 rounded-[18px] hover:bg-gray-50 transition-colors group" data-testid="link-linkedin">
-                  <span className="text-lg">{t.contact.linkedin}</span>
-                  <span className="text-gray-500 group-hover:text-black transition-colors flex items-center gap-2">
-                    Anna Uskova <ArrowUpRight className="w-4 h-4" />
-                  </span>
-                </a>
                 <a href={contactData.emailUrl} className="flex items-center justify-between p-6 border border-gray-200 rounded-[18px] hover:bg-gray-50 transition-colors group" data-testid="link-email">
                   <span className="text-lg">{t.contact.email}</span>
                   <span className="text-gray-500 group-hover:text-black transition-colors flex items-center gap-2">
                     anyauskowa@yandex.ru <ArrowUpRight className="w-4 h-4" />
+                  </span>
+                </a>
+                <a href={contactData.linkedinUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-6 border border-gray-200 rounded-[18px] hover:bg-gray-50 transition-colors group" data-testid="link-linkedin">
+                  <span className="text-lg">{t.contact.linkedin}</span>
+                  <span className="text-gray-500 group-hover:text-black transition-colors flex items-center gap-2">
+                    Anna Uskova <ArrowUpRight className="w-4 h-4" />
                   </span>
                 </a>
                 

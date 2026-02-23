@@ -44,7 +44,14 @@ import cryptovecheImg from "@/assets/cryptoveche_cover.webp";
 import uxResearchImg from "@/assets/ux_research_cover.webp";
 import pholendImg from "@/assets/pholend_cover.webp";
 import dickbuttsImg from "@/assets/dickbutts_cover_v2.webp";
+import zkDickbuttsImg from "@/assets/zkDickButts_1.webp";
+import dickbuttsMintImg from "@/assets/DickButts - Mint.jpg";
 import skiziCoverImg from "@/assets/skizi_cover_new.webp";
+import skiziSlide1 from "@/assets/skizi_slide_1.webp";
+import skiziSlide2 from "@/assets/skizi_slide_2.webp";
+import skiziSlide3 from "@/assets/skizi_slide_3.webp";
+import skiziSlide4 from "@/assets/skizi_slide_4.webp";
+import skiziSlide5 from "@/assets/skizi_slide_5.webp";
 
 import twoGoCoverImg from "@/assets/2go_cover.webp";
 import zoodaoCoverImg from "@/assets/zoodao_cover_v3.webp";
@@ -93,6 +100,14 @@ const maatSlides: LightboxItem[] = [
   { src: maatSlide12.src, alt: "MAAT Presentation Slide 12" },
   { src: maatSlide13.src, alt: "MAAT Presentation Slide 13" },
   { src: maatSlide14.src, alt: "MAAT Presentation Slide 14" }
+];
+
+const skiziSlides: LightboxItem[] = [
+  { src: skiziSlide1.src, alt: "SKIZI Slide 1" },
+  { src: skiziSlide2.src, alt: "SKIZI Slide 2" },
+  { src: skiziSlide3.src, alt: "SKIZI Slide 3" },
+  { src: skiziSlide4.src, alt: "SKIZI Slide 4" },
+  { src: skiziSlide5.src, alt: "SKIZI Slide 5" }
 ];
 
 const glacisSchemeSlides: LightboxItem[] = [
@@ -346,7 +361,7 @@ export default function ProjectDetail() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[200] bg-black/35 flex items-center justify-center overflow-hidden p-4 md:p-8"
+            className="fixed inset-0 z-[200] bg-black/65 flex items-center justify-center overflow-hidden p-4 md:p-8"
             onClick={closeLightbox}
             onTouchStart={(event) => {
               if (lightboxZoom > 1) return;
@@ -521,16 +536,16 @@ export default function ProjectDetail() {
                     @Ann_uskova <ArrowUpRight className="w-4 h-4" />
                   </span>
                 </a>
-                <a href={contactData.linkedinUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-6 border border-gray-200 rounded-[18px] hover:bg-gray-50 transition-colors group" data-testid="link-linkedin">
-                  <span className="text-lg">{t.contact.linkedin}</span>
-                  <span className="text-gray-500 group-hover:text-black transition-colors flex items-center gap-2">
-                    Anna Uskova <ArrowUpRight className="w-4 h-4" />
-                  </span>
-                </a>
                 <a href={contactData.emailUrl} className="flex items-center justify-between p-6 border border-gray-200 rounded-[18px] hover:bg-gray-50 transition-colors group" data-testid="link-email">
                   <span className="text-lg">{t.contact.email}</span>
                   <span className="text-gray-500 group-hover:text-black transition-colors flex items-center gap-2">
                     anyauskowa@yandex.ru <ArrowUpRight className="w-4 h-4" />
+                  </span>
+                </a>
+                <a href={contactData.linkedinUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-6 border border-gray-200 rounded-[18px] hover:bg-gray-50 transition-colors group" data-testid="link-linkedin">
+                  <span className="text-lg">{t.contact.linkedin}</span>
+                  <span className="text-gray-500 group-hover:text-black transition-colors flex items-center gap-2">
+                    Anna Uskova <ArrowUpRight className="w-4 h-4" />
                   </span>
                 </a>
                 
@@ -634,7 +649,7 @@ export default function ProjectDetail() {
                   : <>Investor presentation deck for the MAAT protocol.<br/>Some data is blurred intentionally.</>
               ) : project.id === 3 ? (
                 language === "ru"
-                  ? "СКИЗИ – это система, которая помогает учитывать и контролировать использование «зелёных» инструментов и прав. В ней пользователь может зафиксировать, передать и «погасить» зелёные права, а ещё хранит всю информацию по ним и выдаёт её по запросу."
+                  ? "СКИЗИ (Система координации использования зелёных инструментов) – это система учёта зелёных сертификатов и прав. В ней можно передавать права между владельцами и «погашать» их – отмечать как использованные, когда компания хочет подтвердить потребление зелёной энергии."
                   : project.description
               ) : project.id === 1 ? (
                 language === "ru"
@@ -721,14 +736,14 @@ export default function ProjectDetail() {
                       />
                       <button
                         onClick={() => setMaatInlineIndex((prev) => (prev - 1 + maatSlides.length) % maatSlides.length)}
-                        className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/35 hover:bg-black/50 text-white flex items-center justify-center transition-colors"
+                        className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/65 hover:bg-black/80 text-white flex items-center justify-center transition-colors"
                         aria-label="Previous slide"
                       >
                         <ChevronLeft className="w-5 h-5" />
                       </button>
                       <button
                         onClick={() => setMaatInlineIndex((prev) => (prev + 1) % maatSlides.length)}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/35 hover:bg-black/50 text-white flex items-center justify-center transition-colors"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/65 hover:bg-black/80 text-white flex items-center justify-center transition-colors"
                         aria-label="Next slide"
                       >
                         <ChevronRight className="w-5 h-5" />
@@ -756,6 +771,70 @@ export default function ProjectDetail() {
                     src={projectImages[project.id] || ""} 
                     alt={`${project.title} Cover`} 
                     className="w-full h-auto object-cover"
+                  />
+                </div>
+              </div>
+            )}
+
+            {project.id === 3 && language === "ru" && (
+              <div className="max-w-[calc(56rem-80px)] mb-16">
+                <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                  Я была единственным дизайнером на проекте, вела его с нуля до запуска (1,5 года). Много взаимодействовала с бизнесом и разработкой, много разговаривала с заказчиками (на тот момент – Совет рынка).
+                </p>
+                <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                  Разработка проекта началась с тендера – за три дня нужно было задизайнить несколько экранов системы и описать, как она будет работать. Для тендера я сделала такие макеты (и мы выиграли 😎):
+                </p>
+
+                <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))]">
+                  <div
+                    ref={scrollContainerRef2}
+                    onMouseDown={handleMouseDown2}
+                    onMouseLeave={() => setIsDragging2(false)}
+                    onMouseUp={() => setIsDragging2(false)}
+                    onMouseMove={handleMouseMove2}
+                    className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging2 ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
+                  >
+                    {skiziSlides.map((img, idx) => (
+                      <div key={img.src} className="flex-shrink-0 w-[85vw] md:w-[900px]">
+                        <div
+                          onClick={() => !hasMoved2 && openLightbox(skiziSlides, idx)}
+                          className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging2 ? 'cursor-grabbing' : 'cursor-grab'}`}
+                        >
+                          <img
+                            src={img.src}
+                            alt={img.alt}
+                            className="w-full aspect-video object-cover object-top pointer-events-none"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                    <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {project.id === 9 && language === "ru" && (
+              <div className="max-w-[calc(56rem-80px)] mb-16">
+                <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                  За пару дней я собрала лендинг и страницу покупки, а дизайнер NFTшек дополнил мой макет пиксельным взывом на фон. Моей целью было понятно рассказать о продукте, подкрепить рассказ социальными доказательствами и довести пользователя до покупки. На странице минт – развести два сценария приобретения, дать все вводные для покупки и понятную кнопку действия.
+                </p>
+
+                <div className="mt-8 rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white max-w-[750px]">
+                  <img
+                    src={zkDickbuttsImg.src}
+                    alt="zkDickButts landing page"
+                    className="w-full h-auto object-contain cursor-pointer"
+                    onClick={() => openSingleImage(zkDickbuttsImg.src, "zkDickButts landing page")}
+                  />
+                </div>
+
+                <div className="mt-6 rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white max-w-[750px]">
+                  <img
+                    src={dickbuttsMintImg.src}
+                    alt="DickButts mint page"
+                    className="w-full h-auto object-contain cursor-pointer"
+                    onClick={() => openSingleImage(dickbuttsMintImg.src, "DickButts mint page")}
                   />
                 </div>
               </div>
@@ -822,7 +901,7 @@ export default function ProjectDetail() {
                           <img 
                             src={img.src} 
                             alt={img.alt} 
-                            className="w-full h-auto object-contain pointer-events-none"
+                            className="w-full aspect-video object-cover object-top pointer-events-none"
                           />
                         </div>
                       </div>
@@ -857,7 +936,7 @@ export default function ProjectDetail() {
                    {language === "ru" ? "Наверху – мини-статистика по всему dApp, которая дает новому пользователю представление о масштабах экосистемы и количестве проходящих через нее транзакций, а пользователю постоянному – возможность отслеживать изменения («ого, было 10 сетей, а сейчас уже 21, как быстро они растут»)." : "At the top is mini-statistics for the entire dApp, giving new users an idea of the ecosystem's scale and transaction volume, and allowing regular users to track changes (“wow, there were 10 networks, now 21, they grow so fast”)."}
                 </p>
                 <p className="text-lg text-gray-600 leading-relaxed mb-12">
-                   {language === "ru" ? "Далее – список последних транзакций с возможностью поиска и фильтрации, а в колонке «Time» еще и сортировка добавлена. Также мы можем переключаться по вкладкам и выбирать продукт – Glacis Core или Airlift (он работает с токенами, но это тонкости)." : "Next is the list of recent transactions with search and filtering, and sorting added to the “Time” column. We can also switch tabs to choose the product – Glacis Core or Airlift (it works with tokens, but that's a detail)."}
+                   {language === "ru" ? "Далее – список последних транзакций в табличном представлении – довольно привычно для аудитории и типично для сканеров. Поисковая строка для быстрой проверки, фильтры – если ищу закономерности, сортировка по времени. Изначально делили транзакции по продуктам (вкладки Glacis core и AirLift), но после тестирования объединили их в одну таблицу – убрали лишний шаг, оставив возможность фильтрации по продукту." : "Next is the list of recent transactions with search and filtering, and sorting added to the “Time” column. We can also switch tabs to choose the product – Glacis Core or Airlift (it works with tokens, but that's a detail)."}
                 </p>
 
                 <h2 className="text-2xl font-medium mb-6">{language === "ru" ? "Детали транзакции" : "Transaction Details"}</h2>
@@ -956,7 +1035,7 @@ export default function ProjectDetail() {
                           <img 
                             src={img.src} 
                             alt={img.alt} 
-                            className="w-full h-auto object-contain pointer-events-none"
+                            className="w-full aspect-video object-cover object-top pointer-events-none"
                           />
                         </div>
                       </div>
@@ -965,6 +1044,17 @@ export default function ProjectDetail() {
                     <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
                   </div>
                 </div>
+
+                <section className="mt-16">
+                  <h2 className="text-2xl font-medium mb-6">
+                    {language === "ru" ? "Итог" : "Outcome"}
+                  </h2>
+                  <p className="text-lg text-gray-600 leading-relaxed">
+                    {language === "ru"
+                      ? "Я спроектировала dApp с упором на быструю диагностику транзакций – от таблицы и поиска до детальных статусов по нескольким бриджам и истории retry. Под изменения продукта (V2 + AirLift) переработала структуру и упростила путь пользователя, добавила расширяемую аналитику с фильтрами и кастомизацией. Параллельно курировала аутсорс по графике и моушену, контролируя качество и соответствие стилю."
+                      : "I designed the dApp around fast transaction troubleshooting: from table view and search to detailed multi-bridge statuses and retry history. When the product evolved (V2 + AirLift), I reworked the structure, removed extra friction, and added scalable analytics with filters and customization. In parallel, I managed outsourced graphics and motion, keeping quality and style consistent."}
+                  </p>
+                </section>
               </div>
             )}
 
@@ -1028,7 +1118,7 @@ export default function ProjectDetail() {
                             <img 
                               src={img.src} 
                               alt={img.alt} 
-                              className="w-full h-auto object-contain pointer-events-none"
+                              className="w-full aspect-video object-cover object-top pointer-events-none"
                             />
                           </div>
                         </div>
@@ -1066,7 +1156,7 @@ export default function ProjectDetail() {
                             <img 
                               src={img.src} 
                               alt={img.alt} 
-                              className="w-full h-auto object-contain pointer-events-none"
+                              className="w-full aspect-video object-cover object-top pointer-events-none"
                             />
                           </div>
                         </div>
@@ -1320,7 +1410,7 @@ export default function ProjectDetail() {
                                     src={img.src} 
                                     alt={img.alt} 
                                     loading="lazy"
-                                    className="w-full h-auto object-contain pointer-events-none"
+                                    className="w-full aspect-video object-cover object-top pointer-events-none"
                                   />
                                 </div>
                               </div>
