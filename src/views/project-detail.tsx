@@ -52,6 +52,29 @@ import skiziSlide2 from "@/assets/skizi_slide_2.webp";
 import skiziSlide3 from "@/assets/skizi_slide_3.webp";
 import skiziSlide4 from "@/assets/skizi_slide_4.webp";
 import skiziSlide5 from "@/assets/skizi_slide_5.webp";
+import skiziCertificates from "@/assets/skizi_certificates.jpg";
+import certificateActiveSkizi from "@/assets/certificate_active_skizi.jpg";
+import skiziDelenie from "@/assets/skizi_delenie.jpg";
+import skiziDelenie2 from "@/assets/skizi_delenie_2.jpg";
+import skiziPogashenie1 from "@/assets/skizi_pogashenie_1.jpg";
+import skiziPogashenie2 from "@/assets/skizi_pogashenie_2.jpg";
+import skiziPogashenie3 from "@/assets/skizi_pogashenie_3.jpg";
+import skiziPogashenie4 from "@/assets/skizi_pogashenie_4.jpg";
+import skiziPogashenie5 from "@/assets/skizi_pogashenie_5.jpg";
+import skiziGroup1 from "@/assets/skizi_group_1.jpg";
+import skiziGroup2 from "@/assets/skizi_group_2.jpg";
+import skiziGroup3 from "@/assets/skizi_group_3.jpg";
+import skiziGroup4 from "@/assets/skizi_group_4.jpg";
+import skiziGroup5 from "@/assets/skizi_group_5.jpg";
+import skiziGroup6 from "@/assets/skizi_group_6.jpg";
+import skiziDogovor from "@/assets/skizi_dogovor.jpg";
+import skiziDogovor1 from "@/assets/skizi_dogovor_1.jpg";
+import skiziDogovor2 from "@/assets/skizi_dogovor_2.jpg";
+import skiziDogovor3 from "@/assets/skizi_dogovor_3.jpg";
+import skiziAnalit from "@/assets/skizi_analit.jpg";
+import skiziZd1 from "@/assets/skizi_zd1.jpg";
+import skiziZd2 from "@/assets/skizi_zd2.jpg";
+import skiziGo from "@/assets/skizi_go.jpg";
 
 import twoGoCoverImg from "@/assets/2go_cover.webp";
 import zoodaoCoverImg from "@/assets/zoodao_cover_v3.webp";
@@ -108,6 +131,40 @@ const skiziSlides: LightboxItem[] = [
   { src: skiziSlide3.src, alt: "SKIZI Slide 3" },
   { src: skiziSlide4.src, alt: "SKIZI Slide 4" },
   { src: skiziSlide5.src, alt: "SKIZI Slide 5" }
+];
+
+const skiziPogashenieSlides: LightboxItem[] = [
+  { src: skiziPogashenie1.src, alt: "SKIZI Redemption 1" },
+  { src: skiziPogashenie2.src, alt: "SKIZI Redemption 2" },
+  { src: skiziPogashenie3.src, alt: "SKIZI Redemption 3" },
+  { src: skiziPogashenie4.src, alt: "SKIZI Redemption 4" },
+  { src: skiziPogashenie5.src, alt: "SKIZI Redemption 5" }
+];
+
+const skiziGroupSlides: LightboxItem[] = [
+  { src: skiziGroup1.src, alt: "SKIZI Group Operation 1" },
+  { src: skiziGroup2.src, alt: "SKIZI Group Operation 2" },
+  { src: skiziGroup3.src, alt: "SKIZI Group Operation 3" },
+  { src: skiziGroup4.src, alt: "SKIZI Group Operation 4" },
+  { src: skiziGroup5.src, alt: "SKIZI Group Operation 5" },
+  { src: skiziGroup6.src, alt: "SKIZI Group Operation 6" }
+];
+
+const skiziDogovorSlides: LightboxItem[] = [
+  { src: skiziDogovor.src, alt: "SKIZI Green Contract 1" },
+  { src: skiziDogovor1.src, alt: "SKIZI Green Contract 2" },
+  { src: skiziDogovor2.src, alt: "SKIZI Green Contract 3" },
+  { src: skiziDogovor3.src, alt: "SKIZI Green Contract 4" }
+];
+
+const skiziZdSlides: LightboxItem[] = [
+  { src: skiziZd1.src, alt: "SKIZI ZD 1" },
+  { src: skiziZd2.src, alt: "SKIZI ZD 2" }
+];
+
+const skiziDelenieSlides: LightboxItem[] = [
+  { src: skiziDelenie.src, alt: "SKIZI certificate split" },
+  { src: skiziDelenie2.src, alt: "SKIZI certificate split step 2" }
 ];
 
 const glacisSchemeSlides: LightboxItem[] = [
@@ -189,22 +246,32 @@ export default function ProjectDetail() {
   const scrollContainerRef2 = useRef<HTMLDivElement>(null);
   const scrollContainerRef3 = useRef<HTMLDivElement>(null);
   const scrollContainerRef4 = useRef<HTMLDivElement>(null);
+  const scrollContainerRef5 = useRef<HTMLDivElement>(null);
+  const scrollContainerRef6 = useRef<HTMLDivElement>(null);
   const [isDragging1, setIsDragging1] = useState(false);
   const [isDragging2, setIsDragging2] = useState(false);
   const [isDragging3, setIsDragging3] = useState(false);
   const [isDragging4, setIsDragging4] = useState(false);
+  const [isDragging5, setIsDragging5] = useState(false);
+  const [isDragging6, setIsDragging6] = useState(false);
   const [hasMoved1, setHasMoved1] = useState(false);
   const [hasMoved2, setHasMoved2] = useState(false);
   const [hasMoved3, setHasMoved3] = useState(false);
   const [hasMoved4, setHasMoved4] = useState(false);
+  const [hasMoved5, setHasMoved5] = useState(false);
+  const [hasMoved6, setHasMoved6] = useState(false);
   const [startX1, setStartX1] = useState(0);
   const [startX2, setStartX2] = useState(0);
   const [startX3, setStartX3] = useState(0);
   const [startX4, setStartX4] = useState(0);
+  const [startX5, setStartX5] = useState(0);
+  const [startX6, setStartX6] = useState(0);
   const [scrollLeft1, setScrollLeft1] = useState(0);
   const [scrollLeft2, setScrollLeft2] = useState(0);
   const [scrollLeft3, setScrollLeft3] = useState(0);
   const [scrollLeft4, setScrollLeft4] = useState(0);
+  const [scrollLeft5, setScrollLeft5] = useState(0);
+  const [scrollLeft6, setScrollLeft6] = useState(0);
 
   const handleMouseDown1 = (e: React.MouseEvent) => {
     if (!scrollContainerRef1.current) return;
@@ -236,6 +303,22 @@ export default function ProjectDetail() {
     setHasMoved4(false);
     setStartX4(e.pageX - scrollContainerRef4.current.offsetLeft);
     setScrollLeft4(scrollContainerRef4.current.scrollLeft);
+  };
+
+  const handleMouseDown5 = (e: React.MouseEvent) => {
+    if (!scrollContainerRef5.current) return;
+    setIsDragging5(true);
+    setHasMoved5(false);
+    setStartX5(e.pageX - scrollContainerRef5.current.offsetLeft);
+    setScrollLeft5(scrollContainerRef5.current.scrollLeft);
+  };
+
+  const handleMouseDown6 = (e: React.MouseEvent) => {
+    if (!scrollContainerRef6.current) return;
+    setIsDragging6(true);
+    setHasMoved6(false);
+    setStartX6(e.pageX - scrollContainerRef6.current.offsetLeft);
+    setScrollLeft6(scrollContainerRef6.current.scrollLeft);
   };
 
   const handleMouseMove1 = (e: React.MouseEvent) => {
@@ -272,6 +355,24 @@ export default function ProjectDetail() {
     const walk = (x - startX4) * 2;
     if (Math.abs(walk) > 5) setHasMoved4(true);
     scrollContainerRef4.current.scrollLeft = scrollLeft4 - walk;
+  };
+
+  const handleMouseMove5 = (e: React.MouseEvent) => {
+    if (!isDragging5 || !scrollContainerRef5.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainerRef5.current.offsetLeft;
+    const walk = (x - startX5) * 2;
+    if (Math.abs(walk) > 5) setHasMoved5(true);
+    scrollContainerRef5.current.scrollLeft = scrollLeft5 - walk;
+  };
+
+  const handleMouseMove6 = (e: React.MouseEvent) => {
+    if (!isDragging6 || !scrollContainerRef6.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainerRef6.current.offsetLeft;
+    const walk = (x - startX6) * 2;
+    if (Math.abs(walk) > 5) setHasMoved6(true);
+    scrollContainerRef6.current.scrollLeft = scrollLeft6 - walk;
   };
 
   const contactData = {
@@ -810,6 +911,237 @@ export default function ProjectDetail() {
                     ))}
                     <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
                   </div>
+                </div>
+
+                <p className="text-lg text-gray-600 leading-relaxed mt-8 mb-8">
+                  Далее началась настоящая разработка: мы учли все пожелания к функциональности системы и построили ролевую модель. Получилось 7 ролей, у каждой из которых разные права доступа и функции в системе.
+                </p>
+                <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                  Чтобы не утонуть в ярусах СКИЗИ, рассмотрим отдельные флоу.
+                </p>
+                <h2 className="text-2xl font-medium mt-12 mb-8">
+                  Самый главный из них – зеленые инструменты.
+                </h2>
+                <p className="text-lg text-gray-600 leading-relaxed mb-4">
+                  Солнечная электростанция произвела энергию. Она считается зеленой, потому что был использован возобновляемый источник энергии (ВИЭ). Я могу купить права на эту зеленую энергию и получу:
+                </p>
+                <ul className="space-y-2 mb-8">
+                  <li className="flex gap-4 text-lg text-gray-600 leading-relaxed">
+                    <span className="text-black font-medium">•</span>
+                    <span>зелёный сертификат (доказательство происхождения энергии),</span>
+                  </li>
+                  <li className="flex gap-4 text-lg text-gray-600 leading-relaxed">
+                    <span className="text-black font-medium">•</span>
+                    <span>или зелёный договор (сделка/контракт на покупку зелёной энергии или зелёных прав).</span>
+                  </li>
+                </ul>
+                <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                  Посмотрим на них в интерфейсе:
+                </p>
+
+                <div className="mt-6 rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white max-w-[900px]">
+                  <img
+                    src={skiziCertificates.src}
+                    alt="SKIZI certificates interface"
+                    className="w-full h-auto object-contain cursor-pointer"
+                    onClick={() => openSingleImage(skiziCertificates.src, "SKIZI certificates interface")}
+                  />
+                </div>
+                <p className="text-lg text-gray-600 leading-relaxed mt-8 mb-8">
+                  Каждый зеленый сертификат имеет свой номинал (6 373 800 кВт*ч), уникальный номер, тип энергии (ветра, солнца, атома и т.д.), станцию, на которой энергия была произведена и т.д. Если провалиться в сертификат, станет ясно, что с ним можно делать невообразимое количество вещей, но основные – деление и погашение.
+                </p>
+                <div className="mt-6 rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white max-w-[900px]">
+                  <img
+                    src={certificateActiveSkizi.src}
+                    alt="Active SKIZI certificate"
+                    className="w-full h-auto object-contain cursor-pointer"
+                    onClick={() => openSingleImage(certificateActiveSkizi.src, "Active SKIZI certificate")}
+                  />
+                </div>
+                <p className="text-lg text-gray-600 leading-relaxed mt-8 mb-8">
+                  Поделить зеленый сертификат можно вручную, а можно автоматически. Деление вручную – это выбор количества сертификатов (для удобства по дефолту поля предзаполнены + есть кнопка "Поровну"), а деление автоматически – выбор номинала (а количество система уже сама определит). Чтобы пользователь понимал, что происходит, объясняем ему в алертах сложные моменты.
+                </p>
+                <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))]">
+                  <div
+                    ref={scrollContainerRef6}
+                    onMouseDown={handleMouseDown6}
+                    onMouseLeave={() => setIsDragging6(false)}
+                    onMouseUp={() => setIsDragging6(false)}
+                    onMouseMove={handleMouseMove6}
+                    className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging6 ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
+                  >
+                    {skiziDelenieSlides.map((img, idx) => (
+                      <div key={img.src} className="flex-shrink-0 w-[85vw] md:w-[900px]">
+                        <div
+                          onClick={() => !hasMoved6 && openLightbox(skiziDelenieSlides, idx)}
+                          className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging6 ? 'cursor-grabbing' : 'cursor-grab'}`}
+                        >
+                          <img
+                            src={img.src}
+                            alt={img.alt}
+                            className="w-full aspect-video object-cover object-top pointer-events-none"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                    <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
+                  </div>
+                </div>
+                <p className="text-lg text-gray-600 leading-relaxed mt-8 mb-8">
+                  Сертификат можно погасить – по сути поставить отметку «зеленая энергия использована». Для этого система предлагает выбрать, в кого погасить (я, юрлицо, физлицо), номинал и подсвечивает, сколько это будет стоить. После погашения сертификат отмечен тегом «Погашен» и мы больше ничего не можем с ним сделать (разве что сменить лицевой счет и посмотреть детали погашения).
+                </p>
+                <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))]">
+                  <div
+                    ref={scrollContainerRef3}
+                    onMouseDown={handleMouseDown3}
+                    onMouseLeave={() => setIsDragging3(false)}
+                    onMouseUp={() => setIsDragging3(false)}
+                    onMouseMove={handleMouseMove3}
+                    className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging3 ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
+                  >
+                    {skiziPogashenieSlides.map((img, idx) => (
+                      <div key={img.src} className="flex-shrink-0 w-[85vw] md:w-[900px]">
+                        <div
+                          onClick={() => !hasMoved3 && openLightbox(skiziPogashenieSlides, idx)}
+                          className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging3 ? 'cursor-grabbing' : 'cursor-grab'}`}
+                        >
+                          <img
+                            src={img.src}
+                            alt={img.alt}
+                            className="w-full aspect-video object-cover object-top pointer-events-none"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                    <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
+                  </div>
+                </div>
+                <p className="text-lg text-gray-600 leading-relaxed mt-8 mb-8">
+                  Если пользователь хочет погасить или поделить несколько сертификатов сразу – он может воспользоваться функционалом групповых операций.
+                </p>
+                <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))]">
+                  <div
+                    ref={scrollContainerRef4}
+                    onMouseDown={handleMouseDown4}
+                    onMouseLeave={() => setIsDragging4(false)}
+                    onMouseUp={() => setIsDragging4(false)}
+                    onMouseMove={handleMouseMove4}
+                    className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging4 ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
+                  >
+                    {skiziGroupSlides.map((img, idx) => (
+                      <div key={img.src} className="flex-shrink-0 w-[85vw] md:w-[900px]">
+                        <div
+                          onClick={() => !hasMoved4 && openLightbox(skiziGroupSlides, idx)}
+                          className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging4 ? 'cursor-grabbing' : 'cursor-grab'}`}
+                        >
+                          <img
+                            src={img.src}
+                            alt={img.alt}
+                            className="w-full aspect-video object-cover object-top pointer-events-none"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                    <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
+                  </div>
+                </div>
+                <p className="text-sm text-gray-400 text-center italic mt-2">
+                  Групповое погашение (1-4) и деление (5-6)
+                </p>
+                <h2 className="text-2xl font-medium mt-12 mb-6">
+                  Зеленые договоры
+                </h2>
+                <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                  Еще один зеленый инструмент – зеленый договор. С ним чуть сложнее, потому что он не статичный, каждый месяц на него начисляется новый объем зеленой энергии, которую нужно оплачивать. Визуально я сделала его похожим на зеленый сертификат, чтобы пользователю было привычнее, но выделила в оранжевый блок новый объем, чтобы он сразу привлекал внимание (он важный).
+                </p>
+                <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))]">
+                  <div
+                    ref={scrollContainerRef1}
+                    onMouseDown={handleMouseDown1}
+                    onMouseLeave={() => setIsDragging1(false)}
+                    onMouseUp={() => setIsDragging1(false)}
+                    onMouseMove={handleMouseMove1}
+                    className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging1 ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
+                  >
+                    {skiziDogovorSlides.map((img, idx) => (
+                      <div key={img.src} className="flex-shrink-0 w-[85vw] md:w-[900px]">
+                        <div
+                          onClick={() => !hasMoved1 && openLightbox(skiziDogovorSlides, idx)}
+                          className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging1 ? 'cursor-grabbing' : 'cursor-grab'}`}
+                        >
+                          <img
+                            src={img.src}
+                            alt={img.alt}
+                            className="w-full aspect-video object-cover object-top pointer-events-none"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                    <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
+                  </div>
+                </div>
+                <p className="text-sm text-gray-400 text-center italic mt-2">
+                  Внутри появляется блок Реализация атрибутов генерации (АГ) и возможность их оплатить. Их может накопиться несколько, если я не оплачиваю вовремя. Все операции хранятся в &quot;Истории операций&quot;.
+                </p>
+                <p className="text-lg text-gray-600 leading-relaxed mt-8 mb-8">
+                  По зеленым инструментам доступна статистика – она живет в профиле пользователя. Вот так, например, она выглядит для Владельца Генерирующего объекта (все как у Клиента, но он может выпускать Зеленые сертификаты):
+                </p>
+                <div className="mt-6 rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white max-w-[900px]">
+                  <img
+                    src={skiziAnalit.src}
+                    alt="SKIZI analytics"
+                    className="w-full h-auto object-contain cursor-pointer"
+                    onClick={() => openSingleImage(skiziAnalit.src, "SKIZI analytics")}
+                  />
+                </div>
+                <h2 className="text-2xl font-medium mt-12 mb-6">
+                  Зеленые инструменты под капотом
+                </h2>
+                <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                  Зеленые сертификаты просто возникают в СКИЗИ (интеграция со сторонней платформой), тогда как зеленые договоры заводит в системе Оператор, он же ежемесячно подает данные по новому объему энергии, а Владелец ГО и ТСО ГП (гарантирующий поставщик) подтверждают подачу электронной подписью. На стороне оператора это выглядит так:
+                </p>
+                <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))]">
+                  <div
+                    ref={scrollContainerRef5}
+                    onMouseDown={handleMouseDown5}
+                    onMouseLeave={() => setIsDragging5(false)}
+                    onMouseUp={() => setIsDragging5(false)}
+                    onMouseMove={handleMouseMove5}
+                    className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging5 ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
+                  >
+                    {skiziZdSlides.map((img, idx) => (
+                      <div key={img.src} className="flex-shrink-0 w-[85vw] md:w-[900px]">
+                        <div
+                          onClick={() => !hasMoved5 && openLightbox(skiziZdSlides, idx)}
+                          className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging5 ? 'cursor-grabbing' : 'cursor-grab'}`}
+                        >
+                          <img
+                            src={img.src}
+                            alt={img.alt}
+                            className="w-full aspect-video object-cover object-top pointer-events-none"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                    <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
+                  </div>
+                </div>
+                <p className="text-lg text-gray-600 leading-relaxed mt-8 mb-8">
+                  Гарантирующий поставщик (отдельная роль в системе) видит подачи в виде таблицы, новые – подсвечиваются. Его задача проверить поданные оператором данные, апрувнуть на своей стороне и выбрать кто в этот раз платит комиссию. Для этого показываем ему портянку данных (он, предположительно, проверяет глазами, потому что файлов никаких не даем) и подписывает ЭП – после этого подача улетает Клиенту.
+                </p>
+                <h2 className="text-2xl font-medium mt-12 mb-6">
+                  Владелец ГО и его ГО
+                </h2>
+                <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                  Для роли Владелец ГО главный флоу – работа с генерирующими объектами. Их нужно активировать, подавать данные по топливу и коммерческому учету, а еще выпускать зеленые сертфикаты на сгенерированную энергию. Раздел выглядит так:
+                </p>
+                <div className="mt-6 rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white max-w-[900px]">
+                  <img
+                    src={skiziGo.src}
+                    alt="SKIZI generating object section"
+                    className="w-full h-auto object-contain cursor-pointer"
+                    onClick={() => openSingleImage(skiziGo.src, "SKIZI generating object section")}
+                  />
                 </div>
               </div>
             )}
