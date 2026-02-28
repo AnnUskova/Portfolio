@@ -18,7 +18,7 @@ import { projectTranslations } from "@/lib/translations";
 const SITE_NAME = "Anna Uskova Portfolio";
 const BRAND_TITLE = "Anna Uskova — Product Designer";
 const DEFAULT_DESCRIPTION =
-  "UX/UI Designer with 8+ years of experience crafting DeFi protocols, high-load systems, and products for mass audiences.";
+  "UX/UI Designer with 7+ years of experience crafting DeFi protocols, high-load systems, and products for mass audiences.";
 const DEFAULT_IMAGE = annaPhoto.src;
 
 const PROJECT_IMAGES: Record<number, string> = {

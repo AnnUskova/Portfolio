@@ -6,7 +6,7 @@ export const translations = {
       contact: "Contact"
     },
     hero: {
-      title: "Hi! I'm Anna Uskova — a product designer with 7+ years in the industry.",
+      title: "Hi! I'm Anna Uskova – a product designer with 7+ years in the industry.",
       description: "I work with high-load systems, DeFi protocols \nand B2C products – from research to polished UI.",
       viewWork: "Explore projects",
       getInTouch: "Get in touch"
@@ -80,7 +80,7 @@ export const translations = {
       contact: "Контакты"
     },
     hero: {
-      title: "Привет! Я Аня Ускова —\nпродуктовый дизайнер\nс опытом 7+ лет.",
+      title: "Привет! Я Аня Ускова –\nпродуктовый дизайнер\nс опытом 7+ лет.",
       description: "Проектирую сложные системы, DeFi протоколы\nи B2C продукты.",
       viewWork: "Смотреть работы",
       getInTouch: "Связаться"
