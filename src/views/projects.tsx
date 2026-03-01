@@ -270,7 +270,7 @@ export default function Projects() {
                               ? (language === "ru"
                                 ? "Схемы работы системы для инвесторов и комьюнити."
                                 : "System diagrams for investors and the community.")
-                              : project.description}
+                              : (project.cardDescription ?? project.description)}
                       </p>
                       <div className="flex flex-wrap gap-2 mt-auto">
                         <span className="px-3 py-1 bg-gray-50 text-gray-500 text-[11px] font-medium uppercase tracking-wider rounded-full border border-gray-100">{project.year}</span>

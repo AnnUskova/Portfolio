@@ -337,7 +337,7 @@ export default function Home() {
                       </h3>
                       
                       <p className="text-gray-500 leading-[1.6] text-lg max-w-[320px]" data-testid="text-project-description">
-                        {currentProject.description}
+                        {currentProject.cardDescription ?? currentProject.description}
                       </p>
                     </motion.div>
                   ) : null}

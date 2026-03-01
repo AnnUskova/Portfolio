@@ -77,6 +77,43 @@ import skiziZd2 from "@/assets/skizi_zd2.jpg";
 import skiziGo from "@/assets/skizi_go.jpg";
 
 import twoGoCoverImg from "@/assets/2go_cover.webp";
+import twoGoSlider1 from "@/assets/2GO_slider1.jpg";
+import twoGoSlider2 from "@/assets/2GO_slider2.jpg";
+import twoGoSlider3 from "@/assets/2GO_slider3.jpg";
+import twoGoSlider4 from "@/assets/2GO_slider4.jpg";
+import twoGoSlider5 from "@/assets/2GO_slider5.jpg";
+import twoGoSlider6 from "@/assets/2GO_slider6.jpg";
+import twoGoSlider7 from "@/assets/2GO_slider7.jpg";
+import twoGoSecondSlider1 from "@/assets/2GO_2slider1.jpg";
+import twoGoSecondSlider2 from "@/assets/2GO_2slider2.jpg";
+import twoGoSecondSlider3 from "@/assets/2GO_2slider3.jpg";
+import twoGoSecondSlider4 from "@/assets/2GO_2slider4.jpg";
+import twoGoSecondSlider5 from "@/assets/2GO_2slider5.jpg";
+import twoGoSecondSlider6 from "@/assets/2GO_2slider6.jpg";
+import twoGoSecondSlider7 from "@/assets/2GO_2slider7.jpg";
+import twoGoSecondSlider8 from "@/assets/2GO_2slider8.jpg";
+import twoGoThirdSlider1 from "@/assets/2GO_3slider1.jpg";
+import twoGoThirdSlider2 from "@/assets/2GO_3slider2.jpg";
+import twoGoThirdSlider3 from "@/assets/2GO_3slider3.jpg";
+import twoGoThirdSlider4 from "@/assets/2GO_3slider4.jpg";
+import twoGoThirdSlider5 from "@/assets/2GO_3slider5.jpg";
+import twoGoThirdSlider6 from "@/assets/2GO_3slider6.jpg";
+import twoGoFourthSlider1 from "@/assets/2GO_4slider1.jpg";
+import twoGoFourthSlider2 from "@/assets/2GO_4slider2.jpg";
+import twoGoFourthSlider3 from "@/assets/2GO_4slider3.jpg";
+import twoGoFourthSlider4 from "@/assets/2GO_4slider4.jpg";
+import twoGoFifthSlider1 from "@/assets/2GO_5slider1.jpg";
+import twoGoFifthSlider2 from "@/assets/2GO_5slider2.jpg";
+import twoGoFifthSlider3 from "@/assets/2GO_5slider3.jpg";
+import twoGoSixthSlider1 from "@/assets/2GO_6slider1.jpg";
+import twoGoSixthSlider2 from "@/assets/2GO_6slider2.jpg";
+import twoGoSixthSlider3 from "@/assets/2GO_6slider3.jpg";
+import twoGoSixthSlider4 from "@/assets/2GO_6slider4.jpg";
+import twoGoSixthSlider5 from "@/assets/2GO_6slider5.jpg";
+import twoGoSixthSlider6 from "@/assets/2GO_6slider6.jpg";
+import twoGoSixthSlider7 from "@/assets/2GO_6slider7.jpg";
+import twoGoSixthSlider8 from "@/assets/2GO_6slider8.jpg";
+import twoGoSixthSlider9 from "@/assets/2GO_6slider9.jpg";
 import zoodaoCoverImg from "@/assets/zoodao_cover_v3.webp";
 import maatCoverImg from "@/assets/maat_pd_cover_v3.webp";
 
@@ -201,6 +238,61 @@ const xswapConclusionSlides: LightboxItem[] = [
   { src: "/Viet_Route.webp", alt: "Vietnamese Route" },
   { src: "/UI_Library_1.webp", alt: "UI Library 1" },
   { src: "/UI_Library_2.webp", alt: "UI Library 2" }
+];
+
+const twoGoSlides: LightboxItem[] = [
+  { src: twoGoSlider1.src, alt: "2GO Slider 1" },
+  { src: twoGoSlider2.src, alt: "2GO Slider 2" },
+  { src: twoGoSlider3.src, alt: "2GO Slider 3" },
+  { src: twoGoSlider4.src, alt: "2GO Slider 4" },
+  { src: twoGoSlider5.src, alt: "2GO Slider 5" },
+  { src: twoGoSlider6.src, alt: "2GO Slider 6" },
+  { src: twoGoSlider7.src, alt: "2GO Slider 7" }
+];
+
+const twoGoSecondSlides: LightboxItem[] = [
+  { src: twoGoSecondSlider1.src, alt: "2GO Second Slider 1" },
+  { src: twoGoSecondSlider2.src, alt: "2GO Second Slider 2" },
+  { src: twoGoSecondSlider3.src, alt: "2GO Second Slider 3" },
+  { src: twoGoSecondSlider4.src, alt: "2GO Second Slider 4" },
+  { src: twoGoSecondSlider5.src, alt: "2GO Second Slider 5" },
+  { src: twoGoSecondSlider6.src, alt: "2GO Second Slider 6" },
+  { src: twoGoSecondSlider7.src, alt: "2GO Second Slider 7" },
+  { src: twoGoSecondSlider8.src, alt: "2GO Second Slider 8" }
+];
+
+const twoGoThirdSlides: LightboxItem[] = [
+  { src: twoGoThirdSlider1.src, alt: "2GO Third Slider 1" },
+  { src: twoGoThirdSlider2.src, alt: "2GO Third Slider 2" },
+  { src: twoGoThirdSlider3.src, alt: "2GO Third Slider 3" },
+  { src: twoGoThirdSlider4.src, alt: "2GO Third Slider 4" },
+  { src: twoGoThirdSlider5.src, alt: "2GO Third Slider 5" },
+  { src: twoGoThirdSlider6.src, alt: "2GO Third Slider 6" }
+];
+
+const twoGoFourthSlides: LightboxItem[] = [
+  { src: twoGoFourthSlider1.src, alt: "2GO Fourth Slider 1" },
+  { src: twoGoFourthSlider2.src, alt: "2GO Fourth Slider 2" },
+  { src: twoGoFourthSlider3.src, alt: "2GO Fourth Slider 3" },
+  { src: twoGoFourthSlider4.src, alt: "2GO Fourth Slider 4" }
+];
+
+const twoGoFifthSlides: LightboxItem[] = [
+  { src: twoGoFifthSlider1.src, alt: "2GO Fifth Slider 1" },
+  { src: twoGoFifthSlider2.src, alt: "2GO Fifth Slider 2" },
+  { src: twoGoFifthSlider3.src, alt: "2GO Fifth Slider 3" }
+];
+
+const twoGoSixthSlides: LightboxItem[] = [
+  { src: twoGoSixthSlider1.src, alt: "2GO Sixth Slider 1" },
+  { src: twoGoSixthSlider2.src, alt: "2GO Sixth Slider 2" },
+  { src: twoGoSixthSlider3.src, alt: "2GO Sixth Slider 3" },
+  { src: twoGoSixthSlider4.src, alt: "2GO Sixth Slider 4" },
+  { src: twoGoSixthSlider5.src, alt: "2GO Sixth Slider 5" },
+  { src: twoGoSixthSlider6.src, alt: "2GO Sixth Slider 6" },
+  { src: twoGoSixthSlider7.src, alt: "2GO Sixth Slider 7" },
+  { src: twoGoSixthSlider8.src, alt: "2GO Sixth Slider 8" },
+  { src: twoGoSixthSlider9.src, alt: "2GO Sixth Slider 9" }
 ];
 
 export default function ProjectDetail() {
@@ -690,7 +782,7 @@ export default function ProjectDetail() {
                 </span>
               </div>
 
-              {(project.id === 2 || project.id === 1) && (
+              {(project.id === 2 || project.id === 1 || project.id === 4) && (
                 <div className="md:ml-auto relative">
                   <button 
                     onClick={() => setTldrOpen(!tldrOpen)}
@@ -725,6 +817,10 @@ export default function ProjectDetail() {
                         <p className="text-[16px] leading-relaxed text-gray-600">
                           {project.id === 1 
                             ? "Lead Product Designer в Glacis Labs: собрала визуальную систему бренда и спроектировала dApp для трекинга кроссчейн-транзакций (до 5 бриджей) с прозрачной моделью статусов, ретраями и аналитикой. Масштабировала продукт с V1 до V2 после запуска AirLift и расширения аналитики."
+                            : project.id === 4
+                            ? language === "ru"
+                              ? "2GO — агрегатор акций для ресторанов и кафе в Узбекистане. Единственный дизайнер в команде, в связке с продакт-менеджером за два месяца спроектировала три продукта с нуля: мобильное приложение для пользователей, B2B-кабинет для ресторанов и админ-панель для модерации. Единый промокод-флоу проходит через все три интерфейса — пользователь получает код, официант пробивает на кассе, ресторан видит статистику, админ модерирует. Прямых аналогов на рынке нет."
+                              : "2GO is a deals platform for restaurants and cafes in Uzbekistan. Users can instantly see nearby happy hours, open a promo code, and head to the venue. Restaurants get more foot traffic and a practical tool to manage promotions. I designed three products in parallel: a mobile app for users, a B2B dashboard for restaurant teams, and an admin panel, working independently in close collaboration with the product manager."
                             : "xSwap — AMM dApp на CrossFi. За 1 месяц собрала UX/UI для Swap, Pools, Token Sale и Lock/Voting, координировала фронт, работала в связке с solidity. Сделала интерфейс, который не пугает: slippage и прозрачный Route в swap, понятные liquidity-пулы с multi-step подсказками, Token Sale с Profit Estimator и видеогайдами, плюс сложный Lock/Voting — с продуманными корнер-кейсами и состояниями транзакций."
                           }
                         </p>
@@ -751,13 +847,13 @@ export default function ProjectDetail() {
               ) : project.id === 3 ? (
                 language === "ru"
                   ? "СКИЗИ (Система координации использования зелёных инструментов) – это система учёта зелёных сертификатов и прав. В ней можно передавать права между владельцами и «погашать» их – отмечать как использованные, когда компания хочет подтвердить потребление зелёной энергии."
-                  : project.description
+                  : (project.caseDescription ?? project.description)
               ) : project.id === 1 ? (
                 language === "ru"
                   ? "Glacis labs – американский стартап, который предлагает решения разработчикам децентрализованных приложений. Они создали экосистему DeFi-продуктов, а я отвечала за все ее визуальные составляющие."
-                  : project.description
+                  : (project.caseDescription ?? project.description)
               ) : (
-                project.description
+                (project.caseDescription ?? project.description)
               )}
             </p>
 
@@ -874,6 +970,207 @@ export default function ProjectDetail() {
                     className="w-full h-auto object-cover"
                   />
                 </div>
+              </div>
+            )}
+
+            {project.id === 4 && language === "ru" && (
+              <div className="max-w-[calc(56rem-80px)] mb-16">
+                <h2 className="text-2xl font-medium mt-4 mb-6">Контекст и вызовы</h2>
+                <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                  2GO выходит на рынок, где прямых аналогов нет – ближайший похожий продукт в Ташкенте это Bizzon.uz, купонный сервис по модели Groupon. Но у него другая механика: пользователь платит за купон заранее, нет real-time акций и B2B-инструмента для ресторанов. Агрегатора happy hours и live-промокодов в Узбекистане пока не существует. Это одновременно возможность и сложность. Нет устоявшегося паттерна потребления, на который можно опереться. Рестораны не привыкли управлять акциями через цифровой инструмент, поэтому B2B-часть должна быть супер понятной и интуитивной.
+                </p>
+
+                <h2 className="text-2xl font-medium mt-4 mb-6">Пользовательское приложение</h2>
+                <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))]">
+                  <div
+                    ref={scrollContainerRef5}
+                    onMouseDown={handleMouseDown5}
+                    onMouseLeave={() => setIsDragging5(false)}
+                    onMouseUp={() => setIsDragging5(false)}
+                    onMouseMove={handleMouseMove5}
+                    className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging5 ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
+                  >
+                    {twoGoSlides.map((img, idx) => (
+                      <div key={img.src} className="flex-shrink-0 w-[250px]">
+                        <div
+                          onClick={() => !hasMoved5 && openLightbox(twoGoSlides, idx)}
+                          className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging5 ? 'cursor-grabbing' : 'cursor-grab'}`}
+                        >
+                          <img
+                            src={img.src}
+                            alt={img.alt}
+                            className="w-full aspect-[393/852] object-cover object-top pointer-events-none"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                    <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
+                  </div>
+                </div>
+                <p className="text-lg text-gray-600 leading-relaxed mt-8">
+                  В Яндекс.Еде или Wolt у человека есть конкретная цель – заказать еду. В 2GO пользователь просто хочет знать, где сейчас выгодно. Поэтому в Обзоре помогаем ему найти ближайшие локации с акциями, кастомизировать ленту через фильтры (тут фильтры по категориям заведения, типам акции, сортировка по удаленности и поиск) и преследуем свои интересы, показывая лучшие (проплаченные) предложения. Еще подсвечиваем в таб-баре карту, на которой все рестораны и акции рядом.
+                </p>
+                <p className="text-lg text-gray-600 leading-relaxed mt-6">
+                  Подписка не блокирует просмотр – человек может листать всё что угодно, но промокод открывается только авторизованным пользователям. Барьер появляется в момент, когда интерес уже есть, не раньше.
+                </p>
+
+                <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))] mt-8">
+                  <div
+                    ref={scrollContainerRef6}
+                    onMouseDown={handleMouseDown6}
+                    onMouseLeave={() => setIsDragging6(false)}
+                    onMouseUp={() => setIsDragging6(false)}
+                    onMouseMove={handleMouseMove6}
+                    className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging6 ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
+                  >
+                    {twoGoSecondSlides.map((img, idx) => (
+                      <div key={img.src} className="flex-shrink-0 w-[250px]">
+                        <div
+                          onClick={() => !hasMoved6 && openLightbox(twoGoSecondSlides, idx)}
+                          className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging6 ? 'cursor-grabbing' : 'cursor-grab'}`}
+                        >
+                          <img
+                            src={img.src}
+                            alt={img.alt}
+                            className="w-full aspect-[393/852] object-cover object-top pointer-events-none"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                    <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
+                  </div>
+                </div>
+                <p className="text-lg text-gray-600 leading-relaxed mt-8">
+                  Карточка ресторана – это сеть, а не точка. Внутри показаны все акции сети, но можно выбрать конкретный филиал или посортировать. Это чуть усложняет UX, но отражает реальность: пользователь думает «пойду в McDonald's», а не «пойду в McDonald's на 7-й проезд Ниезбек Йули». С карты фильтр по филиалу применяется автоматически – открывается карточка с уже выбранным филиалом.
+                </p>
+                <p className="text-lg text-gray-600 leading-relaxed mt-6">
+                  После того как официант пробивает код, клиенту выезжает модалка с просьбой оценить акцию. Если пользователь не в приложении – она появится при следующем открытии. Без этого теряется большая часть отзывов.
+                </p>
+                <h2 className="text-2xl font-medium mt-8 mb-6">B2B-кабинет</h2>
+                <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))]">
+                  <div
+                    ref={scrollContainerRef3}
+                    onMouseDown={handleMouseDown3}
+                    onMouseLeave={() => setIsDragging3(false)}
+                    onMouseUp={() => setIsDragging3(false)}
+                    onMouseMove={handleMouseMove3}
+                    className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging3 ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
+                  >
+                    {twoGoThirdSlides.map((img, idx) => (
+                      <div key={img.src} className="flex-shrink-0 w-[85vw] md:w-[900px]">
+                        <div
+                          onClick={() => !hasMoved3 && openLightbox(twoGoThirdSlides, idx)}
+                          className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging3 ? 'cursor-grabbing' : 'cursor-grab'}`}
+                        >
+                          <img
+                            src={img.src}
+                            alt={img.alt}
+                            className="w-full aspect-[14/8] object-cover object-top pointer-events-none"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                    <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
+                  </div>
+                </div>
+                <p className="text-lg text-gray-600 leading-relaxed mt-8">
+                  У B2B три уровня доступа: создатель сети, менеджер сети, менеджер филиала – с разными правами. При этом один аккаунт может владеть несколькими сетями. Чтобы начать работу нужно создать ресторан, добавить в него филиалы, а затем создать акции.
+                </p>
+                <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))] mt-8">
+                  <div
+                    ref={scrollContainerRef4}
+                    onMouseDown={handleMouseDown4}
+                    onMouseLeave={() => setIsDragging4(false)}
+                    onMouseUp={() => setIsDragging4(false)}
+                    onMouseMove={handleMouseMove4}
+                    className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging4 ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
+                  >
+                    {twoGoFourthSlides.map((img, idx) => (
+                      <div key={img.src} className="flex-shrink-0 w-[85vw] md:w-[900px]">
+                        <div
+                          onClick={() => !hasMoved4 && openLightbox(twoGoFourthSlides, idx)}
+                          className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging4 ? 'cursor-grabbing' : 'cursor-grab'}`}
+                        >
+                          <img
+                            src={img.src}
+                            alt={img.alt}
+                            className="w-full aspect-[14/8] object-cover object-top pointer-events-none"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                    <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
+                  </div>
+                </div>
+                <p className="text-lg text-gray-600 leading-relaxed mt-8">
+                  «Пробить промокод» – самый частый флоу для менеджера филиала. Официант использует его на кассе много раз в день: клиент показывает 6-значный код, официант вводит его, возвращается успех или ошибка. (Здесь я предложила генерировать кьюар на стороне пользователя и показывать официанту – удобно + распространенная практика, но заказчик отказался в связи с техническими ограничениями). Времени на кассе мало, поэтому филиал предзаполнен, а инпуты для кода большие, что не промахнуться.
+                </p>
+                <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))] mt-8">
+                  <div
+                    ref={scrollContainerRef2}
+                    onMouseDown={handleMouseDown2}
+                    onMouseLeave={() => setIsDragging2(false)}
+                    onMouseUp={() => setIsDragging2(false)}
+                    onMouseMove={handleMouseMove2}
+                    className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging2 ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
+                  >
+                    {twoGoFifthSlides.map((img, idx) => (
+                      <div key={img.src} className="flex-shrink-0 w-[85vw] md:w-[900px]">
+                        <div
+                          onClick={() => !hasMoved2 && openLightbox(twoGoFifthSlides, idx)}
+                          className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging2 ? 'cursor-grabbing' : 'cursor-grab'}`}
+                        >
+                          <img
+                            src={img.src}
+                            alt={img.alt}
+                            className="w-full aspect-[14/8] object-cover object-top pointer-events-none"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                    <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
+                  </div>
+                </div>
+                <h2 className="text-2xl font-medium mt-8 mb-6">Админ-панель</h2>
+                <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))]">
+                  <div
+                    ref={scrollContainerRef1}
+                    onMouseDown={handleMouseDown1}
+                    onMouseLeave={() => setIsDragging1(false)}
+                    onMouseUp={() => setIsDragging1(false)}
+                    onMouseMove={handleMouseMove1}
+                    className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging1 ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
+                  >
+                    {twoGoSixthSlides.map((img, idx) => (
+                      <div key={img.src} className="flex-shrink-0 w-[85vw] md:w-[900px]">
+                        <div
+                          onClick={() => !hasMoved1 && openLightbox(twoGoSixthSlides, idx)}
+                          className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging1 ? 'cursor-grabbing' : 'cursor-grab'}`}
+                        >
+                          <img
+                            src={img.src}
+                            alt={img.alt}
+                            className="w-full aspect-[14/8] object-cover object-top pointer-events-none"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                    <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
+                  </div>
+                </div>
+                <p className="text-lg text-gray-600 leading-relaxed mt-8">
+                  Это внутренний инструмент, необходимый для модерации платформы. Администратор рассматривает заявки на создание и редактирование ресторанов. Чтобы не отклонять заявку целиком – может прямо на этапе рассмотрения изменить данные – все инпуты открыты для редактирования. В заявках на редактирование показываем только те данные, которые поменялись – для быстроты и удобства сравнения.
+                </p>
+                <p className="text-lg text-gray-600 leading-relaxed mt-6">
+                  Еще администратор управляет командой модераторов – добавляет по email, удаляет с мгновенным отзывом доступа. Пуш-уведомления настраиваются прямо в панели: заголовок, текст, время рассылки, периодичность. Активные и архивные хранятся отдельно.
+                </p>
+                <h2 className="text-2xl font-medium mt-8 mb-6">Итог</h2>
+                <p className="text-lg text-gray-600 leading-relaxed">
+                  Три продукта с единой логикой, запущенные с нуля на рынке без прямых аналогов. Сейчас всё на стадии финальной верстки.
+                </p>
+                <p className="text-lg text-gray-600 leading-relaxed mt-6">
+                  Все три продукта работают как единая система: официант пробил код – у пользователя он стал использованным, администратор одобрил ресторан – он появился в каталоге. Это потребовало синхронизации логики между интерфейсами ещё на стадии проектирования (я очень люблю сквозные флоу).
+                </p>
               </div>
             )}
 
@@ -1146,10 +1443,12 @@ export default function ProjectDetail() {
               </div>
             )}
 
-            {project.id === 9 && language === "ru" && (
+            {project.id === 9 && (
               <div className="max-w-[calc(56rem-80px)] mb-16">
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                  За пару дней я собрала лендинг и страницу покупки, а дизайнер NFTшек дополнил мой макет пиксельным взывом на фон. Моей целью было понятно рассказать о продукте, подкрепить рассказ социальными доказательствами и довести пользователя до покупки. На странице минт – развести два сценария приобретения, дать все вводные для покупки и понятную кнопку действия.
+                  {language === "ru"
+                    ? "За пару дней я собрала лендинг и страницу покупки, а дизайнер NFTшек дополнил мой макет пиксельным взрывом на фон. Я выстроила подачу так, чтобы сначала пользователь понял суть проекта и мог проверить надежность в соцсетях, потом увидел CTA, команду и интеграции (и снова CTA). На странице минта разделила два пути: обычная покупка и бесплатный клейм по вайтлисту, каждый со своими данными и кнопкой действия."
+                    : "In a couple of days, I designed both the landing page and the purchase page, while the NFT artist enhanced my layout with a pixel explosion background. I structured the flow so users first understand the project, then see the CTA, the team, and integrations (followed by another CTA). On the mint page, I split the experience into two paths: a standard purchase and a free whitelist claim, each with its own context and action button."}
                 </p>
 
                 <div className="mt-8 rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white max-w-[750px]">

@@ -149,7 +149,19 @@ export const translations = {
   }
 };
 
-export const projectTranslations = {
+export type ProjectTranslation = {
+  id: number;
+  year: string;
+  category: string;
+  role: string;
+  title: string;
+  description: string;
+  cardDescription?: string;
+  caseDescription?: string;
+  content?: any;
+};
+
+export const projectTranslations: Record<"en" | "ru", ProjectTranslation[]> = {
   en: [
     {
       id: 1,
@@ -238,20 +250,20 @@ We also shipped a Vietnamese version and launched for the Vietnamese market (and
       }
     },
     {
-      id: 3,
-      year: "2022-23",
-      category: "GREEN TOOLS",
-      role: "PRODUCT DESIGNER",
-      title: "SKIZI",
-      description: "Green energy accounting automation system. One of my longest and most complex projects, with a pretty deep role model (around 8 roles 😱)."
-    },
-    {
       id: 4,
       year: "2025",
       category: "Food App",
       role: "Senior Product Designer",
       title: "2Go",
       description: "Freelance promos/deals service. Includes a mobile app for customers, a desktop app for B2B partners, and an admin panel."
+    },
+    {
+      id: 3,
+      year: "2022-23",
+      category: "GREEN TOOLS",
+      role: "PRODUCT DESIGNER",
+      title: "SKIZI",
+      description: "Green energy accounting automation system. One of my longest and most complex projects, with a pretty deep role model (around 8 roles 😱)."
     },
     {
       id: 5,
@@ -406,20 +418,21 @@ Lock + Voting
       }
     },
     {
+      id: 4,
+      year: "2025",
+      category: "Food App",
+      role: "Senior Product Designer",
+      title: "2Go",
+      description: "Фриланс-проект сервиса акций. Внутри – мобильное приложение для клиента, десктоп для B2B и админ-панель.",
+      caseDescription: "2GO – сервис акций для ресторанов и кафе в Узбекистане. Рестораны создают акции, пользователи их находят и приходят с промокодом, официанты пробивают код на кассе. Моя задача – спроектировать три продукта сразу: мобильное приложение для пользователей, B2B-кабинет для ресторанов и админ-панель для модерации."
+    },
+    {
       id: 3,
       year: "2022-23",
       category: "GREEN TOOLS",
       role: "PRODUCT DESIGNER",
       title: "СКИЗИ",
       description: "Система автоматизации учета зеленой энергии. Один из самых длительных и сложных моих проектов, с расширенной ролевой моделью (~8 ролей 😱)"
-    },
-    {
-      id: 4,
-      year: "2025",
-      category: "Food App",
-      role: "Senior Product Designer",
-      title: "2Go",
-      description: "Фриланс-проект сервиса акций. Внутри - мобильное приложение для клиента, десктоп для B2B и админ-панель."
     },
     {
       id: 5,
@@ -459,7 +472,8 @@ Lock + Voting
       category: "NFT",
       role: "Senior Designer",
       title: "DickButts",
-      description: "DickButts – лендинг для NFT-коллекции из 9999 пиксельных персонажей, где пользователю нужно быстро понять, что это за проект, и перейти к одному из двух действий – покупке или whitelist claim (бесплатный клейм по вайтлисту)."
+      description: "За пару дней собрала дизайн лендинга NFT коллекции DickButts.",
+      caseDescription: "zkDickButts – лендинг и минт-страница для NFT-коллекции из 9999 пиксельных персонажей на zkSync ERA. Задача – понятно рассказать о продукте и довести пользователя до покупки."
     },
     {
       id: 10,
