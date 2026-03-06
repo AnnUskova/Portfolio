@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, ArrowLeft, X, ChevronRight, ChevronLeft, Download, Zap, ZoomIn, ZoomOut } from "lucide-react";
+import { ArrowUpRight, ArrowLeft, X, ChevronRight, ChevronLeft, Download, Zap, ZoomIn, ZoomOut, ChevronUp } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { translations, projectTranslations, type Language } from "@/lib/translations";
 
@@ -71,7 +71,6 @@ import skiziDogovor from "@/assets/skizi_dogovor.jpg";
 import skiziDogovor1 from "@/assets/skizi_dogovor_1.jpg";
 import skiziDogovor2 from "@/assets/skizi_dogovor_2.jpg";
 import skiziDogovor3 from "@/assets/skizi_dogovor_3.jpg";
-import skiziAnalit from "@/assets/skizi_analit.jpg";
 import skiziZd1 from "@/assets/skizi_zd1.jpg";
 import skiziZd2 from "@/assets/skizi_zd2.jpg";
 import skiziZd3 from "@/assets/skizi_zd3.jpg";
@@ -82,6 +81,26 @@ import skiziGo3 from "@/assets/skizi_go3.jpg";
 import skiziGo4 from "@/assets/skizi_go4.jpg";
 import skiziReestr1 from "@/assets/skizi_reestr1.jpg";
 import skiziReestr2 from "@/assets/skizi_reestr2.jpg";
+import skiziProfile1 from "@/assets/skizi_profile1.jpg";
+import skiziProfile2 from "@/assets/skizi_profile2.jpg";
+import skiziProfile3 from "@/assets/skizi_profile3.jpg";
+import skiziProfile4 from "@/assets/skizi_profile4.jpg";
+import skiziProfile5 from "@/assets/skizi_profile5.jpg";
+import skiziAudit1 from "@/assets/skizi_audit1.jpg";
+import skiziAudit2 from "@/assets/skizi_audit2.jpg";
+import skiziAudit3 from "@/assets/skizi_audit3.jpg";
+import skiziAudit4 from "@/assets/skizi_audit4.jpg";
+import skiziAudit5 from "@/assets/skizi_audit5.jpg";
+import skiziLast1 from "@/assets/skizi_last1.jpg";
+import skiziLast2 from "@/assets/skizi_last2.jpg";
+import skiziLast3 from "@/assets/skizi_last3.jpg";
+import skiziLast4 from "@/assets/skizi_last4.jpg";
+import skiziLast5 from "@/assets/skizi_last5.jpg";
+import skiziLast6 from "@/assets/skizi_last6.jpg";
+import skiziLast7 from "@/assets/skizi_last7.jpg";
+import skiziLast8 from "@/assets/skizi_last8.jpg";
+import skiziLast9 from "@/assets/skizi_last9.jpg";
+import skiziLast10 from "@/assets/skizi_last10.jpg";
 import skiziRoles from "@/assets/SKIZI_Roles.jpg";
 
 import twoGoCoverImg from "@/assets/2go_cover.webp";
@@ -236,6 +255,35 @@ const skiziReestrSlides: LightboxItem[] = [
   { src: skiziReestr2.src, alt: "SKIZI Registry 2" }
 ];
 
+const skiziProfileSlides: LightboxItem[] = [
+  { src: skiziProfile1.src, alt: "SKIZI Profile 1" },
+  { src: skiziProfile2.src, alt: "SKIZI Profile 2" },
+  { src: skiziProfile3.src, alt: "SKIZI Profile 3" },
+  { src: skiziProfile4.src, alt: "SKIZI Profile 4" },
+  { src: skiziProfile5.src, alt: "SKIZI Profile 5" }
+];
+
+const skiziAuditSlides: LightboxItem[] = [
+  { src: skiziAudit1.src, alt: "SKIZI Audit 1" },
+  { src: skiziAudit2.src, alt: "SKIZI Audit 2" },
+  { src: skiziAudit3.src, alt: "SKIZI Audit 3" },
+  { src: skiziAudit4.src, alt: "SKIZI Audit 4" },
+  { src: skiziAudit5.src, alt: "SKIZI Audit 5" }
+];
+
+const skiziLastSlides: LightboxItem[] = [
+  { src: skiziLast1.src, alt: "SKIZI Final 1" },
+  { src: skiziLast2.src, alt: "SKIZI Final 2" },
+  { src: skiziLast3.src, alt: "SKIZI Final 3" },
+  { src: skiziLast4.src, alt: "SKIZI Final 4" },
+  { src: skiziLast5.src, alt: "SKIZI Final 5" },
+  { src: skiziLast6.src, alt: "SKIZI Final 6" },
+  { src: skiziLast7.src, alt: "SKIZI Final 7" },
+  { src: skiziLast8.src, alt: "SKIZI Final 8" },
+  { src: skiziLast9.src, alt: "SKIZI Final 9" },
+  { src: skiziLast10.src, alt: "SKIZI Final 10" }
+];
+
 const glacisSchemeSlides: LightboxItem[] = [
   { src: glacisScheme1.src, alt: "Glacis Scheme 1" },
   { src: glacisScheme2.src, alt: "Glacis Scheme 2" }
@@ -346,6 +394,7 @@ export default function ProjectDetail() {
   };
 
   const [contactOpen, setContactOpen] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
   const [tldrOpen, setTldrOpen] = useState(false);
   const [lightboxItems, setLightboxItems] = useState<LightboxItem[]>([]);
   const [lightboxIndex, setLightboxIndex] = useState(0);
@@ -375,6 +424,9 @@ export default function ProjectDetail() {
   const scrollContainerRef7 = useRef<HTMLDivElement>(null);
   const scrollContainerRef8 = useRef<HTMLDivElement>(null);
   const scrollContainerRef9 = useRef<HTMLDivElement>(null);
+  const scrollContainerRef10 = useRef<HTMLDivElement>(null);
+  const scrollContainerRef11 = useRef<HTMLDivElement>(null);
+  const scrollContainerRef12 = useRef<HTMLDivElement>(null);
   const [isDragging1, setIsDragging1] = useState(false);
   const [isDragging2, setIsDragging2] = useState(false);
   const [isDragging3, setIsDragging3] = useState(false);
@@ -384,6 +436,9 @@ export default function ProjectDetail() {
   const [isDragging7, setIsDragging7] = useState(false);
   const [isDragging8, setIsDragging8] = useState(false);
   const [isDragging9, setIsDragging9] = useState(false);
+  const [isDragging10, setIsDragging10] = useState(false);
+  const [isDragging11, setIsDragging11] = useState(false);
+  const [isDragging12, setIsDragging12] = useState(false);
   const [hasMoved1, setHasMoved1] = useState(false);
   const [hasMoved2, setHasMoved2] = useState(false);
   const [hasMoved3, setHasMoved3] = useState(false);
@@ -393,6 +448,9 @@ export default function ProjectDetail() {
   const [hasMoved7, setHasMoved7] = useState(false);
   const [hasMoved8, setHasMoved8] = useState(false);
   const [hasMoved9, setHasMoved9] = useState(false);
+  const [hasMoved10, setHasMoved10] = useState(false);
+  const [hasMoved11, setHasMoved11] = useState(false);
+  const [hasMoved12, setHasMoved12] = useState(false);
   const [startX1, setStartX1] = useState(0);
   const [startX2, setStartX2] = useState(0);
   const [startX3, setStartX3] = useState(0);
@@ -402,6 +460,9 @@ export default function ProjectDetail() {
   const [startX7, setStartX7] = useState(0);
   const [startX8, setStartX8] = useState(0);
   const [startX9, setStartX9] = useState(0);
+  const [startX10, setStartX10] = useState(0);
+  const [startX11, setStartX11] = useState(0);
+  const [startX12, setStartX12] = useState(0);
   const [scrollLeft1, setScrollLeft1] = useState(0);
   const [scrollLeft2, setScrollLeft2] = useState(0);
   const [scrollLeft3, setScrollLeft3] = useState(0);
@@ -411,6 +472,9 @@ export default function ProjectDetail() {
   const [scrollLeft7, setScrollLeft7] = useState(0);
   const [scrollLeft8, setScrollLeft8] = useState(0);
   const [scrollLeft9, setScrollLeft9] = useState(0);
+  const [scrollLeft10, setScrollLeft10] = useState(0);
+  const [scrollLeft11, setScrollLeft11] = useState(0);
+  const [scrollLeft12, setScrollLeft12] = useState(0);
 
   const handleMouseDown1 = (e: React.MouseEvent) => {
     if (!scrollContainerRef1.current) return;
@@ -482,6 +546,30 @@ export default function ProjectDetail() {
     setHasMoved9(false);
     setStartX9(e.pageX - scrollContainerRef9.current.offsetLeft);
     setScrollLeft9(scrollContainerRef9.current.scrollLeft);
+  };
+
+  const handleMouseDown10 = (e: React.MouseEvent) => {
+    if (!scrollContainerRef10.current) return;
+    setIsDragging10(true);
+    setHasMoved10(false);
+    setStartX10(e.pageX - scrollContainerRef10.current.offsetLeft);
+    setScrollLeft10(scrollContainerRef10.current.scrollLeft);
+  };
+
+  const handleMouseDown11 = (e: React.MouseEvent) => {
+    if (!scrollContainerRef11.current) return;
+    setIsDragging11(true);
+    setHasMoved11(false);
+    setStartX11(e.pageX - scrollContainerRef11.current.offsetLeft);
+    setScrollLeft11(scrollContainerRef11.current.scrollLeft);
+  };
+
+  const handleMouseDown12 = (e: React.MouseEvent) => {
+    if (!scrollContainerRef12.current) return;
+    setIsDragging12(true);
+    setHasMoved12(false);
+    setStartX12(e.pageX - scrollContainerRef12.current.offsetLeft);
+    setScrollLeft12(scrollContainerRef12.current.scrollLeft);
   };
 
   const handleMouseMove1 = (e: React.MouseEvent) => {
@@ -565,6 +653,33 @@ export default function ProjectDetail() {
     scrollContainerRef9.current.scrollLeft = scrollLeft9 - walk;
   };
 
+  const handleMouseMove10 = (e: React.MouseEvent) => {
+    if (!isDragging10 || !scrollContainerRef10.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainerRef10.current.offsetLeft;
+    const walk = (x - startX10) * 2;
+    if (Math.abs(walk) > 5) setHasMoved10(true);
+    scrollContainerRef10.current.scrollLeft = scrollLeft10 - walk;
+  };
+
+  const handleMouseMove11 = (e: React.MouseEvent) => {
+    if (!isDragging11 || !scrollContainerRef11.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainerRef11.current.offsetLeft;
+    const walk = (x - startX11) * 2;
+    if (Math.abs(walk) > 5) setHasMoved11(true);
+    scrollContainerRef11.current.scrollLeft = scrollLeft11 - walk;
+  };
+
+  const handleMouseMove12 = (e: React.MouseEvent) => {
+    if (!isDragging12 || !scrollContainerRef12.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainerRef12.current.offsetLeft;
+    const walk = (x - startX12) * 2;
+    if (Math.abs(walk) > 5) setHasMoved12(true);
+    scrollContainerRef12.current.scrollLeft = scrollLeft12 - walk;
+  };
+
   const contactData = {
     telegramUrl: "https://t.me/Ann_uskova",
     linkedinUrl: "https://www.linkedin.com/in/anna-uskova-4b1169268/",
@@ -643,6 +758,16 @@ export default function ProjectDetail() {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [isLightboxOpen, lightboxIndex, lightboxItems.length]);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setShowScrollTop(window.scrollY > 500);
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <div className="min-h-screen bg-white">
@@ -880,7 +1005,7 @@ export default function ProjectDetail() {
                 </span>
               </div>
 
-              {(project.id === 2 || project.id === 1 || project.id === 4) && (
+              {(project.id === 2 || project.id === 1 || project.id === 4 || project.id === 3) && (
                 <div className="md:ml-auto relative">
                   <button 
                     onClick={() => setTldrOpen(!tldrOpen)}
@@ -915,6 +1040,10 @@ export default function ProjectDetail() {
                         <p className="text-[16px] leading-relaxed text-gray-600">
                           {project.id === 1 
                             ? "Lead Product Designer в Glacis Labs: собрала визуальную систему бренда и спроектировала dApp для трекинга кроссчейн-транзакций (до 5 бриджей) с прозрачной моделью статусов, ретраями и аналитикой. Масштабировала продукт с V1 до V2 после запуска AirLift и расширения аналитики."
+                            : project.id === 3
+                            ? language === "ru"
+                              ? "СКИЗИ – система учёта зелёных сертификатов и договоров с многоуровневой ролевой моделью. За 1,5 года провела проект от тендера до продакшна: спроектировала ключевые флоу для каждой роли (зеленые инструменты и операции с ними, генерирующие объекты, управление данными, аудит и др), разобралась в предметной области с нуля и сделала так, чтобы сложные операции с атрибутами генерации, деньгами и ЭП оставались понятными для всех пользователей."
+                              : "SKIZI is a green certificates and contracts accounting system with a multi-layer role model. Over 1.5 years, I led the project from tender to production: designed key flows for every role (green instruments and related operations, generation facilities, data management, audit, and more), learned the domain from scratch, and made sure complex operations with generation attributes, funds, and e-signatures remained clear for all users."
                             : project.id === 4
                             ? language === "ru"
                               ? "2GO — агрегатор акций для ресторанов и кафе в Узбекистане. Единственный дизайнер в команде, в связке с продакт-менеджером за два месяца спроектировала три продукта с нуля: мобильное приложение для пользователей, B2B-кабинет для ресторанов и админ-панель для модерации. Единый промокод-флоу проходит через все три интерфейса — пользователь получает код, официант пробивает на кассе, ресторан видит статистику, админ модерирует. Прямых аналогов на рынке нет."
@@ -945,7 +1074,7 @@ export default function ProjectDetail() {
               ) : project.id === 3 ? (
                 language === "ru"
                   ? "СКИЗИ (Система координации использования зелёных инструментов) – это система учёта зелёных сертификатов и прав. В ней можно передавать права между владельцами и «погашать» их – отмечать как использованные, когда компания хочет подтвердить потребление зелёной энергии. Я единственный дизайнер на проекте – вела его с нуля до запуска полтора года."
-                  : (project.caseDescription ?? project.description)
+                  : "SKIZI (Green Instruments Usage Coordination System) is a system for accounting green certificates and rights. It allows rights to be transferred between owners and redeemed, meaning marked as used when a company needs to confirm its green energy consumption. I was the sole designer on the project and led it from scratch to launch over one and a half years."
               ) : project.id === 1 ? (
                 language === "ru"
                   ? "Glacis labs – американский стартап, который предлагает решения разработчикам децентрализованных приложений. Они создали экосистему DeFi-продуктов, а я отвечала за все ее визуальные составляющие."
@@ -1272,19 +1401,28 @@ export default function ProjectDetail() {
               </div>
             )}
 
-            {project.id === 3 && language === "ru" && (
+            {project.id === 3 && (
               <div className="max-w-[calc(56rem-80px)] mb-16">
-                <h2 className="text-2xl font-medium mb-6">О проекте</h2>
+                <h2 className="text-2xl font-medium mb-6">{language === "ru" ? "О проекте" : "About the Project"}</h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                  Проект интересен сложной предметной областью и расширенной ролевой моделью со сквозными флоу. Здесь, кроме того, госзаказчик и куча терминологии (все как мы любим). Моя задача – спроектировать систему так, чтобы пользователи не утонули в ее ярусах и легко оперировали своими зелеными инструментами.
+                  {language === "ru"
+                    ? "Проект интересен сложной предметной областью и расширенной ролевой моделью со сквозными флоу. Здесь, кроме того, госзаказчик и куча терминологии (все как мы любим). Моя задача – спроектировать систему так, чтобы пользователи не утонули в ее ярусах и легко оперировали своими зелеными инструментами."
+                    : "This project is compelling because of a complex domain and an extended role model with cross-system flows. It also involved a public-sector client and a lot of specialized terminology. My task was to design the system so users wouldn’t drown in its layers and could operate their green instruments with confidence."
+                  }
                 </p>
-                <h2 className="text-2xl font-medium mb-6">Немного контекста</h2>
+                <h2 className="text-2xl font-medium mb-6">{language === "ru" ? "Немного контекста" : "A Bit of Context"}</h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                  Когда солнечная или ветряная станция производит энергию, она считается «зелёной» – потому что из возобновляемого источника (ВИЭ). Компания, которая хочет подтвердить что потребляет именно такую энергию, покупает на неё права – в виде зелёного сертификата или зелёного договора. В СКИЗИ эти права живут: выпускаются, передаются между владельцами и погашаются. За каждой операцией стоит цепочка участников – производитель энергии, покупатель, оператор, гарантирующий поставщик. У каждого своя роль и свои действия в системе.
+                  {language === "ru"
+                    ? "Когда солнечная или ветряная станция производит энергию, она считается «зелёной» – потому что из возобновляемого источника (ВИЭ). Компания, которая хочет подтвердить что потребляет именно такую энергию, покупает на неё права – в виде зелёного сертификата или зелёного договора. В СКИЗИ эти права живут: выпускаются, передаются между владельцами и погашаются. За каждой операцией стоит цепочка участников – производитель энергии, покупатель, оператор, гарантирующий поставщик. У каждого своя роль и свои действия в системе."
+                    : "When a solar or wind plant generates energy, it is considered “green” because it comes from a renewable source. A company that wants to prove it consumes this kind of energy buys the rights in the form of a green certificate or a green contract. In SKIZI, these rights are issued, transferred between owners, and redeemed. Every operation involves a chain of participants: the producer, the buyer, the operator, and the guaranteed supplier. Each has a distinct role and set of actions in the system."
+                  }
                 </p>
-                <h2 className="text-2xl font-medium mb-6">Тендер</h2>
+                <h2 className="text-2xl font-medium mb-6">{language === "ru" ? "Тендер" : "Tender"}</h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                  Разработка проекта началась с тендера – за три дня нужно было задизайнить несколько экранов системы и описать, как она будет работать. Для тендера я сделала такие макеты (и мы выиграли 😎):
+                  {language === "ru"
+                    ? "Разработка проекта началась с тендера – за три дня нужно было задизайнить несколько экранов системы и описать, как она будет работать. Для тендера я сделала такие макеты (и мы выиграли 😎):"
+                    : "The project began with a tender: in three days, we had to design several system screens and explain how the product would work. I prepared these mockups for the tender (and we won 😎):"
+                  }
                 </p>
 
                 <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))]">
@@ -1314,54 +1452,63 @@ export default function ProjectDetail() {
                   </div>
                 </div>
 
-                <h2 className="text-2xl font-medium mt-12 mb-8">Ролевая модель</h2>
+                <h2 className="text-2xl font-medium mt-12 mb-8">{language === "ru" ? "Ролевая модель" : "Role Model"}</h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-4">
-                  Далее началась настоящая разработка: мы учли все пожелания к функциональности системы и построили ролевую модель. Получилось 7 ролей с разными правами:
+                  {language === "ru"
+                    ? "Далее началась настоящая разработка: мы учли все пожелания к функциональности системы и построили ролевую модель. Получилось 7 ролей с разными правами:"
+                    : "Then the real product work began: we incorporated all functional requirements and built the role model. We ended up with seven roles, each with different permissions:"
+                  }
                 </p>
                 <ul className="space-y-2 mb-8">
                   <li className="flex gap-4 text-lg text-gray-600 leading-relaxed">
                     <span className="text-black font-medium">•</span>
-                    <span>Незарегистрированный пользователь</span>
+                    <span>{language === "ru" ? "Незарегистрированный пользователь" : "Unregistered user"}</span>
                   </li>
                   <li className="flex gap-4 text-lg text-gray-600 leading-relaxed">
                     <span className="text-black font-medium">•</span>
-                    <span>Пользователь без Лицевого Счета (ЛС)</span>
+                    <span>{language === "ru" ? "Пользователь без Лицевого Счета (ЛС)" : "User without a personal account"}</span>
                   </li>
                   <li className="flex gap-4 text-lg text-gray-600 leading-relaxed">
                     <span className="text-black font-medium">•</span>
-                    <span>Клиент</span>
+                    <span>{language === "ru" ? "Клиент" : "Client"}</span>
                   </li>
                   <li className="flex gap-4 text-lg text-gray-600 leading-relaxed">
                     <span className="text-black font-medium">•</span>
-                    <span>Владелец ГО</span>
+                    <span>{language === "ru" ? "Владелец ГО" : "Generation Facility Owner"}</span>
                   </li>
                   <li className="flex gap-4 text-lg text-gray-600 leading-relaxed">
                     <span className="text-black font-medium">•</span>
-                    <span>Гарантирующий поставщик/ТСО</span>
+                    <span>{language === "ru" ? "Гарантирующий поставщик/ТСО" : "Guaranteed Supplier/TSO"}</span>
                   </li>
                   <li className="flex gap-4 text-lg text-gray-600 leading-relaxed">
                     <span className="text-black font-medium">•</span>
-                    <span>Оператор</span>
+                    <span>{language === "ru" ? "Оператор" : "Operator"}</span>
                   </li>
                   <li className="flex gap-4 text-lg text-gray-600 leading-relaxed">
                     <span className="text-black font-medium">•</span>
-                    <span>Администратор/Суперадминистратор.</span>
-                  </li>
-                </ul>
+                    <span>{language === "ru" ? "Администратор/Суперадминистратор." : "Administrator/Super Administrator."}</span>
+                </li>
+              </ul>
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                  Для каждой роли свой набор функций и свой уровень доступа к информации. Его может менять суперадминистратор на странице «Управление ролями».
+                  {language === "ru"
+                    ? "Для каждой роли свой набор функций и свой уровень доступа к информации. Его может менять суперадминистратор на странице «Управление ролями»."
+                    : "Each role has its own feature set and information access level. These permissions can be changed by a super administrator on the Role Management page."
+                  }
                 </p>
-                <div className="mt-6 rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white max-w-[900px]">
+                <div className="mt-6 rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white max-w-[900px] aspect-video">
                   <img
                     src={skiziRoles.src}
                     alt="SKIZI Roles"
-                    className="w-full h-auto object-contain cursor-pointer"
+                    className="w-full h-full object-cover object-top cursor-pointer"
                     onClick={() => openSingleImage(skiziRoles.src, "SKIZI Roles")}
                   />
                 </div>
-                <h2 className="text-2xl font-medium mt-12 mb-8">Зеленые сертификаты</h2>
+                <h2 className="text-2xl font-medium mt-12 mb-8">{language === "ru" ? "Зеленые сертификаты" : "Green Certificates"}</h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                  Это основной объект системы (наряду с зелеными договорами). Каждый сертификат имеет свой номинал, уникальный номер, тип энергии, станцию и т.д. Если провалиться в сертификат, станет ясно, что с ним можно делать невообразимое количество вещей, но основные – деление и погашение. Их можно осуществить автоматически и вручную – в обоих случаях упрощаем пользователю жизнь предзаполененными полями, алертами и автоподсчетом («Поделить поровну»).
+                  {language === "ru"
+                    ? "Это основной объект системы (наряду с зелеными договорами). Каждый сертификат имеет свой номинал, уникальный номер, тип энергии, станцию и т.д. Если провалиться в сертификат, станет ясно, что с ним можно делать невообразимое количество вещей, но основные – деление и погашение. Их можно осуществить автоматически и вручную – в обоих случаях упрощаем пользователю жизнь предзаполененными полями, алертами и автоподсчетом («Поделить поровну»)."
+                    : "This is the core object in the system (alongside green contracts). Every certificate has its own nominal value, unique number, energy type, generation facility, and more. Once you open a certificate, there are many available actions, but the key ones are split and redemption. Both can be done manually or automatically, and in both scenarios we reduce friction with prefilled fields, alerts, and auto-calculation (“Split equally”)."
+                  }
                 </p>
                 <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))]">
                   <div
@@ -1390,7 +1537,10 @@ export default function ProjectDetail() {
                   </div>
                 </div>
                 <p className="text-lg text-gray-600 leading-relaxed mt-8 mb-8">
-                  Если сертификатов много – те же действия применяются к группе сразу, без необходимости заходить в каждый по отдельности.
+                  {language === "ru"
+                    ? "Если сертификатов много – те же действия применяются к группе сразу, без необходимости заходить в каждый по отдельности."
+                    : "If there are many certificates, the same actions can be applied to a group at once, without opening each one individually."
+                  }
                 </p>
                 <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))]">
                   <div
@@ -1419,13 +1569,16 @@ export default function ProjectDetail() {
                   </div>
                 </div>
                 <p className="text-sm text-gray-400 text-center italic mt-2">
-                  Групповое погашение (1-4) и деление (5-6)
+                  {language === "ru" ? "Групповое погашение (1-4) и деление (5-6)" : "Bulk redemption (1-4) and split (5-6)"}
                 </p>
                 <h2 className="text-2xl font-medium mt-12 mb-6">
-                  Зеленые договоры
+                  {language === "ru" ? "Зеленые договоры" : "Green Contracts"}
                 </h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                  В отличие от сертификата, договор не статичный – каждый месяц на него начисляется новый объем зеленой энергии, которую нужно оплачивать. Визуально сделала его похожим на сертификат, чтобы не ломать паттерн, но новый объём вынесла в отдельный оранжевый блок – он важный, пусть привлекает внимание.
+                  {language === "ru"
+                    ? "В отличие от сертификата, договор не статичный – каждый месяц на него начисляется новый объем зеленой энергии, которую нужно оплачивать. Визуально сделала его похожим на сертификат, чтобы не ломать паттерн, но новый объём вынесла в отдельный оранжевый блок – он важный, пусть привлекает внимание."
+                    : "Unlike a certificate, a contract is not static: every month it receives a new volume of green energy that must be paid for. Visually, I kept it close to the certificate pattern for consistency, but moved the new volume into a separate orange block so it immediately gets attention."
+                  }
                 </p>
                 <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))]">
                   <div
@@ -1454,24 +1607,19 @@ export default function ProjectDetail() {
                   </div>
                 </div>
                 <p className="text-sm text-gray-400 text-center italic mt-2">
-                  Внутри появляется блок Реализация атрибутов генерации (АГ) и возможность их оплатить. Их может накопиться несколько, если я не оплачиваю вовремя. Все операции хранятся в &quot;Истории операций&quot;.
+                  {language === "ru"
+                    ? "Внутри появляется блок Реализация атрибутов генерации (АГ) и возможность их оплатить. Их может накопиться несколько, если я не оплачиваю вовремя. Все операции хранятся в \"Истории операций\"."
+                    : "Inside, there is an Attribute Realization (AG) block and the ability to pay for it. Several entries can accumulate if payment is delayed. All actions are stored in Operation History."
+                  }
                 </p>
-                <p className="text-lg text-gray-600 leading-relaxed mt-8 mb-8">
-                  По зеленым инструментам доступна статистика – она живет в профиле пользователя. Вот так, например, она выглядит для Владельца ГО:
-                </p>
-                <div className="mt-6 rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white max-w-[900px]">
-                  <img
-                    src={skiziAnalit.src}
-                    alt="SKIZI analytics"
-                    className="w-full h-auto object-contain cursor-pointer"
-                    onClick={() => openSingleImage(skiziAnalit.src, "SKIZI analytics")}
-                  />
-                </div>
                 <h2 className="text-2xl font-medium mt-12 mb-6">
-                  Зеленые договоры под капотом
+                  {language === "ru" ? "Зеленые договоры под капотом" : "Green Contracts Under the Hood"}
                 </h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                  За каждым договором стоит цепочка: оператор ежемесячно подаёт данные по новому объёму, Гарантирующий поставщик проверяет и подписывает ЭП, после чего данные улетают Клиенту и Владельцу ГО. Я проектировала все стороны этого флоу так, чтобы каждая роль видела, что от нее требуется + понимала, в каком статусе оплата/подача по договору.
+                  {language === "ru"
+                    ? "За каждым договором стоит цепочка: оператор ежемесячно подаёт данные по новому объёму, Гарантирующий поставщик проверяет и подписывает ЭП, после чего данные улетают Клиенту и Владельцу ГО. Я проектировала все стороны этого флоу так, чтобы каждая роль видела, что от нее требуется + понимала, в каком статусе оплата/подача по договору."
+                    : "Each contract follows a chain: the operator submits monthly data for the new volume, the Guaranteed Supplier verifies and signs with an e-signature, and then the data is delivered to the Client and the Generation Facility Owner. I designed all sides of this flow so each role clearly sees what it needs to do and understands the current payment/submission status."
+                  }
                 </p>
                 <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))]">
                   <div
@@ -1500,10 +1648,13 @@ export default function ProjectDetail() {
                   </div>
                 </div>
                 <h2 className="text-2xl font-medium mt-12 mb-6">
-                  Владелец ГО и его ГО
+                  {language === "ru" ? "Владелец ГО и его ГО" : "Generation Facility Owner and Facilities"}
                 </h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                  Для Владельца ГО главный флоу – работа с генерирующими объектами. Подача данных по топливу и КУ вынесена на уровень раздела, можно подать сразу по всем (и файлом!). Внутри карточки – график выработки, свободные и заблокированные атрибуты генерации и все действия с ними в одном месте: выпустить сертификат, настроить автовыпуск, посмотреть, почему заблокировали. Если что-то требует внимания (например, оплатить активацию) подсвечиваем алертом + статус соответствующий.
+                  {language === "ru"
+                    ? "Для Владельца ГО главный флоу – работа с генерирующими объектами. Подача данных по топливу и КУ вынесена на уровень раздела, можно подать сразу по всем (и файлом!). Внутри карточки – график выработки, свободные и заблокированные атрибуты генерации и все действия с ними в одном месте: выпустить сертификат, настроить автовыпуск, посмотреть, почему заблокировали. Если что-то требует внимания (например, оплатить активацию) подсвечиваем алертом + статус соответствующий."
+                    : "For the Generation Facility Owner, the main flow is working with generation facilities. Fuel and commercial metering submissions are handled at section level, so data can be submitted for all facilities at once (including via file upload). Inside each card: production chart, free and blocked generation attributes, and all actions in one place - issue a certificate, configure auto-issuance, and check why something was blocked. If something needs attention (for example, activation payment), we surface it with an alert and a clear status."
+                  }
                 </p>
                 <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))]">
                   <div
@@ -1531,9 +1682,12 @@ export default function ProjectDetail() {
                     <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
                   </div>
                 </div>
-                <h2 className="text-2xl font-medium mt-12 mb-6">Реестр ГО</h2>
+                <h2 className="text-2xl font-medium mt-12 mb-6">{language === "ru" ? "Реестр ГО" : "Facility Registry"}</h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                  Реестр генерирующих объектов доступен всем – в том числе незарегистрированным пользователям. Я предложила два представления: карта России с тепловой окраской по регионам и список с фильтрами. Карта даёт быстрый визуальный обзор, список – для точного поиска. Выгрузить данные можно из обоих представлений, переключение между ними сохраняет фильтры.
+                  {language === "ru"
+                    ? "Реестр генерирующих объектов доступен всем – в том числе незарегистрированным пользователям. Я предложила два представления: карта России с тепловой окраской по регионам и список с фильтрами. Карта даёт быстрый визуальный обзор, список – для точного поиска. Выгрузить данные можно из обоих представлений, переключение между ними сохраняет фильтры."
+                    : "The generation facility registry is available to everyone, including unregistered users. I proposed two views: a Russia map with regional heat coloring and a filtered list. The map gives a fast visual overview, while the list supports precise search. Data export is available from both views, and filters persist when switching between them."
+                  }
                 </p>
                 <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))]">
                   <div
@@ -1561,10 +1715,105 @@ export default function ProjectDetail() {
                     <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
                   </div>
                 </div>
-                <h2 className="text-2xl font-medium mt-12 mb-6">Профиль пользователя</h2>
+                <h2 className="text-2xl font-medium mt-12 mb-6">{language === "ru" ? "Профиль пользователя" : "User Profile"}</h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                  Профиль разбит на вкладки – у каждой роли свой набор. Базовые три есть у всех: общая информация, платёжный счёт с историей операций и реквизитами, лицевые счета с графиком зелёных инструментов. Владелец ГО получает ещё вкладку аналитики – работа с ЗИ, выпущенные СП, купля-продажа – всё с фильтрацией по датам.
+                  {language === "ru"
+                    ? "Профиль разбит на вкладки, у каждой роли свой набор. Базовые три есть у всех: общая информация с документами и ЭП, платёжный счёт – деньги, реквизиты для пополнения и история платежей, лицевые счета – зелёные инструменты и операции с энергией. Деньги и атрибуты генерации разделены – это два разных типа активов. Владелец ГО получает ещё вкладку аналитики."
+                    : "The profile is organized into tabs, and each role has its own set. Three base tabs are shared by all users: general info with documents and e-signature, payment account (funds, top-up details, payment history), and personal accounts (green instruments and energy operations). Money and generation attributes are separated as two different asset types. The Generation Facility Owner gets an additional analytics tab."
+                  }
                 </p>
+                <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))]">
+                  <div
+                    ref={scrollContainerRef10}
+                    onMouseDown={handleMouseDown10}
+                    onMouseLeave={() => setIsDragging10(false)}
+                    onMouseUp={() => setIsDragging10(false)}
+                    onMouseMove={handleMouseMove10}
+                    className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging10 ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
+                  >
+                    {skiziProfileSlides.map((img, idx) => (
+                      <div key={img.src} className="flex-shrink-0 w-[85vw] md:w-[900px]">
+                        <div
+                          onClick={() => !hasMoved10 && openLightbox(skiziProfileSlides, idx)}
+                          className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging10 ? 'cursor-grabbing' : 'cursor-grab'}`}
+                        >
+                          <img
+                            src={img.src}
+                            alt={img.alt}
+                            className="w-full aspect-video object-cover object-top pointer-events-none"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                    <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
+                  </div>
+                </div>
+                <h2 className="text-2xl font-medium mt-12 mb-6">{language === "ru" ? "Аудит" : "Audit"}</h2>
+                <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                  {language === "ru"
+                    ? "Каждое действие в системе логируется, для этого у суперадмина есть раздел Аудит. Внутри каждой записи – детализация операции со ссылками на объекты, скачать запрос и подпись можно прямо отсюда."
+                    : "Every action in the system is logged, so the super admin has a dedicated Audit section. Each record includes detailed operation data with links to related objects, and both the request and signature can be downloaded directly from there."
+                  }
+                </p>
+                <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))]">
+                  <div
+                    ref={scrollContainerRef11}
+                    onMouseDown={handleMouseDown11}
+                    onMouseLeave={() => setIsDragging11(false)}
+                    onMouseUp={() => setIsDragging11(false)}
+                    onMouseMove={handleMouseMove11}
+                    className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging11 ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
+                  >
+                    {skiziAuditSlides.map((img, idx) => (
+                      <div key={img.src} className="flex-shrink-0 w-[85vw] md:w-[900px]">
+                        <div
+                          onClick={() => !hasMoved11 && openLightbox(skiziAuditSlides, idx)}
+                          className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging11 ? 'cursor-grabbing' : 'cursor-grab'}`}
+                        >
+                          <img
+                            src={img.src}
+                            alt={img.alt}
+                            className="w-full aspect-video object-cover object-top pointer-events-none"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                    <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
+                  </div>
+                </div>
+                <h2 className="text-2xl font-medium mt-12 mb-6">{language === "ru" ? "Итог" : "Outcome"}</h2>
+                <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                  {language === "ru"
+                    ? "Проект запущен в продакшн – это был сложный и интересный кейс: предметная область, которую пришлось изучить с нуля, госзаказчиковый фактор, технические и законодательные ограничения, смена руководства компании прямо посреди процесса разработки. Ниже прикрепила еще макеты, чтобы вы, как и я, не смогли забыть этот проект."
+                    : "The project is live in production. It was a complex and genuinely interesting case: a domain I had to learn from scratch, public-sector constraints, technical and legal limitations, and even a leadership change in the company in the middle of development. I also attached extra mockups below so this project stays memorable, for you and for me."
+                  }
+                </p>
+                <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))]">
+                  <div
+                    ref={scrollContainerRef12}
+                    onMouseDown={handleMouseDown12}
+                    onMouseLeave={() => setIsDragging12(false)}
+                    onMouseUp={() => setIsDragging12(false)}
+                    onMouseMove={handleMouseMove12}
+                    className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging12 ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
+                  >
+                    {skiziLastSlides.map((img, idx) => (
+                      <div key={img.src} className="flex-shrink-0 w-[85vw] md:w-[900px]">
+                        <div
+                          onClick={() => !hasMoved12 && openLightbox(skiziLastSlides, idx)}
+                          className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging12 ? 'cursor-grabbing' : 'cursor-grab'}`}
+                        >
+                          <img
+                            src={img.src}
+                            alt={img.alt}
+                            className="w-full aspect-video object-cover object-top pointer-events-none"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                    <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
+                  </div>
+                </div>
               </div>
             )}
 
@@ -2275,6 +2524,22 @@ export default function ProjectDetail() {
           </div>
         </section>
       </main>
+
+      <AnimatePresence>
+        {showScrollTop && (
+          <motion.button
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="fixed right-6 bottom-6 z-40 w-11 h-11 rounded-full border border-gray-200 bg-white/95 backdrop-blur-sm shadow-sm hover:bg-gray-50 transition-colors flex items-center justify-center"
+            aria-label={language === "ru" ? "Наверх" : "Back to top"}
+          >
+            <ChevronUp className="w-5 h-5 text-gray-500" />
+          </motion.button>
+        )}
+      </AnimatePresence>
+
       <footer className="py-12 border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-8">
           <p className="text-[15px] text-gray-400">{t.footer.copyright}</p>

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, X, Download } from "lucide-react";
+import { ArrowUpRight, X, Download, ChevronUp } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { translations, projectTranslations, type Language } from "@/lib/translations";
 
@@ -64,6 +64,17 @@ export default function Projects() {
     }
   }, []);
   const [contactOpen, setContactOpen] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setShowScrollTop(window.scrollY > 500);
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const t = translations[language];
   const allProjects = projectTranslations[language];
@@ -285,6 +296,21 @@ export default function Projects() {
           </AnimatePresence>
         </div>
       </main>
+
+      <AnimatePresence>
+        {showScrollTop && (
+          <motion.button
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="fixed right-6 bottom-6 z-40 w-11 h-11 rounded-full border border-gray-200 bg-white/95 backdrop-blur-sm shadow-sm hover:bg-gray-50 transition-colors flex items-center justify-center"
+            aria-label={language === "ru" ? "Наверх" : "Back to top"}
+          >
+            <ChevronUp className="w-5 h-5 text-gray-500" />
+          </motion.button>
+        )}
+      </AnimatePresence>
 
       <footer className="py-12 border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center text-gray-400">
