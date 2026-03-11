@@ -23,6 +23,18 @@ import glacisTransactionDetails from "@/assets/glacis_transaction_details.webp";
 import glacisMobileDetails from "@/assets/glacis_mobile_details_v2.png";
 import glacisRetryData from "@/assets/glacis_retry_data.webp";
 import glacisAnalytics from "@/assets/glacis_analytics.webp";
+import glacisZeroDelta from "@/assets/GL_ZeroDelta.jpg";
+import glacisScreenshot1 from "@/assets/GL_screenshot1.jpg";
+import glacisScreenshot2 from "@/assets/GL_screenshot2.jpg";
+import glacisScreenshot3 from "@/assets/GL_screenshot3.jpg";
+import glacisScreenshot4 from "@/assets/GL_screenshot4.jpg";
+import glacisEcosystem1 from "@/assets/GL_Ecosystem1.jpg";
+import glacisEcosystem2 from "@/assets/GL_Ecosystem2.jpg";
+import glacisEcosystem3 from "@/assets/GL_Ecosystem3.jpg";
+import glacisEcosystem4 from "@/assets/GL_Ecosystem4.jpg";
+import glacisEcosystem5 from "@/assets/GL_Ecosystem5.jpg";
+import glacisEcosystem6 from "@/assets/GL_Ecosystem6.jpg";
+import glacisEcosystem7 from "@/assets/GL_Ecosystem7.jpg";
 
 import maatSlide1 from "@/assets/maat_slide_1.webp";
 import maatSlide2 from "@/assets/maat_slide_2.webp";
@@ -45,102 +57,102 @@ import uxResearchImg from "@/assets/ux_research_cover.webp";
 import pholendImg from "@/assets/pholend_cover.webp";
 import dickbuttsImg from "@/assets/dickbutts_cover_v2.webp";
 import zkDickbuttsImg from "@/assets/zkDickButts_1.webp";
-import dickbuttsMintImg from "@/assets/DickButts - Mint.jpg";
+import dickbuttsMintImg from "@/assets/DickButts - Mint.avif";
 import skiziCoverImg from "@/assets/skizi_cover_new.webp";
 import skiziSlide1 from "@/assets/skizi_slide_1.webp";
 import skiziSlide2 from "@/assets/skizi_slide_2.webp";
 import skiziSlide3 from "@/assets/skizi_slide_3.webp";
 import skiziSlide4 from "@/assets/skizi_slide_4.webp";
 import skiziSlide5 from "@/assets/skizi_slide_5.webp";
-import skiziCertificates from "@/assets/skizi_certificates.jpg";
-import certificateActiveSkizi from "@/assets/certificate_active_skizi.jpg";
-import skiziDelenie from "@/assets/skizi_delenie.jpg";
-import skiziDelenie2 from "@/assets/skizi_delenie_2.jpg";
-import skiziPogashenie1 from "@/assets/skizi_pogashenie_1.jpg";
-import skiziPogashenie2 from "@/assets/skizi_pogashenie_2.jpg";
-import skiziPogashenie3 from "@/assets/skizi_pogashenie_3.jpg";
-import skiziPogashenie4 from "@/assets/skizi_pogashenie_4.jpg";
-import skiziPogashenie5 from "@/assets/skizi_pogashenie_5.jpg";
-import skiziGroup1 from "@/assets/skizi_group_1.jpg";
-import skiziGroup2 from "@/assets/skizi_group_2.jpg";
-import skiziGroup3 from "@/assets/skizi_group_3.jpg";
-import skiziGroup4 from "@/assets/skizi_group_4.jpg";
-import skiziGroup5 from "@/assets/skizi_group_5.jpg";
-import skiziGroup6 from "@/assets/skizi_group_6.jpg";
-import skiziDogovor from "@/assets/skizi_dogovor.jpg";
-import skiziDogovor1 from "@/assets/skizi_dogovor_1.jpg";
-import skiziDogovor2 from "@/assets/skizi_dogovor_2.jpg";
-import skiziDogovor3 from "@/assets/skizi_dogovor_3.jpg";
-import skiziZd1 from "@/assets/skizi_zd1.jpg";
-import skiziZd2 from "@/assets/skizi_zd2.jpg";
-import skiziZd3 from "@/assets/skizi_zd3.jpg";
-import skiziZd4 from "@/assets/skizi_zd4.jpg";
-import skiziGo1 from "@/assets/skizi_go1.jpg";
-import skiziGo2 from "@/assets/skizi_go2.jpg";
-import skiziGo3 from "@/assets/skizi_go3.jpg";
-import skiziGo4 from "@/assets/skizi_go4.jpg";
-import skiziReestr1 from "@/assets/skizi_reestr1.jpg";
-import skiziReestr2 from "@/assets/skizi_reestr2.jpg";
-import skiziProfile1 from "@/assets/skizi_profile1.jpg";
-import skiziProfile2 from "@/assets/skizi_profile2.jpg";
-import skiziProfile3 from "@/assets/skizi_profile3.jpg";
-import skiziProfile4 from "@/assets/skizi_profile4.jpg";
-import skiziProfile5 from "@/assets/skizi_profile5.jpg";
-import skiziAudit1 from "@/assets/skizi_audit1.jpg";
-import skiziAudit2 from "@/assets/skizi_audit2.jpg";
-import skiziAudit3 from "@/assets/skizi_audit3.jpg";
-import skiziAudit4 from "@/assets/skizi_audit4.jpg";
-import skiziAudit5 from "@/assets/skizi_audit5.jpg";
-import skiziLast1 from "@/assets/skizi_last1.jpg";
-import skiziLast2 from "@/assets/skizi_last2.jpg";
-import skiziLast3 from "@/assets/skizi_last3.jpg";
-import skiziLast4 from "@/assets/skizi_last4.jpg";
-import skiziLast5 from "@/assets/skizi_last5.jpg";
-import skiziLast6 from "@/assets/skizi_last6.jpg";
-import skiziLast7 from "@/assets/skizi_last7.jpg";
-import skiziLast8 from "@/assets/skizi_last8.jpg";
-import skiziLast9 from "@/assets/skizi_last9.jpg";
-import skiziLast10 from "@/assets/skizi_last10.jpg";
-import skiziRoles from "@/assets/SKIZI_Roles.jpg";
+import skiziCertificates from "@/assets/skizi_certificates.avif";
+import certificateActiveSkizi from "@/assets/certificate_active_skizi.avif";
+import skiziDelenie from "@/assets/skizi_delenie.avif";
+import skiziDelenie2 from "@/assets/skizi_delenie_2.avif";
+import skiziPogashenie1 from "@/assets/skizi_pogashenie_1.avif";
+import skiziPogashenie2 from "@/assets/skizi_pogashenie_2.avif";
+import skiziPogashenie3 from "@/assets/skizi_pogashenie_3.avif";
+import skiziPogashenie4 from "@/assets/skizi_pogashenie_4.avif";
+import skiziPogashenie5 from "@/assets/skizi_pogashenie_5.avif";
+import skiziGroup1 from "@/assets/skizi_group_1.avif";
+import skiziGroup2 from "@/assets/skizi_group_2.avif";
+import skiziGroup3 from "@/assets/skizi_group_3.avif";
+import skiziGroup4 from "@/assets/skizi_group_4.avif";
+import skiziGroup5 from "@/assets/skizi_group_5.avif";
+import skiziGroup6 from "@/assets/skizi_group_6.avif";
+import skiziDogovor from "@/assets/skizi_dogovor.avif";
+import skiziDogovor1 from "@/assets/skizi_dogovor_1.avif";
+import skiziDogovor2 from "@/assets/skizi_dogovor_2.avif";
+import skiziDogovor3 from "@/assets/skizi_dogovor_3.avif";
+import skiziZd1 from "@/assets/skizi_zd1.avif";
+import skiziZd2 from "@/assets/skizi_zd2.avif";
+import skiziZd3 from "@/assets/skizi_zd3.avif";
+import skiziZd4 from "@/assets/skizi_zd4.avif";
+import skiziGo1 from "@/assets/skizi_go1.avif";
+import skiziGo2 from "@/assets/skizi_go2.avif";
+import skiziGo3 from "@/assets/skizi_go3.avif";
+import skiziGo4 from "@/assets/skizi_go4.avif";
+import skiziReestr1 from "@/assets/skizi_reestr1.avif";
+import skiziReestr2 from "@/assets/skizi_reestr2.avif";
+import skiziProfile1 from "@/assets/skizi_profile1.avif";
+import skiziProfile2 from "@/assets/skizi_profile2.avif";
+import skiziProfile3 from "@/assets/skizi_profile3.avif";
+import skiziProfile4 from "@/assets/skizi_profile4.avif";
+import skiziProfile5 from "@/assets/skizi_profile5.avif";
+import skiziAudit1 from "@/assets/skizi_audit1.avif";
+import skiziAudit2 from "@/assets/skizi_audit2.avif";
+import skiziAudit3 from "@/assets/skizi_audit3.avif";
+import skiziAudit4 from "@/assets/skizi_audit4.avif";
+import skiziAudit5 from "@/assets/skizi_audit5.avif";
+import skiziLast1 from "@/assets/skizi_last1.avif";
+import skiziLast2 from "@/assets/skizi_last2.avif";
+import skiziLast3 from "@/assets/skizi_last3.avif";
+import skiziLast4 from "@/assets/skizi_last4.avif";
+import skiziLast5 from "@/assets/skizi_last5.avif";
+import skiziLast6 from "@/assets/skizi_last6.avif";
+import skiziLast7 from "@/assets/skizi_last7.avif";
+import skiziLast8 from "@/assets/skizi_last8.avif";
+import skiziLast9 from "@/assets/skizi_last9.avif";
+import skiziLast10 from "@/assets/skizi_last10.avif";
+import skiziRoles from "@/assets/SKIZI_Roles.avif";
 
 import twoGoCoverImg from "@/assets/2go_cover.webp";
-import twoGoSlider1 from "@/assets/2GO_slider1.jpg";
-import twoGoSlider2 from "@/assets/2GO_slider2.jpg";
-import twoGoSlider3 from "@/assets/2GO_slider3.jpg";
-import twoGoSlider4 from "@/assets/2GO_slider4.jpg";
-import twoGoSlider5 from "@/assets/2GO_slider5.jpg";
-import twoGoSlider6 from "@/assets/2GO_slider6.jpg";
-import twoGoSlider7 from "@/assets/2GO_slider7.jpg";
-import twoGoSecondSlider1 from "@/assets/2GO_2slider1.jpg";
-import twoGoSecondSlider2 from "@/assets/2GO_2slider2.jpg";
-import twoGoSecondSlider3 from "@/assets/2GO_2slider3.jpg";
-import twoGoSecondSlider4 from "@/assets/2GO_2slider4.jpg";
-import twoGoSecondSlider5 from "@/assets/2GO_2slider5.jpg";
-import twoGoSecondSlider6 from "@/assets/2GO_2slider6.jpg";
-import twoGoSecondSlider7 from "@/assets/2GO_2slider7.jpg";
-import twoGoSecondSlider8 from "@/assets/2GO_2slider8.jpg";
-import twoGoThirdSlider1 from "@/assets/2GO_3slider1.jpg";
-import twoGoThirdSlider2 from "@/assets/2GO_3slider2.jpg";
-import twoGoThirdSlider3 from "@/assets/2GO_3slider3.jpg";
-import twoGoThirdSlider4 from "@/assets/2GO_3slider4.jpg";
-import twoGoThirdSlider5 from "@/assets/2GO_3slider5.jpg";
-import twoGoThirdSlider6 from "@/assets/2GO_3slider6.jpg";
-import twoGoFourthSlider1 from "@/assets/2GO_4slider1.jpg";
-import twoGoFourthSlider2 from "@/assets/2GO_4slider2.jpg";
-import twoGoFourthSlider3 from "@/assets/2GO_4slider3.jpg";
-import twoGoFourthSlider4 from "@/assets/2GO_4slider4.jpg";
-import twoGoFifthSlider1 from "@/assets/2GO_5slider1.jpg";
-import twoGoFifthSlider2 from "@/assets/2GO_5slider2.jpg";
-import twoGoFifthSlider3 from "@/assets/2GO_5slider3.jpg";
-import twoGoSixthSlider1 from "@/assets/2GO_6slider1.jpg";
-import twoGoSixthSlider2 from "@/assets/2GO_6slider2.jpg";
-import twoGoSixthSlider3 from "@/assets/2GO_6slider3.jpg";
-import twoGoSixthSlider4 from "@/assets/2GO_6slider4.jpg";
-import twoGoSixthSlider5 from "@/assets/2GO_6slider5.jpg";
-import twoGoSixthSlider6 from "@/assets/2GO_6slider6.jpg";
-import twoGoSixthSlider7 from "@/assets/2GO_6slider7.jpg";
-import twoGoSixthSlider8 from "@/assets/2GO_6slider8.jpg";
-import twoGoSixthSlider9 from "@/assets/2GO_6slider9.jpg";
+import twoGoSlider1 from "@/assets/2GO_slider1.avif";
+import twoGoSlider2 from "@/assets/2GO_slider2.avif";
+import twoGoSlider3 from "@/assets/2GO_slider3.avif";
+import twoGoSlider4 from "@/assets/2GO_slider4.avif";
+import twoGoSlider5 from "@/assets/2GO_slider5.avif";
+import twoGoSlider6 from "@/assets/2GO_slider6.avif";
+import twoGoSlider7 from "@/assets/2GO_slider7.avif";
+import twoGoSecondSlider1 from "@/assets/2GO_2slider1.avif";
+import twoGoSecondSlider2 from "@/assets/2GO_2slider2.avif";
+import twoGoSecondSlider3 from "@/assets/2GO_2slider3.avif";
+import twoGoSecondSlider4 from "@/assets/2GO_2slider4.avif";
+import twoGoSecondSlider5 from "@/assets/2GO_2slider5.avif";
+import twoGoSecondSlider6 from "@/assets/2GO_2slider6.avif";
+import twoGoSecondSlider7 from "@/assets/2GO_2slider7.avif";
+import twoGoSecondSlider8 from "@/assets/2GO_2slider8.avif";
+import twoGoThirdSlider1 from "@/assets/2GO_3slider1.avif";
+import twoGoThirdSlider2 from "@/assets/2GO_3slider2.avif";
+import twoGoThirdSlider3 from "@/assets/2GO_3slider3.avif";
+import twoGoThirdSlider4 from "@/assets/2GO_3slider4.avif";
+import twoGoThirdSlider5 from "@/assets/2GO_3slider5.avif";
+import twoGoThirdSlider6 from "@/assets/2GO_3slider6.avif";
+import twoGoFourthSlider1 from "@/assets/2GO_4slider1.avif";
+import twoGoFourthSlider2 from "@/assets/2GO_4slider2.avif";
+import twoGoFourthSlider3 from "@/assets/2GO_4slider3.avif";
+import twoGoFourthSlider4 from "@/assets/2GO_4slider4.avif";
+import twoGoFifthSlider1 from "@/assets/2GO_5slider1.avif";
+import twoGoFifthSlider2 from "@/assets/2GO_5slider2.avif";
+import twoGoFifthSlider3 from "@/assets/2GO_5slider3.avif";
+import twoGoSixthSlider1 from "@/assets/2GO_6slider1.avif";
+import twoGoSixthSlider2 from "@/assets/2GO_6slider2.avif";
+import twoGoSixthSlider3 from "@/assets/2GO_6slider3.avif";
+import twoGoSixthSlider4 from "@/assets/2GO_6slider4.avif";
+import twoGoSixthSlider5 from "@/assets/2GO_6slider5.avif";
+import twoGoSixthSlider6 from "@/assets/2GO_6slider6.avif";
+import twoGoSixthSlider7 from "@/assets/2GO_6slider7.avif";
+import twoGoSixthSlider8 from "@/assets/2GO_6slider8.avif";
+import twoGoSixthSlider9 from "@/assets/2GO_6slider9.avif";
 import zoodaoCoverImg from "@/assets/zoodao_cover_v3.webp";
 import maatCoverImg from "@/assets/maat_pd_cover_v3.webp";
 
@@ -163,6 +175,8 @@ const projectImages: Record<number, string | null> = {
 type LightboxItem = {
   src: string;
   alt: string;
+  type?: "image" | "video";
+  mp4Src?: string;
 };
 
 const zooSlides: LightboxItem[] = [
@@ -297,6 +311,50 @@ const glacisLightSlides: LightboxItem[] = [
   { src: "/glacis_light_select_chain.webp", alt: "Select Chain" },
   { src: "/glacis_light_airlift.webp", alt: "Airlift" },
   { src: "/glacis_light_404.webp", alt: "404" }
+];
+
+const glacisFeatureVideos = [
+  {
+    title: "Abstraction",
+    mp4: "/gl_abstraction.mp4",
+    webm: "/gl_abstraction.webm",
+    alt: "Glacis Abstraction"
+  },
+  {
+    title: "Redundancy",
+    mp4: "/gl_redundancy.mp4",
+    webm: "/gl_redundancy.webm",
+    alt: "Glacis Redundancy"
+  },
+  {
+    title: "Retry Management",
+    mp4: "/gl_retry_management.mp4",
+    webm: "/gl_retry_management.webm",
+    alt: "Glacis Retry Management"
+  },
+  {
+    title: "Modular Security",
+    mp4: "/gl_modular.mp4",
+    webm: "/gl_modular.webm",
+    alt: "Glacis Modular Security"
+  }
+];
+
+const glacisTzSlides: LightboxItem[] = [
+  { src: glacisScreenshot1.src, alt: "Glacis Animation Brief 1" },
+  { src: glacisScreenshot2.src, alt: "Glacis Animation Brief 2" },
+  { src: glacisScreenshot3.src, alt: "Glacis Animation Brief 3" },
+  { src: glacisScreenshot4.src, alt: "Glacis Animation Brief 4" }
+];
+
+const glacisEcosystemSlides: LightboxItem[] = [
+  { src: glacisEcosystem1.src, alt: "Glacis Ecosystem 1" },
+  { src: glacisEcosystem2.src, alt: "Glacis Ecosystem 2" },
+  { src: glacisEcosystem3.src, alt: "Glacis Ecosystem 3" },
+  { src: glacisEcosystem4.src, alt: "Glacis Ecosystem 4" },
+  { src: glacisEcosystem5.src, alt: "Glacis Ecosystem 5" },
+  { src: glacisEcosystem6.src, alt: "Glacis Ecosystem 6" },
+  { src: glacisEcosystem7.src, alt: "Glacis Ecosystem 7" }
 ];
 
 const xswapFlowSlides: LightboxItem[] = [
@@ -700,6 +758,7 @@ export default function ProjectDetail() {
 
   const isLightboxOpen = lightboxItems.length > 0;
   const currentLightboxItem = lightboxItems[lightboxIndex];
+  const isCurrentLightboxVideo = currentLightboxItem?.type === "video";
 
   const resetLightboxView = () => {
     setLightboxZoom(1);
@@ -743,11 +802,11 @@ export default function ProjectDetail() {
     if (!isLightboxOpen) return;
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") closeLightbox();
-      if (event.key === "ArrowRight") goToLightboxIndex(lightboxIndex + 1);
-      if (event.key === "ArrowLeft") goToLightboxIndex(lightboxIndex - 1);
-      if (event.key === "+" || event.key === "=") zoomLightbox(1);
-      if (event.key === "-" || event.key === "_") zoomLightbox(-1);
+              if (event.key === "Escape") closeLightbox();
+              if (event.key === "ArrowRight") goToLightboxIndex(lightboxIndex + 1);
+              if (event.key === "ArrowLeft") goToLightboxIndex(lightboxIndex - 1);
+              if (!isCurrentLightboxVideo && (event.key === "+" || event.key === "=")) zoomLightbox(1);
+              if (!isCurrentLightboxVideo && (event.key === "-" || event.key === "_")) zoomLightbox(-1);
     };
 
     document.body.style.overflow = "hidden";
@@ -757,7 +816,7 @@ export default function ProjectDetail() {
       document.body.style.overflow = "";
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isLightboxOpen, lightboxIndex, lightboxItems.length]);
+  }, [isCurrentLightboxVideo, isLightboxOpen, lightboxIndex, lightboxItems.length]);
 
   useEffect(() => {
     const onScroll = () => {
@@ -794,26 +853,30 @@ export default function ProjectDetail() {
             }}
           >
             <div className="absolute top-5 right-5 z-[210] flex items-center gap-2">
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  zoomLightbox(-1);
-                }}
-                className="w-10 h-10 rounded-full bg-black/65 hover:bg-black/80 border border-white/40 text-white shadow-lg backdrop-blur-md flex items-center justify-center transition-colors"
-                aria-label="Zoom out"
-              >
-                <ZoomOut className="w-5 h-5" />
-              </button>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  zoomLightbox(1);
-                }}
-                className="w-10 h-10 rounded-full bg-black/65 hover:bg-black/80 border border-white/40 text-white shadow-lg backdrop-blur-md flex items-center justify-center transition-colors"
-                aria-label="Zoom in"
-              >
-                <ZoomIn className="w-5 h-5" />
-              </button>
+              {!isCurrentLightboxVideo && (
+                <>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      zoomLightbox(-1);
+                    }}
+                    className="w-10 h-10 rounded-full bg-black/65 hover:bg-black/80 border border-white/40 text-white shadow-lg backdrop-blur-md flex items-center justify-center transition-colors"
+                    aria-label="Zoom out"
+                  >
+                    <ZoomOut className="w-5 h-5" />
+                  </button>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      zoomLightbox(1);
+                    }}
+                    className="w-10 h-10 rounded-full bg-black/65 hover:bg-black/80 border border-white/40 text-white shadow-lg backdrop-blur-md flex items-center justify-center transition-colors"
+                    aria-label="Zoom in"
+                  >
+                    <ZoomIn className="w-5 h-5" />
+                  </button>
+                </>
+              )}
               <button
                 onClick={(e) => {
                   e.stopPropagation();
@@ -827,21 +890,21 @@ export default function ProjectDetail() {
             </div>
 
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
+              initial={false}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className={`relative flex items-center justify-center w-full h-full ${lightboxZoom > 1 ? "cursor-grab active:cursor-grabbing" : "cursor-auto"}`}
+              exit={{ scale: 1, opacity: 1 }}
+              className={`relative flex items-center justify-center w-full h-full ${!isCurrentLightboxVideo && lightboxZoom > 1 ? "cursor-grab active:cursor-grabbing" : "cursor-auto"}`}
               onClick={(e) => {
                 e.stopPropagation();
               }}
               onMouseDown={(event) => {
-                if (lightboxZoom <= 1) return;
+                if (isCurrentLightboxVideo || lightboxZoom <= 1) return;
                 event.stopPropagation();
                 setIsPanningImage(true);
                 setPanStart({ x: event.clientX - lightboxPan.x, y: event.clientY - lightboxPan.y });
               }}
               onMouseMove={(event) => {
-                if (!isPanningImage || lightboxZoom <= 1) return;
+                if (isCurrentLightboxVideo || !isPanningImage || lightboxZoom <= 1) return;
                 setLightboxPan({
                   x: event.clientX - panStart.x,
                   y: event.clientY - panStart.y
@@ -850,27 +913,50 @@ export default function ProjectDetail() {
               onMouseUp={() => setIsPanningImage(false)}
               onMouseLeave={() => setIsPanningImage(false)}
               onWheel={(event) => {
+                if (isCurrentLightboxVideo) return;
                 event.preventDefault();
                 event.stopPropagation();
                 zoomLightbox(event.deltaY < 0 ? 1 : -1);
               }}
             >
-              <motion.img
-                src={currentLightboxItem.src}
-                alt={currentLightboxItem.alt}
-                draggable={false}
-                animate={{ 
-                  scale: lightboxZoom,
-                  x: lightboxZoom > 1 ? lightboxPan.x : 0,
-                  y: lightboxZoom > 1 ? lightboxPan.y : 0
-                }}
-                transition={{ 
-                  scale: { type: "spring", damping: 24, stiffness: 210 },
-                  x: { type: "tween", duration: 0 },
-                  y: { type: "tween", duration: 0 }
-                }}
-                className="rounded-xl shadow-2xl pointer-events-none max-w-[92vw] max-h-[88vh] object-contain"
-              />
+              {isCurrentLightboxVideo ? (
+                <div className="relative max-w-[92vw] max-h-[88vh]">
+                  {lightboxItems.map((item, index) =>
+                    item.type === "video" ? (
+                      <video
+                        key={item.src}
+                        autoPlay
+                        loop
+                        muted
+                        controls={index === lightboxIndex}
+                        playsInline
+                        preload="auto"
+                        className={`rounded-xl shadow-2xl max-w-[92vw] max-h-[88vh] object-contain ${index === lightboxIndex ? "block" : "hidden"}`}
+                      >
+                        <source src={item.src} type="video/webm" />
+                        {item.mp4Src && <source src={item.mp4Src} type="video/mp4" />}
+                      </video>
+                    ) : null
+                  )}
+                </div>
+              ) : (
+                <motion.img
+                  src={currentLightboxItem.src}
+                  alt={currentLightboxItem.alt}
+                  draggable={false}
+                  animate={{ 
+                    scale: lightboxZoom,
+                    x: lightboxZoom > 1 ? lightboxPan.x : 0,
+                    y: lightboxZoom > 1 ? lightboxPan.y : 0
+                  }}
+                  transition={{ 
+                    scale: { type: "spring", damping: 24, stiffness: 210 },
+                    x: { type: "tween", duration: 0 },
+                    y: { type: "tween", duration: 0 }
+                  }}
+                  className="rounded-xl shadow-2xl pointer-events-none max-w-[92vw] max-h-[88vh] object-contain"
+                />
+              )}
             </motion.div>
 
             {lightboxItems.length > 1 && (
@@ -880,7 +966,7 @@ export default function ProjectDetail() {
                     e.stopPropagation();
                     goToLightboxIndex(lightboxIndex - 1);
                   }}
-                  className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/65 hover:bg-black/80 border border-white/40 text-white shadow-lg backdrop-blur-md flex items-center justify-center transition-colors"
+                  className="absolute z-[220] left-4 md:left-8 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/65 hover:bg-black/80 border border-white/40 text-white shadow-lg backdrop-blur-md flex items-center justify-center transition-colors"
                   aria-label="Previous image"
                 >
                   <ChevronLeft className="w-5 h-5" />
@@ -890,7 +976,7 @@ export default function ProjectDetail() {
                     e.stopPropagation();
                     goToLightboxIndex(lightboxIndex + 1);
                   }}
-                  className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/65 hover:bg-black/80 border border-white/40 text-white shadow-lg backdrop-blur-md flex items-center justify-center transition-colors"
+                  className="absolute z-[220] right-4 md:right-8 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/65 hover:bg-black/80 border border-white/40 text-white shadow-lg backdrop-blur-md flex items-center justify-center transition-colors"
                   aria-label="Next image"
                 >
                   <ChevronRight className="w-5 h-5" />
@@ -1196,6 +1282,181 @@ export default function ProjectDetail() {
                     alt={`${project.title} Cover`} 
                     className="w-full h-auto object-cover"
                   />
+                </div>
+              </div>
+            )}
+
+            {project.id === 14 && language === "ru" && (
+              <div className="max-w-[calc(56rem-80px)] mb-16">
+                <h2 className="text-2xl font-medium mb-6">Решение</h2>
+                <p className="text-lg text-gray-600 leading-relaxed whitespace-pre-line mb-8">
+                  {"Я поставила анимацию в центр каждой продуктовой страницы как основной способ объяснения сложных механик:\n Glacis Core – как сообщение идёт из одного чейна в другой через роутер. Анимация главного экрана скорее красивенькая, чем explanatory, поэтому усиливаем ее анимациями фич – Abstraction, Redundancy, Retry Management и Modular Security. Это интерактивные схемы для более подробного погружения в сценарии использования."}
+                </p>
+                <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white md:w-[130%] md:max-w-none">
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="metadata"
+                    className="w-full h-auto object-contain"
+                  >
+                    <source src="/gl_site_core.webm" type="video/webm" />
+                    <source src="/gl_site_core.mp4" type="video/mp4" />
+                  </video>
+                </div>
+
+                <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))] mt-8">
+                  <div
+                    ref={scrollContainerRef2}
+                    onMouseDown={handleMouseDown2}
+                    onMouseLeave={() => setIsDragging2(false)}
+                    onMouseUp={() => setIsDragging2(false)}
+                    onMouseMove={handleMouseMove2}
+                    className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging2 ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
+                  >
+                    {glacisFeatureVideos.map((video) => (
+                      <div key={video.title} className="flex-shrink-0 w-[92vw] md:w-[728px]">
+                        <div
+                          onClick={() =>
+                            !hasMoved2 &&
+                            openLightbox(
+                              glacisFeatureVideos.map((item) => ({
+                                src: item.webm,
+                                mp4Src: item.mp4,
+                                alt: item.alt,
+                                type: "video" as const
+                              })),
+                              glacisFeatureVideos.findIndex((item) => item.title === video.title)
+                            )
+                          }
+                          className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging2 ? 'cursor-grabbing' : 'cursor-grab'}`}
+                        >
+                          <video
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            preload="metadata"
+                            className="w-full h-auto object-contain pointer-events-none"
+                          >
+                            <source src={video.webm} type="video/webm" />
+                            <source src={video.mp4} type="video/mp4" />
+                          </video>
+                        </div>
+                      </div>
+                    ))}
+                    <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
+                  </div>
+                </div>
+
+                <p className="text-lg text-gray-600 leading-relaxed mt-8">
+                  AirLift – путь токена через burn → bridge → mint на разных сетях через один интерфейс. Вторая анимация раскрывает архитектуру подробнее, уже с полным флоу от User/dApp до получения токена на другой сети.
+                </p>
+
+                <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white mt-8 md:w-[130%] md:max-w-none">
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="metadata"
+                    className="w-full h-auto object-contain"
+                  >
+                    <source src="/gl_air.webm" type="video/webm" />
+                    <source src="/gl_air.mp4" type="video/mp4" />
+                  </video>
+                </div>
+
+                <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white mt-8 md:w-[130%] md:max-w-none">
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="metadata"
+                    className="w-full h-auto object-contain"
+                  >
+                    <source src="/gl_air2.webm" type="video/webm" />
+                    <source src="/gl_air2.mp4" type="video/mp4" />
+                  </video>
+                </div>
+
+                <p className="text-lg text-gray-600 leading-relaxed mt-8">
+                  ZeroDelta – как токены движутся между User → Pool → Merchant / Receiver. Идею и структуру каждой анимации я разработала сама, реализацию передала motion-дизайнеру по детальному ТЗ.
+                </p>
+
+                <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white mt-8 md:w-[130%] md:max-w-none">
+                  <img
+                    src={glacisZeroDelta.src}
+                    alt="Glacis ZeroDelta"
+                    className="w-full h-auto object-contain"
+                  />
+                </div>
+                <p className="text-sm text-gray-400 italic mt-4 text-center">
+                  Пока не анимировано и лорем ипсум – все еще работаем над этой страницей и новой структурой сайта.
+                </p>
+
+                <p className="text-lg text-gray-600 leading-relaxed mt-8">
+                  Вот так отдавала ТЗ аниматору – с логикой движения и комментариями (а иногда подробными раскадровками).
+                </p>
+
+                <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))] mt-8">
+                  <div
+                    ref={scrollContainerRef3}
+                    onMouseDown={handleMouseDown3}
+                    onMouseLeave={() => setIsDragging3(false)}
+                    onMouseUp={() => setIsDragging3(false)}
+                    onMouseMove={handleMouseMove3}
+                    className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging3 ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
+                  >
+                    {glacisTzSlides.map((img, idx) => (
+                      <div key={img.src} className="flex-shrink-0 w-[85vw] md:w-[900px]">
+                        <div
+                          onClick={() => !hasMoved3 && openLightbox(glacisTzSlides, idx)}
+                          className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging3 ? 'cursor-grabbing' : 'cursor-grab'}`}
+                        >
+                          <img
+                            src={img.src}
+                            alt={img.alt}
+                            className="w-full aspect-[14/8] object-cover object-top pointer-events-none"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                    <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
+                  </div>
+                </div>
+                <h2 className="text-2xl font-medium mt-12 mb-6">Страница Экосистема</h2>
+                <p className="text-lg text-gray-600 leading-relaxed whitespace-pre-line">
+                  {"Glacis поддерживает десятки (сотни?) токенов, сетей и роутов. Задача: дать пользователю инструмент для проверки конкретной комбинации.\nЯ спроектировала виджет с каскадной фильтрацией: три колонки (Tokens / Chains / Routes) работают независимо, но синхронно. Можно выбрать только токен и увидеть все доступные сети и роуты под него. Только сеть – и получить список поддерживаемых токенов и маршрутов. Токен + сеть показывает все возможные роуты между ними. Можно искать напрямую по роуту Source → Destination. Каждая комбинация даёт свой результат – всё это в одном компоненте и за пару кликов."}
+                </p>
+
+                <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))] mt-8">
+                  <div
+                    ref={scrollContainerRef4}
+                    onMouseDown={handleMouseDown4}
+                    onMouseLeave={() => setIsDragging4(false)}
+                    onMouseUp={() => setIsDragging4(false)}
+                    onMouseMove={handleMouseMove4}
+                    className={`flex overflow-x-auto pb-4 gap-6 no-scrollbar ${isDragging4 ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
+                  >
+                    {glacisEcosystemSlides.map((img, idx) => (
+                      <div key={img.src} className="flex-shrink-0 w-[85vw] md:w-[900px]">
+                        <div
+                          onClick={() => !hasMoved4 && openLightbox(glacisEcosystemSlides, idx)}
+                          className={`rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white ${isDragging4 ? 'cursor-grabbing' : 'cursor-grab'}`}
+                        >
+                          <img
+                            src={img.src}
+                            alt={img.alt}
+                            className="w-full aspect-[14/8] object-cover object-top pointer-events-none"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                    <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
+                  </div>
                 </div>
               </div>
             )}
