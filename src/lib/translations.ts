@@ -7,7 +7,7 @@ export const translations = {
     },
     hero: {
       title: "Hi! I'm Anna Uskova – a product designer with 7+ years in the industry.",
-      description: "I work with high-load systems, DeFi protocols \nand B2C products – from research to polished UI.",
+      description: "I design complex systems, DeFi protocols,\nand B2C products.",
       viewWork: "Explore projects",
       getInTouch: "Get in touch"
     },
@@ -19,7 +19,7 @@ export const translations = {
     },
     competencies: {
       title: "About me",
-      description: "I work with enthusiasm (and pixels) and make warm, human-centered design. I think things through, ask the right questions, bring ideas to the table – even when the problem is messy. I genuinely love my job even on office days.",
+      description: "I work with enthusiasm (and pixels) and make thoughtful, human-centered design. I approach tasks carefully, analyze, suggest ideas, and I'm not afraid of uncertainty. I love my job enough to even go to the office.",
       items: [
         { num: "01", title: "Education", desc: "Bachelor's degree, SPbU (Saint Petersburg State University), Faculty of Journalism and Mass Communications, Department of Media Design." },
         { num: "02", title: "Languages", desc: "English – B2, Spanish – A2." },
@@ -29,7 +29,7 @@ export const translations = {
     },
     contact: {
       title: "Let's work together",
-      description: "I'm available for freelance projects and full-time opportunities. Let's discuss how I can help bring your ideas to life.",
+      description: "Open to freelance projects and full-time collaboration.",
       modalTitle: "Let's connect",
       email: "Email",
       telegram: "Telegram",
@@ -62,7 +62,7 @@ export const translations = {
     },
     projectsPage: {
       title: "Projects",
-      subtitle: "A collection of high-load systems, DeFi protocols, and digital products I've shaped over the years.",
+      subtitle: "A collection of high-load systems, DeFi protocols, and digital products built over the last 8 years.",
       backToProjects: "Back to projects",
       viewLive: "View Live Project",
       nextProject: "Next Project",
@@ -169,7 +169,9 @@ export const projectTranslations: Record<"en" | "ru", ProjectTranslation[]> = {
       category: "DEFI",
       role: "DESIGN LEAD",
       title: "Glacis Labs dApp",
-      description: "DeFi ecosystem for cross-chain operations. Led the project’s design direction and shipped the full set: dApp, website, complex widgets, pitch decks, and diagrams."
+      description: "A DeFi ecosystem for cross-chain operations. I defined the project's design direction and built a dApp for tracking cross-chain transactions and analytics.",
+      cardDescription: "A dApp for tracking cross-chain transactions and analytics. UX, UI, brand identity.",
+      caseDescription: "Glacis Labs is a US startup building tools for decentralized app developers. They created an ecosystem of DeFi products, and I was responsible for all of its visual parts."
     },
     {
       id: 14,
@@ -177,7 +179,9 @@ export const projectTranslations: Record<"en" | "ru", ProjectTranslation[]> = {
       category: "DEFI",
       role: "DESIGN LEAD",
       title: "Glacis Labs site",
-      description: "Corporate website for the Glacis Labs ecosystem. Designed to effectively present the product suite and onboard new users."
+      description: "Corporate website for the Glacis Labs ecosystem. A multi-page site with complex widgets and diagrams showing how the products work.",
+      cardDescription: "Corporate website for Glacis Labs. A multi-page site with complex diagrams and widgets.",
+      caseDescription: "Glacis Labs builds Web3 products for developers. It is infrastructure you do not really see: routers, protocols, and liquidity pools working behind every cross-chain operation. Explaining how it all works is hard, but that is exactly the job of both the marketing site and me."
     },
     {
       id: 2,
@@ -255,7 +259,8 @@ We also shipped a Vietnamese version and launched for the Vietnamese market (and
       category: "Food App",
       role: "Senior Product Designer",
       title: "2Go",
-      description: "Freelance promos/deals service. Includes a mobile app for customers, a desktop app for B2B partners, and an admin panel."
+      description: "Freelance deals service. Inside: a mobile app for users, a desktop product for B2B, and an admin panel.",
+      caseDescription: "2GO is a deals platform for restaurants and cafes in Uzbekistan. Restaurants create promos, users find them and show up with a promo code, and waiters redeem that code at the cashier. My task was to design three products at once: a mobile app for users, a B2B dashboard for restaurants, and an admin panel for moderation."
     },
     {
       id: 3,
@@ -271,7 +276,7 @@ We also shipped a Vietnamese version and launched for the Vietnamese market (and
       category: "DEFI",
       role: "Senior Designer",
       title: "Moonbeam",
-      description: "Part-time project with a DeFi giant – designed the 'Projects' section and redesigned the 'Governance' section for their dApp."
+      description: "Part-time project with a DeFi giant – I built the Projects section and redesigned the Governance section in their dApp."
     },
     {
       id: 6,
@@ -279,7 +284,7 @@ We also shipped a Vietnamese version and launched for the Vietnamese market (and
       category: "BLOCKCHAIN",
       role: "Product Designer",
       title: "Cryptoveche",
-      description: "Blockchain online voting system. My first major product – developed the customer service, admin panel, and mobile app."
+      description: "Blockchain online voting system. My first big product – the client service, admin panel, and mobile app."
     },
     {
       id: 7,
@@ -295,7 +300,7 @@ We also shipped a Vietnamese version and launched for the Vietnamese market (and
       category: "DEFI",
       role: "Senior Designer",
       title: "PhoLend",
-      description: "Lending protocol on CrossFi. Created the visual style, dApp interface, and landing page."
+      description: "Protocol landing page on CrossFi. Visual style, dApp, and landing page."
     },
     {
       id: 9,
@@ -303,7 +308,7 @@ We also shipped a Vietnamese version and launched for the Vietnamese market (and
       category: "NFT",
       role: "Senior Designer",
       title: "DickButts",
-      description: "Designed an NFT collection landing page for DickButts in just a few days."
+      description: "Put together the landing page design for the DickButts NFT collection in a couple of days."
     },
     {
       id: 10,
@@ -319,7 +324,7 @@ We also shipped a Vietnamese version and launched for the Vietnamese market (and
       category: "DEFI",
       role: "Senior Designer",
       title: "Zero Delta",
-      description: "Glacis product presentation for the next generation of DeFi users."
+      description: "Presentation of a new Glacis product."
     },
     {
       id: 12,
@@ -327,7 +332,7 @@ We also shipped a Vietnamese version and launched for the Vietnamese market (and
       category: "DEFI",
       role: "Senior Designer",
       title: "ZooDAO",
-      description: "Technical system architecture and complex logic diagrams for a DAO ecosystem."
+      description: "A diagram showing how the system works."
     },
     {
       id: 13,
@@ -335,7 +340,7 @@ We also shipped a Vietnamese version and launched for the Vietnamese market (and
       category: "DEFI",
       role: "Seniour designer",
       title: "MAAT Pitch Deck",
-      description: "Investor presentation deck for the MAAT protocol, focusing on clear data visualization."
+      description: "Investor presentation for the MAAT product."
     }
   ],
   ru: [
@@ -345,7 +350,8 @@ We also shipped a Vietnamese version and launched for the Vietnamese market (and
       category: "DEFI",
       role: "DESIGN LEAD",
       title: "Glacis Labs dApp",
-      description: "Экосистема DeFi продуктов для работы с cross-chain операциями. Сформировала дизайн-направление проекта и собрала dApp для трекинга кроссчейн-транзакций и аналитики."
+      description: "Экосистема DeFi продуктов для работы с cross-chain операциями. Сформировала дизайн-направление проекта и собрала dApp для трекинга кроссчейн-транзакций и аналитики.",
+      cardDescription: "dApp для трекинга кроссчейн-транзакций и аналитики. UX, UI, фирстиль."
     },
     {
       id: 14,
@@ -354,6 +360,7 @@ We also shipped a Vietnamese version and launched for the Vietnamese market (and
       role: "DESIGN LEAD",
       title: "Glacis Labs site",
       description: "Корпоративный сайт экосистемы Glacis Labs. Многостраничник со сложными виджетами и схемами работы продуктов.",
+      cardDescription: "Корпоративный сайт Glacis Labs. Многостраничник со сложными схемами и виджетами.",
       caseDescription: "Glacis Labs создают Web3-продукты для разработчиков. Это инфраструктура, которую не видно: роутеры, протоколы, пулы ликвидности работают под капотом каждой кросс-чейн операции. Объяснить как все устроено довольно трудно, но именно в этом моя (и маркетингового сайта) задача."
     },
     {

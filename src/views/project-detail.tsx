@@ -485,6 +485,7 @@ export default function ProjectDetail() {
   const scrollContainerRef10 = useRef<HTMLDivElement>(null);
   const scrollContainerRef11 = useRef<HTMLDivElement>(null);
   const scrollContainerRef12 = useRef<HTMLDivElement>(null);
+  const tldrRef = useRef<HTMLDivElement>(null);
   const [isDragging1, setIsDragging1] = useState(false);
   const [isDragging2, setIsDragging2] = useState(false);
   const [isDragging3, setIsDragging3] = useState(false);
@@ -828,6 +829,25 @@ export default function ProjectDetail() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    if (!tldrOpen) return;
+
+    const handlePointerDown = (event: MouseEvent | TouchEvent) => {
+      const target = event.target;
+      if (!(target instanceof Node)) return;
+      if (tldrRef.current?.contains(target)) return;
+      setTldrOpen(false);
+    };
+
+    document.addEventListener("mousedown", handlePointerDown);
+    document.addEventListener("touchstart", handlePointerDown);
+
+    return () => {
+      document.removeEventListener("mousedown", handlePointerDown);
+      document.removeEventListener("touchstart", handlePointerDown);
+    };
+  }, [tldrOpen]);
+
   return (
     <div className="min-h-screen bg-white">
       <AnimatePresence>
@@ -1091,8 +1111,8 @@ export default function ProjectDetail() {
                 </span>
               </div>
 
-              {(project.id === 2 || project.id === 1 || project.id === 4 || project.id === 3) && (
-                <div className="md:ml-auto relative">
+              {(project.id === 2 || project.id === 1 || project.id === 4 || project.id === 3 || project.id === 14) && (
+                <div ref={tldrRef} className="md:ml-auto relative">
                   <button 
                     onClick={() => setTldrOpen(!tldrOpen)}
                     className="flex items-center gap-2 px-4 py-3 rounded-full border border-gray-100 bg-white shadow-sm hover:bg-gray-50 transition-all duration-300 group pl-[24px] pr-[24px]"
@@ -1125,7 +1145,13 @@ export default function ProjectDetail() {
                         </div>
                         <p className="text-[16px] leading-relaxed text-gray-600">
                           {project.id === 1 
-                            ? "Lead Product Designer в Glacis Labs: собрала визуальную систему бренда и спроектировала dApp для трекинга кроссчейн-транзакций (до 5 бриджей) с прозрачной моделью статусов, ретраями и аналитикой. Масштабировала продукт с V1 до V2 после запуска AirLift и расширения аналитики."
+                            ? (language === "ru"
+                              ? "Lead Product Designer в Glacis Labs: собрала визуальную систему бренда и спроектировала dApp для трекинга кроссчейн-транзакций (до 5 бриджей) с прозрачной моделью статусов, ретраями и аналитикой. Масштабировала продукт с V1 до V2 после запуска AirLift и расширения аналитики."
+                              : "Lead Product Designer at Glacis Labs: built the brand's visual system and designed a dApp for tracking cross-chain transactions (up to 5 bridges) with a transparent status model, retries, and analytics. Then scaled the product from V1 to V2 after AirLift launched and the analytics expanded.")
+                            : project.id === 14
+                            ? language === "ru"
+                              ? "Маркетинговый сайт Glacis Labs, который объясняет сложные Web3-механики через анимации и интерактив. Я спроектировала структуру сайта с нуля, придумала сценарии и логику motion-блоков для Glacis Core, AirLift и ZeroDelta, а также собрала виджет страницы Экосистема с каскадной фильтрацией токенов, сетей и роутов."
+                              : "A marketing website for Glacis Labs that explains complex Web3 mechanics through animation and interactive flows. I designed the site structure from scratch, defined the motion scenarios for Glacis Core, AirLift, and ZeroDelta, and built the Ecosystem page widget with cascading filtering for tokens, chains, and routes."
                             : project.id === 3
                             ? language === "ru"
                               ? "СКИЗИ – система учёта зелёных сертификатов и договоров с многоуровневой ролевой моделью. За 1,5 года провела проект от тендера до продакшна: спроектировала ключевые флоу для каждой роли (зеленые инструменты и операции с ними, генерирующие объекты, управление данными, аудит и др), разобралась в предметной области с нуля и сделала так, чтобы сложные операции с атрибутами генерации, деньгами и ЭП оставались понятными для всех пользователей."
@@ -1133,8 +1159,10 @@ export default function ProjectDetail() {
                             : project.id === 4
                             ? language === "ru"
                               ? "2GO — агрегатор акций для ресторанов и кафе в Узбекистане. Единственный дизайнер в команде, в связке с продакт-менеджером за два месяца спроектировала три продукта с нуля: мобильное приложение для пользователей, B2B-кабинет для ресторанов и админ-панель для модерации. Единый промокод-флоу проходит через все три интерфейса — пользователь получает код, официант пробивает на кассе, ресторан видит статистику, админ модерирует. Прямых аналогов на рынке нет."
-                              : "2GO is a deals platform for restaurants and cafes in Uzbekistan. Users can instantly see nearby happy hours, open a promo code, and head to the venue. Restaurants get more foot traffic and a practical tool to manage promotions. I designed three products in parallel: a mobile app for users, a B2B dashboard for restaurant teams, and an admin panel, working independently in close collaboration with the product manager."
-                            : "xSwap — AMM dApp на CrossFi. За 1 месяц собрала UX/UI для Swap, Pools, Token Sale и Lock/Voting, координировала фронт, работала в связке с solidity. Сделала интерфейс, который не пугает: slippage и прозрачный Route в swap, понятные liquidity-пулы с multi-step подсказками, Token Sale с Profit Estimator и видеогайдами, плюс сложный Lock/Voting — с продуманными корнер-кейсами и состояниями транзакций."
+                              : "2GO is a deals platform for restaurants and cafes in Uzbekistan. As the only designer on the team, working closely with the product manager, I designed three products from scratch in two months: a mobile app for users, a B2B dashboard for restaurants, and an admin panel for moderation. One promo-code flow runs through all three interfaces: the user gets a code, the waiter redeems it at the cashier, the restaurant sees the stats, and the admin moderates the platform. There are no direct analogs on the market."
+                            : (language === "ru"
+                              ? "xSwap — AMM dApp на CrossFi. За 1 месяц собрала UX/UI для Swap, Pools, Token Sale и Lock/Voting, координировала фронт, работала в связке с solidity. Сделала интерфейс, который не пугает: slippage и прозрачный Route в swap, понятные liquidity-пулы с multi-step подсказками, Token Sale с Profit Estimator и видеогайдами, плюс сложный Lock/Voting — с продуманными корнер-кейсами и состояниями транзакций."
+                              : "xSwap is an AMM dApp on CrossFi. In one month, I put together the UX/UI for Swap, Pools, Token Sale, and Lock/Voting, coordinated with frontend, and worked closely with Solidity. The result is an interface that does not scare people off: slippage and a transparent Route in Swap, understandable liquidity pools with multi-step guidance, Token Sale with a Profit Estimator and video guides, plus a complex Lock/Voting flow with well-thought-out edge cases and transaction states.")
                           }
                         </p>
                       </motion.div>
@@ -1286,11 +1314,13 @@ export default function ProjectDetail() {
               </div>
             )}
 
-            {project.id === 14 && language === "ru" && (
+            {project.id === 14 && (
               <div className="max-w-[calc(56rem-80px)] mb-16">
-                <h2 className="text-2xl font-medium mb-6">Решение</h2>
+                <h2 className="text-2xl font-medium mb-6">{language === "ru" ? "Решение" : "Solution"}</h2>
                 <p className="text-lg text-gray-600 leading-relaxed whitespace-pre-line mb-8">
-                  {"Я поставила анимацию в центр каждой продуктовой страницы как основной способ объяснения сложных механик:\n Glacis Core – как сообщение идёт из одного чейна в другой через роутер. Анимация главного экрана скорее красивенькая, чем explanatory, поэтому усиливаем ее анимациями фич – Abstraction, Redundancy, Retry Management и Modular Security. Это интерактивные схемы для более подробного погружения в сценарии использования."}
+                  {language === "ru"
+                    ? "Я поставила анимацию в центр каждой продуктовой страницы как основной способ объяснения сложных механик:\n Glacis Core – как сообщение идёт из одного чейна в другой через роутер. Анимация главного экрана скорее красивенькая, чем explanatory, поэтому усиливаем ее анимациями фич – Abstraction, Redundancy, Retry Management и Modular Security. Это интерактивные схемы для более подробного погружения в сценарии использования."
+                    : "I put animation at the center of each product page as the main way to explain the complicated mechanics.\nGlacis Core shows how a message moves from one chain to another through the router. The hero animation is more pretty than truly explanatory, so I backed it up with feature animations for Abstraction, Redundancy, Retry Management, and Modular Security. These are interactive diagrams for digging deeper into specific use cases."}
                 </p>
                 <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white md:w-[130%] md:max-w-none">
                   <video
@@ -1351,7 +1381,9 @@ export default function ProjectDetail() {
                 </div>
 
                 <p className="text-lg text-gray-600 leading-relaxed mt-8">
-                  AirLift – путь токена через burn → bridge → mint на разных сетях через один интерфейс. Вторая анимация раскрывает архитектуру подробнее, уже с полным флоу от User/dApp до получения токена на другой сети.
+                  {language === "ru"
+                    ? "AirLift – путь токена через burn → bridge → mint на разных сетях через один интерфейс. Вторая анимация раскрывает архитектуру подробнее, уже с полным флоу от User/dApp до получения токена на другой сети."
+                    : "AirLift is the token path through burn -> bridge -> mint across different chains, all from one interface. The second animation goes deeper into the architecture, showing the full flow from User/dApp to receiving the token on the destination chain."}
                 </p>
 
                 <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white mt-8 md:w-[130%] md:max-w-none">
@@ -1383,7 +1415,9 @@ export default function ProjectDetail() {
                 </div>
 
                 <p className="text-lg text-gray-600 leading-relaxed mt-8">
-                  ZeroDelta – как токены движутся между User → Pool → Merchant / Receiver. Идею и структуру каждой анимации я разработала сама, реализацию передала motion-дизайнеру по детальному ТЗ.
+                  {language === "ru"
+                    ? "ZeroDelta – как токены движутся между User → Pool → Merchant / Receiver. Идею и структуру каждой анимации я разработала сама, реализацию передала motion-дизайнеру по детальному ТЗ."
+                    : "ZeroDelta shows how tokens move between User -> Pool -> Merchant / Receiver. I came up with the idea and structure for every animation myself, then handed execution over to the motion designer with a detailed spec."}
                 </p>
 
                 <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white mt-8 md:w-[130%] md:max-w-none">
@@ -1394,11 +1428,15 @@ export default function ProjectDetail() {
                   />
                 </div>
                 <p className="text-sm text-gray-400 italic mt-4 text-center">
-                  Пока не анимировано и лорем ипсум – все еще работаем над этой страницей и новой структурой сайта.
+                  {language === "ru"
+                    ? "Пока не анимировано и лорем ипсум – все еще работаем над этой страницей и новой структурой сайта."
+                    : "Not animated yet and still full of lorem ipsum. We are still working on this page and the new site structure."}
                 </p>
 
                 <p className="text-lg text-gray-600 leading-relaxed mt-8">
-                  Вот так отдавала ТЗ аниматору – с логикой движения и комментариями (а иногда подробными раскадровками).
+                  {language === "ru"
+                    ? "Вот так отдавала ТЗ аниматору – с логикой движения и комментариями (а иногда подробными раскадровками)."
+                    : "This is how I handed specs over to the animator: with motion logic, comments, and sometimes full storyboards."}
                 </p>
 
                 <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))] mt-8">
@@ -1427,9 +1465,11 @@ export default function ProjectDetail() {
                     <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
                   </div>
                 </div>
-                <h2 className="text-2xl font-medium mt-12 mb-6">Страница Экосистема</h2>
+                <h2 className="text-2xl font-medium mt-12 mb-6">{language === "ru" ? "Страница Экосистема" : "Ecosystem Page"}</h2>
                 <p className="text-lg text-gray-600 leading-relaxed whitespace-pre-line">
-                  {"Glacis поддерживает десятки (сотни?) токенов, сетей и роутов. Задача: дать пользователю инструмент для проверки конкретной комбинации.\nЯ спроектировала виджет с каскадной фильтрацией: три колонки (Tokens / Chains / Routes) работают независимо, но синхронно. Можно выбрать только токен и увидеть все доступные сети и роуты под него. Только сеть – и получить список поддерживаемых токенов и маршрутов. Токен + сеть показывает все возможные роуты между ними. Можно искать напрямую по роуту Source → Destination. Каждая комбинация даёт свой результат – всё это в одном компоненте и за пару кликов."}
+                  {language === "ru"
+                    ? "Glacis поддерживает десятки (сотни?) токенов, сетей и роутов. Задача: дать пользователю инструмент для проверки конкретной комбинации.\nЯ спроектировала виджет с каскадной фильтрацией: три колонки (Tokens / Chains / Routes) работают независимо, но синхронно. Можно выбрать только токен и увидеть все доступные сети и роуты под него. Только сеть – и получить список поддерживаемых токенов и маршрутов. Токен + сеть показывает все возможные роуты между ними. Можно искать напрямую по роуту Source → Destination. Каждая комбинация даёт свой результат – всё это в одном компоненте и за пару кликов."
+                    : "Glacis supports dozens, maybe hundreds, of tokens, chains, and routes. The task was to give users a tool to check a specific combination.\nI designed a widget with cascading filtering: three columns, Tokens / Chains / Routes, working independently but in sync. You can pick just a token and instantly see all supported chains and routes for it. Pick only a chain and get the supported tokens and route options. Token + chain shows every possible route between them. You can also search directly by route, Source -> Destination. Every combination produces its own result, all inside one component and in just a couple of clicks."}
                 </p>
 
                 <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))] mt-8">
@@ -1458,17 +1498,36 @@ export default function ProjectDetail() {
                     <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
                   </div>
                 </div>
+
+                <h2 className="text-2xl font-medium mt-12 mb-6">{language === "ru" ? "Итог" : "Outcome"}</h2>
+                <p className="text-lg text-gray-600 leading-relaxed">
+                  <>
+                    <a
+                      href="https://glacislabs.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-black underline underline-offset-4 decoration-1"
+                    >
+                      {language === "ru" ? "Вот такой" : "Here is the"}
+                    </a>{" "}
+                    {language === "ru"
+                      ? "маркетинговый сайт получился. Я сделала его с нуля и масштабировала (сейчас делаем уже третью версию – компания растет!). Придумала как визуализировать абстрактные кросс-чейн процессы и объяснить аудитории сложную логику продуктов. Спроектировала интерактивный виджет для страницы Экосистема – единый компонент, который объединяет сотни комбинаций токенов, сетей и роутов в пару кликов."
+                      : "marketing site we ended up with. I built it from scratch and scaled it up over time; we are already working on version three because the company keeps growing. I figured out how to visualize abstract cross-chain processes and explain tricky product logic to the audience. I also designed the interactive widget for the Ecosystem page, a single component that brings hundreds of token, chain, and route combinations down to a couple of clicks."}
+                  </>
+                </p>
               </div>
             )}
 
-            {project.id === 4 && language === "ru" && (
+            {project.id === 4 && (
               <div className="max-w-[calc(56rem-80px)] mb-16">
-                <h2 className="text-2xl font-medium mt-4 mb-6">Контекст и вызовы</h2>
+                <h2 className="text-2xl font-medium mt-4 mb-6">{language === "ru" ? "Контекст и вызовы" : "Context & Challenges"}</h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                  2GO выходит на рынок, где прямых аналогов нет – ближайший похожий продукт в Ташкенте это Bizzon.uz, купонный сервис по модели Groupon. Но у него другая механика: пользователь платит за купон заранее, нет real-time акций и B2B-инструмента для ресторанов. Агрегатора happy hours и live-промокодов в Узбекистане пока не существует. Это одновременно возможность и сложность. Нет устоявшегося паттерна потребления, на который можно опереться. Рестораны не привыкли управлять акциями через цифровой инструмент, поэтому B2B-часть должна быть супер понятной и интуитивной.
+                  {language === "ru"
+                    ? "2GO выходит на рынок, где прямых аналогов нет – ближайший похожий продукт в Ташкенте это Bizzon.uz, купонный сервис по модели Groupon. Но у него другая механика: пользователь платит за купон заранее, нет real-time акций и B2B-инструмента для ресторанов. Агрегатора happy hours и live-промокодов в Узбекистане пока не существует. Это одновременно возможность и сложность. Нет устоявшегося паттерна потребления, на который можно опереться. Рестораны не привыкли управлять акциями через цифровой инструмент, поэтому B2B-часть должна быть супер понятной и интуитивной."
+                    : "2GO is entering a market with no direct analogs. The closest thing in Tashkent is Bizzon.uz, a Groupon-style coupon service, but the mechanic is different: users pay for the coupon upfront, there are no real-time promos, and there is no B2B tool for restaurants. Uzbekistan does not really have a happy-hours and live-promo aggregator yet. That is both the opportunity and the challenge. There is no established user pattern to lean on, and restaurants are not used to managing promos through a digital tool, so the B2B side had to feel extremely clear and intuitive."}
                 </p>
 
-                <h2 className="text-2xl font-medium mt-4 mb-6">Пользовательское приложение</h2>
+                <h2 className="text-2xl font-medium mt-4 mb-6">{language === "ru" ? "Пользовательское приложение" : "User App"}</h2>
                 <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))]">
                   <div
                     ref={scrollContainerRef5}
@@ -1496,10 +1555,14 @@ export default function ProjectDetail() {
                   </div>
                 </div>
                 <p className="text-lg text-gray-600 leading-relaxed mt-8">
-                  В Яндекс.Еде или Wolt у человека есть конкретная цель – заказать еду. В 2GO пользователь просто хочет знать, где сейчас выгодно. Поэтому в Обзоре помогаем ему найти ближайшие локации с акциями, кастомизировать ленту через фильтры (тут фильтры по категориям заведения, типам акции, сортировка по удаленности и поиск) и преследуем свои интересы, показывая лучшие (проплаченные) предложения. Еще подсвечиваем в таб-баре карту, на которой все рестораны и акции рядом.
+                  {language === "ru"
+                    ? "В Яндекс.Еде или Wolt у человека есть конкретная цель – заказать еду. В 2GO пользователь просто хочет знать, где сейчас выгодно. Поэтому в Обзоре помогаем ему найти ближайшие локации с акциями, кастомизировать ленту через фильтры (тут фильтры по категориям заведения, типам акции, сортировка по удаленности и поиск) и преследуем свои интересы, показывая лучшие (проплаченные) предложения. Еще подсвечиваем в таб-баре карту, на которой все рестораны и акции рядом."
+                    : "In Yandex Eats or Wolt, the user has a clear goal: order food. In 2GO, the user just wants to know where the best deal is right now. So on the Overview screen we help them find nearby places with promos, tune the feed with filters (venue categories, promo types, distance sorting, and search), and also push our own priorities by highlighting the best paid placements. We also give extra emphasis in the tab bar to the map, where users can instantly see nearby restaurants and active deals."}
                 </p>
                 <p className="text-lg text-gray-600 leading-relaxed mt-6">
-                  Подписка не блокирует просмотр – человек может листать всё что угодно, но промокод открывается только авторизованным пользователям. Барьер появляется в момент, когда интерес уже есть, не раньше.
+                  {language === "ru"
+                    ? "Подписка не блокирует просмотр – человек может листать всё что угодно, но промокод открывается только авторизованным пользователям. Барьер появляется в момент, когда интерес уже есть, не раньше."
+                    : "The subscription does not block browsing. People can scroll through anything they want, but the promo code only opens for authorized users. The barrier appears at the moment interest is already there, not before."}
                 </p>
 
                 <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))] mt-8">
@@ -1529,12 +1592,16 @@ export default function ProjectDetail() {
                   </div>
                 </div>
                 <p className="text-lg text-gray-600 leading-relaxed mt-8">
-                  Карточка ресторана – это сеть, а не точка. Внутри показаны все акции сети, но можно выбрать конкретный филиал или посортировать. Это чуть усложняет UX, но отражает реальность: пользователь думает «пойду в McDonald's», а не «пойду в McDonald's на 7-й проезд Ниезбек Йули». С карты фильтр по филиалу применяется автоматически – открывается карточка с уже выбранным филиалом.
+                  {language === "ru"
+                    ? "Карточка ресторана – это сеть, а не точка. Внутри показаны все акции сети, но можно выбрать конкретный филиал или посортировать. Это чуть усложняет UX, но отражает реальность: пользователь думает «пойду в McDonald's», а не «пойду в McDonald's на 7-й проезд Ниезбек Йули». С карты фильтр по филиалу применяется автоматически – открывается карточка с уже выбранным филиалом."
+                    : "The restaurant card is built around the chain, not a single location. Inside, users see all promos across the chain, but they can still pick a specific branch or sort the list. It makes the UX a bit more complex, but it reflects reality: people think \"I want to go to McDonald's,\" not \"I want to go to McDonald's on 7th Proyezd Niezbek Yuli.\" When coming from the map, the branch filter is applied automatically, so the card opens with the selected branch already in place."}
                 </p>
                 <p className="text-lg text-gray-600 leading-relaxed mt-6">
-                  После того как официант пробивает код, клиенту выезжает модалка с просьбой оценить акцию. Если пользователь не в приложении – она появится при следующем открытии. Без этого теряется большая часть отзывов.
+                  {language === "ru"
+                    ? "После того как официант пробивает код, клиенту выезжает модалка с просьбой оценить акцию. Если пользователь не в приложении – она появится при следующем открытии. Без этого теряется большая часть отзывов."
+                    : "After the waiter redeems the code, the customer gets a modal asking them to rate the deal. If the user is not in the app at that moment, it appears on the next open. Without that, you lose most of the feedback."}
                 </p>
-                <h2 className="text-2xl font-medium mt-8 mb-6">B2B-кабинет</h2>
+                <h2 className="text-2xl font-medium mt-8 mb-6">{language === "ru" ? "B2B-кабинет" : "B2B Dashboard"}</h2>
                 <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))]">
                   <div
                     ref={scrollContainerRef3}
@@ -1562,7 +1629,9 @@ export default function ProjectDetail() {
                   </div>
                 </div>
                 <p className="text-lg text-gray-600 leading-relaxed mt-8">
-                  У B2B три уровня доступа: создатель сети, менеджер сети, менеджер филиала – с разными правами. При этом один аккаунт может владеть несколькими сетями. Чтобы начать работу нужно создать ресторан, добавить в него филиалы, а затем создать акции.
+                  {language === "ru"
+                    ? "У B2B три уровня доступа: создатель сети, менеджер сети, менеджер филиала – с разными правами. При этом один аккаунт может владеть несколькими сетями. Чтобы начать работу нужно создать ресторан, добавить в него филиалы, а затем создать акции."
+                    : "The B2B side has three access levels: chain owner, chain manager, and branch manager, each with different permissions. One account can also own multiple chains. To get started, the user has to create a restaurant, add branches to it, and only then create promos."}
                 </p>
                 <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))] mt-8">
                   <div
@@ -1591,7 +1660,9 @@ export default function ProjectDetail() {
                   </div>
                 </div>
                 <p className="text-lg text-gray-600 leading-relaxed mt-8">
-                  «Пробить промокод» – самый частый флоу для менеджера филиала. Официант использует его на кассе много раз в день: клиент показывает 6-значный код, официант вводит его, возвращается успех или ошибка. (Здесь я предложила генерировать кьюар на стороне пользователя и показывать официанту – удобно + распространенная практика, но заказчик отказался в связи с техническими ограничениями). Времени на кассе мало, поэтому филиал предзаполнен, а инпуты для кода большие, что не промахнуться.
+                  {language === "ru"
+                    ? "«Пробить промокод» – самый частый флоу для менеджера филиала. Официант использует его на кассе много раз в день: клиент показывает 6-значный код, официант вводит его, возвращается успех или ошибка. (Здесь я предложила генерировать кьюар на стороне пользователя и показывать официанту – удобно + распространенная практика, но заказчик отказался в связи с техническими ограничениями). Времени на кассе мало, поэтому филиал предзаполнен, а инпуты для кода большие, что не промахнуться."
+                    : "\"Redeem promo code\" is the most frequent flow for a branch manager. A waiter uses it at the cashier many times a day: the customer shows a 6-digit code, the waiter enters it, and the system returns either success or an error. I suggested generating a QR code on the user side and letting the waiter scan it, which is both convenient and standard, but the client turned it down because of technical limitations. Time at the cashier is tight, so the branch is prefilled and the code inputs are large enough to avoid misclicks."}
                 </p>
                 <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))] mt-8">
                   <div
@@ -1619,7 +1690,7 @@ export default function ProjectDetail() {
                     <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
                   </div>
                 </div>
-                <h2 className="text-2xl font-medium mt-8 mb-6">Админ-панель</h2>
+                <h2 className="text-2xl font-medium mt-8 mb-6">{language === "ru" ? "Админ-панель" : "Admin Panel"}</h2>
                 <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))]">
                   <div
                     ref={scrollContainerRef1}
@@ -1647,17 +1718,25 @@ export default function ProjectDetail() {
                   </div>
                 </div>
                 <p className="text-lg text-gray-600 leading-relaxed mt-8">
-                  Это внутренний инструмент, необходимый для модерации платформы. Администратор рассматривает заявки на создание и редактирование ресторанов. Чтобы не отклонять заявку целиком – может прямо на этапе рассмотрения изменить данные – все инпуты открыты для редактирования. В заявках на редактирование показываем только те данные, которые поменялись – для быстроты и удобства сравнения.
+                  {language === "ru"
+                    ? "Это внутренний инструмент, необходимый для модерации платформы. Администратор рассматривает заявки на создание и редактирование ресторанов. Чтобы не отклонять заявку целиком – может прямо на этапе рассмотрения изменить данные – все инпуты открыты для редактирования. В заявках на редактирование показываем только те данные, которые поменялись – для быстроты и удобства сравнения."
+                    : "This is an internal tool for platform moderation. The admin reviews requests to create and edit restaurants. Instead of rejecting the whole request, they can fix the data right during review, since all inputs stay editable. In edit requests, we show only the fields that actually changed, which makes comparison much faster and easier."}
                 </p>
                 <p className="text-lg text-gray-600 leading-relaxed mt-6">
-                  Еще администратор управляет командой модераторов – добавляет по email, удаляет с мгновенным отзывом доступа. Пуш-уведомления настраиваются прямо в панели: заголовок, текст, время рассылки, периодичность. Активные и архивные хранятся отдельно.
+                  {language === "ru"
+                    ? "Еще администратор управляет командой модераторов – добавляет по email, удаляет с мгновенным отзывом доступа. Пуш-уведомления настраиваются прямо в панели: заголовок, текст, время рассылки, периодичность. Активные и архивные хранятся отдельно."
+                    : "The admin also manages the moderator team: invites by email, removes people with instant access revocation, and configures push notifications right from the panel, including title, text, send time, and frequency. Active and archived notifications are stored separately."}
                 </p>
-                <h2 className="text-2xl font-medium mt-8 mb-6">Итог</h2>
+                <h2 className="text-2xl font-medium mt-8 mb-6">{language === "ru" ? "Итог" : "Outcome"}</h2>
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  Три продукта с единой логикой, запущенные с нуля на рынке без прямых аналогов. Сейчас всё на стадии финальной верстки.
+                  {language === "ru"
+                    ? "Три продукта с единой логикой, запущенные с нуля на рынке без прямых аналогов. Сейчас всё на стадии финальной верстки."
+                    : "Three products with one shared logic, launched from scratch in a market with no direct analogs. Right now everything is at the final frontend stage."}
                 </p>
                 <p className="text-lg text-gray-600 leading-relaxed mt-6">
-                  Все три продукта работают как единая система: официант пробил код – у пользователя он стал использованным, администратор одобрил ресторан – он появился в каталоге. Это потребовало синхронизации логики между интерфейсами ещё на стадии проектирования (я очень люблю сквозные флоу).
+                  {language === "ru"
+                    ? "Все три продукта работают как единая система: официант пробил код – у пользователя он стал использованным, администратор одобрил ресторан – он появился в каталоге. Это потребовало синхронизации логики между интерфейсами ещё на стадии проектирования (я очень люблю сквозные флоу)."
+                    : "All three products work as one system: once the waiter redeems the code, it becomes used in the customer app; once the admin approves a restaurant, it appears in the catalog. That required syncing the logic across all interfaces already at the design stage, which is exactly the kind of end-to-end flow work I love."}
                 </p>
               </div>
             )}
@@ -2141,12 +2220,12 @@ export default function ProjectDetail() {
                   ))}
                 </ul>
                 <p className="text-lg text-gray-600 leading-relaxed mb-12">
-                   {language === "ru" ? "Медиа-материалы я отдала на аутсорс (и итерационно контролировала), за остальное взялась сама." : "I outsourced the media materials (and managed the process iteratively), and took on the rest myself."}
+                   {language === "ru" ? "Медиа-материалы я отдала на аутсорс (и итерационно контролировала), за остальное взялась сама." : "I outsourced the media materials and supervised them iteratively, and took on the rest myself."}
                 </p>
 
                 <h2 className="text-2xl font-medium mb-6">dApp</h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                  {language === "ru" ? "После определения стилевого направления я начала разрабатывать dApp. Его основная функция – отслеживание статуса транзакции онлайн. Звучит как дефолтный Scan app, но меня попросили отразить статусы графически, а сложность в том, что транзакция может идти через пять бриджей. Выглядит это так (схема от разработчиков):" : "After defining the style direction, I started developing the dApp. Its main function is tracking transaction status online. It sounds like a default Scan app, but I was asked to visualize statuses graphically, and the complexity is that a transaction can go through five bridges. It looks like this (schema from developers):"}
+                  {language === "ru" ? "После определения стилевого направления я начала разрабатывать dApp. Его основная функция – отслеживание статуса транзакции онлайн. Звучит как дефолтный Scan app, но меня попросили отразить статусы графически, а сложность в том, что транзакция может идти через пять бриджей. Выглядит это так (схема от разработчиков):" : "After defining the visual direction, I moved on to the dApp. Its main job is tracking transaction status online. Sounds like a pretty standard scan app, but I was asked to show statuses graphically, and the tricky part is that one transaction can go through five bridges. It looks like this (diagram from the developers):"}
                 </p>
 
                 <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))] mb-12">
@@ -2178,13 +2257,13 @@ export default function ProjectDetail() {
                 </div>
                 
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                  {language === "ru" ? "Еще в приложении должен быть блок аналитики, которая бы отражала общее количество транзакций за период, стоимость газа, скорость транзакции, наиболее популярные Chain Paths и т.д. Не забудем и про расширенный блок фильтрации, чтобы пользователь мог максимально кастомизировать графики." : "The app also needed an analytics block reflecting the total number of transactions over a period, gas cost, transaction speed, most popular Chain Paths, etc. And let's not forget the advanced filtering block so the user can fully customize the charts."}
+                  {language === "ru" ? "Еще в приложении должен быть блок аналитики, которая бы отражала общее количество транзакций за период, стоимость газа, скорость транзакции, наиболее популярные Chain Paths и т.д. Не забудем и про расширенный блок фильтрации, чтобы пользователь мог максимально кастомизировать графики." : "The app also needed an analytics block showing the total number of transactions over a period, gas cost, transaction speed, the most popular Chain Paths, and so on. And of course it needed an extended filtering block, so the user could customize the charts as much as possible."}
                 </p>
                  <p className="text-lg text-gray-600 leading-relaxed mb-8">
                   {language === "ru" ? "Аудитория приложения – разработчики (85%) и пользователи web3 продуктов (15%), преимущественно западная. Высокая плотность данных приветствуется, а скорость диагностики (быстро понять, почему транзакция легла) – один из приоритетов." : "The app's audience is developers (85%) and web3 product users (15%), primarily Western. High data density is welcomed, and diagnostic speed (quickly understanding why a transaction failed) is a priority."}
                 </p>
                  <p className="text-lg text-gray-600 leading-relaxed mb-12">
-                  {language === "ru" ? "После разработки дизайна V1 джуниор-дизайнер ушел, а вводные усложнились: у Glacis Labs появился второй продукт, AirLift, который расширял раздел аналитики и вводил еще одну переменную для транзакций. Итак, V2:" : "After developing the V1 design, the junior designer left, and the requirements became more complex: Glacis Labs launched a second product, AirLift, which expanded the analytics section and introduced another variable for transactions. So, V2:"}
+                  {language === "ru" ? "После разработки дизайна V1 джуниор-дизайнер ушел, а вводные усложнились: у Glacis Labs появился второй продукт, AirLift, который расширял раздел аналитики и вводил еще одну переменную для транзакций. Итак, V2:" : "After the V1 design was done, the junior designer left and the input got more complex: Glacis Labs launched a second product, AirLift, which expanded the analytics section and introduced one more variable into transactions. So, V2:"}
                 </p>
 
                 <h2 className="text-2xl font-medium mb-6">{language === "ru" ? "Главная страница" : "Main Page"}</h2>
@@ -2199,15 +2278,15 @@ export default function ProjectDetail() {
                 </div>
 
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                   {language === "ru" ? "Наверху – мини-статистика по всему dApp, которая дает новому пользователю представление о масштабах экосистемы и количестве проходящих через нее транзакций, а пользователю постоянному – возможность отслеживать изменения («ого, было 10 сетей, а сейчас уже 21, как быстро они растут»)." : "At the top is mini-statistics for the entire dApp, giving new users an idea of the ecosystem's scale and transaction volume, and allowing regular users to track changes (“wow, there were 10 networks, now 21, they grow so fast”)."}
+                   {language === "ru" ? "Наверху – мини-статистика по всему dApp, которая дает новому пользователю представление о масштабах экосистемы и количестве проходящих через нее транзакций, а пользователю постоянному – возможность отслеживать изменения («ого, было 10 сетей, а сейчас уже 21, как быстро они растут»)." : "At the top there is mini-statistics for the whole dApp. It gives a new user a sense of the ecosystem's scale and transaction volume, and gives a returning user a way to track changes (\"wow, there used to be 10 networks, now there are already 21, they are growing fast\")."}
                 </p>
                 <p className="text-lg text-gray-600 leading-relaxed mb-12">
-                   {language === "ru" ? "Далее – список последних транзакций в табличном представлении – довольно привычно для аудитории и типично для сканеров. Поисковая строка для быстрой проверки, фильтры – если ищу закономерности, сортировка по времени. Изначально делили транзакции по продуктам (вкладки Glacis core и AirLift), но после тестирования объединили их в одну таблицу – убрали лишний шаг, оставив возможность фильтрации по продукту." : "Next is the list of recent transactions with search and filtering, and sorting added to the “Time” column. We can also switch tabs to choose the product – Glacis Core or Airlift (it works with tokens, but that's a detail)."}
+                   {language === "ru" ? "Далее – список последних транзакций в табличном представлении – довольно привычно для аудитории и типично для сканеров. Поисковая строка для быстрой проверки, фильтры – если ищу закономерности, сортировка по времени. Изначально делили транзакции по продуктам (вкладки Glacis core и AirLift), но после тестирования объединили их в одну таблицу – убрали лишний шаг, оставив возможность фильтрации по продукту." : "Next comes the list of recent transactions in a table view, which feels familiar to the audience and is standard for scanners. There is a search field for quick checks, filters for when you are looking for patterns, and sorting by time. At first we split transactions by product into Glacis Core and AirLift tabs, but after testing we merged them into one table, removed the extra step, and kept product filtering instead."}
                 </p>
 
                 <h2 className="text-2xl font-medium mb-6">{language === "ru" ? "Детали транзакции" : "Transaction Details"}</h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                   {language === "ru" ? "По нажатии на строку таблицы мы проваливаемся в детали транзакции. Под заголовок я вынесла время транзакции, статус и продукт. Далее – все что может быть полезно: Message ID, From/To, Source / Destination и т.д. Везде, где можно и нужно, кнопка копирования. Ниже – подробное отображение статуса транзакции. В данном примере она идет через два бриджа – Wormhole и LayerZero и у каждого свой статус. Пользователь видит, что через Wormhole транзакция уже прошла, а через LayerZero еще нет, но уже почти. Также он видит альтернативные пути, по которым могла пойти транзакция." : "Clicking a table row takes us to transaction details. Under the header, I placed transaction time, status, and product. Then – everything useful: Message ID, From/To, Source / Destination, etc. Copy buttons everywhere needed. Below is the detailed transaction status. In this example, it goes through two bridges – Wormhole and LayerZero, each with its status. The user sees Wormhole is done, LayerZero is pending. They also see alternative paths the transaction could have taken."}
+                   {language === "ru" ? "По нажатии на строку таблицы мы проваливаемся в детали транзакции. Под заголовок я вынесла время транзакции, статус и продукт. Далее – все что может быть полезно: Message ID, From/To, Source / Destination и т.д. Везде, где можно и нужно, кнопка копирования. Ниже – подробное отображение статуса транзакции. В данном примере она идет через два бриджа – Wormhole и LayerZero и у каждого свой статус. Пользователь видит, что через Wormhole транзакция уже прошла, а через LayerZero еще нет, но уже почти. Также он видит альтернативные пути, по которым могла пойти транзакция." : "Clicking a row in the table opens the transaction details. Under the header I placed the transaction time, status, and product. Then comes everything that might be useful: Message ID, From/To, Source / Destination, and so on, with copy buttons everywhere they matter. Below that is the detailed transaction status. In this example it goes through two bridges, Wormhole and LayerZero, and each has its own status. The user can see that the transaction already passed through Wormhole, while LayerZero has not completed it yet, but is close. They can also see the alternative paths the transaction could have taken."}
                 </p>
 
                 <div className="my-12 rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
@@ -2735,9 +2814,9 @@ export default function ProjectDetail() {
         </section>
 
         {/* Footer Navigation - Related Projects */}
-        <section className="border-t border-gray-100 py-24 lg:py-32">
+        <section className="border-t border-gray-100 py-12 lg:py-16">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <div className="flex justify-between items-end mb-12">
+            <div className="flex justify-between items-end mb-6">
               <h2 className="text-3xl font-medium tracking-tight">
                 {language === "ru" ? "Другие проекты" : "Other Projects"}
               </h2>
@@ -2777,7 +2856,33 @@ export default function ProjectDetail() {
                       {p.title}
                     </h3>
                     <p className="text-sm text-gray-500 line-clamp-2 leading-relaxed">
-                      {p.description}
+                      {p.id === 8 && language === "ru" 
+                        ? "Лендинг-протокол на сети CrossFi. Визуальный стиль, dApp и лендинг."
+                        : p.id === 3
+                          ? (language === "ru" 
+                            ? "Система автоматизации учета зеленой энергии. Десктоп интерфейс на 8 ролей."
+                            : "Green energy accounting automation system. Desktop interface with 8 user roles.")
+                          : p.id === 2
+                            ? (language === "ru"
+                              ? "AMM на сети CrossFi. Swap, pools и veToken voting – дизайн и запуск за 1 месяц."
+                              : "AMM on CrossFi network. Swap, pools, and veToken voting – design and launch in 1 month.")
+                            : p.id === 4
+                            ? (language === "ru"
+                              ? "Фриланс-проект сервиса акций. Mobile app для В2С, десктоп для B2B и админ-панель."
+                              : "Freelance deals service. Mobile app for B2C, desktop for B2B, and an admin panel.")
+                          : p.id === 5
+                            ? (language === "ru"
+                              ? "Парт-тайм с топ DeFi-протоколом: раздел Projects и редизайн Governance в dApp."
+                              : "Part-time with top DeFi protocol: Projects section and Governance redesign in dApp.")
+                          : p.id === 6
+                            ? (language === "ru"
+                              ? "Блокчейн-голосование: клиент, админка и mobile app. Мой первый большой проект."
+                              : "Blockchain voting: client service, admin panel, and mobile app. My first big product.")
+                          : p.id === 12
+                            ? (language === "ru"
+                              ? "Схемы работы системы для инвесторов и комьюнити."
+                              : "System diagrams for investors and the community.")
+                            : (p.cardDescription ?? p.description)}
                     </p>
                   </Link>
                 ))}
