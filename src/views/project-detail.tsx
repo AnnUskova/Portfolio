@@ -17,7 +17,6 @@ import zooSchemeNoPic from "@/assets/zoodao_scheme_nopic.webp";
 import zeroDeltaImg from "@/assets/zero_delta_main.webp";
 import zeroDeltaSlide1 from "@/assets/ZeroDelta_1.jpg";
 import zeroDeltaSlide2 from "@/assets/ZeroDelta_2.jpg";
-import zeroDeltaSlide3 from "@/assets/ZeroDelta_3.jpg";
 import zeroDeltaSlide4 from "@/assets/ZeroDelta_4.jpg";
 import zeroDeltaSlide5 from "@/assets/ZeroDelta_5.jpg";
 import zeroDeltaSlide6 from "@/assets/ZeroDelta_6.jpg";
@@ -196,7 +195,6 @@ const zooSlides: LightboxItem[] = [
 const zeroDeltaSlides: LightboxItem[] = [
   { src: zeroDeltaSlide1.src, alt: "Zero Delta Slide 1" },
   { src: zeroDeltaSlide2.src, alt: "Zero Delta Slide 2" },
-  { src: zeroDeltaSlide3.src, alt: "Zero Delta Slide 3" },
   { src: zeroDeltaSlide4.src, alt: "Zero Delta Slide 4" },
   { src: zeroDeltaSlide5.src, alt: "Zero Delta Slide 5" },
   { src: zeroDeltaSlide6.src, alt: "Zero Delta Slide 6" },
