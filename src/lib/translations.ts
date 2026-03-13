@@ -289,16 +289,16 @@ We also shipped a Vietnamese version and launched for the Vietnamese market (and
     {
       id: 7,
       year: "2025",
-      category: "RESEARCH",
+      category: "TRAVEL",
       role: "UX Researcher",
-      title: "UX Research (NDA)",
-      description: "UX study for a major travel/e-commerce platform: ~100 participants, mobile/desktop, unmoderated scenarios, and first-click tests."
+      title: "UX Research for a Travel Service",
+      description: "UX research for the homepage of a major travel service. Several rounds of unmoderated testing, around 200 participants, and a comparison of the mobile and desktop versions. I designed the studies, analyzed the data, and prepared recommendations for the team working on the redesign."
     },
     {
       id: 8,
       year: "2023",
       category: "DEFI",
-      role: "Senior Designer",
+      role: "Senior Product Designer",
       title: "PhoLend",
       description: "Protocol landing page on CrossFi. Visual style, dApp, and landing page."
     },
@@ -306,7 +306,7 @@ We also shipped a Vietnamese version and launched for the Vietnamese market (and
       id: 9,
       year: "2023",
       category: "NFT",
-      role: "Senior Designer",
+      role: "Senior Product Designer",
       title: "DickButts",
       description: "Put together the landing page design for the DickButts NFT collection in a couple of days."
     },
@@ -336,11 +336,11 @@ We also shipped a Vietnamese version and launched for the Vietnamese market (and
     },
     {
       id: 13,
-      year: "2023",
+      year: "2024",
       category: "DEFI",
       role: "Seniour designer",
       title: "MAAT Pitch Deck",
-      description: "Investor presentation for the MAAT product."
+      description: "Presentation of the MAAT product for investors."
     }
   ],
   ru: [
@@ -461,16 +461,16 @@ Lock + Voting
     {
       id: 7,
       year: "2025",
-      category: "RESEARCH",
+      category: "TRAVEL",
       role: "UX Researcher",
-      title: "UX-исследование (NDA)",
-      description: "UX-исследование посадочной страницы: ~100 участников, mobile/desktop, немодерируемые сценарии и first-click."
+      title: "UX-исследование\nдля travel-сервиса",
+      description: "UX-исследование главной страницы крупного travel-сервиса. Несколько этапов немодерируемого тестирования, ~200 участников, сравнение мобильной версии сайта и десктопа. Я спроектировала тесты, проанализировала данные и собрала рекомендации для команды, которая работала над редизайном."
     },
     {
       id: 8,
       year: "2023",
       category: "DEFI",
-      role: "Senior Designer",
+      role: "Senior Product Designer",
       title: "PhoLend",
       description: "Лендинг-протокол на сети CrossFi. Визуальный стиль, dApp и посадочная страница."
     },
@@ -478,7 +478,7 @@ Lock + Voting
       id: 9,
       year: "2023",
       category: "NFT",
-      role: "Senior Designer",
+      role: "Senior Product Designer",
       title: "DickButts",
       description: "За пару дней собрала дизайн лендинга NFT коллекции DickButts.",
       caseDescription: "zkDickButts – лендинг и минт-страница для NFT-коллекции из 9999 пиксельных персонажей на zkSync ERA. Задача – понятно рассказать о продукте и довести пользователя до покупки."
@@ -509,7 +509,7 @@ Lock + Voting
     },
     {
       id: 13,
-      year: "2023",
+      year: "2024",
       category: "DEFI",
       role: "Seniour designer",
       title: "MAAT Pitch Deck",

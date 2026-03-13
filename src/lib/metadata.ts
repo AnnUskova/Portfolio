@@ -5,10 +5,7 @@ import zeroDeltaImg from "@/assets/zero_delta_main.webp";
 import xSwapImg from "@/assets/xswap_main.webp";
 import skiziCoverImg from "@/assets/skizi_cover_new.webp";
 import twoGoCoverImg from "@/assets/2go_cover.webp";
-import moonbeamImg from "@/assets/moonbeam_cover.webp";
-import cryptovecheImg from "@/assets/cryptoveche_cover.webp";
 import uxResearchImg from "@/assets/ux_research_cover.webp";
-import pholendImg from "@/assets/pholend_cover.webp";
 import dickbuttsImg from "@/assets/dickbutts_cover_v2.webp";
 import zeroDeltaCoverImg from "@/assets/zero_delta_cover.webp";
 import zoodaoCoverImg from "@/assets/zoodao_cover_v3.webp";
@@ -21,15 +18,12 @@ const DEFAULT_DESCRIPTION =
   "UX/UI Designer with 7+ years of experience crafting DeFi protocols, high-load systems, and products for mass audiences.";
 const DEFAULT_IMAGE = annaPhoto.src;
 
-const PROJECT_IMAGES: Record<number, string> = {
+const PROJECT_IMAGES: Partial<Record<number, string>> = {
   1: glacisDappImg.src,
   2: xSwapImg.src,
   3: skiziCoverImg.src,
   4: twoGoCoverImg.src,
-  5: moonbeamImg.src,
-  6: cryptovecheImg.src,
   7: uxResearchImg.src,
-  8: pholendImg.src,
   9: dickbuttsImg.src,
   10: maatCoverImg.src,
   11: zeroDeltaCoverImg.src,

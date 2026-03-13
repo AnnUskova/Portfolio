@@ -17,6 +17,7 @@ import zoodaoCoverImg from "@/assets/zoodao_cover_v3.webp";
 import maatCoverImg from "@/assets/maat_pd_cover_v3.webp";
 import dickbuttsImg from "@/assets/dickbutts_cover_v2.webp";
 import skiziCoverImg from "@/assets/skizi_cover_new.webp";
+import uxResearchCoverImg from "@/assets/UXResearch_cover.jpg";
 
 const projectImages: Record<number, string | null> = {
   1: glacisDappImg.src,
@@ -26,7 +27,7 @@ const projectImages: Record<number, string | null> = {
   4: twoGoCoverImg.src, // 2Go
   5: null,
   6: null,
-  7: null,
+  7: uxResearchCoverImg.src,
   8: null,
   9: dickbuttsImg.src,
   10: null,
@@ -280,7 +281,7 @@ export default function Projects() {
                             : project.id === 12
                               ? (language === "ru"
                                 ? "Схемы работы системы для инвесторов и комьюнити."
-                                : "System diagrams for investors and the community.")
+                                : "System workflow diagrams for investors and the community.")
                               : (project.cardDescription ?? project.description)}
                       </p>
                       <div className="flex flex-wrap gap-2 mt-auto">

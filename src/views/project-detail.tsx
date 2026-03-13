@@ -15,6 +15,16 @@ import zooGeneralDark from "@/assets/zoodao_general_dark.webp";
 import zooSchemeV2 from "@/assets/zoodao_scheme_v2.webp";
 import zooSchemeNoPic from "@/assets/zoodao_scheme_nopic.webp";
 import zeroDeltaImg from "@/assets/zero_delta_main.webp";
+import zeroDeltaSlide1 from "@/assets/ZeroDelta_1.jpg";
+import zeroDeltaSlide2 from "@/assets/ZeroDelta_2.jpg";
+import zeroDeltaSlide3 from "@/assets/ZeroDelta_3.jpg";
+import zeroDeltaSlide4 from "@/assets/ZeroDelta_4.jpg";
+import zeroDeltaSlide5 from "@/assets/ZeroDelta_5.jpg";
+import zeroDeltaSlide6 from "@/assets/ZeroDelta_6.jpg";
+import zeroDeltaSlide7 from "@/assets/ZeroDelta_7.jpg";
+import zeroDeltaSlide8 from "@/assets/ZeroDelta_8.jpg";
+import zeroDeltaSlide9 from "@/assets/ZeroDelta_9.jpg";
+import zeroDeltaSlide10 from "@/assets/ZeroDelta_10.jpg";
 
 import glacisScheme1 from "@/assets/glacis_scheme_1.webp";
 import glacisScheme2 from "@/assets/glacis_scheme_2.webp";
@@ -51,10 +61,7 @@ import maatSlide12 from "@/assets/maat_slide_12.webp";
 import maatSlide13 from "@/assets/maat_slide_13.webp";
 import maatSlide14 from "@/assets/maat_slide_14.webp";
 
-import moonbeamImg from "@/assets/moonbeam_cover.webp";
-import cryptovecheImg from "@/assets/cryptoveche_cover.webp";
-import uxResearchImg from "@/assets/ux_research_cover.webp";
-import pholendImg from "@/assets/pholend_cover.webp";
+import uxResearchCoverImg from "@/assets/UXResearch_cover.jpg";
 import dickbuttsImg from "@/assets/dickbutts_cover_v2.webp";
 import zkDickbuttsImg from "@/assets/zkDickButts_1.webp";
 import dickbuttsMintImg from "@/assets/DickButts - Mint.avif";
@@ -161,10 +168,10 @@ const projectImages: Record<number, string | null> = {
   2: xSwapImg.src,
   3: skiziCoverImg.src,
   4: twoGoCoverImg.src,
-  5: moonbeamImg.src,
-  6: cryptovecheImg.src,
-  7: uxResearchImg.src,
-  8: pholendImg.src,
+  5: null,
+  6: null,
+  7: uxResearchCoverImg.src,
+  8: null,
   9: dickbuttsImg.src,
   10: null,
   12: zoodaoCoverImg.src,
@@ -184,6 +191,19 @@ const zooSlides: LightboxItem[] = [
   { src: zooSchemeV2.src, alt: "ZooDAO System Scheme V2" },
   { src: zooGeneralDark.src, alt: "ZooDAO Concept Dark" },
   { src: zooGeneral.src, alt: "ZooDAO Concept Light" }
+];
+
+const zeroDeltaSlides: LightboxItem[] = [
+  { src: zeroDeltaSlide1.src, alt: "Zero Delta Slide 1" },
+  { src: zeroDeltaSlide2.src, alt: "Zero Delta Slide 2" },
+  { src: zeroDeltaSlide3.src, alt: "Zero Delta Slide 3" },
+  { src: zeroDeltaSlide4.src, alt: "Zero Delta Slide 4" },
+  { src: zeroDeltaSlide5.src, alt: "Zero Delta Slide 5" },
+  { src: zeroDeltaSlide6.src, alt: "Zero Delta Slide 6" },
+  { src: zeroDeltaSlide7.src, alt: "Zero Delta Slide 7" },
+  { src: zeroDeltaSlide8.src, alt: "Zero Delta Slide 8" },
+  { src: zeroDeltaSlide9.src, alt: "Zero Delta Slide 9" },
+  { src: zeroDeltaSlide10.src, alt: "Zero Delta Slide 10" }
 ];
 
 const maatSlides: LightboxItem[] = [
@@ -460,7 +480,6 @@ export default function ProjectDetail() {
   const [lightboxPan, setLightboxPan] = useState({ x: 0, y: 0 });
   const [isPanningImage, setIsPanningImage] = useState(false);
   const [panStart, setPanStart] = useState({ x: 0, y: 0 });
-  const [maatInlineIndex, setMaatInlineIndex] = useState(0);
   const touchStartX = useRef<number | null>(null);
 
   const t = translations[language];
@@ -748,7 +767,6 @@ export default function ProjectDetail() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    setMaatInlineIndex(0);
   }, [id]);
 
   const getBackLink = () => {
@@ -1094,25 +1112,36 @@ export default function ProjectDetail() {
           </Link>
 
           <div className="w-full">
-            <div className="flex flex-col md:flex-row md:items-center gap-9 mb-8 w-full relative">
-              <h1 className="md:text-5xl lg:text-6xl font-medium tracking-tight text-[40px] md:text-[48px] leading-[1.1]" style={{ lineHeight: '110%' }}>
+            <div
+              className={`flex flex-col md:flex-row mb-8 w-full relative ${
+                project.id === 7 ? "gap-5 md:gap-6 md:items-start" : "gap-9 md:items-center"
+              }`}
+            >
+              <h1
+                className={`font-medium tracking-tight leading-[1.1] ${
+                  project.id === 7
+                    ? "text-[32px] md:text-[40px] lg:text-[44px] md:max-w-[520px] lg:max-w-[560px] shrink-0 whitespace-pre-line"
+                    : "text-[40px] md:text-[48px] md:text-5xl lg:text-6xl"
+                }`}
+                style={{ lineHeight: '110%' }}
+              >
                 {project.title}
               </h1>
 
-              <div className="flex flex-wrap gap-2 items-center translate-y-[8px]">
+              <div className={`flex flex-wrap gap-2 items-center translate-y-[8px] ${project.id === 7 ? "md:ml-[12px] md:translate-y-[14px]" : ""}`}>
                 <span className="px-3 py-[6px] bg-[#F3F8FF] rounded-full text-[10px] font-medium text-gray-500 uppercase tracking-wider">
                   {project.year}
                 </span>
                 <span className="px-3 py-[6px] bg-[#F3F8FF] rounded-full text-[10px] font-medium text-gray-500 uppercase tracking-wider">
-                  {project.category}
+                  {project.role}
                 </span>
                 <span className="px-3 py-[6px] bg-[#F3F8FF] rounded-full text-[10px] font-medium text-gray-500 uppercase tracking-wider">
-                  {project.role}
+                  {project.category}
                 </span>
               </div>
 
-              {(project.id === 2 || project.id === 1 || project.id === 4 || project.id === 3 || project.id === 14) && (
-                <div ref={tldrRef} className="md:ml-auto relative">
+              {(project.id === 2 || project.id === 1 || project.id === 4 || project.id === 3 || project.id === 7 || project.id === 14) && (
+                <div ref={tldrRef} className={`relative ${project.id === 7 ? "md:self-start md:ml-auto" : "md:ml-auto"}`}>
                   <button 
                     onClick={() => setTldrOpen(!tldrOpen)}
                     className="flex items-center gap-2 px-4 py-3 rounded-full border border-gray-100 bg-white shadow-sm hover:bg-gray-50 transition-all duration-300 group pl-[24px] pr-[24px]"
@@ -1160,6 +1189,10 @@ export default function ProjectDetail() {
                             ? language === "ru"
                               ? "2GO — агрегатор акций для ресторанов и кафе в Узбекистане. Единственный дизайнер в команде, в связке с продакт-менеджером за два месяца спроектировала три продукта с нуля: мобильное приложение для пользователей, B2B-кабинет для ресторанов и админ-панель для модерации. Единый промокод-флоу проходит через все три интерфейса — пользователь получает код, официант пробивает на кассе, ресторан видит статистику, админ модерирует. Прямых аналогов на рынке нет."
                               : "2GO is a deals platform for restaurants and cafes in Uzbekistan. As the only designer on the team, working closely with the product manager, I designed three products from scratch in two months: a mobile app for users, a B2B dashboard for restaurants, and an admin panel for moderation. One promo-code flow runs through all three interfaces: the user gets a code, the waiter redeems it at the cashier, the restaurant sees the stats, and the admin moderates the platform. There are no direct analogs on the market."
+                            : project.id === 7
+                            ? language === "ru"
+                              ? "Количественное UX-исследование главной страницы крупного travel-сервиса в рамках редизайна. ~200 участников, 5+ сценариев, сравнение мобайл/десктоп. Выявила критические проблемы с длиной страницы, навигацией и идентификацией бренда. Сформировала приоритизированный бэклог из 20+ рекомендаций."
+                              : "Quantitative UX research for the homepage of a major travel service as part of a redesign. Around 200 participants, 5+ scenarios, and a mobile vs desktop comparison. I identified critical issues with page length, navigation, and brand recognition, then built a prioritized backlog of 20+ recommendations."
                             : (language === "ru"
                               ? "xSwap — AMM dApp на CrossFi. За 1 месяц собрала UX/UI для Swap, Pools, Token Sale и Lock/Voting, координировала фронт, работала в связке с solidity. Сделала интерфейс, который не пугает: slippage и прозрачный Route в swap, понятные liquidity-пулы с multi-step подсказками, Token Sale с Profit Estimator и видеогайдами, плюс сложный Lock/Voting — с продуманными корнер-кейсами и состояниями транзакций."
                               : "xSwap is an AMM dApp on CrossFi. In one month, I put together the UX/UI for Swap, Pools, Token Sale, and Lock/Voting, coordinated with frontend, and worked closely with Solidity. The result is an interface that does not scare people off: slippage and a transparent Route in Swap, understandable liquidity pools with multi-step guidance, Token Sale with a Profit Estimator and video guides, plus a complex Lock/Voting flow with well-thought-out edge cases and transaction states.")
@@ -1172,7 +1205,7 @@ export default function ProjectDetail() {
               )}
             </div>
             
-            <p className="md:text-xl text-gray-500 max-w-2xl text-[18px] leading-relaxed mb-6">
+            <p className="md:text-xl text-gray-600 max-w-2xl text-[18px] leading-relaxed mb-6">
               {project.id === 2 ? (
                 language === "ru" 
                   ? "xSwap – AMM на сети CrossFi. Здесь есть swap, liquidity pools, staking, token sale и veToken-механика с голосованием за распределение инсентивов. Моя задача – собрать UX/UI так, чтобы новички не спотыкались о \"как свапать на новой сети\", а опытные пользователи могли заглянуть в Route и удивиться, как система здорово его оптимизирует."
@@ -1197,6 +1230,136 @@ export default function ProjectDetail() {
                 (project.caseDescription ?? project.description)
               )}
             </p>
+
+            {project.id === 7 && (
+              <div className="w-full space-y-6 mb-20">
+                <div className="w-full max-w-2xl">
+                  <div className="rounded-[24px] overflow-hidden border border-gray-100 shadow-sm bg-white">
+                    <img
+                      src={uxResearchCoverImg.src}
+                      alt="UX Research cover"
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
+                </div>
+                <div className="max-w-3xl space-y-10">
+                  <div className="space-y-4">
+                    <h2 className="text-[24px] font-medium tracking-tight text-black">
+                      {language === "ru" ? "Контекст и вызовы" : "Context and Challenges"}
+                    </h2>
+                    <div className="md:text-lg text-gray-600 text-[16px] leading-relaxed space-y-1">
+                      {language === "ru" ? (
+                        <>
+                          <p>
+                            <span className="font-semibold text-[#414141]">Методы:</span> Немодерируемые сценарии, 5-second test, first-click test, анкетирование, анализ экранных записей.
+                          </p>
+                          <p>
+                            <span className="font-semibold text-[#414141]">Платформа:</span> PathWay
+                          </p>
+                          <p>
+                            <span className="font-semibold text-[#414141]">NDA:</span> Название компании не раскрывается, метрики округлены, скриншоты интерфейса и тепловых карт не публикуются.
+                          </p>
+                        </>
+                      ) : (
+                        <>
+                          <p>
+                            <span className="font-semibold text-[#414141]">Methods:</span> Unmoderated scenarios, 5-second test, first-click test, surveys, and screen recording analysis.
+                          </p>
+                          <p>
+                            <span className="font-semibold text-[#414141]">Platform:</span> PathWay
+                          </p>
+                          <p>
+                            <span className="font-semibold text-[#414141]">NDA:</span> The company name is not disclosed, metrics are rounded, and interface screenshots and heatmaps are not published.
+                          </p>
+                        </>
+                      )}
+                    </div>
+                    <p className="md:text-lg text-gray-600 text-[16px] leading-relaxed">
+                      {language === "ru"
+                        ? "Ко мне обратилась продуктовая команда, которая готовила редизайн сайта travel-сервиса. Они хотели проверить, как пользователи считывают ключевые смыслы, работает ли навигация, видят ли CTA. Моя задача – провести исследование на ~200 респондентах, проверить мобилку и десктоп, разобраться, что работает, а что поменять или выпилить."
+                        : "A product team working on a travel service website redesign approached me. They wanted to understand whether users grasped the key messages, whether navigation worked, and whether people noticed the CTAs. My task was to run a study with around 200 respondents, compare mobile and desktop, and figure out what worked, what should be changed, and what should be removed."}
+                    </p>
+                  </div>
+
+                  <div className="space-y-4">
+                    <h2 className="text-[24px] font-medium tracking-tight text-black">
+                      {language === "ru" ? "Процесс" : "Process"}
+                    </h2>
+                    <div className="md:text-lg text-gray-600 text-[16px] leading-relaxed space-y-4">
+                      {language === "ru" ? (
+                        <>
+                          <p>Проектирование начала с брифа коллег и заказчика, после выбрала форматы: 5-second test для оценки узнаваемости бренда, first-click test для проверки находимости ключевых блоков, сценарии воспроизводили реальные пользовательские задачи + анкетирование для контекста. Подобрала аудиторию, близкую к целевым пользователям сервиса, с релевантным опытом в travel-категории (гад блесс точечные настройки аудитории в PathWay).</p>
+                          <p>Исследование проходило в два этапа. Первый помог увидеть общую картину: как пользователи ориентируются на главной, какие сценарии проходят уверенно, а где начинают теряться. Второй этап был более точечным: я сравнивала мобилку и десктоп и проверяла, как пользователи воспринимают первый экран, навигацию и точки входа в ключевые сценарии.</p>
+                          <p>Я анализировала и цифры (скорость, время, оценки), и качественные данные – открытые ответы и записи экранов. Записи экранов изучать трудозатратно, но полезно – так я увидела, например, что ближе к концу страницы пользователи начинают кликать хаотично, лишь бы скорее найти нужный блок.</p>
+                        </>
+                      ) : (
+                        <>
+                          <p>I started the research design with a briefing from the team and the client, then selected the formats: a 5-second test to evaluate brand recognition, a first-click test to check whether key blocks were easy to find, task-based scenarios reflecting real user goals, plus a survey for context. I also recruited an audience close to the service's target users, with relevant experience in the travel category.</p>
+                          <p>The study ran in two stages. The first helped reveal the overall picture: how users navigate the homepage, which scenarios they complete confidently, and where they start to get lost. The second stage was more focused: I compared mobile and desktop and checked how users perceived the first screen, navigation, and entry points into key scenarios.</p>
+                          <p>I analyzed both quantitative data such as speed, time, and ratings, and qualitative data such as open responses and screen recordings. Reviewing recordings is time-consuming, but very useful: for example, it showed that closer to the bottom of the page, users start clicking chaotically just to find the block they need faster.</p>
+                        </>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="space-y-4">
+                    <h2 className="text-[24px] font-medium tracking-tight text-black">
+                      {language === "ru" ? "Результаты" : "Results"}
+                    </h2>
+                    <div className="md:text-lg text-gray-600 text-[16px] leading-relaxed space-y-4">
+                      {language === "ru" ? (
+                        <>
+                          <p>Часть сценариев показала, что ключевые элементы – поиск, промо, витрина направлений – работают хорошо и не требуют серьёзных изменений.</p>
+                          <p>При этом проблемы были не столько в отдельных элементах, сколько в общей структуре страницы. По мере скролла пользователи теряли фокус и чаще начинали действовать наугад. Так стало ясно, что можно работать с плотностью контента.</p>
+                          <p>Мобильный и десктопный опыт заметно различались. На десктопе пользователи быстрее считывали входы в нужные разделы. В мобильной версии они ориентировались на крупные CTA и основной поиск, из-за чего часть сценариев воспринималась иначе, чем задумывала команда.</p>
+                          <p>5-second test показал проблему с узнаваемостью: пользователи считывали travel-тематику, но не специфику сервиса и отличия от более общих travel-платформ. Это меняло ожидания от интерфейса и то, как они интерпретировали разделы.</p>
+                          <p>Исследование также помогло отделить контент, который поддерживает пользовательский выбор, от контента, который перегружает страницу. Один из важных для заказчика блоков вызвал полярную реакцию – часть аудитории оценила его высоко, другая часто называла лишним. Но проблема оказалась глубже: пользователи не просто пропускали блок, они неверно считывали его функцию. Два разных сценария обращения к специалистам смешивались из-за похожей подачи и одинаковых CTA.</p>
+                        </>
+                      ) : (
+                        <>
+                          <p>Some scenarios showed that core elements such as search, promos, and the destination showcase were already working well and did not require major changes.</p>
+                          <p>The main issues were not with isolated UI elements, but with the overall page structure. As users kept scrolling, they lost focus and were more likely to act at random. That made it clear that content density was one of the key things to work on.</p>
+                          <p>Mobile and desktop experiences differed noticeably. On desktop, users recognized entry points into the right sections faster. On mobile, they relied more heavily on large CTAs and the main search, so some scenarios were interpreted differently from what the team had intended.</p>
+                          <p>The 5-second test revealed a brand recognition problem: users picked up the travel theme, but not the service's specific positioning or how it differed from broader travel platforms. That affected both their expectations of the interface and how they interpreted individual sections.</p>
+                          <p>The research also helped separate content that genuinely supported user decision-making from content that overloaded the page. One block that mattered internally to the client triggered a polarized reaction: some users rated it highly, while others often described it as unnecessary. The issue turned out to be deeper than simple visibility: users were misreading its purpose, and two different expert-support scenarios were getting mixed together because of similar presentation and identical CTAs.</p>
+                        </>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="space-y-4">
+                    <h2 className="text-[24px] font-medium tracking-tight text-black">
+                      {language === "ru" ? "Итог" : "Outcome"}
+                    </h2>
+                    <div className="md:text-lg text-gray-600 text-[16px] leading-relaxed space-y-4">
+                      {language === "ru" ? (
+                        <>
+                          <p>По итогам исследования команда получила:</p>
+                          <ul className="list-disc pl-6 space-y-2">
+                            <li>понимание сильных и слабых зон главной страницы;</li>
+                            <li>сравнение мобильного и десктопного опыта;</li>
+                            <li>много данных о том, как пользователи взаимодействуют с сервисом (💫инсайты💫 из открытых ответов и анализа записей);</li>
+                            <li>приоритизированный бэклог рекомендаций, готовый к передаче в дизайн.</li>
+                          </ul>
+                          <p>Результаты я презентовала заказчику несколько раз, в том числе промежуточные, чтобы команда могла корректировать курс уже в процессе исследования.</p>
+                        </>
+                      ) : (
+                        <>
+                          <p>By the end of the research, the team had:</p>
+                          <ul className="list-disc pl-6 space-y-2">
+                            <li>a clear understanding of the homepage's strong and weak areas;</li>
+                            <li>a comparison of the mobile and desktop experiences;</li>
+                            <li>a large body of evidence about how users interact with the service, including insights from open responses and screen recording analysis;</li>
+                            <li>a prioritized backlog of recommendations ready for design handoff.</li>
+                          </ul>
+                          <p>I presented the findings to the client several times, including interim results, so the team could adjust course while the research was still in progress.</p>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
 
             {(project.id === 12 || project.id === 13) && (
               <div className="w-full space-y-8 mb-20">
@@ -1264,39 +1427,21 @@ export default function ProjectDetail() {
                     </div>
                   </>
                 ) : project.id === 13 ? (
-                  <div className="space-y-4 max-w-[80%]">
-                    <div className="relative rounded-[20px] overflow-hidden border border-gray-100 shadow-sm bg-gray-50">
-                      <img
-                        src={maatSlides[maatInlineIndex].src}
-                        alt={maatSlides[maatInlineIndex].alt}
-                        className="w-full h-auto object-contain cursor-zoom-in"
-                        onClick={() => openLightbox(maatSlides, maatInlineIndex)}
-                      />
+                  <div className="grid grid-cols-1 gap-6">
+                    {maatSlides.map((slide, index) => (
                       <button
-                        onClick={() => setMaatInlineIndex((prev) => (prev - 1 + maatSlides.length) % maatSlides.length)}
-                        className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/65 hover:bg-black/80 text-white flex items-center justify-center transition-colors"
-                        aria-label="Previous slide"
+                        key={slide.src}
+                        type="button"
+                        onClick={() => openLightbox(maatSlides, index)}
+                        className="w-full max-w-[800px] rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white text-left transition-transform hover:scale-[1.01]"
                       >
-                        <ChevronLeft className="w-5 h-5" />
-                      </button>
-                      <button
-                        onClick={() => setMaatInlineIndex((prev) => (prev + 1) % maatSlides.length)}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/65 hover:bg-black/80 text-white flex items-center justify-center transition-colors"
-                        aria-label="Next slide"
-                      >
-                        <ChevronRight className="w-5 h-5" />
-                      </button>
-                    </div>
-                    <div className="flex items-center justify-center gap-1.5">
-                      {maatSlides.map((slide, idx) => (
-                        <button
-                          key={slide.src}
-                          onClick={() => setMaatInlineIndex(idx)}
-                          className={`h-1.5 rounded-full transition-all ${idx === maatInlineIndex ? "w-6 bg-black" : "w-2 bg-gray-300 hover:bg-gray-400"}`}
-                          aria-label={`Go to slide ${idx + 1}`}
+                        <img
+                          src={slide.src}
+                          alt={slide.alt}
+                          className="w-full h-auto object-contain"
                         />
-                      ))}
-                    </div>
+                      </button>
+                    ))}
                   </div>
                 ) : null}
               </div>
@@ -1515,6 +1660,27 @@ export default function ProjectDetail() {
                       : "marketing site we ended up with. I built it from scratch and scaled it up over time; we are already working on version three because the company keeps growing. I figured out how to visualize abstract cross-chain processes and explain tricky product logic to the audience. I also designed the interactive widget for the Ecosystem page, a single component that brings hundreds of token, chain, and route combinations down to a couple of clicks."}
                   </>
                 </p>
+              </div>
+            )}
+
+            {project.id === 11 && (
+              <div className="max-w-[calc(56rem-80px)] mb-16 md:w-[105%] md:max-w-none">
+                <div className="grid grid-cols-1 gap-6">
+                  {zeroDeltaSlides.map((slide, index) => (
+                    <button
+                      key={slide.src}
+                      type="button"
+                      onClick={() => openLightbox(zeroDeltaSlides, index)}
+                      className="w-full max-w-[800px] rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white text-left transition-transform hover:scale-[1.01]"
+                    >
+                      <img
+                        src={slide.src}
+                        alt={slide.alt}
+                        className="w-full h-auto object-contain"
+                      />
+                    </button>
+                  ))}
+                </div>
               </div>
             )}
 
@@ -2849,6 +3015,8 @@ export default function ProjectDetail() {
                     </div>
                     <div className="flex items-center gap-2 text-[12px] text-gray-400 uppercase tracking-wider mb-2">
                       <span>{p.year}</span>
+                      <span className="text-gray-200">/</span>
+                      <span>{p.role}</span>
                       <span className="text-gray-200">/</span>
                       <span>{p.category}</span>
                     </div>
