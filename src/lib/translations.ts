@@ -158,6 +158,8 @@ export type ProjectTranslation = {
   description: string;
   cardDescription?: string;
   caseDescription?: string;
+  contextTitle?: string;
+  contextText?: string;
   content?: any;
 };
 
@@ -181,7 +183,9 @@ export const projectTranslations: Record<"en" | "ru", ProjectTranslation[]> = {
       title: "Glacis Labs site",
       description: "Corporate website for the Glacis Labs ecosystem. A multi-page site with complex widgets and diagrams showing how the products work.",
       cardDescription: "Corporate website for Glacis Labs. A multi-page site with complex diagrams and widgets.",
-      caseDescription: "Glacis Labs builds Web3 products for developers. It is infrastructure you do not really see: routers, protocols, and liquidity pools working behind every cross-chain operation. Explaining how it all works is hard, but that is exactly the job of both the marketing site and me."
+      caseDescription: "Glacis Labs builds Web3 products for developers. It is infrastructure you do not really see: routers, protocols, and liquidity pools working behind every cross-chain operation. Explaining how it all works is hard, but that is exactly the job of both the marketing site and me.",
+      contextTitle: "A bit more context",
+      contextText: "The site's audience is developers and potential partners who need to quickly understand how everything works and feel motivated to integrate. The site has to work both as a marketing tool and as a technical entry point into the ecosystem."
     },
     {
       id: 2,
@@ -324,7 +328,7 @@ We also shipped a Vietnamese version and launched for the Vietnamese market (and
       category: "DEFI",
       role: "Senior Designer",
       title: "Zero Delta",
-      description: "Presentation of a new Glacis product."
+      description: "Presentation of the new Glacis Labs product."
     },
     {
       id: 12,
@@ -361,7 +365,9 @@ We also shipped a Vietnamese version and launched for the Vietnamese market (and
       title: "Glacis Labs site",
       description: "Корпоративный сайт экосистемы Glacis Labs. Многостраничник со сложными виджетами и схемами работы продуктов.",
       cardDescription: "Корпоративный сайт Glacis Labs. Многостраничник со сложными схемами и виджетами.",
-      caseDescription: "Glacis Labs создают Web3-продукты для разработчиков. Это инфраструктура, которую не видно: роутеры, протоколы, пулы ликвидности работают под капотом каждой кросс-чейн операции. Объяснить как все устроено довольно трудно, но именно в этом моя (и маркетингового сайта) задача."
+      caseDescription: "Glacis Labs создают Web3-продукты для разработчиков. Это инфраструктура, которую не видно: роутеры, протоколы, пулы ликвидности работают под капотом каждой кросс-чейн операции. Объяснить как все устроено довольно трудно, но именно в этом моя (и маркетингового сайта) задача.",
+      contextTitle: "Еще немного контекста",
+      contextText: "Аудитория сайта – разработчики и потенциальные партнёры, которым нужно быстро понять, как всё устроено, и захотеть интегрироваться. Сайт должен работать и как маркетинговый инструмент, и как техническая точка входа в экосистему."
     },
     {
       id: 2,
@@ -421,7 +427,7 @@ Lock + Voting
           title: "Итог",
           text: `За месяц я собрала дизайн продукта, отдала фронту и проконтролировала реализацию. xSwap получился чистым и понятным, с некоторыми наворотами для DeFi-дегенов и многочисленными ориентирами для новичков.
 Мы также реализовали вьетнамскую версию и запустили на вьетнамский рынок (и для нее я отдельно нарисовала дизайн)).`,
-          vietnamCaption: "Вьетнамская версия (зачем она в фигме, спросите вы, – все поедет, давай лучше отрисуем – ответят заказчик и фронты) и некоторые элементы библиотеки"
+          vietnamCaption: "Вьетнамская версия (зачем она в фигме, спросите вы, – все поедет, давай лучше отрисуем – ответят заказчик и фронты)\nи некоторые элементы библиотеки"
         }
       }
     },
@@ -464,6 +470,7 @@ Lock + Voting
       category: "TRAVEL",
       role: "UX Researcher",
       title: "UX-исследование\nдля travel-сервиса",
+      cardDescription: "Немодерируемое UX-исследование на ~200 респондентах в рамках редизайна сайта.",
       description: "UX-исследование главной страницы крупного travel-сервиса. Несколько этапов немодерируемого тестирования, ~200 участников, сравнение мобильной версии сайта и десктопа. Я спроектировала тесты, проанализировала данные и собрала рекомендации для команды, которая работала над редизайном."
     },
     {
@@ -497,7 +504,7 @@ Lock + Voting
       category: "DEFI",
       role: "Senior Designer",
       title: "Zero Delta",
-      description: "Презентация нового продукта Glacis."
+      description: "Презентация нового продукта Glacis Labs."
     },
     {
       id: 12,

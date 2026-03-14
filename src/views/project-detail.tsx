@@ -1189,8 +1189,8 @@ export default function ProjectDetail() {
                               : "2GO is a deals platform for restaurants and cafes in Uzbekistan. As the only designer on the team, working closely with the product manager, I designed three products from scratch in two months: a mobile app for users, a B2B dashboard for restaurants, and an admin panel for moderation. One promo-code flow runs through all three interfaces: the user gets a code, the waiter redeems it at the cashier, the restaurant sees the stats, and the admin moderates the platform. There are no direct analogs on the market."
                             : project.id === 7
                             ? language === "ru"
-                              ? "Количественное UX-исследование главной страницы крупного travel-сервиса в рамках редизайна. ~200 участников, 5+ сценариев, сравнение мобайл/десктоп. Выявила критические проблемы с длиной страницы, навигацией и идентификацией бренда. Сформировала приоритизированный бэклог из 20+ рекомендаций."
-                              : "Quantitative UX research for the homepage of a major travel service as part of a redesign. Around 200 participants, 5+ scenarios, and a mobile vs desktop comparison. I identified critical issues with page length, navigation, and brand recognition, then built a prioritized backlog of 20+ recommendations."
+                              ? "Немодерируемое UX-исследование главной страницы крупного travel-сервиса в рамках редизайна: около 200 участников, 5-second и first-click тесты, сценарии, анкетирование. Сравнила мобильную версию и десктоп, выявила, где пользователи теряют фокус, как считывают бренд и какие блоки перегружают страницу, а затем собрала приоритизированный список рекомендаций для команды."
+                              : "Unmoderated UX research for the homepage of a major travel service as part of a redesign: around 200 participants, 5-second and first-click tests, and a mobile vs desktop comparison. I identified where users lose focus, how they read the brand, and which blocks overload the page, then turned that into a prioritized recommendation list for the team."
                             : (language === "ru"
                               ? "xSwap — AMM dApp на CrossFi. За 1 месяц собрала UX/UI для Swap, Pools, Token Sale и Lock/Voting, координировала фронт, работала в связке с solidity. Сделала интерфейс, который не пугает: slippage и прозрачный Route в swap, понятные liquidity-пулы с multi-step подсказками, Token Sale с Profit Estimator и видеогайдами, плюс сложный Lock/Voting — с продуманными корнер-кейсами и состояниями транзакций."
                               : "xSwap is an AMM dApp on CrossFi. In one month, I put together the UX/UI for Swap, Pools, Token Sale, and Lock/Voting, coordinated with frontend, and worked closely with Solidity. The result is an interface that does not scare people off: slippage and a transparent Route in Swap, understandable liquidity pools with multi-step guidance, Token Sale with a Profit Estimator and video guides, plus a complex Lock/Voting flow with well-thought-out edge cases and transaction states.")
@@ -1287,7 +1287,7 @@ export default function ProjectDetail() {
                       {language === "ru" ? (
                         <>
                           <p>Проектирование начала с брифа коллег и заказчика, после выбрала форматы: 5-second test для оценки узнаваемости бренда, first-click test для проверки находимости ключевых блоков, сценарии воспроизводили реальные пользовательские задачи + анкетирование для контекста. Подобрала аудиторию, близкую к целевым пользователям сервиса, с релевантным опытом в travel-категории (гад блесс точечные настройки аудитории в PathWay).</p>
-                          <p>Исследование проходило в два этапа. Первый помог увидеть общую картину: как пользователи ориентируются на главной, какие сценарии проходят уверенно, а где начинают теряться. Второй этап был более точечным: я сравнивала мобилку и десктоп и проверяла, как пользователи воспринимают первый экран, навигацию и точки входа в ключевые сценарии.</p>
+                          <p>Исследование проходило в два этапа. Первый помог увидеть общую картину: как пользователи ориентируются на главной, какие сценарии проходят уверенно, а какие уже не очень уверенно. Второй этап был более точечным: я сравнивала мобилку и десктоп и проверяла, как пользователи воспринимают первый экран, навигацию и точки входа в ключевые сценарии.</p>
                           <p>Я анализировала и цифры (скорость, время, оценки), и качественные данные – открытые ответы и записи экранов. Записи экранов изучать трудозатратно, но полезно – так я увидела, например, что ближе к концу страницы пользователи начинают кликать хаотично, лишь бы скорее найти нужный блок.</p>
                         </>
                       ) : (
@@ -1454,6 +1454,15 @@ export default function ProjectDetail() {
                     className="w-full h-auto object-cover"
                   />
                 </div>
+              </div>
+            )}
+
+            {project.id === 14 && project.contextTitle && project.contextText && (
+              <div className="max-w-[calc(56rem-80px)] mb-12">
+                <h2 className="text-2xl font-medium mb-6">{project.contextTitle}</h2>
+                <p className="text-lg text-gray-600 leading-relaxed whitespace-pre-line">
+                  {project.contextText}
+                </p>
               </div>
             )}
 
@@ -1654,7 +1663,7 @@ export default function ProjectDetail() {
                       {language === "ru" ? "Вот такой" : "Here is the"}
                     </a>{" "}
                     {language === "ru"
-                      ? "маркетинговый сайт получился. Я сделала его с нуля и масштабировала (сейчас делаем уже третью версию – компания растет!). Придумала как визуализировать абстрактные кросс-чейн процессы и объяснить аудитории сложную логику продуктов. Спроектировала интерактивный виджет для страницы Экосистема – единый компонент, который объединяет сотни комбинаций токенов, сетей и роутов в пару кликов."
+                      ? "маркетинговый сайт получился. Я сделала его с нуля и масштабировала (сейчас делаем уже третью версию – компания растет!). Придумала, как визуализировать абстрактные кросс-чейн процессы и объяснить аудитории сложную логику продуктов. Спроектировала интерактивный виджет для страницы Экосистема – единый компонент, который объединяет сотни комбинаций токенов, сетей и роутов в пару кликов."
                       : "marketing site we ended up with. I built it from scratch and scaled it up over time; we are already working on version three because the company keeps growing. I figured out how to visualize abstract cross-chain processes and explain tricky product logic to the audience. I also designed the interactive widget for the Ecosystem page, a single component that brings hundreds of token, chain, and route combinations down to a couple of clicks."}
                   </>
                 </p>
@@ -2288,7 +2297,7 @@ export default function ProjectDetail() {
                 <h2 className="text-2xl font-medium mt-12 mb-6">{language === "ru" ? "Итог" : "Outcome"}</h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                   {language === "ru"
-                    ? "Проект запущен в продакшн – это был сложный и интересный кейс: предметная область, которую пришлось изучить с нуля, госзаказчиковый фактор, технические и законодательные ограничения, смена руководства компании прямо посреди процесса разработки. Ниже прикрепила еще макеты, чтобы вы, как и я, не смогли забыть этот проект."
+                    ? "Проект запущен в продакшн – это был сложный и интересный кейс: предметная область, которую пришлось изучить с нуля, госзаказчиковый фактор, технические и законодательные ограничения, смена руководства компании прямо посреди процесса разработки. Сейчас система работает и обслуживает реальный оборот зелёных сертификатов в России. Ниже прикрепила еще макеты, чтобы вы, как и я, не смогли забыть этот проект."
                     : "The project is live in production. It was a complex and genuinely interesting case: a domain I had to learn from scratch, public-sector constraints, technical and legal limitations, and even a leadership change in the company in the middle of development. I also attached extra mockups below so this project stays memorable, for you and for me."
                   }
                 </p>
@@ -2927,7 +2936,7 @@ export default function ProjectDetail() {
                             <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
                           </div>
                         </div>
-                        <p className="text-sm text-gray-400 mt-6 text-center italic">{project.content?.conclusion?.vietnamCaption}</p>
+                        <p className="text-sm text-gray-400 mt-6 text-center italic whitespace-pre-line">{project.content?.conclusion?.vietnamCaption}</p>
                       </div>
                     </div>
                   </div>

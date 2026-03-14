@@ -5,7 +5,7 @@ import zeroDeltaImg from "@/assets/zero_delta_main.webp";
 import xSwapImg from "@/assets/xswap_main.webp";
 import skiziCoverImg from "@/assets/skizi_cover_new.webp";
 import twoGoCoverImg from "@/assets/2go_cover.webp";
-import uxResearchImg from "@/assets/ux_research_cover.webp";
+import uxResearchImg from "@/assets/UXResearch_cover.jpg";
 import dickbuttsImg from "@/assets/dickbutts_cover_v2.webp";
 import zeroDeltaCoverImg from "@/assets/zero_delta_cover.webp";
 import zoodaoCoverImg from "@/assets/zoodao_cover_v3.webp";
@@ -44,8 +44,8 @@ function resolveSiteUrl() {
 
   if (process.env.NODE_ENV === "development") return "http://localhost:3000";
 
-  // Avoid protected Vercel deployment URLs in OG tags; use public production alias.
-  const raw = "https://portfolio-green-mu-48.vercel.app";
+  // Avoid deployment URLs in OG tags; use the public production domain.
+  const raw = "https://annauskova.art";
   const withProtocol =
     raw.startsWith("http://") || raw.startsWith("https://") ? raw : `https://${raw}`;
   return withProtocol.replace(/\/+$/, "");
@@ -117,7 +117,7 @@ export function getProjectMetadata(projectId: number): Metadata {
 
   return buildPageMetadata({
     title: `${project.title} | ${BRAND_TITLE}`,
-    description: project.description,
+    description: project.cardDescription ?? project.description,
     path: `/projects/${projectId}`,
     image,
   });
