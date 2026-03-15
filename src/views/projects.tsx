@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, X, Download, ChevronUp } from "lucide-react";
+import { ArrowUpRight, X, ChevronUp } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { translations, projectTranslations, type Language } from "@/lib/translations";
 
@@ -82,7 +82,7 @@ export default function Projects() {
   
   const getProjectsForTab = (tab: string) => {
     if (tab === "uxui") {
-      const ids = [1, 14, 2, 4, 3, 6, 8, 9]; // Hidden: 5 (Moonbeam), 10 (MAAT)
+      const ids = [1, 14, 2, 4, 3, 9]; // Hidden: 5 (Moonbeam), 6 (Cryptoveche), 8 (PhoLend), 10 (MAAT)
       return ids.map(id => allProjects.find(p => p.id === id)).filter((p): p is typeof allProjects[0] => p !== undefined);
     }
     if (tab === "strategy") {
@@ -172,16 +172,6 @@ export default function Projects() {
                   <span className="text-gray-500 group-hover:text-black transition-colors flex items-center gap-2">
                     Anna Uskova <ArrowUpRight className="w-4 h-4" />
                   </span>
-                </a>
-                
-                <a 
-                  href={language === "ru" ? "/cv_ru.pdf" : "/cv_en.pdf"}
-                  download
-                  className="flex items-center justify-center gap-3 px-8 bg-black text-white rounded-full hover:bg-gray-800 transition-colors mt-10 h-14"
-                  data-testid="button-download-cv"
-                >
-                  <Download className="w-5 h-5" />
-                  <span className="text-lg font-medium">{t.contact.downloadCV}</span>
                 </a>
               </div>
             </div>

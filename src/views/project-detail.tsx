@@ -2,9 +2,9 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { useParams, usePathname } from "next/navigation";
+import { useParams, usePathname, useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, ArrowLeft, X, ChevronRight, ChevronLeft, Download, Zap, ZoomIn, ZoomOut, ChevronUp } from "lucide-react";
+import { ArrowUpRight, ArrowLeft, X, ChevronRight, ChevronLeft, Zap, ZoomIn, ZoomOut, ChevronUp } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { translations, projectTranslations, type Language } from "@/lib/translations";
 
@@ -452,8 +452,10 @@ const twoGoSixthSlides: LightboxItem[] = [
 ];
 
 export default function ProjectDetail() {
+  const hiddenProjectIds = [5, 6, 8, 10];
   const params = useParams<{ id: string }>();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const rawId = Array.isArray(params?.id) ? params.id[0] : params?.id;
   const id = rawId ? parseInt(rawId, 10) : 1;
   const [language, setLanguage] = useState<Language>(() => {
@@ -481,11 +483,9 @@ export default function ProjectDetail() {
   const touchStartX = useRef<number | null>(null);
 
   const t = translations[language];
-  // Filter out hidden projects (5: Moonbeam, 10: MAAT)
-  const projects = projectTranslations[language].filter(p => ![5, 10].includes(p.id));
+  const projects = projectTranslations[language].filter((p) => !hiddenProjectIds.includes(p.id));
   const projectIndex = projects.findIndex(p => p.id === id);
-  // If current project is hidden/not found, default to first available
-  const project = projectIndex !== -1 ? projects[projectIndex] : projectTranslations[language].find(p => p.id === id) || projects[0];
+  const project = projectIndex !== -1 ? projects[projectIndex] : projects[0];
   
   // Calculate next project based on filtered list
   const nextProject = projects[(projectIndex + 1) % projects.length];
@@ -768,6 +768,7 @@ export default function ProjectDetail() {
   }, [id]);
 
   const getBackLink = () => {
+    if (searchParams.get("from") === "home") return "/";
     if ([11, 12, 13].includes(id)) return "/projects?tab=strategy";
     if ([7].includes(id)) return "/projects?tab=research";
     return "/projects?tab=uxui";
@@ -1086,16 +1087,6 @@ export default function ProjectDetail() {
                     Anna Uskova <ArrowUpRight className="w-4 h-4" />
                   </span>
                 </a>
-                
-                <a 
-                  href={language === "ru" ? "/cv_ru.pdf" : "/cv_en.pdf"}
-                  download
-                  className="flex items-center justify-center gap-3 px-8 bg-black text-white rounded-full hover:bg-gray-800 transition-colors mt-10 h-14"
-                  data-testid="button-download-cv"
-                >
-                  <Download className="w-5 h-5" />
-                  <span className="text-lg font-medium">{t.contact.downloadCV}</span>
-                </a>
               </div>
             </div>
           </motion.div>
@@ -1106,7 +1097,9 @@ export default function ProjectDetail() {
         <section className="px-6 lg:px-12 max-w-7xl mx-auto mb-12">
           <Link href={getBackLink()} className="inline-flex items-center gap-2 text-gray-400 hover:text-black transition-colors mb-8 group">
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-            <span className="text-sm font-medium">{t.projectsPage.backToProjects}</span>
+            <span className="text-sm font-medium">
+              {searchParams.get("from") === "home" ? t.projectsPage.backToHome : t.projectsPage.backToProjects}
+            </span>
           </Link>
 
           <div className="w-full">

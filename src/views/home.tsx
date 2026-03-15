@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, ChevronLeft, ChevronRight, X, Download } from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { translations, projectTranslations, type Language } from "@/lib/translations";
 
@@ -49,8 +49,8 @@ export default function Home() {
   }, []);
 
   const t = translations[language];
-  // Filter for specific slider projects: Glacis dApp (1), Glacis Site (14), xSwap (2), SKIZI (3), 2Go (4), Cryptoveche (6)
-  const allowedProjectIds = [1, 14, 2, 3, 4, 6];
+  // Filter for specific slider projects: Glacis dApp (1), Glacis Site (14), xSwap (2), SKIZI (3), 2Go (4)
+  const allowedProjectIds = [1, 14, 2, 3, 4];
   const projects = projectTranslations[language].filter(p => allowedProjectIds.includes(p.id));
   const hasProjects = projects.length > 0;
   const getCircularIndex = (value: number) => {
@@ -197,16 +197,6 @@ export default function Home() {
                     <ArrowUpRight className="w-4 h-4" />
                   </span>
                 </a>
-                
-                <a 
-                  href={language === "ru" ? "/cv_ru.pdf" : "/cv_en.pdf"}
-                  download
-                  className="flex items-center justify-center gap-3 px-8 bg-black text-white rounded-full hover:bg-gray-800 transition-colors mt-10 h-14"
-                  data-testid="button-download-cv"
-                >
-                  <Download className="w-5 h-5" />
-                  <span className="text-lg font-medium">{t.contact.downloadCV}</span>
-                </a>
               </div>
             </div>
           </motion.div>
@@ -329,7 +319,7 @@ export default function Home() {
                       initial={{ opacity: 0, y: 12 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -12 }}
-                      transition={{ duration: 0.72, ease: [0.25, 0.1, 0.25, 1] }}
+                      transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
                       className="h-[200px] flex flex-col justify-center"
                     >
                       <h3 className="text-5xl font-medium mb-6 tracking-tight" data-testid="text-project-title">
@@ -384,7 +374,7 @@ export default function Home() {
                         return (
                           <Link 
                             key={`${projects[index].id}-${virtualIndex}-${offset}`}
-                            href={`/projects/${projects[index].id}`}
+                            href={`/projects/${projects[index].id}?from=home`}
                             className={`${isFirst ? "w-[calc(65%+104px)]" : "w-[calc(25%+152px)]"} flex-shrink-0`}
                           >
                             <motion.div
@@ -395,7 +385,7 @@ export default function Home() {
                                 scale: isFirst ? 1 : 0.95
                               }}
                               exit={{ opacity: 0, x: -64, scale: 0.985 }}
-                              transition={{ duration: 1.28, ease: [0.25, 0.1, 0.25, 1] }}
+                              transition={{ duration: 1.0, ease: [0.25, 0.1, 0.25, 1] }}
                               className="relative h-[392px] rounded-[24px] overflow-hidden bg-[#F1F1F1] border border-gray-100 shadow-sm cursor-pointer group"
                             >
                               {projectImages[projects[index].id] ? (
@@ -584,6 +574,16 @@ export default function Home() {
                                   ) : item.company === "Премиум Пресс" || item.company === "Premium Press" ? (
                                     <a 
                                       href="https://premium-press.ru/" 
+                                      target="_blank" 
+                                      rel="noopener noreferrer"
+                                      className="hover:text-gray-600 transition-colors inline-flex items-center gap-1"
+                                    >
+                                      {item.company}
+                                      <ArrowUpRight className="w-4 h-4 text-gray-300 group-hover:text-gray-400 transition-colors" />
+                                    </a>
+                                  ) : item.company === "Hyundai Motor Manufacturing Russia" ? (
+                                    <a 
+                                      href="https://hyundai-avtomaster.ru/manufacturing/" 
                                       target="_blank" 
                                       rel="noopener noreferrer"
                                       className="hover:text-gray-600 transition-colors inline-flex items-center gap-1"

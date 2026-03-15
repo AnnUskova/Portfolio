@@ -6,7 +6,7 @@ export const translations = {
       contact: "Contact"
     },
     hero: {
-      title: "Hi! I'm Anna Uskova – a product designer with 7+ years in the industry.",
+      title: "Hi! I'm Anna Uskova –\na product designer with\n7+ years in the industry.",
       description: "I design complex systems, DeFi protocols,\nand B2C products.",
       viewWork: "Explore projects",
       getInTouch: "Get in touch"
@@ -64,6 +64,7 @@ export const translations = {
       title: "Projects",
       subtitle: "A collection of high-load systems, DeFi protocols, and digital products built over the last 8 years.",
       backToProjects: "Back to projects",
+      backToHome: "Back to home",
       viewLive: "View Live Project",
       nextProject: "Next Project",
       tabs: {
@@ -138,6 +139,7 @@ export const translations = {
       title: "Проекты",
       subtitle: "Коллекция высоконагруженных систем, DeFi-протоколов и цифровых продуктов, созданных за последние 8 лет.",
       backToProjects: "Назад к проектам",
+      backToHome: "Назад на главную",
       viewLive: "Смотреть вживую",
       nextProject: "Следующий проект",
       tabs: {
