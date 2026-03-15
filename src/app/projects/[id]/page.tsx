@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ProjectDetail from "@/views/project-detail";
@@ -32,5 +33,9 @@ export default async function Page({ params }: PageProps) {
     notFound();
   }
 
-  return <ProjectDetail />;
+  return (
+    <Suspense fallback={null}>
+      <ProjectDetail />
+    </Suspense>
+  );
 }
