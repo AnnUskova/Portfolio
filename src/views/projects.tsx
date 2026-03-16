@@ -1,11 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, X, ChevronUp } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { MobileLanguageOverlay } from "@/components/MobileLanguageOverlay";
+import { MobileMenuOverlay } from "@/components/MobileMenuOverlay";
 import { translations, projectTranslations, type Language } from "@/lib/translations";
 
 import zeroDeltaImg from "@/assets/zero_delta_main.webp";
@@ -18,6 +21,7 @@ import maatCoverImg from "@/assets/maat_pd_cover_v3.webp";
 import dickbuttsImg from "@/assets/dickbutts_cover_v2.webp";
 import skiziCoverImg from "@/assets/skizi_cover_new.webp";
 import uxResearchCoverImg from "@/assets/UXResearch_cover.jpg";
+import burgerIcon from "@/assets/Burger.svg";
 
 const projectImages: Record<number, string | null> = {
   1: glacisDappImg.src,
@@ -38,9 +42,40 @@ const projectImages: Record<number, string | null> = {
 
 export default function Projects() {
   const pathname = usePathname();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileLanguageOpen, setMobileLanguageOpen] = useState(false);
+  const [mobileHeaderVisible, setMobileHeaderVisible] = useState(true);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen || mobileLanguageOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileLanguageOpen, mobileMenuOpen]);
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY <= 16) {
+        setMobileHeaderVisible(true);
+      } else if (currentScrollY > lastScrollY) {
+        setMobileHeaderVisible(false);
+      } else {
+        setMobileHeaderVisible(true);
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const [language, setLanguage] = useState<Language>(() => {
@@ -100,7 +135,7 @@ export default function Projects() {
 
   const tabs = [
     { id: "uxui", label: t.projectsPage.tabs.uxui },
-    { id: "strategy", label: t.projectsPage.tabs.strategy },
+    { id: "strategy", label: t.projectsPage.tabs.strategy, mobileLabel: t.projectsPage.tabs.strategyMobile },
     { id: "research", label: t.projectsPage.tabs.research },
   ];
 
@@ -113,10 +148,29 @@ export default function Projects() {
 
   return (
     <div className="min-h-screen bg-white">
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-100">
+      <motion.nav
+        animate={{ y: mobileHeaderVisible || mobileMenuOpen || mobileLanguageOpen ? 0 : -80 }}
+        transition={{ duration: 0.22, ease: "easeOut" }}
+        className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-100"
+      >
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-12">
+          <div className="relative flex items-center justify-between h-16">
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen((prev) => !prev)}
+              className="md:hidden flex h-10 w-10 items-center justify-center transition-opacity hover:opacity-70"
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileMenuOpen}
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Image src={burgerIcon} alt="" className="h-[17px] w-[23px]" priority />}
+            </button>
+            <Link
+              href="/"
+              className="absolute left-1/2 top-1/2 block -translate-x-1/2 -translate-y-1/2 md:hidden"
+            >
+              <Image src="/favicon.png" alt="Anna Uskova" width={28} height={28} className="h-7 w-7" priority />
+            </Link>
+            <div className="hidden md:flex items-center gap-12">
               <Link 
                 href="/" 
                 className={`text-[15px] font-medium transition-colors ${pathname === "/" ? "text-black" : "text-gray-400 hover:text-black"}`}
@@ -133,10 +187,41 @@ export default function Projects() {
                 {t.nav.contact}
               </button>
             </div>
-            <LanguageSwitcher language={language} onLanguageChange={handleLanguageChange} />
+            <div className="flex items-center">
+              <button
+                type="button"
+                onClick={() => setMobileLanguageOpen(true)}
+                className="md:hidden text-[15px] font-medium text-gray-600 transition-opacity hover:opacity-70"
+                aria-label="Open language menu"
+              >
+                {language === "ru" ? "РУС" : "ENG"}
+              </button>
+              <div className="hidden md:block">
+                <LanguageSwitcher language={language} onLanguageChange={handleLanguageChange} />
+              </div>
+            </div>
           </div>
         </div>
-      </nav>
+      </motion.nav>
+      <MobileMenuOverlay
+        isOpen={mobileMenuOpen}
+        pathname={pathname}
+        language={language}
+        nav={t.nav}
+        onClose={() => setMobileMenuOpen(false)}
+        onLanguageChange={handleLanguageChange}
+        onContactClick={() => {
+          setMobileMenuOpen(false);
+          setContactOpen(true);
+        }}
+        projectsActive={pathname === "/projects"}
+      />
+      <MobileLanguageOverlay
+        isOpen={mobileLanguageOpen}
+        language={language}
+        onClose={() => setMobileLanguageOpen(false)}
+        onLanguageChange={handleLanguageChange}
+      />
 
       <AnimatePresence>
         {contactOpen && (
@@ -185,7 +270,7 @@ export default function Projects() {
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight mb-14"
+              className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight mb-6 md:mb-14"
             >
               {t.projectsPage.title}
             </motion.h1>
@@ -199,7 +284,8 @@ export default function Projects() {
                     activeTab === tab.id ? "text-black" : "text-gray-400 hover:text-gray-600"
                   }`}
                 >
-                  {tab.label}
+                  <span className="md:hidden">{tab.mobileLabel ?? tab.label}</span>
+                  <span className="hidden md:inline">{tab.label}</span>
                   {activeTab === tab.id && (
                     <motion.div 
                       layoutId="activeTab"
@@ -218,7 +304,7 @@ export default function Projects() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
-              className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12"
+              className="grid gap-x-6 gap-y-9 md:grid-cols-2 md:gap-y-12 lg:grid-cols-3"
             >
               {projects.map((project, index) => (
                 <Link key={project.id} href={`/projects/${project.id}`}>
@@ -226,7 +312,7 @@ export default function Projects() {
                     className="group cursor-pointer"
                     transition={{ delay: (index % 3) * 0.1 }}
                   >
-                    <div className="relative aspect-[16/11] rounded-[24px] overflow-hidden bg-[#F1F1F1] mb-6 border border-gray-100 shadow-sm transition-transform duration-500 group-hover:shadow-md">
+                    <div className="relative aspect-[16/11] rounded-[24px] overflow-hidden bg-[#F1F1F1] mb-4 md:mb-6 border border-gray-100 shadow-sm transition-transform duration-500 group-hover:shadow-md">
                       {projectImages[project.id] ? (
                         <img 
                           src={projectImages[project.id] as string} 
@@ -241,11 +327,11 @@ export default function Projects() {
                     </div>
                     
                     <div className="flex flex-col">
-                      <div className="flex items-start justify-between mb-3">
+                      <div className="flex items-start justify-between mb-2 md:mb-3">
                         <h3 className="text-2xl font-medium tracking-tight group-hover:text-gray-600 transition-colors">{project.title}</h3>
                         <ArrowUpRight className="w-5 h-5 text-gray-300 group-hover:text-black transition-colors" />
                       </div>
-                      <p className="text-gray-500 text-[15px] leading-relaxed mb-5 line-clamp-2">
+                      <p className="text-gray-500 text-[15px] leading-relaxed mb-4 md:mb-5 line-clamp-2">
                         {project.id === 8 && language === "ru" 
                           ? "Лендинг-протокол на сети CrossFi. Визуальный стиль, dApp и лендинг."
                           : project.id === 3
@@ -274,7 +360,7 @@ export default function Projects() {
                                 : "System workflow diagrams for investors and the community.")
                               : (project.cardDescription ?? project.description)}
                       </p>
-                      <div className="flex flex-wrap gap-2 mt-auto">
+                      <div className="flex flex-wrap gap-1.5 md:gap-2 mt-auto">
                         <span className="px-3 py-1 bg-gray-50 text-gray-500 text-[11px] font-medium uppercase tracking-wider rounded-full border border-gray-100">{project.year}</span>
                         <span className="px-3 py-1 bg-gray-50 text-gray-500 text-[11px] font-medium uppercase tracking-wider rounded-full border border-gray-100">{project.role}</span>
                         <span className="px-3 py-1 bg-gray-50 text-gray-500 text-[11px] font-medium uppercase tracking-wider rounded-full border border-gray-100">{project.category}</span>
@@ -304,13 +390,13 @@ export default function Projects() {
       </AnimatePresence>
 
       <footer className="py-12 border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center text-gray-400">
-          <p className="text-[15px]">{t.footer.copyright}</p>
-          <div className="flex gap-8">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-400">
+          <div className="order-1 md:order-2 flex gap-8">
             <a href={contactData.linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-[15px] hover:text-black transition-colors">LinkedIn</a>
             <a href={contactData.telegramUrl} target="_blank" rel="noopener noreferrer" className="text-[15px] hover:text-black transition-colors">Telegram</a>
             <a href={contactData.instagramUrl} target="_blank" rel="noopener noreferrer" className="text-[15px] hover:text-black transition-colors">Instagram</a>
           </div>
+          <p className="order-2 md:order-1 text-[15px]">{t.footer.copyright}</p>
         </div>
       </footer>
     </div>

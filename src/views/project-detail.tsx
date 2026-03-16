@@ -1,11 +1,14 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useParams, usePathname, useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, ArrowLeft, X, ChevronRight, ChevronLeft, Zap, ZoomIn, ZoomOut, ChevronUp } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { MobileLanguageOverlay } from "@/components/MobileLanguageOverlay";
+import { MobileMenuOverlay } from "@/components/MobileMenuOverlay";
 import { translations, projectTranslations, type Language } from "@/lib/translations";
 
 import glacisDappImg from "@/assets/GL_dApp_1770754812223.webp";
@@ -78,6 +81,7 @@ import skiziPogashenie1 from "@/assets/skizi_pogashenie_1.avif";
 import skiziPogashenie2 from "@/assets/skizi_pogashenie_2.avif";
 import skiziPogashenie3 from "@/assets/skizi_pogashenie_3.avif";
 import skiziPogashenie4 from "@/assets/skizi_pogashenie_4.avif";
+import burgerIcon from "@/assets/Burger.svg";
 import skiziPogashenie5 from "@/assets/skizi_pogashenie_5.avif";
 import skiziGroup1 from "@/assets/skizi_group_1.avif";
 import skiziGroup2 from "@/assets/skizi_group_2.avif";
@@ -472,8 +476,12 @@ export default function ProjectDetail() {
   };
 
   const [contactOpen, setContactOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileLanguageOpen, setMobileLanguageOpen] = useState(false);
+  const [mobileHeaderVisible, setMobileHeaderVisible] = useState(true);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [tldrOpen, setTldrOpen] = useState(false);
+  const [activeCaseSection, setActiveCaseSection] = useState("xswap-context");
   const [lightboxItems, setLightboxItems] = useState<LightboxItem[]>([]);
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const [lightboxZoom, setLightboxZoom] = useState(1);
@@ -767,6 +775,43 @@ export default function ProjectDetail() {
     window.scrollTo(0, 0);
   }, [id]);
 
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen || mobileLanguageOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileLanguageOpen, mobileMenuOpen]);
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY <= 16) {
+        setMobileHeaderVisible(true);
+      } else if (currentScrollY > lastScrollY) {
+        setMobileHeaderVisible(false);
+      } else {
+        setMobileHeaderVisible(true);
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || window.innerWidth >= 768) return;
+
+    document.body.style.overflow = tldrOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [tldrOpen]);
+
   const getBackLink = () => {
     if (searchParams.get("from") === "home") return "/";
     if ([11, 12, 13].includes(id)) return "/projects?tab=strategy";
@@ -777,6 +822,70 @@ export default function ProjectDetail() {
   const isLightboxOpen = lightboxItems.length > 0;
   const currentLightboxItem = lightboxItems[lightboxIndex];
   const isCurrentLightboxVideo = currentLightboxItem?.type === "video";
+  const hasTldr = [1, 2, 3, 4, 7, 14].includes(project.id);
+  const caseSections =
+    project.id === 1
+      ? [
+          { id: "glacis-overview", label: language === "ru" ? "Обзор" : "Overview" },
+          { id: "glacis-main", label: language === "ru" ? "Главная" : "Main" },
+          { id: "glacis-details", label: language === "ru" ? "Детали" : "Details" },
+          { id: "glacis-analytics", label: language === "ru" ? "Аналитика" : "Analytics" },
+          { id: "glacis-outcome", label: language === "ru" ? "Итог" : "Outcome" }
+        ]
+      : project.id === 2
+      ? [
+          { id: "xswap-context", label: language === "ru" ? "Контекст" : "Context" },
+          { id: "xswap-flows", label: language === "ru" ? "Флоу" : "Flows" },
+          { id: "xswap-features", label: language === "ru" ? "Фичи" : "Features" },
+          { id: "xswap-outcome", label: language === "ru" ? "Итог" : "Outcome" }
+        ]
+      : project.id === 3
+        ? [
+            { id: "skizi-intro", label: language === "ru" ? "О проекте" : "About" },
+            { id: "skizi-roles", label: language === "ru" ? "Роли" : "Roles" },
+            { id: "skizi-certs", label: language === "ru" ? "Сертификаты" : "Certificates" },
+            { id: "skizi-outcome", label: language === "ru" ? "Итог" : "Outcome" }
+          ]
+        : project.id === 4
+          ? [
+              { id: "twogo-context", label: language === "ru" ? "Контекст" : "Context" },
+              { id: "twogo-app", label: "App" },
+              { id: "twogo-b2b", label: "B2B" },
+              { id: "twogo-admin", label: language === "ru" ? "Админка" : "Admin" },
+              { id: "twogo-outcome", label: language === "ru" ? "Итог" : "Outcome" }
+            ]
+          : project.id === 14
+            ? [
+                { id: "site-context", label: language === "ru" ? "Контекст" : "Context" },
+                { id: "site-solution", label: language === "ru" ? "Решение" : "Solution" },
+                { id: "site-ecosystem", label: language === "ru" ? "Экосистема" : "Ecosystem" },
+                { id: "site-outcome", label: language === "ru" ? "Итог" : "Outcome" }
+              ]
+            : [];
+  const tldrSummary =
+    project.id === 1
+      ? (language === "ru"
+          ? "Lead Product Designer в Glacis Labs: собрала визуальную систему бренда и спроектировала dApp для трекинга кроссчейн-транзакций (до 5 бриджей) с прозрачной моделью статусов, ретраями и аналитикой. Масштабировала продукт с V1 до V2 после запуска AirLift и расширения аналитики."
+          : "Lead Product Designer at Glacis Labs: built the brand's visual system and designed a dApp for tracking cross-chain transactions (up to 5 bridges) with a transparent status model, retries, and analytics. Then scaled the product from V1 to V2 after AirLift launched and the analytics expanded.")
+      : project.id === 14
+        ? language === "ru"
+          ? "Маркетинговый сайт Glacis Labs, который объясняет сложные Web3-механики через анимации и интерактив. Я спроектировала структуру сайта с нуля, придумала сценарии и логику motion-блоков для Glacis Core, AirLift и ZeroDelta, а также собрала виджет страницы Экосистема с каскадной фильтрацией токенов, сетей и роутов."
+          : "A marketing website for Glacis Labs that explains complex Web3 mechanics through animation and interactive flows. I designed the site structure from scratch, defined the motion scenarios for Glacis Core, AirLift, and ZeroDelta, and built the Ecosystem page widget with cascading filtering for tokens, chains, and routes."
+        : project.id === 3
+          ? language === "ru"
+            ? "Система учёта зелёных инструментов с многоуровневой ролевой моделью. За 1,5 года провела проект от тендера до продакшна: спроектировала ключевые флоу для каждой роли (зеленые инструменты и операции с ними, генерирующие объекты, управление данными, аудит и др), разобралась в предметной области и сделала так, чтобы сложные операции с атрибутами генерации, деньгами и ЭП были понятными для всех пользователей. Система работает и обслуживает реальный оборот зелёных сертификатов в России."
+            : "SKIZI is a green certificates and contracts accounting system with a multi-layer role model. Over 1.5 years, I led the project from tender to production: designed key flows for every role (green instruments and related operations, generation facilities, data management, audit, and more), learned the domain from scratch, and made sure complex operations with generation attributes, funds, and e-signatures remained clear for all users."
+          : project.id === 4
+            ? language === "ru"
+              ? "Агрегатор акций для ресторанов и кафе в Узбекистане. Единственный дизайнер в команде, в связке с продакт-менеджером спроектировала три продукта с нуля: мобильное приложение для пользователей, B2B-кабинет для ресторанов и админ-панель для модерации. Единый промокод-флоу проходит через все три интерфейса – пользователь получает код, официант пробивает на кассе, ресторан видит статистику, админ модерирует. Прямых аналогов на рынке нет, продукт на стадии финальной верстки."
+              : "2GO is a deals platform for restaurants and cafes in Uzbekistan. As the only designer on the team, working closely with the product manager, I designed three products from scratch in two months: a mobile app for users, a B2B dashboard for restaurants, and an admin panel for moderation. One promo-code flow runs through all three interfaces: the user gets a code, the waiter redeems it at the cashier, the restaurant sees the stats, and the admin moderates the platform. There are no direct analogs on the market."
+            : project.id === 7
+              ? language === "ru"
+                ? "Немодерируемое UX-исследование главной страницы крупного travel-сервиса в рамках редизайна: около 200 участников, 5-second и first-click тесты, сценарии, анкетирование. Сравнила мобильную версию и десктоп, выявила, где пользователи теряют фокус, как считывают бренд и какие блоки перегружают страницу, а затем собрала приоритизированный список рекомендаций для команды."
+                : "Unmoderated UX research for the homepage of a major travel service as part of a redesign: around 200 participants, 5-second and first-click tests, and a mobile vs desktop comparison. I identified where users lose focus, how they read the brand, and which blocks overload the page, then turned that into a prioritized recommendation list for the team."
+              : language === "ru"
+                ? "xSwap – AMM dApp на сети CrossFi. За один месяц собрала UX/UI для Swap, Pools, Token Sale и Lock/Voting, координировала фронт, работала в связке с solidity. Вышел насыщенный интерфейс: slippage и прозрачный Route в swap, понятные liquidity-пулы с multi-step подсказками, Token Sale с калькулятором прибыли и видеогайдами, плюс сложный Lock/Voting с продуманными корнер-кейсами и состояниями транзакций. Запустили на западный и вьетнамский рынок."
+                : "xSwap is an AMM dApp on CrossFi. In one month, I put together the UX/UI for Swap, Pools, Token Sale, and Lock/Voting, coordinated with frontend, and worked closely with Solidity. The result is an interface that does not scare people off: slippage and a transparent Route in Swap, understandable liquidity pools with multi-step guidance, Token Sale with a Profit Estimator and video guides, plus a complex Lock/Voting flow with well-thought-out edge cases and transaction states.";
 
   const resetLightboxView = () => {
     setLightboxZoom(1);
@@ -864,6 +973,70 @@ export default function ProjectDetail() {
       document.removeEventListener("touchstart", handlePointerDown);
     };
   }, [tldrOpen]);
+
+  useEffect(() => {
+    if (!caseSections.length) return;
+
+    let rafId = 0;
+
+    const updateActiveSection = () => {
+      const elements = caseSections
+        .map((section) => document.getElementById(section.id))
+        .filter((element): element is HTMLElement => element !== null);
+
+      if (!elements.length) return;
+
+      const activationOffset = 156;
+      let nextActiveId = elements[0].id;
+
+      for (const element of elements) {
+        const absoluteTop = element.getBoundingClientRect().top + window.scrollY;
+        if (window.scrollY + activationOffset >= absoluteTop) {
+          nextActiveId = element.id;
+        } else {
+          break;
+        }
+      }
+
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 24) {
+        nextActiveId = elements[elements.length - 1].id;
+      }
+
+      setActiveCaseSection((prev) => (prev === nextActiveId ? prev : nextActiveId));
+    };
+
+    const handleScroll = () => {
+      if (rafId) return;
+      rafId = window.requestAnimationFrame(() => {
+        updateActiveSection();
+        rafId = 0;
+      });
+    };
+
+    updateActiveSection();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+      if (rafId) {
+        window.cancelAnimationFrame(rafId);
+      }
+    };
+  }, [caseSections]);
+
+  const scrollToCaseSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+
+    setActiveCaseSection(sectionId);
+    const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({
+      top: Math.max(sectionTop - 112, 0),
+      behavior: "smooth"
+    });
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -1027,10 +1200,29 @@ export default function ProjectDetail() {
           </motion.div>
         )}
       </AnimatePresence>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-100">
+      <motion.nav
+        animate={{ y: mobileHeaderVisible || mobileMenuOpen || mobileLanguageOpen ? 0 : -80 }}
+        transition={{ duration: 0.22, ease: "easeOut" }}
+        className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-100"
+      >
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-12">
+          <div className="relative flex items-center justify-between h-16">
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen((prev) => !prev)}
+              className="md:hidden flex h-10 w-10 items-center justify-center transition-opacity hover:opacity-70"
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileMenuOpen}
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Image src={burgerIcon} alt="" className="h-[17px] w-[23px]" priority />}
+            </button>
+            <Link
+              href="/"
+              className="absolute left-1/2 top-1/2 block -translate-x-1/2 -translate-y-1/2 md:hidden"
+            >
+              <Image src="/favicon.png" alt="Anna Uskova" width={28} height={28} className="h-7 w-7" priority />
+            </Link>
+            <div className="hidden md:flex items-center gap-12">
               <Link 
                 href="/" 
                 className={`text-[15px] font-medium transition-colors ${pathname === "/" ? "text-black" : "text-gray-400 hover:text-black"}`}
@@ -1047,10 +1239,41 @@ export default function ProjectDetail() {
                 {t.nav.contact}
               </button>
             </div>
-            <LanguageSwitcher language={language} onLanguageChange={handleLanguageChange} />
+            <div className="flex items-center">
+              <button
+                type="button"
+                onClick={() => setMobileLanguageOpen(true)}
+                className="md:hidden text-[15px] font-medium text-gray-600 transition-opacity hover:opacity-70"
+                aria-label="Open language menu"
+              >
+                {language === "ru" ? "РУС" : "ENG"}
+              </button>
+              <div className="hidden md:block">
+                <LanguageSwitcher language={language} onLanguageChange={handleLanguageChange} />
+              </div>
+            </div>
           </div>
         </div>
-      </nav>
+      </motion.nav>
+      <MobileMenuOverlay
+        isOpen={mobileMenuOpen}
+        pathname={pathname}
+        language={language}
+        nav={t.nav}
+        onClose={() => setMobileMenuOpen(false)}
+        onLanguageChange={handleLanguageChange}
+        onContactClick={() => {
+          setMobileMenuOpen(false);
+          setContactOpen(true);
+        }}
+        projectsActive={pathname.startsWith("/projects")}
+      />
+      <MobileLanguageOverlay
+        isOpen={mobileLanguageOpen}
+        language={language}
+        onClose={() => setMobileLanguageOpen(false)}
+        onLanguageChange={handleLanguageChange}
+      />
       <AnimatePresence>
         {contactOpen && (
           <motion.div
@@ -1092,10 +1315,10 @@ export default function ProjectDetail() {
           </motion.div>
         )}
       </AnimatePresence>
-      <main className="pt-24 lg:pt-32">
+      <main className="pt-26 lg:pt-32">
         {/* Hero Section */}
-        <section className="px-6 lg:px-12 max-w-7xl mx-auto mb-12">
-          <Link href={getBackLink()} className="inline-flex items-center gap-2 text-gray-400 hover:text-black transition-colors mb-8 group">
+        <section className="px-6 lg:px-12 max-w-7xl mx-auto mb-8 md:mb-12">
+          <Link href={getBackLink()} className="hidden md:inline-flex items-center gap-2 text-gray-400 hover:text-black transition-colors mb-8 group">
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             <span className="text-sm font-medium">
               {searchParams.get("from") === "home" ? t.projectsPage.backToHome : t.projectsPage.backToProjects}
@@ -1105,21 +1328,30 @@ export default function ProjectDetail() {
           <div className="w-full">
             <div
               className={`flex flex-col md:flex-row mb-8 w-full relative ${
-                project.id === 7 ? "gap-5 md:gap-6 md:items-start" : "gap-9 md:items-center"
+                project.id === 7 ? "gap-2 md:gap-6 md:items-start" : "gap-3 md:gap-9 md:items-center"
               }`}
             >
-              <h1
+              <div className="flex items-center gap-3 md:block">
+                <Link
+                  href={getBackLink()}
+                  className="flex shrink-0 items-center text-gray-400 transition-colors hover:text-black md:hidden"
+                  aria-label={searchParams.get("from") === "home" ? t.projectsPage.backToHome : t.projectsPage.backToProjects}
+                >
+                  <ArrowLeft className="w-6 h-6" />
+                </Link>
+                <h1
                 className={`font-medium tracking-tight leading-[1.1] ${
                   project.id === 7
-                    ? "text-[32px] md:text-[40px] lg:text-[44px] md:max-w-[520px] lg:max-w-[560px] shrink-0 whitespace-pre-line"
-                    : "text-[40px] md:text-[48px] md:text-5xl lg:text-6xl"
+                    ? "text-[32px] md:text-[36px] lg:text-[40px] md:max-w-[520px] lg:max-w-[560px] shrink-0 whitespace-pre-line"
+                    : "text-[40px] md:text-[42px] lg:text-[52px]"
                 }`}
-                style={{ lineHeight: '110%' }}
-              >
-                {project.title}
-              </h1>
+                  style={{ lineHeight: '110%' }}
+                >
+                  {project.title}
+                </h1>
+              </div>
 
-              <div className={`flex flex-wrap gap-2 items-center translate-y-[8px] ${project.id === 7 ? "md:ml-[12px] md:translate-y-[14px]" : ""}`}>
+              <div className={`ml-9 flex flex-wrap gap-2 items-center ${project.id === 7 ? "md:ml-[12px] md:translate-y-[14px]" : "md:ml-0 md:translate-y-[8px]"}`}>
                 <span className="px-3 py-[6px] bg-[#F3F8FF] rounded-full text-[10px] font-medium text-gray-500 uppercase tracking-wider">
                   {project.year}
                 </span>
@@ -1131,8 +1363,8 @@ export default function ProjectDetail() {
                 </span>
               </div>
 
-              {(project.id === 2 || project.id === 1 || project.id === 4 || project.id === 3 || project.id === 7 || project.id === 14) && (
-                <div ref={tldrRef} className={`relative ${project.id === 7 ? "md:self-start md:ml-auto" : "md:ml-auto"}`}>
+              {hasTldr && (
+                <div ref={tldrRef} className={`relative hidden md:block ${project.id === 7 ? "md:self-start md:ml-auto" : "md:ml-auto"}`}>
                   <button 
                     onClick={() => setTldrOpen(!tldrOpen)}
                     className="flex items-center gap-2 px-4 py-3 rounded-full border border-gray-100 bg-white shadow-sm hover:bg-gray-50 transition-all duration-300 group pl-[24px] pr-[24px]"
@@ -1163,32 +1395,7 @@ export default function ProjectDetail() {
                             <X className="w-5 h-5" />
                           </button>
                         </div>
-                        <p className="text-[16px] leading-relaxed text-gray-600">
-                          {project.id === 1 
-                            ? (language === "ru"
-                              ? "Lead Product Designer в Glacis Labs: собрала визуальную систему бренда и спроектировала dApp для трекинга кроссчейн-транзакций (до 5 бриджей) с прозрачной моделью статусов, ретраями и аналитикой. Масштабировала продукт с V1 до V2 после запуска AirLift и расширения аналитики."
-                              : "Lead Product Designer at Glacis Labs: built the brand's visual system and designed a dApp for tracking cross-chain transactions (up to 5 bridges) with a transparent status model, retries, and analytics. Then scaled the product from V1 to V2 after AirLift launched and the analytics expanded.")
-                            : project.id === 14
-                            ? language === "ru"
-                              ? "Маркетинговый сайт Glacis Labs, который объясняет сложные Web3-механики через анимации и интерактив. Я спроектировала структуру сайта с нуля, придумала сценарии и логику motion-блоков для Glacis Core, AirLift и ZeroDelta, а также собрала виджет страницы Экосистема с каскадной фильтрацией токенов, сетей и роутов."
-                              : "A marketing website for Glacis Labs that explains complex Web3 mechanics through animation and interactive flows. I designed the site structure from scratch, defined the motion scenarios for Glacis Core, AirLift, and ZeroDelta, and built the Ecosystem page widget with cascading filtering for tokens, chains, and routes."
-                            : project.id === 3
-                            ? language === "ru"
-                              ? "Система учёта зелёных инструментов с многоуровневой ролевой моделью. За 1,5 года провела проект от тендера до продакшна: спроектировала ключевые флоу для каждой роли (зеленые инструменты и операции с ними, генерирующие объекты, управление данными, аудит и др), разобралась в предметной области и сделала так, чтобы сложные операции с атрибутами генерации, деньгами и ЭП были понятными для всех пользователей. Система работает и обслуживает реальный оборот зелёных сертификатов в России."
-                              : "SKIZI is a green certificates and contracts accounting system with a multi-layer role model. Over 1.5 years, I led the project from tender to production: designed key flows for every role (green instruments and related operations, generation facilities, data management, audit, and more), learned the domain from scratch, and made sure complex operations with generation attributes, funds, and e-signatures remained clear for all users."
-                            : project.id === 4
-                            ? language === "ru"
-                              ? "Агрегатор акций для ресторанов и кафе в Узбекистане. Единственный дизайнер в команде, в связке с продакт-менеджером спроектировала три продукта с нуля: мобильное приложение для пользователей, B2B-кабинет для ресторанов и админ-панель для модерации. Единый промокод-флоу проходит через все три интерфейса – пользователь получает код, официант пробивает на кассе, ресторан видит статистику, админ модерирует. Прямых аналогов на рынке нет, продукт на стадии финальной верстки."
-                              : "2GO is a deals platform for restaurants and cafes in Uzbekistan. As the only designer on the team, working closely with the product manager, I designed three products from scratch in two months: a mobile app for users, a B2B dashboard for restaurants, and an admin panel for moderation. One promo-code flow runs through all three interfaces: the user gets a code, the waiter redeems it at the cashier, the restaurant sees the stats, and the admin moderates the platform. There are no direct analogs on the market."
-                            : project.id === 7
-                            ? language === "ru"
-                              ? "Немодерируемое UX-исследование главной страницы крупного travel-сервиса в рамках редизайна: около 200 участников, 5-second и first-click тесты, сценарии, анкетирование. Сравнила мобильную версию и десктоп, выявила, где пользователи теряют фокус, как считывают бренд и какие блоки перегружают страницу, а затем собрала приоритизированный список рекомендаций для команды."
-                              : "Unmoderated UX research for the homepage of a major travel service as part of a redesign: around 200 participants, 5-second and first-click tests, and a mobile vs desktop comparison. I identified where users lose focus, how they read the brand, and which blocks overload the page, then turned that into a prioritized recommendation list for the team."
-                            : (language === "ru"
-                              ? "xSwap – AMM dApp на сети CrossFi. За один месяц собрала UX/UI для Swap, Pools, Token Sale и Lock/Voting, координировала фронт, работала в связке с solidity. Вышел насыщенный интерфейс: slippage и прозрачный Route в swap, понятные liquidity-пулы с multi-step подсказками, Token Sale с калькулятором прибыли и видеогайдами, плюс сложный Lock/Voting с продуманными корнер-кейсами и состояниями транзакций. Запустили на западный и вьетнамский рынок."
-                              : "xSwap is an AMM dApp on CrossFi. In one month, I put together the UX/UI for Swap, Pools, Token Sale, and Lock/Voting, coordinated with frontend, and worked closely with Solidity. The result is an interface that does not scare people off: slippage and a transparent Route in Swap, understandable liquidity pools with multi-step guidance, Token Sale with a Profit Estimator and video guides, plus a complex Lock/Voting flow with well-thought-out edge cases and transaction states.")
-                          }
-                        </p>
+                        <p className="text-[16px] leading-relaxed text-gray-600">{tldrSummary}</p>
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -1223,7 +1430,7 @@ export default function ProjectDetail() {
             </p>
 
             {project.id === 7 && (
-              <div className="w-full space-y-6 mb-20">
+              <div className="w-full space-y-4 mb-10 md:space-y-6 md:mb-20">
                 <div className="w-full max-w-2xl">
                   <div className="rounded-[24px] overflow-hidden border border-gray-100 shadow-sm bg-white">
                     <img
@@ -1233,7 +1440,18 @@ export default function ProjectDetail() {
                     />
                   </div>
                 </div>
-                <div className="max-w-3xl space-y-10">
+                {hasTldr && (
+                  <div ref={tldrRef} className="relative w-full md:hidden">
+                    <button
+                      onClick={() => setTldrOpen(!tldrOpen)}
+                      className="flex w-full items-center justify-center gap-2 rounded-full border border-gray-100 bg-white px-4 py-4 shadow-sm transition-all duration-300 hover:bg-gray-50"
+                    >
+                      <Zap className="w-4 h-4 text-yellow-500 fill-yellow-500" />
+                      <span className="text-sm font-medium text-gray-600">TL;DR</span>
+                    </button>
+                  </div>
+                )}
+                <div className="max-w-3xl space-y-6 md:space-y-10">
                   <div className="space-y-4">
                     <h2 className="text-[24px] font-medium tracking-tight text-black">
                       {language === "ru" ? "Контекст и вызовы" : "Context and Challenges"}
@@ -1353,7 +1571,7 @@ export default function ProjectDetail() {
             )}
 
             {(project.id === 12 || project.id === 13) && (
-              <div className="w-full space-y-8 mb-20">
+              <div className="w-full space-y-5 mb-10 md:space-y-8 md:mb-20">
                 {project.id === 12 ? (
                   <>
                     <div className="space-y-4">
@@ -1439,7 +1657,7 @@ export default function ProjectDetail() {
             )}
             
             {![7, 12, 13].includes(project.id) && projectImages[project.id] && (
-              <div className="w-full mb-12 max-w-2xl">
+              <div className="w-full mb-8 md:mb-12 max-w-2xl">
                 <div className="rounded-[24px] overflow-hidden border border-gray-100 shadow-sm bg-white">
                   <img 
                     src={projectImages[project.id] || ""} 
@@ -1447,11 +1665,46 @@ export default function ProjectDetail() {
                     className="w-full h-auto object-cover"
                   />
                 </div>
+                {hasTldr && (
+                  <div ref={tldrRef} className="relative mt-4 w-full md:hidden">
+                    <button
+                      onClick={() => setTldrOpen(!tldrOpen)}
+                      className="flex w-full items-center justify-center gap-2 rounded-full border border-gray-100 bg-white px-4 py-4 shadow-sm transition-all duration-300 hover:bg-gray-50"
+                    >
+                      <Zap className="w-4 h-4 text-yellow-500 fill-yellow-500" />
+                      <span className="text-sm font-medium text-gray-600">TL;DR</span>
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {caseSections.length > 0 && (
+              <div
+                className="sticky z-20 -mx-6 mb-8 border-y border-gray-100 bg-white/95 px-6 py-3 backdrop-blur transition-[top] duration-200 md:hidden"
+                style={{ top: mobileHeaderVisible || mobileMenuOpen || mobileLanguageOpen ? "4rem" : "0px" }}
+              >
+                <div className="flex gap-2 overflow-x-auto no-scrollbar">
+                  {caseSections.map((section) => (
+                    <button
+                      key={section.id}
+                      type="button"
+                      onClick={() => scrollToCaseSection(section.id)}
+                      className={`whitespace-nowrap rounded-full border px-4 py-2 text-[13px] font-medium transition-colors ${
+                        activeCaseSection === section.id
+                          ? "border-black bg-black text-white"
+                          : "border-gray-100 bg-white text-gray-500"
+                      }`}
+                    >
+                      {section.label}
+                    </button>
+                  ))}
+                </div>
               </div>
             )}
 
             {project.id === 14 && project.contextTitle && project.contextText && (
-              <div className="max-w-[calc(56rem-80px)] mb-12">
+              <div id="site-context" className="max-w-[calc(56rem-80px)] scroll-mt-28 mb-8 md:mb-12">
                 <h2 className="text-2xl font-medium mb-6">{project.contextTitle}</h2>
                 <p className="text-lg text-gray-600 leading-relaxed whitespace-pre-line">
                   {project.contextText}
@@ -1460,7 +1713,7 @@ export default function ProjectDetail() {
             )}
 
             {project.id === 14 && (
-              <div className="max-w-[calc(56rem-80px)] mb-16">
+              <div id="site-solution" className="max-w-[calc(56rem-80px)] scroll-mt-28 mb-10 md:mb-16">
                 <h2 className="text-2xl font-medium mb-6">{language === "ru" ? "Решение" : "Solution"}</h2>
                 <p className="text-lg text-gray-600 leading-relaxed whitespace-pre-line mb-8">
                   {language === "ru"
@@ -1610,7 +1863,7 @@ export default function ProjectDetail() {
                     <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
                   </div>
                 </div>
-                <h2 className="text-2xl font-medium mt-12 mb-6">{language === "ru" ? "Страница Экосистема" : "Ecosystem Page"}</h2>
+                <h2 id="site-ecosystem" className="scroll-mt-28 text-2xl font-medium mt-12 mb-6">{language === "ru" ? "Страница Экосистема" : "Ecosystem Page"}</h2>
                 <p className="text-lg text-gray-600 leading-relaxed whitespace-pre-line">
                   {language === "ru"
                     ? "Glacis поддерживает десятки (сотни?) токенов, сетей и роутов. Задача: дать пользователю инструмент для проверки конкретной комбинации.\nЯ спроектировала виджет с каскадной фильтрацией: три колонки (Tokens / Chains / Routes) работают независимо, но синхронно. Можно выбрать только токен и увидеть все доступные сети и роуты под него. Только сеть – и получить список поддерживаемых токенов и маршрутов. Токен + сеть показывает все возможные роуты между ними. Можно искать напрямую по роуту Source → Destination. Каждая комбинация даёт свой результат – всё это в одном компоненте и за пару кликов."
@@ -1644,7 +1897,7 @@ export default function ProjectDetail() {
                   </div>
                 </div>
 
-                <h2 className="text-2xl font-medium mt-12 mb-6">{language === "ru" ? "Итог" : "Outcome"}</h2>
+                <h2 id="site-outcome" className="scroll-mt-28 text-2xl font-medium mt-12 mb-6">{language === "ru" ? "Итог" : "Outcome"}</h2>
                 <p className="text-lg text-gray-600 leading-relaxed">
                   <>
                     <a
@@ -1664,7 +1917,7 @@ export default function ProjectDetail() {
             )}
 
             {project.id === 11 && (
-              <div className="max-w-[calc(56rem-80px)] mb-16 md:w-[105%] md:max-w-none">
+              <div className="max-w-[calc(56rem-80px)] mb-10 md:mb-16 md:w-[105%] md:max-w-none">
                 <div className="grid grid-cols-1 gap-6">
                   {zeroDeltaSlides.map((slide, index) => (
                     <button
@@ -1685,7 +1938,7 @@ export default function ProjectDetail() {
             )}
 
             {project.id === 4 && (
-              <div className="max-w-[calc(56rem-80px)] mb-16">
+              <div id="twogo-context" className="max-w-[calc(56rem-80px)] scroll-mt-28 mb-10 md:mb-16">
                 <h2 className="text-2xl font-medium mt-4 mb-6">{language === "ru" ? "Контекст и вызовы" : "Context & Challenges"}</h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                   {language === "ru"
@@ -1693,7 +1946,7 @@ export default function ProjectDetail() {
                     : "2GO is entering a market with no direct analogs. The closest thing in Tashkent is Bizzon.uz, a Groupon-style coupon service, but the mechanic is different: users pay for the coupon upfront, there are no real-time promos, and there is no B2B tool for restaurants. Uzbekistan does not really have a happy-hours and live-promo aggregator yet. That is both the opportunity and the challenge. There is no established user pattern to lean on, and restaurants are not used to managing promos through a digital tool, so the B2B side had to feel extremely clear and intuitive."}
                 </p>
 
-                <h2 className="text-2xl font-medium mt-4 mb-6">{language === "ru" ? "Пользовательское приложение" : "User App"}</h2>
+                <h2 id="twogo-app" className="scroll-mt-28 text-2xl font-medium mt-4 mb-6">{language === "ru" ? "Пользовательское приложение" : "User App"}</h2>
                 <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))]">
                   <div
                     ref={scrollContainerRef5}
@@ -1767,7 +2020,7 @@ export default function ProjectDetail() {
                     ? "После того как официант пробивает код, клиенту выезжает модалка с просьбой оценить акцию. Если пользователь не в приложении – она появится при следующем открытии. Без этого теряется большая часть отзывов."
                     : "After the waiter redeems the code, the customer gets a modal asking them to rate the deal. If the user is not in the app at that moment, it appears on the next open. Without that, you lose most of the feedback."}
                 </p>
-                <h2 className="text-2xl font-medium mt-8 mb-6">{language === "ru" ? "B2B-кабинет" : "B2B Dashboard"}</h2>
+                <h2 id="twogo-b2b" className="scroll-mt-28 text-2xl font-medium mt-8 mb-6">{language === "ru" ? "B2B-кабинет" : "B2B Dashboard"}</h2>
                 <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))]">
                   <div
                     ref={scrollContainerRef3}
@@ -1856,7 +2109,7 @@ export default function ProjectDetail() {
                     <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
                   </div>
                 </div>
-                <h2 className="text-2xl font-medium mt-8 mb-6">{language === "ru" ? "Админ-панель" : "Admin Panel"}</h2>
+                <h2 id="twogo-admin" className="scroll-mt-28 text-2xl font-medium mt-8 mb-6">{language === "ru" ? "Админ-панель" : "Admin Panel"}</h2>
                 <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))]">
                   <div
                     ref={scrollContainerRef1}
@@ -1893,7 +2146,7 @@ export default function ProjectDetail() {
                     ? "Еще администратор управляет командой модераторов – добавляет по email, удаляет с мгновенным отзывом доступа. Пуш-уведомления настраиваются прямо в панели: заголовок, текст, время рассылки, периодичность. Активные и архивные хранятся отдельно."
                     : "The admin also manages the moderator team: invites by email, removes people with instant access revocation, and configures push notifications right from the panel, including title, text, send time, and frequency. Active and archived notifications are stored separately."}
                 </p>
-                <h2 className="text-2xl font-medium mt-8 mb-6">{language === "ru" ? "Итог" : "Outcome"}</h2>
+                <h2 id="twogo-outcome" className="scroll-mt-28 text-2xl font-medium mt-8 mb-6">{language === "ru" ? "Итог" : "Outcome"}</h2>
                 <p className="text-lg text-gray-600 leading-relaxed">
                   {language === "ru"
                     ? "Три продукта с единой логикой, запущенные с нуля на рынке без прямых аналогов. Сейчас всё на стадии финальной верстки."
@@ -1908,7 +2161,7 @@ export default function ProjectDetail() {
             )}
 
             {project.id === 3 && (
-              <div className="max-w-[calc(56rem-80px)] mb-16">
+              <div id="skizi-intro" className="max-w-[calc(56rem-80px)] scroll-mt-28 mb-10 md:mb-16">
                 <h2 className="text-2xl font-medium mb-6">{language === "ru" ? "О проекте" : "About the Project"}</h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                   {language === "ru"
@@ -1958,7 +2211,7 @@ export default function ProjectDetail() {
                   </div>
                 </div>
 
-                <h2 className="text-2xl font-medium mt-12 mb-8">{language === "ru" ? "Ролевая модель" : "Role Model"}</h2>
+                <h2 id="skizi-roles" className="scroll-mt-28 text-2xl font-medium mt-12 mb-8">{language === "ru" ? "Ролевая модель" : "Role Model"}</h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-4">
                   {language === "ru"
                     ? "Далее началась настоящая разработка: мы учли все пожелания к функциональности системы и построили ролевую модель. Получилось 7 ролей с разными правами:"
@@ -2009,7 +2262,7 @@ export default function ProjectDetail() {
                     onClick={() => openSingleImage(skiziRoles.src, "SKIZI Roles")}
                   />
                 </div>
-                <h2 className="text-2xl font-medium mt-12 mb-8">{language === "ru" ? "Зеленые сертификаты" : "Green Certificates"}</h2>
+                <h2 id="skizi-certs" className="scroll-mt-28 text-2xl font-medium mt-12 mb-8">{language === "ru" ? "Зеленые сертификаты" : "Green Certificates"}</h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                   {language === "ru"
                     ? "Это основной объект системы (наряду с зелеными договорами). Каждый сертификат имеет свой номинал, уникальный номер, тип энергии, станцию и т.д. Если провалиться в сертификат, станет ясно, что с ним можно делать невообразимое количество вещей, но основные – деление и погашение. Их можно осуществить автоматически и вручную – в обоих случаях упрощаем пользователю жизнь предзаполененными полями, алертами и автоподсчетом («Поделить поровну»)."
@@ -2287,7 +2540,7 @@ export default function ProjectDetail() {
                     <div className="flex-shrink-0 w-[calc((100vw-100%)/2)]" />
                   </div>
                 </div>
-                <h2 className="text-2xl font-medium mt-12 mb-6">{language === "ru" ? "Итог" : "Outcome"}</h2>
+                <h2 id="skizi-outcome" className="scroll-mt-28 text-2xl font-medium mt-12 mb-6">{language === "ru" ? "Итог" : "Outcome"}</h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                   {language === "ru"
                     ? "Проект запущен в продакшн – это был сложный и интересный кейс: предметная область, которую пришлось изучить с нуля, госзаказчиковый фактор, технические и законодательные ограничения, смена руководства компании прямо посреди процесса разработки. Сейчас система работает и обслуживает реальный оборот зелёных сертификатов в России. Ниже прикрепила еще макеты, чтобы вы, как и я, не смогли забыть этот проект."
@@ -2324,7 +2577,7 @@ export default function ProjectDetail() {
             )}
 
             {project.id === 9 && (
-              <div className="max-w-[calc(56rem-80px)] mb-16">
+              <div className="max-w-[calc(56rem-80px)] mb-10 md:mb-16">
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                   {language === "ru"
                     ? "За пару дней я собрала лендинг и страницу покупки, а дизайнер NFTшек дополнил мой макет пиксельным облачком на фон. Я выстроила подачу так, чтобы сначала пользователь понял суть проекта и мог проверить надежность в соцсетях, потом увидел CTA, команду и интеграции (и снова CTA). На странице минта разделила два пути: обычная покупка и бесплатный клейм по вайтлисту, каждый со своими данными и кнопкой действия."
@@ -2352,7 +2605,7 @@ export default function ProjectDetail() {
             )}
 
             {project.id === 1 && (
-              <div className="max-w-[calc(56rem-80px)] mb-20">
+              <div id="glacis-overview" className="max-w-[calc(56rem-80px)] scroll-mt-28 mb-10 md:mb-20">
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                   {language === "ru" 
                     ? "Моя роль на проекте – Lead Product Designer. Я руководила международной командой из junior-дизайнера, аутсорс графических и motion-дизайнеров и сама много делала руками."
@@ -2385,7 +2638,7 @@ export default function ProjectDetail() {
                     </li>
                   ))}
                 </ul>
-                <p className="text-lg text-gray-600 leading-relaxed mb-12">
+                <p className="text-lg text-gray-600 leading-relaxed mb-8 md:mb-12">
                    {language === "ru" ? "Медиа-материалы я отдала на аутсорс (и итерационно контролировала), за остальное взялась сама." : "I outsourced the media materials and supervised them iteratively, and took on the rest myself."}
                 </p>
 
@@ -2394,7 +2647,7 @@ export default function ProjectDetail() {
                   {language === "ru" ? "После определения стилевого направления я начала разрабатывать dApp. Его основная функция – отслеживание статуса транзакции онлайн. Звучит как дефолтный Scan app, но меня попросили отразить статусы графически, а сложность в том, что транзакция может идти через пять бриджей. Выглядит это так (схема от разработчиков):" : "After defining the visual direction, I moved on to the dApp. Its main job is tracking transaction status online. Sounds like a pretty standard scan app, but I was asked to show statuses graphically, and the tricky part is that one transaction can go through five bridges. It looks like this (diagram from the developers):"}
                 </p>
 
-                <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))] mb-12">
+                <div className="relative -mr-[calc((100vw-100%)/2)] w-[calc(100%+((100vw-100%)/2))] mb-8 md:mb-12">
                   <div 
                     ref={scrollContainerRef1}
                     onMouseDown={handleMouseDown1}
@@ -2428,13 +2681,13 @@ export default function ProjectDetail() {
                  <p className="text-lg text-gray-600 leading-relaxed mb-8">
                   {language === "ru" ? "Аудитория приложения – разработчики (85%) и пользователи web3 продуктов (15%), преимущественно западная. Высокая плотность данных приветствуется, а скорость диагностики (быстро понять, почему транзакция легла) – один из приоритетов." : "The app's audience is developers (85%) and web3 product users (15%), primarily Western. High data density is welcomed, and diagnostic speed (quickly understanding why a transaction failed) is a priority."}
                 </p>
-                 <p className="text-lg text-gray-600 leading-relaxed mb-12">
+                 <p className="text-lg text-gray-600 leading-relaxed mb-8 md:mb-12">
                   {language === "ru" ? "После разработки дизайна V1 джуниор-дизайнер ушел, а вводные усложнились: у Glacis Labs появился второй продукт, AirLift, который расширял раздел аналитики и вводил еще одну переменную для транзакций. Итак, V2:" : "After the V1 design was done, the junior designer left and the input got more complex: Glacis Labs launched a second product, AirLift, which expanded the analytics section and introduced one more variable into transactions. So, V2:"}
                 </p>
 
-                <h2 className="text-2xl font-medium mb-6">{language === "ru" ? "Главная страница" : "Main Page"}</h2>
+                <h2 id="glacis-main" className="scroll-mt-28 text-2xl font-medium mb-6">{language === "ru" ? "Главная страница" : "Main Page"}</h2>
 
-                <div className="mt-6 mb-12 rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
+                <div className="mt-4 md:mt-6 mb-8 md:mb-12 rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
                   <img 
                     src={glacisMainPage.src}  
                     alt="Glacis Main Page" 
@@ -2446,11 +2699,11 @@ export default function ProjectDetail() {
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                    {language === "ru" ? "Наверху – мини-статистика по всему dApp, которая дает новому пользователю представление о масштабах экосистемы и количестве проходящих через нее транзакций, а пользователю постоянному – возможность отслеживать изменения («ого, было 10 сетей, а сейчас уже 21, как быстро они растут»)." : "At the top there is mini-statistics for the whole dApp. It gives a new user a sense of the ecosystem's scale and transaction volume, and gives a returning user a way to track changes (\"wow, there used to be 10 networks, now there are already 21, they are growing fast\")."}
                 </p>
-                <p className="text-lg text-gray-600 leading-relaxed mb-12">
+                <p className="text-lg text-gray-600 leading-relaxed mb-8 md:mb-12">
                    {language === "ru" ? "Далее – список последних транзакций в табличном представлении – довольно привычно для аудитории и типично для сканеров. Поисковая строка для быстрой проверки, фильтры – если ищу закономерности, сортировка по времени. Изначально делили транзакции по продуктам (вкладки Glacis core и AirLift), но после тестирования объединили их в одну таблицу – убрали лишний шаг, оставив возможность фильтрации по продукту." : "Next comes the list of recent transactions in a table view, which feels familiar to the audience and is standard for scanners. There is a search field for quick checks, filters for when you are looking for patterns, and sorting by time. At first we split transactions by product into Glacis Core and AirLift tabs, but after testing we merged them into one table, removed the extra step, and kept product filtering instead."}
                 </p>
 
-                <h2 className="text-2xl font-medium mb-6">{language === "ru" ? "Детали транзакции" : "Transaction Details"}</h2>
+                <h2 id="glacis-details" className="scroll-mt-28 text-2xl font-medium mb-6">{language === "ru" ? "Детали транзакции" : "Transaction Details"}</h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                    {language === "ru" ? "По нажатии на строку таблицы мы проваливаемся в детали транзакции. Под заголовок я вынесла время транзакции, статус и продукт. Далее – все что может быть полезно: Message ID, From/To, Source / Destination и т.д. Везде, где можно и нужно, кнопка копирования. Ниже – подробное отображение статуса транзакции. В данном примере она идет через два бриджа – Wormhole и LayerZero и у каждого свой статус. Пользователь видит, что через Wormhole транзакция уже прошла, а через LayerZero еще нет, но уже почти. Также он видит альтернативные пути, по которым могла пойти транзакция." : "Clicking a row in the table opens the transaction details. Under the header I placed the transaction time, status, and product. Then comes everything that might be useful: Message ID, From/To, Source / Destination, and so on, with copy buttons everywhere they matter. Below that is the detailed transaction status. In this example it goes through two bridges, Wormhole and LayerZero, and each has its own status. The user can see that the transaction already passed through Wormhole, while LayerZero has not completed it yet, but is close. They can also see the alternative paths the transaction could have taken."}
                 </p>
@@ -2493,7 +2746,7 @@ export default function ProjectDetail() {
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                    {language === "ru" ? "Появляются две вкладки: «Main data» – что с транзакцией сейчас (или, если она в статусе «Executed», как она была выполнена), и «Retry data» – список ретраев. Ретраев может быть несколько (разработчики говорят, 99+, но пока такого кейса не было), все они видны пользователю. Он может отследить, на каком именно этапе и бридже произошла ошибка – так система делает исполнение транзакции прозрачным." : "Two tabs appear: “Main data” – current status (or how it was executed), and “Retry data” – list of retries. There can be multiple retries (devs say 99+, but haven't seen that yet), all visible to the user. They can track exactly at which stage and bridge the error occurred – making execution transparent."}
                 </p>
-                <p className="text-lg text-gray-600 leading-relaxed mb-12">
+                <p className="text-lg text-gray-600 leading-relaxed mb-8 md:mb-12">
                    {language === "ru" ? "Если страница деталей транзакции медленно загружается – видим вот такой чудесный лоадер:" : "If the transaction details page loads slowly – we see this wonderful loader:"}
                 </p>
 
@@ -2508,7 +2761,7 @@ export default function ProjectDetail() {
                   />
                 </div>
 
-                <h2 className="text-2xl font-medium mb-6">{language === "ru" ? "Аналитика" : "Analytics"}</h2>
+                <h2 id="glacis-analytics" className="scroll-mt-28 text-2xl font-medium mb-6">{language === "ru" ? "Аналитика" : "Analytics"}</h2>
                 <p className="text-lg text-gray-600 leading-relaxed mb-8">
                    {language === "ru" ? "Аналитику можно посмотреть по продуктам Glacis Core и AirLift – графики и набор данных будут разные. Chains Overview пока в разработке." : "Analytics is available for Glacis Core and AirLift – charts and datasets differ. Chains Overview is in development."}
                 </p>
@@ -2556,7 +2809,7 @@ export default function ProjectDetail() {
                   </div>
                 </div>
 
-                <section className="mt-16">
+                <section id="glacis-outcome" className="scroll-mt-28 mt-16">
                   <h2 className="text-2xl font-medium mb-6">
                     {language === "ru" ? "Итог" : "Outcome"}
                   </h2>
@@ -2570,7 +2823,7 @@ export default function ProjectDetail() {
             )}
 
             {project.id === 2 && (
-              <div className="max-w-[calc(56rem-80px)] mb-20">
+              <div id="xswap-context" className="max-w-[calc(56rem-80px)] scroll-mt-28 mb-10 md:mb-20">
                 <h2 className="text-2xl font-medium mb-6">
                   {language === "ru" ? "Контекст и продуктовые задачи" : "Context & product challenges"}
                 </h2>
@@ -2601,11 +2854,11 @@ export default function ProjectDetail() {
                   ))}
                 </ul>
 
-                <div className="mt-16">
+                <div id="xswap-flows" className="scroll-mt-28 mt-16">
                   <h2 className="text-2xl font-medium mb-2">
                     {language === "ru" ? "User Flow и другие схемы" : "User flows and other diagrams"}
                   </h2>
-                  <p className="text-[18px] text-gray-600 leading-relaxed mt-3 mb-12">
+                  <p className="text-[18px] text-gray-600 leading-relaxed mt-3 mb-8 md:mb-12">
                     {language === "ru"
                       ? "Чтобы избежать ошибок, определяю все места, где они могут возникнуть:"
                       : "To prevent mistakes, I first map every place where things can go wrong and attach the relevant states and errors."}
@@ -2687,8 +2940,8 @@ export default function ProjectDetail() {
             )}
 
             {project.id === 2 && (
-              <div className="max-w-[calc(56rem-80px)] space-y-12 pb-20">
-                <section>
+              <div className="max-w-[calc(56rem-80px)] space-y-8 pb-12 md:space-y-12 md:pb-20">
+                <section id="xswap-features" className="scroll-mt-28">
                   <h2 className="text-2xl font-medium mb-8">
                     {language === "ru" ? "Решения по фичам" : "Feature decisions"}
                   </h2>
@@ -2891,7 +3144,7 @@ export default function ProjectDetail() {
                       </div>
                     </div>
 
-                    <div className="space-y-4">
+                    <div id="xswap-outcome" className="scroll-mt-28 space-y-4">
                       <p className="font-medium text-black">{project.content?.conclusion?.title}</p>
                       <p>{project.content?.conclusion?.text}</p>
 
@@ -2940,7 +3193,7 @@ export default function ProjectDetail() {
         </section>
 
         {/* Project Content */}
-        <section className="px-6 lg:px-12 max-w-7xl mx-auto mb-20">
+        <section className="px-6 lg:px-12 max-w-7xl mx-auto mb-12 md:mb-20">
           {project.id === 5 && project.content && (
             <div className="max-w-4xl space-y-12 mb-24">
               <div className="p-6 bg-gray-50 rounded-2xl border border-gray-100 text-gray-500 text-[15px] italic">
@@ -2956,7 +3209,7 @@ export default function ProjectDetail() {
 
               <section>
                 <h2 className="text-sm font-medium mb-8 uppercase tracking-wider text-gray-400">{project.content.process.title}</h2>
-                <div className="space-y-8">
+                <div className="space-y-5 md:space-y-8">
                   {project.content.process.steps.map((step: any, idx: number) => (
                     <div key={idx} className="flex gap-4 group">
                       <span className="text-xs font-mono text-gray-300 mt-1.5 flex-shrink-0">0{idx + 1}</span>
@@ -3001,7 +3254,7 @@ export default function ProjectDetail() {
                     href={`/projects/${p.id}`}
                     className="group flex flex-col"
                   >
-                    <div className="relative aspect-[4/3] rounded-[28px] overflow-hidden bg-[#F1F1F1] border border-gray-100 mb-6">
+                    <div className="relative aspect-[4/2.85] rounded-[28px] overflow-hidden bg-[#F1F1F1] border border-gray-100 mb-6">
                       {projectImages[p.id] ? (
                         <img 
                           src={projectImages[p.id] as string}
@@ -3060,6 +3313,46 @@ export default function ProjectDetail() {
       </main>
 
       <AnimatePresence>
+        {hasTldr && tldrOpen && (
+          <div className="fixed inset-0 z-[130] md:hidden">
+            <motion.button
+              type="button"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="absolute inset-0 bg-black/55"
+              aria-label="Close TLDR"
+              onClick={() => setTldrOpen(false)}
+            />
+            <motion.div
+              initial={{ y: "100%", opacity: 0.96 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: "100%", opacity: 0.96 }}
+              transition={{ type: "spring", stiffness: 260, damping: 28 }}
+              className="absolute inset-x-0 bottom-0 rounded-t-[40px] bg-white px-6 pb-12 pt-8 shadow-2xl"
+            >
+              <div className="mb-5 flex items-start justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50">
+                    <Zap className="w-5 h-5 text-yellow-500 fill-yellow-500" />
+                  </div>
+                  <h4 className="text-[22px] font-medium tracking-tight">Quick Summary</h4>
+                </div>
+                <button
+                  onClick={() => setTldrOpen(false)}
+                  className="rounded-full p-1 transition-colors hover:bg-gray-100"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+              <p className="pr-2 text-[18px] leading-relaxed text-gray-600">{tldrSummary}</p>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
         {showScrollTop && (
           <motion.button
             initial={{ opacity: 0, y: 10 }}
@@ -3076,13 +3369,13 @@ export default function ProjectDetail() {
 
       <footer className="py-12 border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-8">
-          <p className="text-[15px] text-gray-400">{t.footer.copyright}</p>
-          <div className="flex gap-8">
+          <div className="order-1 md:order-2 flex gap-8">
             <a href={contactData.linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-[15px] text-gray-400 hover:text-black transition-colors">LinkedIn</a>
             <a href={contactData.telegramUrl} target="_blank" rel="noopener noreferrer" className="text-[15px] text-gray-400 hover:text-black transition-colors">Telegram</a>
             <a href={contactData.instagramUrl} target="_blank" rel="noopener noreferrer" className="text-[15px] text-gray-400 hover:text-black transition-colors">Instagram</a>
             <a href={contactData.emailUrl} className="text-[15px] text-gray-400 hover:text-black transition-colors">Email</a>
           </div>
+          <p className="order-2 md:order-1 text-[15px] text-gray-400">{t.footer.copyright}</p>
         </div>
       </footer>
     </div>

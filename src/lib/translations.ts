@@ -70,6 +70,7 @@ export const translations = {
       tabs: {
         uxui: "UX/UI",
         strategy: "Decks & Diagrams",
+        strategyMobile: "Decks",
         research: "Research"
       }
     }
@@ -145,6 +146,7 @@ export const translations = {
       tabs: {
         uxui: "UX/UI",
         strategy: "Презентации и схемы",
+        strategyMobile: "Презентации",
         research: "Исследования"
       }
     }

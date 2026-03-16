@@ -1,11 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { MobileLanguageOverlay } from "@/components/MobileLanguageOverlay";
+import { MobileMenuOverlay } from "@/components/MobileMenuOverlay";
 import { translations, projectTranslations, type Language } from "@/lib/translations";
 
 import skiziImg from "@/assets/skizi_cover_new.webp";
@@ -15,6 +18,7 @@ import glacisDappImg from "@/assets/GL_dApp_1770754812223.webp";
 import xSwapImg from "@/assets/xswap_main.webp";
 import twoGoSliderImg from "@/assets/2go_slider.webp";
 import gradientBar from "@/assets/gradient_bar.webp";
+import burgerIcon from "@/assets/Burger.svg";
 
 const projectImages: Record<number, string | null> = {
   1: glacisDappImg.src,
@@ -27,6 +31,7 @@ const projectImages: Record<number, string | null> = {
 
 export default function Home() {
   const pathname = usePathname();
+  const router = useRouter();
   const [activeProject, setActiveProject] = useState(0);
   const [language, setLanguage] = useState<Language>(() => {
     if (typeof window === "undefined") return "en";
@@ -43,9 +48,42 @@ export default function Home() {
   
   const [contactOpen, setContactOpen] = useState(false);
   const [experienceOpen, setExperienceOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileLanguageOpen, setMobileLanguageOpen] = useState(false);
+  const [mobileHeaderVisible, setMobileHeaderVisible] = useState(true);
+  const mobileSliderTouchStartX = useRef<number | null>(null);
+  const mobileSliderSwipeTriggered = useRef(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen || mobileLanguageOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileLanguageOpen, mobileMenuOpen]);
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY <= 16) {
+        setMobileHeaderVisible(true);
+      } else if (currentScrollY > lastScrollY) {
+        setMobileHeaderVisible(false);
+      } else {
+        setMobileHeaderVisible(true);
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const t = translations[language];
@@ -76,6 +114,29 @@ export default function Home() {
     setActiveProject((prev) => prev - 1);
   };
 
+  const handleMobileSliderTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+    mobileSliderTouchStartX.current = event.touches[0]?.clientX ?? null;
+    mobileSliderSwipeTriggered.current = false;
+  };
+
+  const handleMobileSliderTouchEnd = (event: React.TouchEvent<HTMLDivElement>) => {
+    if (mobileSliderTouchStartX.current === null) return;
+
+    const touchEndX = event.changedTouches[0]?.clientX ?? mobileSliderTouchStartX.current;
+    const deltaX = touchEndX - mobileSliderTouchStartX.current;
+    mobileSliderTouchStartX.current = null;
+
+    if (Math.abs(deltaX) < 44) return;
+
+    mobileSliderSwipeTriggered.current = true;
+    if (deltaX < 0) {
+      nextProject();
+      return;
+    }
+
+    prevProject();
+  };
+
   useEffect(() => {
     if (!projects.length) return;
 
@@ -103,10 +164,29 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-100">
+      <motion.nav
+        animate={{ y: mobileHeaderVisible || mobileMenuOpen || mobileLanguageOpen ? 0 : -80 }}
+        transition={{ duration: 0.22, ease: "easeOut" }}
+        className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-100"
+      >
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-12">
+          <div className="relative flex items-center justify-between h-16">
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen((prev) => !prev)}
+              className="md:hidden flex h-10 w-10 items-center justify-center transition-opacity hover:opacity-70"
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileMenuOpen}
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Image src={burgerIcon} alt="" className="h-[17px] w-[23px]" priority />}
+            </button>
+            <Link
+              href="/"
+              className="absolute left-1/2 top-1/2 block -translate-x-1/2 -translate-y-1/2 md:hidden"
+            >
+              <Image src="/favicon.png" alt="Anna Uskova" width={28} height={28} className="h-7 w-7" priority />
+            </Link>
+            <div className="hidden md:flex items-center gap-12">
               <Link 
                 href="/" 
                 className={`text-[15px] font-medium transition-colors ${pathname === "/" ? "text-black" : "text-gray-400 hover:text-black"}`}
@@ -129,10 +209,40 @@ export default function Home() {
                 {t.nav.contact}
               </button>
             </div>
-            <LanguageSwitcher language={language} onLanguageChange={handleLanguageChange} />
+            <div className="flex items-center">
+              <button
+                type="button"
+                onClick={() => setMobileLanguageOpen(true)}
+                className="md:hidden text-[15px] font-medium text-gray-600 transition-opacity hover:opacity-70"
+                aria-label="Open language menu"
+              >
+                {language === "ru" ? "РУС" : "ENG"}
+              </button>
+              <div className="hidden md:block">
+                <LanguageSwitcher language={language} onLanguageChange={handleLanguageChange} />
+              </div>
+            </div>
           </div>
         </div>
-      </nav>
+      </motion.nav>
+      <MobileMenuOverlay
+        isOpen={mobileMenuOpen}
+        pathname={pathname}
+        language={language}
+        nav={t.nav}
+        onClose={() => setMobileMenuOpen(false)}
+        onLanguageChange={handleLanguageChange}
+        onContactClick={() => {
+          setMobileMenuOpen(false);
+          setContactOpen(true);
+        }}
+      />
+      <MobileLanguageOverlay
+        isOpen={mobileLanguageOpen}
+        language={language}
+        onClose={() => setMobileLanguageOpen(false)}
+        onLanguageChange={handleLanguageChange}
+      />
 
       <AnimatePresence>
         {contactOpen && (
@@ -203,7 +313,7 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      <section className="pt-40 pb-24 lg:pt-52 lg:pb-32 relative">
+      <section className="pt-40 pb-10 lg:pt-52 lg:pb-32 relative">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-start justify-between">
           <div className="max-w-4xl pt-5">
             <motion.div 
@@ -212,7 +322,7 @@ export default function Home() {
               transition={{ duration: 0.6 }}
               className="max-w-[700px]"
             >
-              <h1 className={`font-medium tracking-tight text-balance whitespace-pre-line ${language === "ru" ? "text-4xl md:text-5xl lg:text-[52px]" : "text-4xl md:text-5xl lg:text-[52px]"}`} style={{ lineHeight: '115%' }} data-testid="text-hero-title">
+              <h1 className={`font-medium tracking-tight text-balance whitespace-normal md:whitespace-pre-line ${language === "ru" ? "text-4xl md:text-5xl lg:text-[52px]" : "text-4xl md:text-5xl lg:text-[52px]"}`} style={{ lineHeight: '115%' }} data-testid="text-hero-title">
                 {t.hero.title}
               </h1>
             </motion.div>
@@ -223,7 +333,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.15 }}
               className="mt-6 max-w-2xl"
             >
-              <p className="text-xl md:text-2xl text-gray-600 leading-relaxed whitespace-pre-line" data-testid="text-hero-description">
+              <p className="text-xl md:text-2xl text-gray-600 leading-relaxed whitespace-normal md:whitespace-pre-line" data-testid="text-hero-description">
                 {t.hero.description}
               </p>
             </motion.div>
@@ -232,20 +342,24 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-16 flex items-center gap-6"
+              className="mt-16 flex flex-col items-start gap-4 md:flex-row md:items-center md:gap-6"
             >
               <button 
                 onClick={() => {
+                  if (window.innerWidth < 768) {
+                    router.push("/projects");
+                    return;
+                  }
                   document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="inline-flex items-center justify-center px-8 py-3 bg-black text-white text-[15px] font-medium rounded-full hover:bg-gray-800 transition-colors h-14 min-w-[200px]"
+                className="inline-flex w-full md:w-auto items-center justify-center px-8 py-3 bg-black text-white text-[15px] font-medium rounded-full hover:bg-gray-800 transition-colors h-14 min-w-[200px]"
                 data-testid="button-view-work"
               >
                 {t.hero.viewWork}
               </button>
               <button 
                 onClick={() => setContactOpen(true)}
-                className="text-[15px] font-medium link-underline"
+                className="inline-flex w-full md:w-auto items-center justify-center px-8 py-3 border border-gray-200 text-[15px] font-medium rounded-full hover:bg-gray-50 transition-colors h-14 md:h-auto md:px-0 md:py-0 md:border-0 md:rounded-none md:link-underline"
                 data-testid="link-contact"
               >
                 {t.hero.getInTouch}
@@ -272,35 +386,39 @@ export default function Home() {
 
       <section className="py-8 border-y border-gray-100">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 gap-3 md:grid-cols-3 md:gap-8">
             {stats.map((stat, index) => (
               <motion.div 
                 key={stat.label}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-                className="text-center md:text-left"
+                className="rounded-3xl border border-gray-100 px-5 py-4 text-left md:rounded-none md:border-0 md:px-0 md:py-0"
               >
-                <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">{stat.label}</p>
-                <p className="text-2xl md:text-3xl font-medium" data-testid={`text-stat-${index}`}>{stat.value}</p>
+                <p className="text-[11px] text-gray-400 uppercase tracking-[0.14em] mb-1.5 md:text-xs md:tracking-wider md:mb-1">
+                  {stat.label}
+                </p>
+                <p className="text-[30px] leading-none md:text-3xl font-medium" data-testid={`text-stat-${index}`}>
+                  {stat.value}
+                </p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="projects" className="py-24 lg:py-32 overflow-hidden">
+      <section id="projects" className="pt-8 pb-24 lg:py-32 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid lg:grid-cols-[380px_1fr] gap-12 lg:gap-16 items-center">
+          <div className="grid gap-8 lg:grid-cols-[380px_1fr] lg:gap-16 items-center">
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="flex flex-col h-[392px]"
+              className="hidden lg:flex lg:h-[392px] lg:flex-col"
             >
               <div className="flex-1 flex flex-col pt-4">
-                <div className="flex items-center gap-2 text-xs text-gray-400 uppercase tracking-wider mb-14">
+                <div className="flex items-center gap-2 text-xs text-gray-400 uppercase tracking-wider mb-8 lg:mb-14">
                   {currentProject ? (
                     <>
                       <span>{currentProject.year}</span>
@@ -320,13 +438,13 @@ export default function Home() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -12 }}
                       transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-                      className="h-[200px] flex flex-col justify-center"
+                      className="flex flex-col justify-center lg:h-[200px]"
                     >
-                      <h3 className="text-5xl font-medium mb-6 tracking-tight" data-testid="text-project-title">
+                      <h3 className="text-[36px] md:text-5xl font-medium mb-6 tracking-tight" data-testid="text-project-title">
                         {currentProject.title}
                       </h3>
                       
-                      <p className="text-gray-500 leading-[1.6] text-lg max-w-[320px]" data-testid="text-project-description">
+                      <p className="max-w-[320px] text-[15px] leading-relaxed text-gray-500 md:text-lg md:leading-[1.6]" data-testid="text-project-description">
                         {currentProject.description}
                       </p>
                     </motion.div>
@@ -334,7 +452,7 @@ export default function Home() {
                 </AnimatePresence>
               </div>
 
-              <div className="flex items-center gap-6 mt-auto">
+              <div className="hidden lg:flex items-center gap-6 mt-auto">
                 <div className="flex items-center gap-3">
                   <button 
                     onClick={prevProject}
@@ -363,7 +481,90 @@ export default function Home() {
               </div>
             </motion.div>
 
-            <div className="relative flex items-center h-[392px]">
+            <div className="lg:hidden">
+              {currentProject ? (
+                <motion.div
+                  key={`mobile-${currentProject.id}-${language}`}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.35 }}
+                  onTouchStart={handleMobileSliderTouchStart}
+                  onTouchEnd={handleMobileSliderTouchEnd}
+                  className="space-y-6"
+                >
+                  <div className="relative">
+                    <Link
+                      href={`/projects/${currentProject.id}?from=home`}
+                      onClick={(event) => {
+                        if (!mobileSliderSwipeTriggered.current) return;
+                        event.preventDefault();
+                        mobileSliderSwipeTriggered.current = false;
+                      }}
+                      className="block overflow-hidden rounded-[28px] border border-gray-100 bg-white shadow-sm"
+                    >
+                      <div className="h-[300px] overflow-hidden">
+                        {projectImages[currentProject.id] ? (
+                          <img
+                            src={projectImages[currentProject.id] as string}
+                            alt={currentProject.title}
+                            loading="eager"
+                            decoding="async"
+                            className="h-full w-full object-cover object-center"
+                          />
+                        ) : (
+                          <div className="h-full w-full bg-white" />
+                        )}
+                      </div>
+                    </Link>
+
+                    <div className="pointer-events-none absolute inset-x-0 bottom-3 z-10 flex items-center justify-center gap-2">
+                      {projects.map((project, index) => (
+                        <button
+                          key={project.id}
+                          type="button"
+                          onClick={() => setActiveProject(index)}
+                          className={`pointer-events-auto rounded-full transition-all ${
+                            index === safeActiveProject ? "h-1.5 w-7 bg-black/90" : "h-1.5 w-1.5 bg-white/75"
+                          }`}
+                          aria-label={`Go to project ${index + 1}`}
+                        />
+                      ))}
+                    </div>
+
+                  </div>
+
+                  <div className="space-y-4 px-1">
+                    <div className="flex flex-wrap items-center gap-2 text-[11px] text-gray-400 uppercase tracking-[0.14em]">
+                      <span>{currentProject.year}</span>
+                      <span className="text-gray-200">/</span>
+                      <span>{currentProject.category}</span>
+                      <span className="text-gray-200">/</span>
+                      <span>{currentProject.role}</span>
+                    </div>
+
+                    <div className="space-y-4">
+                      <h3 className="text-[34px] leading-[0.98] font-medium tracking-tight" data-testid="text-project-title-mobile">
+                        {currentProject.title}
+                      </h3>
+                      <p className="text-[15px] leading-[1.45] text-gray-500" data-testid="text-project-description-mobile">
+                        {currentProject.description}
+                      </p>
+                    </div>
+                  </div>
+
+                  <Link
+                    href="/projects"
+                    className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-full border border-gray-200 px-8 text-[15px] font-medium text-gray-500 transition-all duration-300 hover:border-black hover:bg-black hover:text-white group"
+                    data-testid="link-all-projects-bottom-mobile"
+                  >
+                    {language === "ru" ? "Все проекты" : "All Projects"}
+                    <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </Link>
+                </motion.div>
+              ) : null}
+            </div>
+
+            <div className="relative hidden lg:flex items-center h-[392px]">
               <div className="flex gap-2 items-start w-full">
                 <AnimatePresence mode="popLayout">
                   {hasProjects
@@ -412,7 +613,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 lg:py-32 bg-black text-white">
+      <section className="pt-12 pb-24 lg:py-32 bg-black text-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <motion.div
@@ -436,7 +637,7 @@ export default function Home() {
               className="grid gap-3"
             >
               {t.competencies.items.map((item) => (
-                <div key={item.num} className="flex gap-6 p-5 rounded-[18px] border border-white/10 hover:border-white/20 transition-colors">
+                <div key={item.num} className="flex gap-4 rounded-[18px] border border-white/10 px-4 py-5 transition-colors hover:border-white/20 md:gap-6 md:p-5">
                   <span className="text-sm text-gray-500 font-mono">{item.num}</span>
                   <div>
                     <h3 className="font-medium text-lg">{item.title}</h3>
@@ -663,13 +864,13 @@ export default function Home() {
       <footer className="py-8 border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-[15px] text-gray-400">{t.footer.copyright}</p>
-            <div className="flex items-center gap-6">
+            <div className="order-1 md:order-2 flex items-center gap-6">
               <a href={contactData.linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-[15px] text-gray-400 hover:text-black transition-colors">{t.footer.socials.linkedin}</a>
               <a href={contactData.telegramUrl} target="_blank" rel="noopener noreferrer" className="text-[15px] text-gray-400 hover:text-black transition-colors">{t.footer.socials.telegram}</a>
               <a href={contactData.instagramUrl} target="_blank" rel="noopener noreferrer" className="text-[15px] text-gray-400 hover:text-black transition-colors">{t.footer.socials.instagram}</a>
               <a href={contactData.emailUrl} className="text-[15px] text-gray-400 hover:text-black transition-colors">{t.footer.socials.email}</a>
             </div>
+            <p className="order-2 md:order-1 text-[15px] text-gray-400">{t.footer.copyright}</p>
           </div>
         </div>
       </footer>
