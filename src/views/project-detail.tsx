@@ -1866,7 +1866,7 @@ export default function ProjectDetail() {
                 <h2 id="site-ecosystem" className="scroll-mt-28 text-2xl font-medium mt-12 mb-6">{language === "ru" ? "Страница Экосистема" : "Ecosystem Page"}</h2>
                 <p className="text-lg text-gray-600 leading-relaxed whitespace-pre-line">
                   {language === "ru"
-                    ? "Glacis поддерживает десятки (сотни?) токенов, сетей и роутов. Задача: дать пользователю инструмент для проверки конкретной комбинации.\nЯ спроектировала виджет с каскадной фильтрацией: три колонки (Tokens / Chains / Routes) работают независимо, но синхронно. Можно выбрать только токен и увидеть все доступные сети и роуты под него. Только сеть – и получить список поддерживаемых токенов и маршрутов. Токен + сеть показывает все возможные роуты между ними. Можно искать напрямую по роуту Source → Destination. Каждая комбинация даёт свой результат – всё это в одном компоненте и за пару кликов."
+                    ? "Glacis поддерживает 215 токенов, 37 сетей и много роутов. Задача: дать пользователю инструмент для проверки конкретной комбинации.\nЯ спроектировала виджет с каскадной фильтрацией: три колонки (Tokens / Chains / Routes) работают независимо, но синхронно. Можно выбрать только токен и увидеть все доступные сети и роуты под него. Только сеть – и получить список поддерживаемых токенов и маршрутов. Токен + сеть показывает все возможные роуты между ними. Можно искать напрямую по роуту Source → Destination. Каждая комбинация даёт свой результат – всё это в одном компоненте и за пару кликов."
                     : "Glacis supports dozens, maybe hundreds, of tokens, chains, and routes. The task was to give users a tool to check a specific combination.\nI designed a widget with cascading filtering: three columns, Tokens / Chains / Routes, working independently but in sync. You can pick just a token and instantly see all supported chains and routes for it. Pick only a chain and get the supported tokens and route options. Token + chain shows every possible route between them. You can also search directly by route, Source -> Destination. Every combination produces its own result, all inside one component and in just a couple of clicks."}
                 </p>
 
@@ -2154,7 +2154,7 @@ export default function ProjectDetail() {
                 </p>
                 <p className="text-lg text-gray-600 leading-relaxed mt-6">
                   {language === "ru"
-                    ? "Все три продукта работают как единая система: официант пробил код – у пользователя он стал использованным, администратор одобрил ресторан – он появился в каталоге. Это потребовало синхронизации логики между интерфейсами ещё на стадии проектирования (я очень люблю сквозные флоу)."
+                    ? "Все три продукта работают как единая система: официант пробил код – у пользователя он стал использованным, администратор одобрил ресторан – он появился в каталоге. Это потребовало синхронизации логики между интерфейсами ещё на стадии проектирования."
                     : "All three products work as one system: once the waiter redeems the code, it becomes used in the customer app; once the admin approves a restaurant, it appears in the catalog. That required syncing the logic across all interfaces already at the design stage, which is exactly the kind of end-to-end flow work I love."}
                 </p>
               </div>

@@ -283,11 +283,7 @@ export default function Home() {
             >
               <button 
                 onClick={() => {
-                  if (window.innerWidth < 768) {
-                    router.push("/projects");
-                    return;
-                  }
-                  document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+                  router.push("/projects");
                 }}
                 className="inline-flex w-full md:w-auto items-center justify-center px-8 py-3 bg-black text-white text-[15px] font-medium rounded-full hover:bg-gray-800 transition-colors h-14 min-w-[200px]"
                 data-testid="button-view-work"

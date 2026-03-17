@@ -276,7 +276,7 @@ We also shipped a Vietnamese version and launched for the Vietnamese market (and
       category: "GREEN TOOLS",
       role: "PRODUCT DESIGNER",
       title: "SKIZI",
-      description: "Green energy accounting automation system. One of my longest and most complex projects, with a pretty deep role model (around 8 roles 😱)."
+      description: "Green energy accounting automation system with a deep role model. Today it supports the real turnover of green certificates in Russia."
     },
     {
       id: 5,
@@ -358,7 +358,7 @@ We also shipped a Vietnamese version and launched for the Vietnamese market (and
       category: "DEFI",
       role: "DESIGN LEAD",
       title: "Glacis Labs dApp",
-      description: "Экосистема DeFi продуктов для работы с cross-chain операциями. Сформировала дизайн-направление проекта и собрала dApp для трекинга кроссчейн-транзакций и аналитики.",
+      description: "Дизайн-лид в\u00A0Glacis Labs\u00A0– инфраструктурном DeFi-стартапе ($2.1M\u00A0seed, Arrington\u00A0Capital). Спроектировала dApp для\u00A0трекинга и\u00A0аналитики кросс-чейн операций, охватывающий 5\u00A0бриджей, 37+\u00A0сетей и\u00A0215\u00A0токенов.",
       cardDescription: "dApp для трекинга кроссчейн-транзакций и аналитики. UX, UI, фирстиль."
     },
     {
@@ -379,7 +379,7 @@ We also shipped a Vietnamese version and launched for the Vietnamese market (and
       category: "DEFI",
       role: "Senior Product Designer",
       title: "xSwap",
-      description: "xSwap – AMM на сети CrossFi. Здесь есть swap, liquidity pools, staking, token sale и veToken-механика. Я создала визуальный стиль продукта, лендинг и dApp, а также продумала логику с solidity-коллегами.",
+      description: "xSwap – DeFi-продукт на сети CrossFi со swap, liquidity pools, staking, token sale и veToken-механикой. Разработала визуальный стиль, лендинг и dApp, проработала UX с Solidity-командой и участвовала в запуске на западном и вьетнамском рынках.",
       content: {
         nda: "В DeFi UX ставки высоки: одна ошибка стоит денег, а запутанная механика быстро превращается в недоверие.",
         goal: {
@@ -441,7 +441,7 @@ Lock + Voting
       category: "Food App",
       role: "Senior Product Designer",
       title: "2Go",
-      description: "Фриланс-проект сервиса акций. Внутри – мобильное приложение для клиента, десктоп для B2B и админ-панель.",
+      description: "2GO – сервис акций для ресторанов и кафе на рынке без прямых аналогов, объединяющий в единую продуктовую систему мобильное приложение для пользователей, B2B-кабинет для ресторанов и админ-панель для модерации.",
       caseDescription: "2GO – сервис акций для ресторанов и кафе в Узбекистане. Рестораны создают акции, пользователи их находят и приходят с промокодом, официанты пробивают код на кассе. Моя задача – спроектировать три продукта сразу: мобильное приложение для пользователей, B2B-кабинет для ресторанов и админ-панель для модерации."
     },
     {
@@ -450,7 +450,7 @@ Lock + Voting
       category: "GREEN TOOLS",
       role: "PRODUCT DESIGNER",
       title: "СКИЗИ",
-      description: "Система автоматизации учета зеленой энергии. Один из самых длительных и сложных моих проектов, с расширенной ролевой моделью (~8 ролей 😱)"
+      description: "Система автоматизации учета зеленой энергии с расширенной ролевой моделью (~8 ролей 😱). Сейчас обслуживает реальный оборот зелёных сертификатов в России."
     },
     {
       id: 5,
