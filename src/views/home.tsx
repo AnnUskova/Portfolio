@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, ChevronLeft, ChevronRight, X } from "lucide-react";
+import { ArrowUpRight, ChevronRight, X } from "lucide-react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { MobileLanguageOverlay } from "@/components/MobileLanguageOverlay";
 import { MobileMenuOverlay } from "@/components/MobileMenuOverlay";
@@ -32,7 +32,6 @@ const projectImages: Record<number, string | null> = {
 export default function Home() {
   const pathname = usePathname();
   const router = useRouter();
-  const [activeProject, setActiveProject] = useState(0);
   const [language, setLanguage] = useState<Language>(() => {
     if (typeof window === "undefined") return "en";
     const saved = localStorage.getItem("app_language");
@@ -51,8 +50,6 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileLanguageOpen, setMobileLanguageOpen] = useState(false);
   const [mobileHeaderVisible, setMobileHeaderVisible] = useState(true);
-  const mobileSliderTouchStartX = useRef<number | null>(null);
-  const mobileSliderSwipeTriggered = useRef(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -87,70 +84,10 @@ export default function Home() {
   }, []);
 
   const t = translations[language];
-  // Filter for specific slider projects: Glacis dApp (1), Glacis Site (14), xSwap (2), SKIZI (3), 2Go (4)
-  const allowedProjectIds = [1, 14, 2, 3, 4];
-  const projects = projectTranslations[language].filter(p => allowedProjectIds.includes(p.id));
-  const hasProjects = projects.length > 0;
-  const getCircularIndex = (value: number) => {
-    if (!projects.length) return 0;
-    return ((value % projects.length) + projects.length) % projects.length;
-  };
-  const safeActiveProject = hasProjects ? getCircularIndex(activeProject) : 0;
-  const currentProject = hasProjects ? projects[safeActiveProject] : null;
-
-  const stats = [
-    { label: t.stats.experience, value: "7+" },
-    { label: t.stats.projects, value: "30+" },
-    { label: t.stats.location, value: t.stats.locationValue }
-  ];
-
-  const nextProject = () => {
-    if (!projects.length) return;
-    setActiveProject((prev) => prev + 1);
-  };
-
-  const prevProject = () => {
-    if (!projects.length) return;
-    setActiveProject((prev) => prev - 1);
-  };
-
-  const handleMobileSliderTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
-    mobileSliderTouchStartX.current = event.touches[0]?.clientX ?? null;
-    mobileSliderSwipeTriggered.current = false;
-  };
-
-  const handleMobileSliderTouchEnd = (event: React.TouchEvent<HTMLDivElement>) => {
-    if (mobileSliderTouchStartX.current === null) return;
-
-    const touchEndX = event.changedTouches[0]?.clientX ?? mobileSliderTouchStartX.current;
-    const deltaX = touchEndX - mobileSliderTouchStartX.current;
-    mobileSliderTouchStartX.current = null;
-
-    if (Math.abs(deltaX) < 44) return;
-
-    mobileSliderSwipeTriggered.current = true;
-    if (deltaX < 0) {
-      nextProject();
-      return;
-    }
-
-    prevProject();
-  };
-
-  useEffect(() => {
-    if (!projects.length) return;
-
-    // Preload upcoming slides to avoid the first-loop stutter.
-    [1, 2, 3].forEach((offset) => {
-      const index = getCircularIndex(activeProject + offset);
-      const imageSrc = projectImages[projects[index].id];
-      if (!imageSrc) return;
-
-      const image = new window.Image();
-      image.decoding = "async";
-      image.src = imageSrc;
-    });
-  }, [activeProject, projects]);
+  const homeProjectIds = [1, 2, 3, 4];
+  const homeProjects = homeProjectIds
+    .map((id) => projectTranslations[language].find((project) => project.id === id))
+    .filter((project): project is NonNullable<typeof projectTranslations[Language][number]> => project !== undefined);
 
   const contactData = {
     telegram: "@Ann_uskova",
@@ -384,231 +321,91 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-8 border-y border-gray-100">
+      <section id="projects" className="pt-0 pb-24 lg:pt-14 lg:pb-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 gap-3 md:grid-cols-3 md:gap-8">
-            {stats.map((stat, index) => (
-              <motion.div 
-                key={stat.label}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-                className="rounded-3xl border border-gray-100 px-5 py-4 text-left md:rounded-none md:border-0 md:px-0 md:py-0"
+          <div className="mb-10 flex items-end justify-between gap-6 md:mb-14">
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45 }}
+            >
+              <h2 className="text-[34px] leading-none font-medium tracking-tight md:text-5xl" data-testid="text-projects-heading">
+                {t.nav.projects}
+              </h2>
+            </motion.div>
+
+            <Link
+              href="/projects"
+              className="hidden md:inline-flex items-center gap-2 px-6 h-12 border border-gray-200 rounded-full text-[14px] font-medium text-gray-500 hover:text-white hover:bg-black hover:border-black transition-all duration-300 group"
+              data-testid="link-all-projects-top"
+            >
+              {language === "ru" ? "Все проекты" : "All Projects"}
+              <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 gap-16 md:gap-14">
+            {homeProjects.map((project, index) => (
+              <motion.div
+                key={`${project.id}-${language}`}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: index * 0.06 }}
               >
-                <p className="text-[11px] text-gray-400 uppercase tracking-[0.14em] mb-1.5 md:text-xs md:tracking-wider md:mb-1">
-                  {stat.label}
-                </p>
-                <p className="text-[30px] leading-none md:text-3xl font-medium" data-testid={`text-stat-${index}`}>
-                  {stat.value}
-                </p>
+                <Link
+                  href={`/projects/${project.id}?from=home`}
+                  className="group block md:grid md:grid-cols-[minmax(0,1.08fr)_minmax(320px,0.92fr)] md:items-center md:gap-12"
+                >
+                  <div className="overflow-hidden rounded-[28px] border border-gray-100 bg-white shadow-sm">
+                    {projectImages[project.id] ? (
+                      <img
+                        src={projectImages[project.id] as string}
+                        alt={project.title}
+                        loading={index < 2 ? "eager" : "lazy"}
+                        decoding="async"
+                        className="h-[280px] w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.03] md:h-[410px]"
+                      />
+                    ) : (
+                      <div className="h-[280px] w-full bg-[#F1F1F1] md:h-[410px]" />
+                    )}
+                  </div>
+
+                  <div className="space-y-4 px-1 pt-5 md:px-0 md:-translate-y-5 md:pt-0">
+                    <div className="flex flex-wrap items-center gap-2 text-[11px] text-gray-400 uppercase tracking-[0.14em]">
+                      <span>{project.year}</span>
+                      <span className="text-gray-200">/</span>
+                      <span>{project.category}</span>
+                      <span className="text-gray-200">/</span>
+                      <span>{project.role}</span>
+                    </div>
+
+                    <div className="flex items-start justify-between gap-4">
+                      <h3 className="text-[28px] leading-[0.98] font-medium tracking-tight md:text-[30px]">
+                        {project.title}
+                      </h3>
+                      <ArrowUpRight className="mt-1 hidden h-5 w-5 shrink-0 text-gray-300 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 md:block" />
+                    </div>
+
+                    <p className="max-w-[40rem] text-[15px] leading-[1.4] text-gray-500 md:text-[16px] md:leading-[1.48]">
+                      {project.description}
+                    </p>
+                  </div>
+                </Link>
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
 
-      <section id="projects" className="pt-8 pb-24 lg:py-32 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid gap-8 lg:grid-cols-[380px_1fr] lg:gap-16 items-center">
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="hidden lg:flex lg:h-[392px] lg:flex-col"
+          <div className="mt-8 md:hidden">
+            <Link
+              href="/projects"
+              className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-full border border-gray-200 px-8 text-[15px] font-medium text-gray-500 transition-all duration-300 hover:border-black hover:bg-black hover:text-white group"
+              data-testid="link-all-projects-bottom-mobile"
             >
-              <div className="flex-1 flex flex-col pt-4">
-                <div className="flex items-center gap-2 text-xs text-gray-400 uppercase tracking-wider mb-8 lg:mb-14">
-                  {currentProject ? (
-                    <>
-                      <span>{currentProject.year}</span>
-                      <span className="text-gray-200">/</span>
-                      <span>{currentProject.category}</span>
-                      <span className="text-gray-200">/</span>
-                      <span>{currentProject.role}</span>
-                    </>
-                  ) : null}
-                </div>
-                
-                <AnimatePresence mode="wait">
-                  {currentProject ? (
-                    <motion.div
-                      key={`${currentProject.id}-${language}`}
-                      initial={{ opacity: 0, y: 12 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -12 }}
-                      transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-                      className="flex flex-col justify-center lg:h-[200px]"
-                    >
-                      <h3 className="text-[36px] md:text-5xl font-medium mb-6 tracking-tight" data-testid="text-project-title">
-                        {currentProject.title}
-                      </h3>
-                      
-                      <p className="max-w-[320px] text-[15px] leading-relaxed text-gray-500 md:text-lg md:leading-[1.6]" data-testid="text-project-description">
-                        {currentProject.description}
-                      </p>
-                    </motion.div>
-                  ) : null}
-                </AnimatePresence>
-              </div>
-
-              <div className="hidden lg:flex items-center gap-6 mt-auto">
-                <div className="flex items-center gap-3">
-                  <button 
-                    onClick={prevProject}
-                    className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:border-black hover:bg-black hover:text-white transition-all duration-300 group"
-                    data-testid="button-prev-project"
-                  >
-                    <ChevronLeft className="w-6 h-6" />
-                  </button>
-                  <button 
-                    onClick={nextProject}
-                    className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:border-black hover:bg-black hover:text-white transition-all duration-300 group"
-                    data-testid="button-next-project"
-                  >
-                    <ChevronRight className="w-6 h-6" />
-                  </button>
-                </div>
-
-                <Link 
-                  href="/projects"
-                  className="inline-flex items-center gap-2 px-6 h-12 border border-gray-200 rounded-full text-[14px] font-medium text-gray-500 hover:text-white hover:bg-black hover:border-black transition-all duration-300 group"
-                  data-testid="link-all-projects-bottom"
-                >
-                  {language === "ru" ? "Все проекты" : "All Projects"}
-                  <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </Link>
-              </div>
-            </motion.div>
-
-            <div className="lg:hidden">
-              {currentProject ? (
-                <motion.div
-                  key={`mobile-${currentProject.id}-${language}`}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.35 }}
-                  onTouchStart={handleMobileSliderTouchStart}
-                  onTouchEnd={handleMobileSliderTouchEnd}
-                  className="space-y-6"
-                >
-                  <div className="relative">
-                    <Link
-                      href={`/projects/${currentProject.id}?from=home`}
-                      onClick={(event) => {
-                        if (!mobileSliderSwipeTriggered.current) return;
-                        event.preventDefault();
-                        mobileSliderSwipeTriggered.current = false;
-                      }}
-                      className="block overflow-hidden rounded-[28px] border border-gray-100 bg-white shadow-sm"
-                    >
-                      <div className="h-[300px] overflow-hidden">
-                        {projectImages[currentProject.id] ? (
-                          <img
-                            src={projectImages[currentProject.id] as string}
-                            alt={currentProject.title}
-                            loading="eager"
-                            decoding="async"
-                            className="h-full w-full object-cover object-center"
-                          />
-                        ) : (
-                          <div className="h-full w-full bg-white" />
-                        )}
-                      </div>
-                    </Link>
-
-                    <div className="pointer-events-none absolute inset-x-0 bottom-3 z-10 flex items-center justify-center gap-2">
-                      {projects.map((project, index) => (
-                        <button
-                          key={project.id}
-                          type="button"
-                          onClick={() => setActiveProject(index)}
-                          className={`pointer-events-auto rounded-full transition-all ${
-                            index === safeActiveProject ? "h-1.5 w-7 bg-black/90" : "h-1.5 w-1.5 bg-white/75"
-                          }`}
-                          aria-label={`Go to project ${index + 1}`}
-                        />
-                      ))}
-                    </div>
-
-                  </div>
-
-                  <div className="space-y-4 px-1">
-                    <div className="flex flex-wrap items-center gap-2 text-[11px] text-gray-400 uppercase tracking-[0.14em]">
-                      <span>{currentProject.year}</span>
-                      <span className="text-gray-200">/</span>
-                      <span>{currentProject.category}</span>
-                      <span className="text-gray-200">/</span>
-                      <span>{currentProject.role}</span>
-                    </div>
-
-                    <div className="space-y-4">
-                      <h3 className="text-[34px] leading-[0.98] font-medium tracking-tight" data-testid="text-project-title-mobile">
-                        {currentProject.title}
-                      </h3>
-                      <p className="text-[15px] leading-[1.45] text-gray-500" data-testid="text-project-description-mobile">
-                        {currentProject.description}
-                      </p>
-                    </div>
-                  </div>
-
-                  <Link
-                    href="/projects"
-                    className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-full border border-gray-200 px-8 text-[15px] font-medium text-gray-500 transition-all duration-300 hover:border-black hover:bg-black hover:text-white group"
-                    data-testid="link-all-projects-bottom-mobile"
-                  >
-                    {language === "ru" ? "Все проекты" : "All Projects"}
-                    <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </Link>
-                </motion.div>
-              ) : null}
-            </div>
-
-            <div className="relative hidden lg:flex items-center h-[392px]">
-              <div className="flex gap-2 items-start w-full">
-                <AnimatePresence mode="popLayout">
-                  {hasProjects
-                    ? [0, 1, 2].map((offset) => {
-                        const virtualIndex = activeProject + offset;
-                        const index = getCircularIndex(virtualIndex);
-                        const isFirst = offset === 0;
-                        return (
-                          <Link 
-                            key={`${projects[index].id}-${virtualIndex}-${offset}`}
-                            href={`/projects/${projects[index].id}?from=home`}
-                            className={`${isFirst ? "w-[calc(65%+104px)]" : "w-[calc(25%+152px)]"} flex-shrink-0`}
-                          >
-                            <motion.div
-                              initial={{ opacity: 0, x: 64, scale: 0.985 }}
-                              animate={{ 
-                                opacity: 1, 
-                                x: 0,
-                                scale: isFirst ? 1 : 0.95
-                              }}
-                              exit={{ opacity: 0, x: -64, scale: 0.985 }}
-                              transition={{ duration: 1.0, ease: [0.25, 0.1, 0.25, 1] }}
-                              className="relative h-[392px] rounded-[24px] overflow-hidden bg-[#F1F1F1] border border-gray-100 shadow-sm cursor-pointer group"
-                            >
-                              {projectImages[projects[index].id] ? (
-                                <img 
-                                  src={projectImages[projects[index].id] as string}
-                                  alt={projects[index].title}
-                                  loading={offset < 2 ? "eager" : "lazy"}
-                                  fetchPriority={offset === 0 ? "high" : "auto"}
-                                  decoding="async"
-                                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                                />
-                              ) : (
-                                <div className="w-full h-full bg-[#F1F1F1]" />
-                              )}
-                            </motion.div>
-                          </Link>
-                        );
-                      })
-                    : null}
-                </AnimatePresence>
-              </div>
-            </div>
+              {language === "ru" ? "Все проекты" : "All Projects"}
+              <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </Link>
           </div>
         </div>
       </section>
