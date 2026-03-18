@@ -2155,7 +2155,7 @@ export default function ProjectDetail() {
                 <p className="text-lg text-gray-600 leading-relaxed mt-6">
                   {language === "ru"
                     ? "Все три продукта работают как единая система: официант пробил код – у пользователя он стал использованным, администратор одобрил ресторан – он появился в каталоге. Это потребовало синхронизации логики между интерфейсами ещё на стадии проектирования."
-                    : "All three products work as one system: once the waiter redeems the code, it becomes used in the customer app; once the admin approves a restaurant, it appears in the catalog. That required syncing the logic across all interfaces already at the design stage, which is exactly the kind of end-to-end flow work I love."}
+                    : "All three products work as one system: once the waiter redeems the code, it becomes used in the customer app; once the admin approves a restaurant, it appears in the catalog. That required syncing the logic across all interfaces already at the design stage."}
                 </p>
               </div>
             )}

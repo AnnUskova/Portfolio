@@ -175,7 +175,7 @@ export const projectTranslations: Record<"en" | "ru", ProjectTranslation[]> = {
       category: "DEFI",
       role: "DESIGN LEAD",
       title: "Glacis Labs dApp",
-      description: "A DeFi ecosystem for cross-chain operations. I defined the project's design direction and built a dApp for tracking cross-chain transactions and analytics.",
+      description: "Design Lead at Glacis Labs, an infrastructure DeFi startup ($2.1M seed, Arrington Capital). I designed a dApp for tracking and analytics of cross-chain operations across 5 bridges, 37+ chains, and 215 tokens.",
       cardDescription: "A dApp for tracking cross-chain transactions and analytics. UX, UI, brand identity.",
       caseDescription: "Glacis Labs is a US startup building tools for decentralized app developers. They created an ecosystem of DeFi products, and I was responsible for all of its visual parts."
     },
@@ -197,7 +197,7 @@ export const projectTranslations: Record<"en" | "ru", ProjectTranslation[]> = {
       category: "DEFI",
       role: "Senior Product Designer",
       title: "xSwap",
-      description: "AMM on the CrossFi network. Not just a swap UI — it includes liquidity pools, a native token, and a rewards system. I created the brand style, landing page, and dApp UI, and worked through the product logic with Solidity devs.",
+      description: "xSwap is a DeFi product on the CrossFi network with swap, liquidity pools, staking, token sale, and veToken mechanics. I designed the visual style, landing page, and dApp, worked through the UX with the Solidity team, and contributed to the launch in Western and Vietnamese markets.",
       content: {
         nda: "DeFi UX is high-stakes: one mistake costs money, and confusing mechanics quickly turn into distrust.",
         goal: {
@@ -267,7 +267,7 @@ We also shipped a Vietnamese version and launched for the Vietnamese market (and
       category: "Food App",
       role: "Senior Product Designer",
       title: "2Go",
-      description: "Freelance deals service. Inside: a mobile app for users, a desktop product for B2B, and an admin panel.",
+      description: "2GO is a deals service for restaurants and cafes in a market with no direct analogs, bringing together a mobile app for users, a B2B dashboard for restaurants, and an admin panel for moderation into one product system.",
       caseDescription: "2GO is a deals platform for restaurants and cafes in Uzbekistan. Restaurants create promos, users find them and show up with a promo code, and waiters redeem that code at the cashier. My task was to design three products at once: a mobile app for users, a B2B dashboard for restaurants, and an admin panel for moderation."
     },
     {
@@ -276,7 +276,7 @@ We also shipped a Vietnamese version and launched for the Vietnamese market (and
       category: "GREEN TOOLS",
       role: "PRODUCT DESIGNER",
       title: "SKIZI",
-      description: "Green energy accounting automation system with a deep role model. Today it supports the real turnover of green certificates in Russia."
+      description: "Green energy accounting automation system with an extended role model (~8 roles 😱). Today it supports the real turnover of green certificates in Russia."
     },
     {
       id: 5,
