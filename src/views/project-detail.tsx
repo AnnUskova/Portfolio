@@ -3015,30 +3015,41 @@ export default function ProjectDetail() {
                         <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
                           <img 
                             src="/Swap_States_Showcase.webp" 
-                            alt="Route и некоторые состояния формы свапа" 
+                            alt={language === "ru" ? "Route и некоторые состояния формы свапа" : "Route and several swap form states"} 
                             className="w-full h-auto object-contain cursor-pointer"
                             onClick={() => openSingleImage("/Swap_States_Showcase.webp", "Swap states showcase")}
                           />
                         </div>
-                        <p className="text-sm text-gray-400 mt-4 text-center italic">Route и некоторые состояния формы свапа</p>
+                        <p className="text-sm text-gray-400 mt-4 text-center italic">
+                          {language === "ru" ? "Route и некоторые состояния формы свапа" : "Route and several swap form states"}
+                        </p>
                       </div>
                     </div>
 
                     <div className="space-y-4">
                       <p className="font-medium text-black">Pools</p>
-                      <p>Пулы я разделила на два блока:</p>
+                      <p>{language === "ru" ? "Пулы я разделила на два блока:" : "I split Pools into two clear modes:"}</p>
                       <ul className="space-y-2">
-                        {[
-                          "My positions — управление активными позициями и быстрые действия",
-                          "и All pools — витрина для сравнения и выбора (TVL/APY/объёмы)."
-                        ].map((item, i) => (
+                        {(language === "ru"
+                          ? [
+                              "My positions — управление активными позициями и быстрые действия",
+                              "и All pools — витрина для сравнения и выбора (TVL/APY/объёмы)."
+                            ]
+                          : [
+                              "My positions — active positions and quick actions",
+                              "All pools — a browsing table for comparison and selection (TVL/APY/volume)."
+                            ]).map((item, i) => (
                           <li key={i} className="flex gap-4 text-lg text-gray-600 leading-relaxed">
                             <span className="text-black font-medium">•</span>
                             <span>{item}</span>
                           </li>
                         ))}
                       </ul>
-                      <p>Claim rewards осуществляется не с каждой позиции отдельно, а со всех сразу, чтобы упростить процесс.</p>
+                      <p>
+                        {language === "ru"
+                          ? "Claim rewards осуществляется не с каждой позиции отдельно, а со всех сразу, чтобы упростить процесс."
+                          : "Rewards claiming is aggregated rather than handled per position, which makes the process simpler and faster."}
+                      </p>
 
                       <div className="my-12">
                         <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
@@ -3055,7 +3066,9 @@ export default function ProjectDetail() {
                       <div className="space-y-4">
                         <p className="font-medium text-black">Add/Remove liquidity</p>
                         <p>
-                          Добавление ликвидности – это несколько шагов с подтверждениями в кошельке. Я добавила подсказки и степпер, чтобы было понятно, на каком этапе пользователь сейчас. Пока шаг выполняется – все кнопки и поля задизейблены, чтобы избежать ошибок.
+                          {language === "ru"
+                            ? "Добавление ликвидности – это несколько шагов с подтверждениями в кошельке. Я добавила подсказки и степпер, чтобы было понятно, на каком этапе пользователь сейчас. Пока шаг выполняется – все кнопки и поля задизейблены, чтобы избежать ошибок."
+                            : "Adding liquidity is a multi-step flow with wallet confirmations. I added guidance and a stepper so users always understand which stage they are in. While a step is running, buttons and inputs are disabled to prevent mistakes."}
                         </p>
 
                         <div className="my-12">
@@ -3080,14 +3093,22 @@ export default function ProjectDetail() {
                               onClick={() => openSingleImage("/Remove_Liquidity_Showcase.webp", "Remove Liquidity Showcase")}
                             />
                           </div>
-                          <p className="text-sm text-gray-400 mt-4 text-center italic">Remove liquidity выглядит уже проще, но увеличился инфо блок.</p>
+                          <p className="text-sm text-gray-400 mt-4 text-center italic">
+                            {language === "ru"
+                              ? "Remove liquidity выглядит уже проще, но увеличился инфо блок."
+                              : "Remove liquidity is visually simpler, but the info block became more detailed."}
+                          </p>
                         </div>
                       </div>
                     </div>
 
                     <div className="space-y-4">
                       <p className="font-medium text-black">Token Sale</p>
-                      <p>Token Sale должен продавать токен платформы (SWA), чтобы в дальнейшем принести пользователю прибыль. Для этого нужно выбрать сеть – самое важное, поэтому в красном алерте, и успеть купить токен подешевле – таймер с обратным отсчетом, условия и цена покупки на нынешнем и следующем этапе. Чтобы усилить мотивацию, я добавила кликабельный калькулятор прибыли. По дефолту он заполнен, в него можно потыкать и поменять значение, а вообще он синхронизирован с полем на основной форме. При заполнении формы слева – в калькуляторе прибыли пользователь сразу увидит, сколько он рассчетно получит через 3 месяца.</p>
+                      <p>
+                        {language === "ru"
+                          ? "Token Sale должен продавать токен платформы (SWA), чтобы в дальнейшем принести пользователю прибыль. Для этого нужно выбрать сеть – самое важное, поэтому в красном алерте, и успеть купить токен подешевле – таймер с обратным отсчетом, условия и цена покупки на нынешнем и следующем этапе. Чтобы усилить мотивацию, я добавила кликабельный калькулятор прибыли. По дефолту он заполнен, в него можно потыкать и поменять значение, а вообще он синхронизирован с полем на основной форме. При заполнении формы слева – в калькуляторе прибыли пользователь сразу увидит, сколько он рассчетно получит через 3 месяца."
+                          : "Token Sale has to sell the platform token (SWA) and help users make a decision quickly. First, users need to choose the right network, so that requirement is highlighted in a red alert. Then it is about timing: a countdown, stage conditions, and the current versus next purchase price. To strengthen motivation, I added an interactive profit estimator. It is prefilled by default, editable, and synced with the main form, so when users enter an amount on the left, they instantly see an estimated return in three months."}
+                      </p>
 
                       <div className="my-12">
                         <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
@@ -3100,7 +3121,11 @@ export default function ProjectDetail() {
                           />
                         </div>
                       </div>
-                      <p>Еще я добавила видео-гайды для новичков, чтобы снизить барьер входа и нагрузку на саппорт. Вот так они выглядели:</p>
+                      <p>
+                        {language === "ru"
+                          ? "Еще я добавила видео-гайды для новичков, чтобы снизить барьер входа и нагрузку на саппорт. Вот так они выглядели:"
+                          : "I also added beginner-friendly video guides to reduce the entry barrier and support load. Here is what they looked like:"}
+                      </p>
                       
                       <div className="my-12">
                         <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white relative group">
@@ -3116,7 +3141,11 @@ export default function ProjectDetail() {
 
                     <div className="space-y-4">
                       <p className="font-medium text-black">Lock + Voting</p>
-                      <p>Этот раздел был самым нетривиальным в проектировании – мало хороших референсов, много новых сущностей: veSWA, voting power, incentives. Механика следующая: когда пользователь лочит SWA, он получает veSWA – это его voting power. С помощью veSWA он голосует за пулы и тем самым влияет на распределение incentives и итоговую доходность. Я разделила сценарии на Lock (локи, сроки, unlock) и Voting (голоса и их эффект), добавила ключевые метрики (veSWA, rewards, unlock date) и подсказки/empty states.</p>
+                      <p>
+                        {language === "ru"
+                          ? "Этот раздел был самым нетривиальным в проектировании – мало хороших референсов, много новых сущностей: veSWA, voting power, incentives. Механика следующая: когда пользователь лочит SWA, он получает veSWA – это его voting power. С помощью veSWA он голосует за пулы и тем самым влияет на распределение incentives и итоговую доходность. Я разделила сценарии на Lock (локи, сроки, unlock) и Voting (голоса и их эффект), добавила ключевые метрики (veSWA, rewards, unlock date) и подсказки/empty states."
+                          : "This was the most challenging part to design: there are few strong references, and the flow introduces new concepts like veSWA, voting power, and incentives. The mechanic is straightforward once explained: when users lock SWA, they receive veSWA as voting power. With veSWA they vote for pools, which affects incentive distribution and final yield. I split the experience into Lock (locks, durations, unlock) and Voting (votes and their effect), surfaced the key metrics such as veSWA, rewards, and unlock date, and added hints and empty states."}
+                      </p>
 
                       <div className="my-12">
                         <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white">
@@ -3140,7 +3169,9 @@ export default function ProjectDetail() {
                             onClick={() => openSingleImage("/Lock_Voting_Popups.webp", "Lock and Vote Popups")}
                           />
                         </div>
-                        <p className="text-sm text-gray-400 mt-4 text-center italic">Попапы для vote и lock</p>
+                        <p className="text-sm text-gray-400 mt-4 text-center italic">
+                          {language === "ru" ? "Попапы для vote и lock" : "Popups for vote and lock"}
+                        </p>
                       </div>
                     </div>
 
