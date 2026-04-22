@@ -665,16 +665,6 @@ export default function Home() {
                 {t.contact.email}
                 <ArrowUpRight className="w-4 h-4" />
               </a>
-              <a
-                href={contactData.hhUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-gray-200 text-[15px] font-medium rounded-full hover:bg-gray-50 transition-colors h-14 min-w-[200px]"
-                data-testid="button-hh-footer"
-              >
-                {t.contact.hh}
-                <ArrowUpRight className="w-4 h-4" />
-              </a>
             </div>
           </motion.div>
         </div>
@@ -688,6 +678,7 @@ export default function Home() {
               <a href={contactData.telegramUrl} target="_blank" rel="noopener noreferrer" className="text-[15px] text-gray-400 hover:text-black transition-colors">{t.footer.socials.telegram}</a>
               <a href={contactData.instagramUrl} target="_blank" rel="noopener noreferrer" className="text-[15px] text-gray-400 hover:text-black transition-colors">{t.footer.socials.instagram}</a>
               <a href={contactData.emailUrl} className="text-[15px] text-gray-400 hover:text-black transition-colors">{t.footer.socials.email}</a>
+              <a href={contactData.hhUrl} target="_blank" rel="noopener noreferrer" className="text-[15px] text-gray-400 hover:text-black transition-colors">{t.footer.socials.hh}</a>
             </div>
             <p className="order-2 md:order-1 text-[15px] text-gray-400">{t.footer.copyright}</p>
           </div>

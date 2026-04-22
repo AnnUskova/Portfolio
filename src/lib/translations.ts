@@ -43,7 +43,8 @@ export const translations = {
         linkedin: "LinkedIn",
         telegram: "Telegram",
         instagram: "Instagram",
-        email: "Email"
+        email: "Email",
+        hh: "HeadHunter"
       }
     },
     experience: {
@@ -120,7 +121,8 @@ export const translations = {
         linkedin: "LinkedIn",
         telegram: "Телеграм",
         instagram: "Инстаграм",
-        email: "Почта"
+        email: "Почта",
+        hh: "HeadHunter"
       }
     },
     experience: {

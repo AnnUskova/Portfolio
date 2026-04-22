@@ -402,6 +402,8 @@ export default function Projects() {
             <a href={contactData.linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-[15px] hover:text-black transition-colors">LinkedIn</a>
             <a href={contactData.telegramUrl} target="_blank" rel="noopener noreferrer" className="text-[15px] hover:text-black transition-colors">Telegram</a>
             <a href={contactData.instagramUrl} target="_blank" rel="noopener noreferrer" className="text-[15px] hover:text-black transition-colors">Instagram</a>
+            <a href={contactData.emailUrl} className="text-[15px] hover:text-black transition-colors">Email</a>
+            <a href={contactData.hhUrl} target="_blank" rel="noopener noreferrer" className="text-[15px] hover:text-black transition-colors">HeadHunter</a>
           </div>
           <p className="order-2 md:order-1 text-[15px]">{t.footer.copyright}</p>
         </div>
