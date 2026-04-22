@@ -142,6 +142,7 @@ export default function Projects() {
   const contactData = {
     telegramUrl: "https://t.me/Ann_uskova",
     linkedinUrl: "https://www.linkedin.com/in/anna-uskova-4b1169268/",
+    hhUrl: "https://spb.hh.ru/resume/e2a125c4ff039675ad0039ed1f5a6c33713345",
     instagramUrl: "https://instagram.com/ann_uskova",
     emailUrl: "mailto:anyauskowa@yandex.ru"
   };
@@ -256,6 +257,12 @@ export default function Projects() {
                   <span className="text-lg">{t.contact.linkedin}</span>
                   <span className="text-gray-500 group-hover:text-black transition-colors flex items-center gap-2">
                     Anna Uskova <ArrowUpRight className="w-4 h-4" />
+                  </span>
+                </a>
+                <a href={contactData.hhUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-6 border border-gray-200 rounded-[18px] hover:bg-gray-50 transition-colors group" data-testid="link-hh">
+                  <span className="text-lg">{t.contact.hh}</span>
+                  <span className="text-gray-500 group-hover:text-black transition-colors flex items-center gap-2">
+                    Resume on hh.ru <ArrowUpRight className="w-4 h-4" />
                   </span>
                 </a>
               </div>

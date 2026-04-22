@@ -92,9 +92,11 @@ export default function Home() {
   const contactData = {
     telegram: "@Ann_uskova",
     linkedin: "Anna Uskova",
+    hh: "Resume on hh.ru",
     email: "anyauskowa@yandex.ru",
     telegramUrl: "https://t.me/Ann_uskova",
     linkedinUrl: "https://www.linkedin.com/in/anna-uskova-4b1169268/",
+    hhUrl: "https://spb.hh.ru/resume/e2a125c4ff039675ad0039ed1f5a6c33713345",
     instagramUrl: "https://instagram.com/ann_uskova",
     emailUrl: "mailto:anyauskowa@yandex.ru"
   };
@@ -241,6 +243,20 @@ export default function Home() {
                   <span className="text-lg">{t.contact.linkedin}</span>
                   <span className="text-gray-500 group-hover:text-black transition-colors flex items-center gap-2">
                     {contactData.linkedin}
+                    <ArrowUpRight className="w-4 h-4" />
+                  </span>
+                </a>
+
+                <a
+                  href={contactData.hhUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between p-6 border border-gray-200 rounded-[18px] hover:bg-gray-50 transition-colors group"
+                  data-testid="link-hh"
+                >
+                  <span className="text-lg">{t.contact.hh}</span>
+                  <span className="text-gray-500 group-hover:text-black transition-colors flex items-center gap-2">
+                    {contactData.hh}
                     <ArrowUpRight className="w-4 h-4" />
                   </span>
                 </a>
@@ -647,6 +663,16 @@ export default function Home() {
                 data-testid="button-email-footer"
               >
                 {t.contact.email}
+                <ArrowUpRight className="w-4 h-4" />
+              </a>
+              <a
+                href={contactData.hhUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-gray-200 text-[15px] font-medium rounded-full hover:bg-gray-50 transition-colors h-14 min-w-[200px]"
+                data-testid="button-hh-footer"
+              >
+                {t.contact.hh}
                 <ArrowUpRight className="w-4 h-4" />
               </a>
             </div>

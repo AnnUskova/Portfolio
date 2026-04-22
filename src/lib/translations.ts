@@ -33,6 +33,7 @@ export const translations = {
       modalTitle: "Let's connect",
       email: "Email",
       telegram: "Telegram",
+      hh: "hh.ru",
       linkedin: "LinkedIn",
       downloadCV: "Download CV"
     },
@@ -109,6 +110,7 @@ export const translations = {
       modalTitle: "Связаться со мной",
       email: "Почта",
       telegram: "Телеграм",
+      hh: "hh.ru",
       linkedin: "LinkedIn",
       downloadCV: "Скачать CV"
     },
