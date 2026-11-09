@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
-import Home from "@/views/home";
 import { buildPageMetadata } from "@/lib/metadata";
+import Maintenance from "@/views/maintenance";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Anna Uskova — Product Designer",
-  description:
-    "UX/UI Designer with 7+ years of experience crafting DeFi protocols, high-load systems, and products for mass audiences.",
+  title: "Anna Uskova — Сайт обновляется",
+  description: "Сайтик на редизайне, совсем скоро он вернется обновленный.",
   path: "/",
   image: "/og_main.png",
 });
 
 export default function Page() {
-  return <Home />;
+  return <Maintenance />;
 }
